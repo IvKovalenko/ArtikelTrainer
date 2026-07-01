@@ -1,0 +1,113 @@
+# Тренажёр артиклей (der/die/das)
+
+PWA для тренировки немецких артиклей: работает как сайт **и** ставится на телефон как приложение.
+Уровни A1–C2, приоритет словам, где чаще ошибаешься, статистика в JSON с синхронизацией
+между устройствами через Cloudflare KV.
+
+## Что внутри
+
+```
+public/                 статика (то, что раздаётся)
+  index.html            разметка (дизайн как в образце)
+  style.css             стили
+  app.js                логика тренажёра + офлайн + синхронизация
+  words.json            словарь A1–C2 (588 слов), генерируется скриптом
+  manifest.webmanifest  манифест PWA
+  sw.js                 service worker (офлайн-кэш)
+  icons/                иконки приложения
+functions/
+  api/progress.js       Cloudflare Pages Function: GET/POST статистики в KV
+tools/
+  gen_words.py          генератор words.json (правь списки здесь)
+  gen_icons.py          генератор PNG-иконок из дизайна
+wrangler.toml           конфиг Cloudflare (папка сборки + привязка KV)
+```
+
+## Как это работает
+
+- Статистика хранится одним JSON под ключом `article-progress`:
+  `{ "Haus": { "correct": 0, "wrong": 0, "seen": 0 }, ... }`.
+- Клиент работает **офлайн-first**: пишет в `localStorage`, а в фоне синхронизирует с сервером.
+  При старте данные с сервера и локальные объединяются поэлементным максимумом (прогресс не теряется).
+- Слова выбираются с весами: новые показываются охотно, слова с ошибками — чаще, хорошо
+  выученные (3+ верных подряд без ошибок) — редко. Следующий уровень открывается, когда на
+  текущем освоено ≥80% слов.
+
+Клавиши: `1` = der, `2` = die, `3` = das; `Пробел`/`Enter` или клик по карточке — дальше.
+
+## Запуск локально
+
+```bash
+npm install
+npm run dev          # http://127.0.0.1:8788  (локальный KV — данные не уходят в облако)
+```
+
+## Деплой на Cloudflare Pages
+
+Нужен аккаунт Cloudflare (бесплатного тарифа хватает).
+
+### 1. Логин и создание KV
+
+```bash
+npx wrangler login
+npx wrangler kv namespace create PROGRESS
+# скопируй выданный id (строка вида id = "abc123...")
+```
+
+Вставь id в `wrangler.toml`:
+
+```toml
+[[kv_namespaces]]
+binding = "PROGRESS"
+id = "СЮДА_ID"
+```
+
+### 2. Публикация
+
+```bash
+npm run deploy
+# при первом запуске wrangler спросит имя проекта — можно оставить artikel-trainer
+```
+
+После деплоя получишь адрес вида `https://artikel-trainer.pages.dev`. Открой его в браузере
+на работе и на телефоне — статистика будет общей.
+
+> Если предпочитаешь деплой из GitHub: в дашборде Cloudflare → **Workers & Pages → Create → Pages →
+> Connect to Git**, выбери репозиторий, **Build output directory** = `public`, build command оставь
+> пустым. Затем **Settings → Functions → KV namespace bindings**: переменная `PROGRESS` → твой namespace.
+
+### 3. (Необязательно) Защита записи токеном
+
+По умолчанию API открыт (подходит для личного использования по неочевидному адресу).
+Чтобы закрыть запись:
+
+```bash
+npx wrangler pages secret put SYNC_TOKEN     # введёшь произвольную строку-пароль
+```
+
+Затем в приложении: **Показать данные → Синхронизация** — впиши тот же токен и сохрани
+(он хранится в `localStorage` устройства, вводится один раз на каждом устройстве).
+
+## Установка на телефон
+
+Открой адрес `*.pages.dev` в браузере телефона:
+
+- **Android/Chrome**: меню → «Добавить на главный экран» (или всплывёт предложение установить).
+- **iPhone/Safari**: «Поделиться» → «На экран Домой».
+
+Появится иконка, приложение откроется в полноэкранном режиме и будет работать офлайн.
+
+## Редактирование словаря
+
+Правь списки в [tools/gen_words.py](tools/gen_words.py) (слова сгруппированы по уровню и роду),
+затем:
+
+```bash
+npm run words        # пересоберёт public/words.json
+```
+
+Иконки при желании перегенерировать: `npm run icons` (нужен Python + Pillow).
+
+Если при старте пишет, что порт занят, — вычисти зомби-процессы одной командой в PowerShell:
+Get-CimInstance Win32*Process -Filter "Name='node.exe'" | Where-Object { $*.CommandLine -match 'wrangler' } | ForEach-Object { Stop-Process -Id $\_.ProcessId -Force }
+Get-Process workerd -ErrorAction SilentlyContinue | Stop-Process -Force

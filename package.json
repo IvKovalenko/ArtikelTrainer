@@ -1,0 +1,15 @@
+{
+  "name": "artikel-trainer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Тренажёр немецких артиклей (der/die/das), PWA на Cloudflare Pages + KV",
+  "scripts": {
+    "words": "python tools/gen_words.py",
+    "icons": "python tools/gen_icons.py",
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Артикли">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<title>Тренажёр артиклей</title>
+</head>
+<body>
+
+<main class="app">
+  <header class="top">
+    <div class="level" id="level">Уровень: A1</div>
+    <div class="stats">
+      <span class="ok"><span class="mark">✓</span> <span id="stat-correct">0</span></span>
+      <span class="bad"><span class="mark">✕</span> <span id="stat-wrong">0</span></span>
+      <span class="passed"><span id="stat-passed">0</span> слов пройдено</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="word" id="word">…</div>
+    <div class="gloss" id="gloss"></div>
+    <div class="answers" id="answers">
+      <button class="answer" data-article="der">der</button>
+      <button class="answer" data-article="die">die</button>
+      <button class="answer" data-article="das">das</button>
+      <button class="answer" data-article="Plural">Plural</button>
+    </div>
+    <div class="hint" id="hint"></div>
+  </section>
+
+  <footer class="bottom">
+    <span class="sync" id="sync" title="Состояние синхронизации"></span>
+    <span class="links">
+      <button class="linkbtn" id="btn-data">Показать данные</button>
+      <button class="linkbtn" id="btn-reset">Сбросить статистику</button>
+    </span>
+  </footer>
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="dialog">
+    <div class="dialog-head">
+      <h2>Данные (JSON)</h2>
+      <button class="linkbtn" id="btn-close">Закрыть</button>
+    </div>
+    <p class="dialog-sub" id="data-summary"></p>
+    <textarea id="data-json" spellcheck="false"></textarea>
+    <div class="dialog-actions">
+      <button class="linkbtn" id="btn-copy">Копировать</button>
+      <button class="linkbtn" id="btn-import">Импортировать из поля</button>
+      <span class="dialog-msg" id="dialog-msg"></span>
+    </div>
+    <details class="sync-settings">
+      <summary>Синхронизация</summary>
+      <p class="dialog-sub">Токен нужен, только если на сервере включён <code>SYNC_TOKEN</code>. Оставь пустым, если не включал.</p>
+      <input id="sync-token" type="password" placeholder="Токен синхронизации (необязательно)" autocomplete="off">
+      <button class="linkbtn" id="btn-save-token">Сохранить токен</button>
+    </details>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

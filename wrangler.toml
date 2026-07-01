@@ -1,0 +1,14 @@
+name = "artikel-trainer"
+compatibility_date = "2025-06-01"
+pages_build_output_dir = "public"
+
+# KV для хранения статистики (один JSON под ключом "article-progress").
+# 1) Создай namespace:   npx wrangler kv namespace create PROGRESS
+# 2) Вставь выданный id ниже (и preview_id для локальной разработки).
+[[kv_namespaces]]
+binding = "PROGRESS"
+id = "REPLACE_WITH_KV_ID"
+# preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
+
+# Необязательная защита записи. Секрет НЕ хранить здесь в открытом виде —
+# задать через:  npx wrangler pages secret put SYNC_TOKEN
