@@ -29,6 +29,7 @@
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
     dialogMsg: $("dialog-msg"), syncToken: $("sync-token"),
+    progressFill: $("progress-fill"), progressLabel: $("progress-label"),
   };
   const answerButtons = Array.from(document.querySelectorAll(".answer"));
 
@@ -69,8 +70,11 @@
     const t = localStorage.getItem(LS_TOKEN);
     return t ? { Authorization: "Bearer " + t } : {};
   }
+  // сессия истекла / пароль сменили → уводим на страницу входа
+  function toLogin() { location.replace("/login.html"); }
   async function apiGet() {
     const r = await fetch(API, { headers: authHeaders(), cache: "no-store" });
+    if (r.status === 401) { toLogin(); throw new Error("GET 401"); }
     if (!r.ok) throw new Error("GET " + r.status);
     return r.json();
   }
@@ -80,6 +84,7 @@
       headers: { "content-type": "application/json", ...authHeaders() },
       body: JSON.stringify(data),
     });
+    if (r.status === 401) { toLogin(); throw new Error("POST 401"); }
     if (!r.ok) throw new Error("POST " + r.status);
     return r.json();
   }
@@ -154,6 +159,30 @@
     el.correct.textContent = correct;
     el.wrong.textContent = wrong;
     el.passed.textContent = passed;
+    renderProgress();
+  }
+
+  // полоска прогресса до открытия следующего уровня
+  function renderProgress() {
+    if (!el.progressFill) return;
+    const unlocked = unlockedLevels();
+    const cur = unlocked[unlocked.length - 1];
+    const idx = LEVELS.indexOf(cur);
+
+    if (idx >= LEVELS.length - 1) {            // достигнут максимум — открыты все уровни
+      el.progressFill.style.width = "100%";
+      el.progressLabel.textContent = "Все уровни открыты 🎉";
+      return;
+    }
+
+    const lw = WORDS.filter((w) => w.level === cur);
+    const needed = Math.ceil(lw.length * MASTER_RATIO);
+    const mastered = lw.filter((w) => isMastered(w)).length;
+    const pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
+
+    el.progressFill.style.width = pct + "%";
+    el.progressLabel.textContent =
+      `До уровня ${LEVELS[idx + 1]}: ${Math.min(mastered, needed)} / ${needed} слов (${pct}%)`;
   }
   function renderWord() {
     el.word.textContent = current.word;
@@ -265,6 +294,13 @@
     progress = {};
     lastKey = null;
     saveLocal(); scheduleSync(); updateStats(); next();
+  });
+
+  $("btn-logout").addEventListener("click", async () => {
+    if (!confirm("Выйти? Для доступа снова понадобится пароль.")) return;
+    try { await pushSync(); } catch {}          // сохраняем несинхронизированное перед выходом
+    try { await fetch("/api/logout", { method: "POST" }); } catch {}
+    location.replace("/login.html");
   });
 
   $("btn-save-token").addEventListener("click", () => {

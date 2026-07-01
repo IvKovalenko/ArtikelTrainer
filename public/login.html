@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex">
+<title>Вход — Тренажёр артиклей</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
+    --line: #dcdcdc; --line-hover: #bdbdbd; --hover: #f5f5f4;
+    --green: #2f9e44; --red: #e03131; --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex; align-items: center; justify-content: center;
+    padding: 22px calc(22px + env(safe-area-inset-left)) calc(22px + env(safe-area-inset-bottom));
+  }
+  .box {
+    width: 100%; max-width: 360px;
+    display: flex; flex-direction: column; gap: 14px;
+    text-align: center;
+  }
+  h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+  .sub { margin: 0 0 6px; color: var(--muted); font-size: 14px; }
+  input {
+    width: 100%; padding: 14px 14px; font: inherit; font-size: 17px;
+    color: var(--ink); background: #fff;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    text-align: center;
+  }
+  input:focus { outline: none; border-color: var(--line-hover); }
+  button {
+    width: 100%; padding: 14px 14px; font: inherit; font-size: 17px;
+    color: #fff; background: var(--ink); border: none;
+    border-radius: var(--radius); cursor: pointer;
+    transition: opacity .12s ease;
+  }
+  button:hover { opacity: .88; }
+  button:disabled { opacity: .5; cursor: default; }
+  .msg { min-height: 20px; font-size: 14px; color: var(--red); }
+</style>
+</head>
+<body>
+<main>
+  <form class="box" id="form" autocomplete="on">
+    <h1>Тренажёр артиклей</h1>
+    <p class="sub">Введите пароль для доступа</p>
+    <input id="pw" type="password" name="password" autocomplete="current-password"
+           placeholder="Пароль" aria-label="Пароль" autofocus>
+    <button type="submit" id="submit">Войти</button>
+    <div class="msg" id="msg"></div>
+  </form>
+</main>
+<script>
+  const form = document.getElementById("form");
+  const pw = document.getElementById("pw");
+  const msg = document.getElementById("msg");
+  const submit = document.getElementById("submit");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.textContent = "";
+    submit.disabled = true;
+    try {
+      const r = await fetch("/api/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ password: pw.value }),
+      });
+      if (r.ok) { location.replace("/"); return; }
+      msg.textContent = r.status === 401 ? "Неверный пароль" : "Ошибка входа";
+    } catch {
+      msg.textContent = "Ошибка сети";
+    }
+    submit.disabled = false;
+    pw.select();
+  });
+</script>
+</body>
+</html>

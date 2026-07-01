@@ -1,7 +1,7 @@
 /* Service worker: сеть-в-приоритете (network-first), кэш — резерв для офлайна.
    API (/api/*) не кэшируется никогда. Такой режим исключает «залипание» на
    старых версиях файлов при частых обновлениях. */
-const CACHE = "artikel-v2";
+const CACHE = "artikel-v3";
 const SHELL = [
   "./",
   "./index.html",
@@ -37,7 +37,9 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     fetch(req)
       .then((res) => {
-        if (res && res.ok) {
+        // не кэшируем редиректы (напр. переадресацию на страницу входа),
+        // иначе форма логина может «прилипнуть» под адресом приложения
+        if (res && res.ok && !res.redirected) {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put(req, copy));
         }
