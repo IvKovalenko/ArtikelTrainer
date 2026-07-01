@@ -6,7 +6,7 @@
   const LS_PROGRESS = "article-progress";
   const LS_TOKEN = "sync-token";
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
-  const MASTER_RATIO = 0.8;   // доля выученных слов уровня, чтобы открыть следующий
+  const MASTER_RATIO = 0.95;   // доля выученных слов уровня, чтобы открыть следующий
 
   // --- состояние ---
   let WORDS = [];             // [{word, article, level, gloss?}]
@@ -132,7 +132,7 @@
   function weightFor(w) {
     const s = progress[keyOf(w)] || { correct: 0, wrong: 0, seen: 0 };
     if (s.seen === 0) return 5;                       // новые слова — показываем охотно
-    if (s.correct >= 3 && s.wrong === 0) return 0.25; // хорошо выучено — редко
+    if (s.correct >= 3 && s.wrong === 0) return 0.1;  // хорошо выучено — редко
     let weight = 1 + s.wrong * 3 - s.correct * 0.5;   // где ошибался — чаще
     return Math.max(0.2, weight);
   }
