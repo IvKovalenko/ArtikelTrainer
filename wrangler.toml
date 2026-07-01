@@ -7,7 +7,7 @@ pages_build_output_dir = "public"
 # 2) Вставь выданный id ниже (и preview_id для локальной разработки).
 [[kv_namespaces]]
 binding = "PROGRESS"
-id = "REPLACE_WITH_KV_ID"
+id = "54b4bdc0259a4e049a8d5fba0d5d815b"
 # preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
 
 # Необязательная защита записи. Секрет НЕ хранить здесь в открытом виде —
