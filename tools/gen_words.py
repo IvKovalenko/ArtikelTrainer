@@ -192,6 +192,9 @@ HOMOGRAPHS = [
     {"word": "Angestellte", "article": "die", "gloss": "жен."},
     {"word": "Bekannte", "article": "der", "gloss": "муж.", "level": "A2"},
     {"word": "Bekannte", "article": "die", "gloss": "жен.", "level": "A2"},
+    # B2 (из B2_Vocabs_All.csv)
+    {"word": "Kiefer", "article": "der", "gloss": "челюсть", "level": "B2"},
+    {"word": "Kiefer", "article": "die", "gloss": "сосна", "level": "B2"},
 ]
 
 # Существительные только во множественном числе — правильный ответ «Plural».
@@ -433,6 +436,113 @@ GOETHE_B1_ADD = {
     ],
 }
 
+# --- Существительные из пользовательского списка B2_Vocabs_All.csv,
+#     которых не было в основных списках DATA и в добавках A1/A2/B1 выше.
+#     Добавляются на уровень B2. Отобраны только реальные существительные
+#     (глаголы, прилагательные, фразы, опечатки, имена собственные и формы
+#     мн. числа из исходного файла исключены; ясные формы мн. приведены к ед.).
+#     Артикль — стандартный немецкий (по правилам суффиксов / последнего корня).
+B2_VOCAB_ADD = {
+    "der": [
+        "Abgang", "Abschluss", "Abschwung", "Absturz", "Aktienkurs", "Alleingang",
+        "Angriffspunkt", "Anhänger", "Anlauf", "Anpfiff", "Appell", "Aufschlag",
+        "Auftakt", "Auftritt", "Aufwind", "Auslöser", "Ausschnitt", "Ballungsraum",
+        "Baukasten", "Befürworter", "Beitritt", "Beweggrund", "Bezug", "Blickwinkel",
+        "Bodenschatz", "Brennpunkt", "Brennstoff", "Bruch", "Buchhalter", "Chirurg",
+        "Dauerauftrag", "Dauerbrenner", "Domplatz", "Durchbruch", "Einnahmeausfall",
+        "Einsatz", "Einschnitt", "Erdkreis", "Erkenntnisgewinn", "Fachbegriff",
+        "Fernverkehr", "Föderalismus", "Friedensschluss", "Friedensvertrag",
+        "Frontverlauf", "Galopp", "Gedankengang", "Gehweg", "Gesichtspunkt",
+        "Gottesdienst", "Graben", "Haftbefehl", "Hergang", "Hinterhof",
+        "Inhaltsstoff", "Irrglaube", "Jahresabschluss", "Karfreitag", "Katzensprung",
+        "Knochenjob", "Knotenpunkt", "Kohlenstoff", "Leitzins", "Losentscheid",
+        "Machthaber", "Maiseintopf", "Maschinenbau", "Militärputsch", "Milliardenwert",
+        "Mittelweg", "Mobilfunk", "Morgenmuffel", "Moscheeverband", "Nachahmungstäter",
+        "Nachholbedarf", "Nahverkehr", "Notfallsanitäter", "Parkverstoß",
+        "Rechtsschutz", "Rechtsstaat", "Ruderverein", "Rückstand", "Sachverstand",
+        "Saldo", "Samt", "Sanierungsfall", "Sanierungsstau", "Sattelschlepper",
+        "Scheibenwischer", "Scheinwerfer", "Schnabel", "Schöpfer", "Schrott",
+        "Schwachkopf", "Seelsorger", "Sonnenstrom", "Spielraum", "Spitzenvertreter",
+        "Sprengstoff", "Stausee", "Stützpunkt", "Sündenfall", "Teamgeist",
+        "Trauschein", "Unterhaltsvorschuss", "Unterschlupf", "Verbraucher", "Verfall",
+        "Verfassungsrang", "Vergleich", "Verhaltenskodex", "Verlag",
+        "Versorgungsengpass", "Vorgänger", "Waffenstillstand", "Wahlkreis",
+        "Wassermangel", "Weisheitszahn", "Werdegang", "Wirtschaftsberater",
+        "Wühltisch", "Zeitgeist", "Zeitraum", "Zuzug", "Zwilling", "Zwischenfall",
+        "Zwischenruf",
+    ],
+    "die": [
+        "Aberkennung", "Abkehr", "Abrüstung", "Abschiebung", "Abschreibung",
+        "Abtreibung", "Abwehr", "Abweichung", "Abwertung", "Akteneinsicht",
+        "Aktiengesellschaft", "Albernheit", "Altersvorsorge", "Andeutung",
+        "Anfeindung", "Anforderung", "Anlaufstelle", "Anordnung", "Anreizwirkung",
+        "Anspannung", "Antike", "Arbeitsausbeutung", "Aufhebung", "Aufmunterung",
+        "Aufrüstung", "Aufweichung", "Augenbraue", "Ausdauer", "Aushilfstätigkeit",
+        "Ausschreibung", "Ausweitung", "Bagatellgrenze", "Bedrohung",
+        "Beeinträchtigung", "Beerdigung", "Befugnis", "Begabung", "Begegnung",
+        "Belastbarkeit", "Belastung", "Belohnung", "Belüftung", "Benennung",
+        "Bereicherung", "Berufung", "Beschaffungsmethode", "Bescheidenheit",
+        "Beschäftigung", "Bestandsaufnahme", "Bestechung", "Bestätigung",
+        "Beteiligung", "Bettdecke", "Beute", "Bevormundung", "Bezugsperson",
+        "Blessur", "Bohrplattform", "Bonität", "Borreliose", "Brotzeit",
+        "Bundeswehr", "Bürgschaft", "Dachfirma", "Datenauswertung", "Drohkulisse",
+        "Dunkelflaute", "Dunkelziffer", "Durchlässigkeit", "Dürre", "Einbettung",
+        "Einbeziehung", "Einhaltung", "Einmischung", "Einstiegsfrage", "Einweihung",
+        "Einzelfallgerechtigkeit", "Eisenbahn", "Energiewende", "Enthaltung",
+        "Erforschung", "Ernennung", "Erpressung", "Ersparnis", "Erstattung",
+        "Erwerbsminderung", "Essenausgabe", "Fachrichtung", "Fahne",
+        "Fahrradkolonne", "Fehlbildung", "Fehlinformation", "Finanzierung",
+        "Fledermaus", "Flitterwoche", "Forschung", "Gebietsabtretung",
+        "Gebrauchstauglichkeit", "Gebrechlichkeit", "Gehbehinderung", "Geheimhaltung",
+        "Gemengelage", "Gerechtigkeit", "Geschwulst", "Gesprächsrunde",
+        "Glasfaserleitung", "Gleichstellung", "Gliederung", "Grenzabgabe",
+        "Haftstrafe", "Haftung", "Halbleitertechnik", "Handelsbeziehung",
+        "Hauptausrichtung", "Haushaltsführung", "Hebamme", "Heißhungerattacke",
+        "Hemmung", "Herrschaft", "Hinrichtung", "Hochspannung", "Inhaftierung",
+        "Insolvenz", "Kaserne", "Katerstimmung", "Kinderlähmung",
+        "Kindersterblichkeit", "Kostenstelle", "Kumpelwirtschaft", "Kundgebung",
+        "Kurtaxe", "Kutsche", "Körperschaftsteuer", "Kürzung", "Laborthese",
+        "Ladentheke", "Ladesäule", "Lebenseinstellung", "Lücke", "Mangelerscheinung",
+        "Mariendarstellung", "Maßnahme", "Meerenge", "Menschenmenge",
+        "Menschenrechtsfrage", "Menschenrechtslage", "Menschenwürde", "Miene",
+        "Mitschrift", "Motorhaube", "Narbe", "Niederlassungserlaubnis", "Obergrenze",
+        "Ohnmacht", "Persönlichkeit", "Pferdezucht", "Profitgier", "Prominenz",
+        "Protestwelle", "Rankhilfe", "Raststätte", "Rautetaste", "Razzia",
+        "Rechnungsprüfung", "Rechtsstaatlichkeit", "Regelung", "Reisestrapaze",
+        "Rendite", "Rückendeckung", "Rückforderung", "Rückgabe", "Rückgewinnung",
+        "Schadstoffbelästigung", "Scheinsicherheit", "Schienenmaut", "Schieflage",
+        "Schlagzeile", "Schlammschlacht", "Schwachstelle", "Schwelle",
+        "Selbstbestimmung", "Siegermacht", "Sondersitzung", "Spannung", "Sperrung",
+        "Spüle", "Stoßstange", "Stornierung", "Strafanzeige", "Strafbemessung",
+        "Straffreiheit", "Strahlung", "Subvention", "Suchmaschine", "Szene",
+        "Tauglichkeit", "Tierhaltung", "Tröpfcheninfektion", "Übelkeit",
+        "Übereinkunft", "Übereinstimmung", "Überholspur", "Überlastung",
+        "Überlegenheit", "Überschwemmung", "Überwachung", "Umrüstung", "Umschulung",
+        "Umstellung", "Unterführung", "Untersuchungshaft", "Unwissenheit",
+        "Verbraucherreklamation", "Vergabe", "Vereitelung", "Verhandlung",
+        "Verlegung", "Verliebtheit", "Vermögensverteilung", "Vernehmung",
+        "Vernichtung", "Verschlechterung", "Verschwendung", "Verschwörungstheorie",
+        "Verunsicherung", "Vielseitigkeit", "Vorreiterfunktion", "Vorschau",
+        "Waffenniederlegung", "Wasserstraße", "Wattwanderung", "Weigerung",
+        "Welterbeliste", "Werbetafel", "Wettbewerbsfähigkeit", "Wiese",
+        "Wissenschaftsleugnung", "Worthülse", "Wunschvorstellung", "Zelle",
+        "Zulassung", "Zumutung", "Zwischenüberschrift", "Äußerung",
+    ],
+    "das": [
+        "Achselzucken", "Armutszeugnis", "Attentat", "Attest", "Auffanglager",
+        "Ausfallrisiko", "Bauchgefühl", "Binnenschiff", "Bundesmittel", "Düngemittel",
+        "Ehrenamt", "Endlager", "Felsbild", "Flugblatt", "Gefieder", "Gemeindegebet",
+        "Gerichtsverfahren", "Gerücht", "Geschick", "Gestrüpp", "Gesundheitswesen",
+        "Gewinnspiel", "Gremium", "Gutachten", "Haushaltsmittel", "Herzstück",
+        "Konjunkturprogramm", "Kopfgeld", "Kopfschütteln", "Kompliment",
+        "Machtvakuum", "Mindestmaß", "Missgeschick", "Problemfeld", "Pulverfass",
+        "Randphänomen", "Rückgrat", "Sachbuch", "Schachfeld", "Schließfach",
+        "Schlupfloch", "Schlusslicht", "Schmiergeld", "Untier",
+        "Urheberrecht", "Verbrennerverbot", "Verhängnis", "Vorfeld", "Vorzeichen",
+        "Wahrzeichen", "Wirtschaftswachstum", "Zahlenwerk",
+    ],
+}
+
 LEVEL_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"]
 
 
@@ -444,6 +554,8 @@ def build():
         DATA["A2"][article].extend(words)
     for article, words in GOETHE_B1_ADD.items():
         DATA["B1"][article].extend(words)
+    for article, words in B2_VOCAB_ADD.items():
+        DATA["B2"][article].extend(words)
 
     out = []
     seen = set()          # ключ = (слово, значение) — гомографы не конфликтуют
