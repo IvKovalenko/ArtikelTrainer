@@ -167,7 +167,9 @@ GOETHE_A1_ADD = {
             "Sprachenschule","Architektin","Technikerin","Künstlerin","Ingenieurin",
             "Kauffrau","Hausfrau","Schauspielerin","Sekretärin","Großmutter",
             # школьные предметы (в документе без артикля, но род есть):
-            "Mathematik","Physik","Chemie","Geografie","Kunst","Sozialkunde","Cola"],
+            "Mathematik","Physik","Chemie","Geografie","Kunst","Sozialkunde","Cola",
+            # перенесено из PLURAL_WORDS (есть ед. число):
+            "Süßigkeit","Jeans"],
     "das": ["Alter","Bad","Brötchen","Ende","Essen","Fach","Fernsehen","Eis",
             "Geschäft","Glück","Kleid","Mal","Mineralwasser","Quiz","Rad","Rätsel",
             "Schwimmbad","Stück","Taschengeld","Theater","T-Shirt","Wiedersehen",
@@ -176,40 +178,6 @@ GOETHE_A1_ADD = {
             # языки как предметы (в документе без артикля, но род есть):
             "Deutsch","Englisch","Ostern","Weihnachten"],
 }
-
-# Гомографы: одно написание — разный род по значению. Показываются со значением
-# по-русски, каждое значение — отдельная карточка. (Уровень A1.)
-HOMOGRAPHS = [
-    {"word": "See", "article": "der", "gloss": "озеро"},
-    {"word": "See", "article": "die", "gloss": "море"},
-    {"word": "Band", "article": "der", "gloss": "том"},
-    {"word": "Band", "article": "die", "gloss": "группа"},
-    {"word": "Band", "article": "das", "gloss": "лента"},
-    {"word": "Teil", "article": "der", "gloss": "часть"},
-    {"word": "Teil", "article": "das", "gloss": "деталь"},
-    # субстантивированные прилагательные: род зависит от пола человека
-    {"word": "Erwachsene", "article": "der", "gloss": "муж."},
-    {"word": "Erwachsene", "article": "die", "gloss": "жен."},
-    {"word": "Jugendliche", "article": "der", "gloss": "муж."},
-    {"word": "Jugendliche", "article": "die", "gloss": "жен."},
-    {"word": "Angestellte", "article": "der", "gloss": "муж."},
-    {"word": "Angestellte", "article": "die", "gloss": "жен."},
-    {"word": "Bekannte", "article": "der", "gloss": "муж.", "level": "A2"},
-    {"word": "Bekannte", "article": "die", "gloss": "жен.", "level": "A2"},
-    # B2 (из B2_Vocabs_All.csv)
-    {"word": "Kiefer", "article": "der", "gloss": "челюсть", "level": "B2"},
-    {"word": "Kiefer", "article": "die", "gloss": "сосна", "level": "B2"},
-]
-
-# Существительные только во множественном числе — правильный ответ «Plural».
-PLURAL_WORDS = ["Eltern", "Geschwister", "Großeltern", "Ferien", "Jeans",
-                "Leute", "Süßigkeiten",
-                # A2
-                "Fundsachen", "Kenntnisse", "Lebensmittel", "Möbel",
-                "Papiere", "Pommes frites",
-                # B1
-                "Abgase", "Medien", "Personalien", "Senioren", "Zinsen",
-                "Zutaten"]
 
 # --- Существительные из официального словаря Goethe A2 (Goethe-Zertifikat A2, 2016),
 #     которых не было в основных списках DATA выше. Добавляются на уровень A2.
@@ -264,7 +232,7 @@ GOETHE_A2_ADD = {
         "Zeitschrift", "Anmeldung", "Birne", "Briefmarke", "Ecke",
         "Kollegin", "Kundin", "Maschine", "Menge", "Mütze",
         "Nachbarin", "Rezeption", "Sekunde", "Studentin",
-        "Torte", "Touristin", "Zitrone",
+        "Torte", "Touristin", "Zitrone", "Kenntnis",
     ],
     "das": [
         "Abitur", "Französisch", "Latein", "Sekretariat",
@@ -280,7 +248,7 @@ GOETHE_A2_ADD = {
         "Rind", "Schlafzimmer", "Schloss",
         "Stipendium", "Stockwerk",
         "Tablet", "Taxi", "Team", "Tennis", "Training",
-        "Zelt", "Zentrum",
+        "Zelt", "Zentrum", "Lebensmittel", "Möbel",
         "Datum", "Gegenteil", "Kaufhaus", "Rathaus",
         "Reisebüro", "Schild", "Verkehrsmittel",
     ],
@@ -335,7 +303,7 @@ GOETHE_B1_ADD = {
         "Vertreter", "Virus", "Vortrag", "Wert", "Wetterbericht", "Wirt",
         "Wissenschaftler", "Wochentag", "Wohnsitz", "Zeitpunkt", "Zentimeter",
         "Zeuge", "Zivilstand", "Zoll", "Zugang", "Zuschauer", "Zünder",
-        "Österreicher", "Übersetzer",
+        "Österreicher", "Übersetzer", "Senior", "Zins",
     ],
     "die": [
         "Abbildung", "Abfahrt", "Absenderin", "Akademie", "Aktion", "Aktivität",
@@ -412,7 +380,7 @@ GOETHE_B1_ADD = {
         "Zeugin", "Zigarette", "Zone", "Zusammenarbeit", "Zuschauerin",
         "Zweitsprache", "Öffentlichkeit", "Österreicherin", "Übernachtung",
         "Überraschung", "Überschrift", "Übersetzerin", "Übersetzung",
-        "Überstunde", "Überweisung",
+        "Überstunde", "Überweisung", "Fundsache", "Zutat"
     ],
     "das": [
         "Abenteuer", "Abo", "Abonnement", "Alphabet", "Altenheim", "Altersheim",
@@ -428,7 +396,7 @@ GOETHE_B1_ADD = {
         "Meer", "Mehl", "Menü", "Metall", "Modell", "Modul", "Mountainbike",
         "Märchen", "Müsli", "Nahrungsmittel", "Netz", "Obergeschoss", "Orchester",
         "Original", "Parlament", "Pech", "Personal", "Pflaster", "Picknick",
-        "Plastik", "Portemonnaie", "Poulet", "Prozent", "Puzzle", "Referat",
+        "Portemonnaie", "Poulet", "Prozent", "Puzzle", "Referat",
         "Risiko", "Rohr", "Rüebli", "Sandwich", "Schaf", "Schaufenster",
         "Schmerzmittel", "Schnitzel", "Schwammerl", "Schwein", "Semester",
         "Souvenir", "Stadion", "Steak", "Stiegenhaus", "Streichholz", "Studio",
@@ -436,7 +404,7 @@ GOETHE_B1_ADD = {
         "Treppenhaus", "Trinkgeld", "Trottoir", "Untergeschoss", "Vergnügen",
         "Verkehrszeichen", "Verständnis", "Video", "Visum", "Vitamin",
         "Vorstellungsgespräch", "WC", "Werk", "Wissen", "Wunder", "Zeichen",
-        "Zertifikat", "Zeug", "Zündholz",
+        "Zertifikat", "Zeug", "Zündholz", "Abgas", "Medium",
     ],
 }
 
@@ -547,6 +515,90 @@ B2_VOCAB_ADD = {
     ],
 }
 
+# --- Существительные из пользовательского списка (Deutschblog), которых ещё не
+#     было в словаре. Структура: {уровень: {род: [слова]}} — уровень оценён
+#     примерно по частотности/сложности. Гомограф Plastik (die/das) вынесен в
+#     HOMOGRAPHS. Артикль — по исходному списку (Diesel взят как der — стандарт).
+DEUTSCHBLOG_VOCAB_ADD = {
+    "A2": {
+        "der": ["Becher", "Eimer", "Engel", "Esel", "Gedanke", "Gürtel",
+                "Kontinent", "Schmetterling"],
+        "die": ["Diskussion", "Freude", "Grammatik", "Nationalität"],
+        "das": ["Aussehen", "Deodorant", "Medikament", "Päckchen", "Silber",
+                "Tablett", "Viertel", "Zuhause"],
+    },
+    "B1": {
+        "der": ["Akzent", "Atlantik", "Besen", "Beutel", "Bewohner",
+                "Bibliothekar", "Deckel", "Diesel", "Felsen", "Flügel",
+                "Frieden", "Glaube", "Haufen", "Käfig", "Knöchel", "Kommissar",
+                "Kontrast", "Liebling", "Palast", "Pinsel", "Speicher", "Spion",
+                "Sprung", "Strich", "Wechsel", "Wille", "Würfel", "Zweifel",
+                "Ärmel"],
+        "die": ["Botschaft", "Definition", "Feder", "Flüssigkeit", "Formel",
+                "Funktion", "Kompetenz", "Kugel", "Last", "Muschel", "Orgel",
+                "Schaufel", "Schaukel"],
+        "das": ["Becken", "Drittel", "Gedächtnis", "Gemälde", "Getreide",
+                "Häuschen", "Labor", "Lachen", "Militär", "Monster", "Nomen",
+                "Omelett", "Pronomen", "Pulver", "Recycling", "Seminar",
+                "Sprechen", "Tauchen", "Unentschieden"],
+    },
+    "B2": {
+        "der": ["Blinker", "Busen", "Flieger", "Gatte", "Gletscher", "Hagel",
+                "Kittel", "Konsum", "Krümel", "Lappen", "Notar", "Optimismus",
+                "Samen", "Schädel", "Schenkel", "Schimmel", "Schwung", "Sprudel",
+                "Zement"],
+        "die": ["Ader", "Arroganz", "Ewigkeit", "Geisel", "Kammer",
+                "Solidarität", "Toleranz", "Wildnis", "Wimper", "Zauberei"],
+        "das": ["Bündnis", "Ferkel", "Futter", "Glossar", "Honorar", "Inventar",
+                "Laken", "Phänomen", "Segel", "Verzeichnis"],
+    },
+    "C1": {
+        "der": ["Antiquar", "Rachen", "Rochen"],
+        "die": ["Besorgnis", "Finsternis", "Kordel"],
+        "das": ["Häuslein"],
+    },
+}
+
+# Гомографы: одно написание — разный род по значению. Показываются со значением
+# по-русски, каждое значение — отдельная карточка. (Уровень A1.)
+HOMOGRAPHS = [
+    {"word": "See", "article": "der", "gloss": "озеро"},
+    {"word": "See", "article": "die", "gloss": "море"},
+    {"word": "Band", "article": "der", "gloss": "том"},
+    {"word": "Band", "article": "die", "gloss": "группа"},
+    {"word": "Band", "article": "das", "gloss": "лента"},
+    {"word": "Teil", "article": "der", "gloss": "часть"},
+    {"word": "Teil", "article": "das", "gloss": "деталь"},
+    # субстантивированные прилагательные: род зависит от пола человека
+    {"word": "Erwachsene", "article": "der", "gloss": "муж."},
+    {"word": "Erwachsene", "article": "die", "gloss": "жен."},
+    {"word": "Jugendliche", "article": "der", "gloss": "муж."},
+    {"word": "Jugendliche", "article": "die", "gloss": "жен."},
+    {"word": "Angestellte", "article": "der", "gloss": "муж."},
+    {"word": "Angestellte", "article": "die", "gloss": "жен."},
+    {"word": "Bekannte", "article": "der", "gloss": "муж.", "level": "A2"},
+    {"word": "Bekannte", "article": "die", "gloss": "жен.", "level": "A2"},
+    # B2 (из B2_Vocabs_All.csv)
+    {"word": "Kiefer", "article": "der", "gloss": "челюсть", "level": "B2"},
+    {"word": "Kiefer", "article": "die", "gloss": "сосна", "level": "B2"},
+    # Plastik: die Plastik (скульптура) / das Plastik (пластик как материал)
+    {"word": "Plastik", "article": "die", "gloss": "скульптура", "level": "B2"},
+    {"word": "Plastik", "article": "das", "gloss": "пластик", "level": "B1"},
+]
+
+# Существительные только во множественном числе — правильный ответ «Plural».
+# Только настоящие pluralia tantum — слова без формы единственного числа.
+# Слова, у которых ед. число есть (Süßigkeit, Kenntnis, Möbel, Abgas, Medium,
+# Senior, Zins, Zutat, Jeans, Fundsache, Lebensmittel), перенесены в der/die/das
+# на свой уровень. "Papiere" убрано — ед. "Papier" уже есть на A1.
+# Пары (слово, уровень): ответ «Plural», уровень — свой для каждого слова.
+PLURAL_WORDS = [
+    ("Eltern", "A1"), ("Geschwister", "A1"), ("Großeltern", "A1"),
+    ("Ferien", "A1"), ("Leute", "A1"),
+    ("Pommes frites", "A2"),
+    ("Personalien", "B1"),
+]
+
 LEVEL_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"]
 
 
@@ -560,6 +612,9 @@ def build():
         DATA["B1"][article].extend(words)
     for article, words in B2_VOCAB_ADD.items():
         DATA["B2"][article].extend(words)
+    for level, arts in DEUTSCHBLOG_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
 
     out = []
     seen = set()          # ключ = (слово, значение) — гомографы не конфликтуют
@@ -589,8 +644,8 @@ def build():
                 add(word, article, level)
     for h in HOMOGRAPHS:
         add(h["word"], h["article"], h.get("level", "A1"), h["gloss"])
-    for word in PLURAL_WORDS:
-        add(word, "Plural", "A1")
+    for word, level in PLURAL_WORDS:
+        add(word, "Plural", level)
 
     return out, dupes, missing
 

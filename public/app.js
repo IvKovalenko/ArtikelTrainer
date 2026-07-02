@@ -30,7 +30,9 @@
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
     dialogMsg: $("dialog-msg"), syncToken: $("sync-token"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
+    statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
+  let statsSort = { col: "word", dir: 1 };   // колонка сортировки и направление (1 ↑, -1 ↓)
   const answerButtons = Array.from(document.querySelectorAll(".answer"));
 
   // ---------- хранилище ----------
@@ -262,12 +264,65 @@
   });
 
   // ---------- диалог данных ----------
+  // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
+  function renderStatsTable() {
+    if (!el.statsBody) return;
+    const rows = Object.entries(progress).map(([word, s]) => ({
+      word,
+      correct: s.correct || 0,
+      wrong: s.wrong || 0,
+      seen: s.seen || 0,
+    }));
+    const { col, dir } = statsSort;
+    const byWord = (a, b) => a.word.localeCompare(b.word, "de");
+    rows.sort((a, b) => {
+      if (col === "word") return byWord(a, b) * dir;
+      const primary = (a[col] - b[col]) * dir;   // выбранная колонка — главный ключ
+      return primary || byWord(a, b);             // при равенстве — по алфавиту (↑)
+    });
+
+    const frag = document.createDocumentFragment();
+    for (const r of rows) {
+      const tr = document.createElement("tr");
+      const cells = [
+        [r.word, ""], [r.correct, "num"], [r.wrong, "num"], [r.seen, "num"],
+      ];
+      for (const [val, cls] of cells) {
+        const td = document.createElement("td");
+        td.textContent = val;                     // textContent — без риска инъекции
+        if (cls) td.className = cls;
+        tr.appendChild(td);
+      }
+      frag.appendChild(tr);
+    }
+    el.statsBody.replaceChildren(frag);
+
+    // индикатор направления на активном заголовке
+    el.statsTable.querySelectorAll("th[data-col]").forEach((th) => {
+      th.setAttribute(
+        "aria-sort",
+        th.dataset.col === col ? (dir === 1 ? "ascending" : "descending") : "none"
+      );
+    });
+  }
+  function setSort(col) {
+    if (statsSort.col === col) statsSort.dir *= -1;       // тот же столбец — меняем направление
+    else statsSort = { col, dir: col === "word" ? 1 : -1 }; // числа — сразу по убыванию (кто чаще — выше)
+    renderStatsTable();
+  }
+  if (el.statsTable) {
+    el.statsTable.querySelectorAll("th[data-col]").forEach((th) => {
+      th.addEventListener("click", () => setSort(th.dataset.col));
+    });
+  }
+
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
     const words = Object.keys(progress).length;
     el.dataSummary.textContent = `${words} слов в статистике · всего в словаре: ${WORDS.length}`;
     el.dialogMsg.textContent = "";
     el.syncToken.value = localStorage.getItem(LS_TOKEN) || "";
+    renderStatsTable();
     el.overlay.hidden = false;
   }
   function closeData() { el.overlay.hidden = true; }
@@ -287,7 +342,7 @@
     catch { flash("Ошибка: невалидный JSON", true); return; }
     if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash("Ожидается объект", true); return; }
     progress = obj;
-    saveLocal(); scheduleSync(); updateStats();
+    saveLocal(); scheduleSync(); updateStats(); renderStatsTable();
     flash("Импортировано");
   });
 

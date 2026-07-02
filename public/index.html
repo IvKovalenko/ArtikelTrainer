@@ -55,22 +55,38 @@
 <div class="overlay" id="overlay" hidden>
   <div class="dialog">
     <div class="dialog-head">
-      <h2>Данные (JSON)</h2>
+      <h2>Статистика</h2>
       <button class="linkbtn" id="btn-close">Закрыть</button>
     </div>
     <p class="dialog-sub" id="data-summary"></p>
-    <textarea id="data-json" spellcheck="false"></textarea>
-    <div class="dialog-actions">
-      <button class="linkbtn" id="btn-copy">Копировать</button>
-      <button class="linkbtn" id="btn-import">Импортировать из поля</button>
-      <span class="dialog-msg" id="dialog-msg"></span>
+    <div class="table-wrap">
+      <table class="stats-table" id="stats-table">
+        <thead>
+          <tr>
+            <th data-col="word" scope="col">Слово</th>
+            <th data-col="correct" class="num" scope="col" title="Правильных ответов">✓</th>
+            <th data-col="wrong" class="num" scope="col" title="Неправильных ответов">✕</th>
+            <th data-col="seen" class="num" scope="col" title="Сколько раз показано">Показов</th>
+          </tr>
+        </thead>
+        <tbody id="stats-body"></tbody>
+      </table>
     </div>
+    <details class="json-data">
+      <summary>Данные (JSON) — экспорт / импорт</summary>
+      <textarea id="data-json" spellcheck="false"></textarea>
+      <div class="dialog-actions">
+        <button class="linkbtn" id="btn-copy">Копировать</button>
+        <button class="linkbtn" id="btn-import">Импортировать из поля</button>
+      </div>
+    </details>
     <details class="sync-settings">
       <summary>Синхронизация</summary>
       <p class="dialog-sub">Токен нужен, только если на сервере включён <code>SYNC_TOKEN</code>. Оставь пустым, если не включал.</p>
       <input id="sync-token" type="password" placeholder="Токен синхронизации (необязательно)" autocomplete="off">
       <button class="linkbtn" id="btn-save-token">Сохранить токен</button>
     </details>
+    <span class="dialog-msg" id="dialog-msg"></span>
   </div>
 </div>
 
