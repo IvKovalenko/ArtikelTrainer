@@ -11,7 +11,8 @@
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
-<title>Тренажёр артиклей</title>
+<title data-i18n="docTitle">Тренажёр артиклей</title>
+<script src="i18n.js"></script>
 </head>
 <body>
 
@@ -21,11 +22,11 @@
     <div class="stats">
       <span class="ok"><span class="mark">✓</span> <span id="stat-correct">0</span></span>
       <span class="bad"><span class="mark">✕</span> <span id="stat-wrong">0</span></span>
-      <span class="passed"><span id="stat-passed">0</span> слов пройдено</span>
+      <span class="passed"><span id="stat-passed">0</span> <span data-i18n="wordsPassed">слов пройдено</span></span>
     </div>
   </header>
 
-  <div class="progress" id="progress" title="Прогресс до следующего уровня">
+  <div class="progress" id="progress" data-i18n-title="progressTitle" title="Прогресс до следующего уровня">
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="progress-label" id="progress-label"></div>
   </div>
@@ -43,10 +44,11 @@
   </section>
 
   <footer class="bottom">
-    <span class="sync" id="sync" title="Состояние синхронизации"></span>
+    <span class="lang-switch" id="lang-switch"></span>
+    <span class="sync" id="sync"></span>
     <span class="links">
-      <button class="linkbtn" id="btn-data">Статистика</button>
-      <button class="linkbtn" id="btn-account">Аккаунт</button>
+      <button class="linkbtn" id="btn-data" data-i18n="statistics">Статистика</button>
+      <button class="linkbtn" id="btn-account" data-i18n="account">Аккаунт</button>
     </span>
   </footer>
 </main>
@@ -55,34 +57,34 @@
 <div class="overlay" id="overlay" hidden>
   <div class="dialog">
     <div class="dialog-head">
-      <h2>Статистика</h2>
-      <button class="linkbtn" id="btn-close">Закрыть</button>
+      <h2 data-i18n="statistics">Статистика</h2>
+      <button class="linkbtn" id="btn-close" data-i18n="close">Закрыть</button>
     </div>
     <p class="dialog-sub" id="data-summary"></p>
     <div class="table-wrap">
       <table class="stats-table" id="stats-table">
         <thead>
           <tr>
-            <th data-col="word" scope="col">Слово</th>
-            <th data-col="correct" class="num ok" scope="col" title="Правильных ответов">✓</th>
-            <th data-col="wrong" class="num bad" scope="col" title="Неправильных ответов">✕</th>
-            <th data-col="seen" class="num" scope="col" title="Сколько раз показано">Показов</th>
+            <th data-col="word" scope="col" data-i18n="colWord">Слово</th>
+            <th data-col="correct" class="num ok" scope="col" data-i18n-title="colCorrectTitle" title="Правильных ответов">✓</th>
+            <th data-col="wrong" class="num bad" scope="col" data-i18n-title="colWrongTitle" title="Неправильных ответов">✕</th>
+            <th data-col="seen" class="num" scope="col" data-i18n="colSeen" data-i18n-title="colSeenTitle" title="Сколько раз показано">Показов</th>
           </tr>
         </thead>
         <tbody id="stats-body"></tbody>
       </table>
     </div>
     <details class="json-data">
-      <summary>Данные (JSON) — экспорт / импорт</summary>
+      <summary data-i18n="jsonSummary">Данные (JSON) — экспорт / импорт</summary>
       <textarea id="data-json" spellcheck="false"></textarea>
       <div class="dialog-actions">
-        <button class="linkbtn" id="btn-copy">Копировать</button>
-        <button class="linkbtn" id="btn-import">Импортировать из поля</button>
+        <button class="linkbtn" id="btn-copy" data-i18n="copy">Копировать</button>
+        <button class="linkbtn" id="btn-import" data-i18n="importFromField">Импортировать из поля</button>
       </div>
     </details>
     <span class="dialog-msg" id="dialog-msg"></span>
     <div class="dialog-foot">
-      <button class="linkbtn danger" id="btn-reset">Сбросить статистику</button>
+      <button class="linkbtn danger" id="btn-reset" data-i18n="resetStats">Сбросить статистику</button>
     </div>
   </div>
 </div>
@@ -91,15 +93,15 @@
 <div class="overlay" id="account-overlay" hidden>
   <div class="dialog">
     <div class="dialog-head">
-      <h2>Аккаунт</h2>
-      <button class="linkbtn" id="btn-account-close">Закрыть</button>
+      <h2 data-i18n="account">Аккаунт</h2>
+      <button class="linkbtn" id="btn-account-close" data-i18n="close">Закрыть</button>
     </div>
     <p class="dialog-sub" id="account-info">…</p>
-    <button class="btn-block" id="btn-logout">Выйти</button>
+    <button class="btn-block" id="btn-logout" data-i18n="logout">Выйти</button>
     <span class="dialog-msg" id="account-msg"></span>
     <div class="danger-zone">
-      <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a>
-      <button class="linkbtn danger" id="btn-delete-account">Удалить аккаунт</button>
+      <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener" data-i18n="privacyPolicy">Политика конфиденциальности</a>
+      <button class="linkbtn danger" id="btn-delete-account" data-i18n="deleteAccount">Удалить аккаунт</button>
     </div>
   </div>
 </div>

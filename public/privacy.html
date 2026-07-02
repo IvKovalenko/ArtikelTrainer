@@ -6,8 +6,9 @@
 <meta name="theme-color" content="#ffffff">
 <title>Политика конфиденциальности — Тренажёр артиклей</title>
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<script src="i18n.js"></script>
 <style>
-  :root { --bg:#fff; --ink:#2b2b2b; --muted:#6b6b6b; --line:#dcdcdc; --radius:10px; }
+  :root { --bg:#fff; --ink:#2b2b2b; --muted:#6b6b6b; --line:#dcdcdc; --hover:#f5f5f4; --radius:10px; }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
@@ -16,6 +17,7 @@
     -webkit-font-smoothing: antialiased; line-height: 1.55;
   }
   main { max-width: 720px; margin: 0 auto; padding: 32px 22px calc(40px + env(safe-area-inset-bottom)); }
+  .topbar { display: flex; justify-content: flex-end; margin-bottom: 10px; }
   h1 { font-size: 26px; letter-spacing: -0.4px; margin: 0 0 4px; }
   .date { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
   h2 { font-size: 18px; margin: 28px 0 8px; }
@@ -24,74 +26,230 @@
   code { background: #f5f5f4; padding: 1px 5px; border-radius: 4px; }
   a { color: #2f6fed; }
   .back { display: inline-block; margin-top: 28px; color: var(--muted); font-size: 14px; }
-  .note { background: #f5f5f4; border-radius: var(--radius); padding: 12px 14px; font-size: 14px; color: var(--muted); }
+  article[hidden] { display: none; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Политика конфиденциальности</h1>
-  <p class="date">Приложение «Тренажёр артиклей» · дата вступления в силу: 2 июля 2026 г.</p>
+  <div class="topbar"><span class="lang-switch" id="lang-switch"></span></div>
 
-  <p>Эта политика описывает, какие данные обрабатывает приложение «Тренажёр артиклей»
-  (далее «Приложение»), с какой целью и как вы можете ими управлять.</p>
+  <!-- ===================== RU ===================== -->
+  <article data-lang="ru" lang="ru" hidden>
+    <h1>Политика конфиденциальности</h1>
+    <p class="date">Приложение «Тренажёр артиклей» · дата вступления в силу: 2 июля 2026 г.</p>
 
-  <div class="note">⚠️ Перед публикацией: замените контактный email ниже на свой и, если
-  используете сервис/компанию, укажите её название. Текст — шаблон, а не юридическая консультация.</div>
+    <p>Эта политика описывает, какие данные обрабатывает приложение «Тренажёр артиклей»
+    (далее «Приложение»), с какой целью и как вы можете ими управлять.</p>
 
-  <h2>1. Какие данные мы собираем</h2>
-  <ul>
-    <li><strong>Email</strong> — для создания аккаунта, входа и восстановления доступа.</li>
-    <li><strong>Пароль</strong> — хранится только в виде необратимого криптографического хэша
-      (PBKDF2), в открытом виде не сохраняется и нам недоступен.</li>
-    <li><strong>Статистика обучения</strong> — по каждому слову: число верных и неверных ответов
-      и сколько раз слово показывалось. Нужна, чтобы синхронизировать прогресс между устройствами
-      и подбирать слова для повторения.</li>
-    <li><strong>Технические данные</strong> — IP-адрес временно используется только для защиты
-      от подбора пароля (ограничение числа попыток входа).</li>
-  </ul>
+    <h2>1. Какие данные мы собираем</h2>
+    <ul>
+      <li><strong>Email</strong> — для создания аккаунта, входа и восстановления доступа.</li>
+      <li><strong>Пароль</strong> — хранится только в виде необратимого криптографического хэша
+        (PBKDF2), в открытом виде не сохраняется и нам недоступен.</li>
+      <li><strong>Статистика обучения</strong> — по каждому слову: число верных и неверных ответов
+        и сколько раз слово показывалось. Нужна, чтобы синхронизировать прогресс между устройствами
+        и подбирать слова для повторения.</li>
+      <li><strong>Технические данные</strong> — IP-адрес временно используется только для защиты
+        от подбора пароля (ограничение числа попыток входа).</li>
+    </ul>
 
-  <h2>2. Как мы используем данные</h2>
-  <ul>
-    <li>Предоставление функций тренажёра и хранение вашего прогресса.</li>
-    <li>Вход в аккаунт и синхронизация между устройствами.</li>
-    <li>Защита сервиса от злоупотреблений.</li>
-  </ul>
-  <p>Мы не используем ваши данные для рекламы или профилирования и не продаём их.</p>
+    <h2>2. Как мы используем данные</h2>
+    <ul>
+      <li>Предоставление функций тренажёра и хранение вашего прогресса.</li>
+      <li>Вход в аккаунт и синхронизация между устройствами.</li>
+      <li>Защита сервиса от злоупотреблений.</li>
+    </ul>
+    <p>Мы не используем ваши данные для рекламы или профилирования и не продаём их.</p>
 
-  <h2>3. Где хранятся данные</h2>
-  <p>Данные хранятся в инфраструктуре Cloudflare (база данных Cloudflare D1). Соединение
-  защищено шифрованием (HTTPS). Сессия поддерживается токеном (JWT); аналитику и сторонние
-  трекеры Приложение не использует.</p>
+    <h2>3. Где хранятся данные</h2>
+    <p>Данные хранятся в инфраструктуре Cloudflare (база данных Cloudflare D1). Соединение
+    защищено шифрованием (HTTPS). Сессия поддерживается токеном (JWT); аналитику и сторонние
+    трекеры Приложение не использует.</p>
 
-  <h2>4. Передача третьим лицам</h2>
-  <p>Мы не передаём и не продаём ваши персональные данные третьим лицам. Данные могут
-  обрабатываться нашим хостинг-провайдером (Cloudflare) исключительно для работы Приложения.</p>
+    <h2>4. Передача третьим лицам</h2>
+    <p>Мы не передаём и не продаём ваши персональные данные третьим лицам. Данные могут
+    обрабатываться нашим хостинг-провайдером (Cloudflare) исключительно для работы Приложения.</p>
 
-  <h2>5. Хранение и удаление данных</h2>
-  <p>Данные хранятся, пока существует ваш аккаунт. Вы можете удалить аккаунт и все связанные
-  данные в любой момент:</p>
-  <ul>
-    <li>в приложении: «Показать данные» → «Удалить аккаунт»;</li>
-    <li>через веб-страницу: <a href="/delete-account.html">/delete-account.html</a>.</li>
-  </ul>
-  <p>После удаления восстановить данные невозможно.</p>
+    <h2>5. Хранение и удаление данных</h2>
+    <p>Данные хранятся, пока существует ваш аккаунт. Вы можете удалить аккаунт и все связанные
+    данные в любой момент:</p>
+    <ul>
+      <li>в приложении: «Аккаунт» → «Удалить аккаунт»;</li>
+      <li>через веб-страницу: <a href="/delete-account.html">/delete-account.html</a>.</li>
+    </ul>
+    <p>После удаления восстановить данные невозможно.</p>
 
-  <h2>6. Дети</h2>
-  <p>Приложение не предназначено для детей младше 13 лет и не собирает сознательно их данные.</p>
+    <h2>6. Дети</h2>
+    <p>Приложение не предназначено для детей младше 13 лет и не собирает сознательно их данные.</p>
 
-  <h2>7. Ваши права</h2>
-  <p>Вы можете запросить доступ к своим данным или их удаление. Самый быстрый способ удаления —
-  указан в разделе 5.</p>
+    <h2>7. Ваши права</h2>
+    <p>Вы можете запросить доступ к своим данным или их удаление. Самый быстрый способ удаления —
+    указан в разделе 5.</p>
 
-  <h2>8. Изменения политики</h2>
-  <p>При изменении политики мы обновим дату вступления в силу вверху страницы. Если в будущем
-  будет добавлена реклама (например, Google AdMob), эта политика будет дополнена сведениями о
-  соответствующей обработке данных.</p>
+    <h2>8. Изменения политики</h2>
+    <p>При изменении политики мы обновим дату вступления в силу вверху страницы. Если в будущем
+    будет добавлена реклама (например, Google AdMob), эта политика будет дополнена сведениями о
+    соответствующей обработке данных.</p>
 
-  <h2>9. Контакты</h2>
-  <p>По вопросам конфиденциальности: <a href="mailto:kovalenko90ivan@gmail.com">kovalenko90ivan@gmail.com</a></p>
+    <h2>9. Контакты</h2>
+    <p>По вопросам конфиденциальности: <a href="mailto:kovalenko90ivan@gmail.com">kovalenko90ivan@gmail.com</a></p>
 
-  <a class="back" href="/">← Вернуться в приложение</a>
+    <a class="back" href="/">← Вернуться в приложение</a>
+  </article>
+
+  <!-- ===================== EN ===================== -->
+  <article data-lang="en" lang="en" hidden>
+    <h1>Privacy Policy</h1>
+    <p class="date">The “Article Trainer” app · effective date: 2 July 2026</p>
+
+    <p>This policy explains what data the “Article Trainer” app (the “App”) processes,
+    for what purpose, and how you can control it.</p>
+
+    <h2>1. What data we collect</h2>
+    <ul>
+      <li><strong>Email</strong> — to create your account, sign in, and recover access.</li>
+      <li><strong>Password</strong> — stored only as an irreversible cryptographic hash
+        (PBKDF2); it is never stored in plaintext and is not accessible to us.</li>
+      <li><strong>Learning statistics</strong> — for each word: the number of correct and
+        incorrect answers and how many times the word was shown. This is needed to sync your
+        progress across devices and to select words for review.</li>
+      <li><strong>Technical data</strong> — your IP address is used temporarily only to protect
+        against password guessing (limiting the number of sign-in attempts).</li>
+    </ul>
+
+    <h2>2. How we use data</h2>
+    <ul>
+      <li>Providing the trainer’s features and storing your progress.</li>
+      <li>Signing in to your account and syncing across devices.</li>
+      <li>Protecting the service from abuse.</li>
+    </ul>
+    <p>We do not use your data for advertising or profiling, and we do not sell it.</p>
+
+    <h2>3. Where data is stored</h2>
+    <p>Data is stored in Cloudflare’s infrastructure (Cloudflare D1 database). The connection is
+    protected by encryption (HTTPS). Your session is maintained with a token (JWT); the App uses
+    no analytics and no third-party trackers.</p>
+
+    <h2>4. Sharing with third parties</h2>
+    <p>We do not share or sell your personal data to third parties. Data may be processed by our
+    hosting provider (Cloudflare) solely to operate the App.</p>
+
+    <h2>5. Data retention and deletion</h2>
+    <p>Data is kept as long as your account exists. You can delete your account and all associated
+    data at any time:</p>
+    <ul>
+      <li>in the app: “Account” → “Delete account”;</li>
+      <li>via the web page: <a href="/delete-account.html">/delete-account.html</a>.</li>
+    </ul>
+    <p>After deletion, data cannot be recovered.</p>
+
+    <h2>6. Children</h2>
+    <p>The App is not intended for children under 13 and does not knowingly collect their data.</p>
+
+    <h2>7. Your rights</h2>
+    <p>You can request access to your data or its deletion. The fastest way to delete it is
+    described in section 5.</p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>If this policy changes, we will update the effective date at the top of the page. If
+    advertising is added in the future (for example, Google AdMob), this policy will be
+    supplemented with information about the corresponding data processing.</p>
+
+    <h2>9. Contact</h2>
+    <p>For privacy questions: <a href="mailto:kovalenko90ivan@gmail.com">kovalenko90ivan@gmail.com</a></p>
+
+    <a class="back" href="/">← Back to the app</a>
+  </article>
+
+  <!-- ===================== DE ===================== -->
+  <article data-lang="de" lang="de" hidden>
+    <h1>Datenschutzerklärung</h1>
+    <p class="date">Die App „Artikeltrainer“ · Datum des Inkrafttretens: 2. Juli 2026</p>
+
+    <p>Diese Erklärung beschreibt, welche Daten die App „Artikeltrainer“ (die „App“) verarbeitet,
+    zu welchem Zweck und wie du sie verwalten kannst.</p>
+
+    <h2>1. Welche Daten wir erheben</h2>
+    <ul>
+      <li><strong>E-Mail</strong> — zum Erstellen deines Kontos, zum Anmelden und zur
+        Wiederherstellung des Zugangs.</li>
+      <li><strong>Passwort</strong> — wird ausschließlich als nicht umkehrbarer kryptografischer
+        Hash (PBKDF2) gespeichert; es wird nicht im Klartext gespeichert und ist für uns nicht
+        einsehbar.</li>
+      <li><strong>Lernstatistik</strong> — pro Wort: die Anzahl richtiger und falscher Antworten
+        und wie oft das Wort angezeigt wurde. Sie wird benötigt, um deinen Fortschritt zwischen
+        Geräten zu synchronisieren und Wörter zur Wiederholung auszuwählen.</li>
+      <li><strong>Technische Daten</strong> — die IP-Adresse wird vorübergehend nur zum Schutz vor
+        dem Erraten von Passwörtern verwendet (Begrenzung der Anmeldeversuche).</li>
+    </ul>
+
+    <h2>2. Wie wir Daten verwenden</h2>
+    <ul>
+      <li>Bereitstellung der Trainer-Funktionen und Speicherung deines Fortschritts.</li>
+      <li>Anmeldung bei deinem Konto und Synchronisierung zwischen Geräten.</li>
+      <li>Schutz des Dienstes vor Missbrauch.</li>
+    </ul>
+    <p>Wir verwenden deine Daten nicht für Werbung oder Profiling und verkaufen sie nicht.</p>
+
+    <h2>3. Wo die Daten gespeichert werden</h2>
+    <p>Die Daten werden in der Infrastruktur von Cloudflare gespeichert (Cloudflare-D1-Datenbank).
+    Die Verbindung ist durch Verschlüsselung (HTTPS) geschützt. Die Sitzung wird über ein Token
+    (JWT) aufrechterhalten; die App verwendet keine Analyse-Tools und keine Tracker von
+    Drittanbietern.</p>
+
+    <h2>4. Weitergabe an Dritte</h2>
+    <p>Wir geben deine personenbezogenen Daten nicht an Dritte weiter und verkaufen sie nicht. Die
+    Daten können von unserem Hosting-Anbieter (Cloudflare) ausschließlich zum Betrieb der App
+    verarbeitet werden.</p>
+
+    <h2>5. Speicherung und Löschung von Daten</h2>
+    <p>Die Daten werden gespeichert, solange dein Konto besteht. Du kannst dein Konto und alle
+    zugehörigen Daten jederzeit löschen:</p>
+    <ul>
+      <li>in der App: „Konto“ → „Konto löschen“;</li>
+      <li>über die Webseite: <a href="/delete-account.html">/delete-account.html</a>.</li>
+    </ul>
+    <p>Nach der Löschung können die Daten nicht wiederhergestellt werden.</p>
+
+    <h2>6. Kinder</h2>
+    <p>Die App ist nicht für Kinder unter 13 Jahren bestimmt und erhebt nicht wissentlich deren
+    Daten.</p>
+
+    <h2>7. Deine Rechte</h2>
+    <p>Du kannst Auskunft über deine Daten oder deren Löschung verlangen. Der schnellste Weg zur
+    Löschung ist in Abschnitt 5 beschrieben.</p>
+
+    <h2>8. Änderungen dieser Erklärung</h2>
+    <p>Bei Änderungen dieser Erklärung aktualisieren wir das Datum des Inkrafttretens oben auf der
+    Seite. Falls in Zukunft Werbung hinzugefügt wird (zum Beispiel Google AdMob), wird diese
+    Erklärung um Informationen zur entsprechenden Datenverarbeitung ergänzt.</p>
+
+    <h2>9. Kontakt</h2>
+    <p>Bei Fragen zum Datenschutz: <a href="mailto:kovalenko90ivan@gmail.com">kovalenko90ivan@gmail.com</a></p>
+
+    <a class="back" href="/">← Zurück zur App</a>
+  </article>
 </main>
+
+<script>
+  // Юридический текст держим тремя блоками; показываем блок под выбранный язык.
+  var TITLES = {
+    ru: "Политика конфиденциальности — Тренажёр артиклей",
+    en: "Privacy Policy — Article Trainer",
+    de: "Datenschutzerklärung — Artikeltrainer",
+  };
+  function showLang() {
+    var l = I18N.getLang();
+    var arts = document.querySelectorAll("article[data-lang]");
+    for (var i = 0; i < arts.length; i++) {
+      arts[i].hidden = arts[i].getAttribute("data-lang") !== l;
+    }
+    document.title = TITLES[l] || TITLES.en;
+    document.documentElement.lang = l;
+  }
+  I18N.mountSwitcher(document.getElementById("lang-switch"));
+  I18N.onChange(showLang);
+  showLang();
+</script>
 </body>
 </html>

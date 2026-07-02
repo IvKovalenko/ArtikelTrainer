@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex">
-<title>Удаление аккаунта — Тренажёр артиклей</title>
+<title data-i18n="docTitleDelete">Удаление аккаунта — Тренажёр артиклей</title>
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<script src="i18n.js"></script>
 <style>
   :root {
     --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
-    --line: #dcdcdc; --line-hover: #bdbdbd; --green: #2f9e44; --red: #e03131; --radius: 10px;
+    --line: #dcdcdc; --line-hover: #bdbdbd; --hover: #f5f5f4; --green: #2f9e44; --red: #e03131; --radius: 10px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; }
@@ -39,20 +40,23 @@
   .msg { min-height: 20px; font-size: 14px; color: var(--red); }
   .msg.ok { color: var(--green); }
   a { color: var(--muted); font-size: 14px; }
+  .foot { margin-top: 16px; display: flex; justify-content: center; }
 </style>
 </head>
 <body>
 <main>
   <form class="box" id="form" autocomplete="on">
-    <h1>Удаление аккаунта</h1>
-    <p class="sub">Введите email и пароль, чтобы навсегда удалить аккаунт и всю статистику.
+    <h1 data-i18n="deleteAccountTitle">Удаление аккаунта</h1>
+    <p class="sub" data-i18n="deleteAccountSub">Введите email и пароль, чтобы навсегда удалить аккаунт и всю статистику.
       Действие необратимо.</p>
     <input id="email" type="email" name="email" autocomplete="email" placeholder="Email" aria-label="Email" required>
-    <input id="pw" type="password" name="password" autocomplete="current-password" placeholder="Пароль" aria-label="Пароль" required>
-    <button type="submit" class="danger" id="submit">Удалить аккаунт навсегда</button>
+    <input id="pw" type="password" name="password" autocomplete="current-password" placeholder="Пароль" aria-label="Пароль" required
+           data-i18n-placeholder="passwordPlaceholder" data-i18n-aria="passwordPlaceholder">
+    <button type="submit" class="danger" id="submit" data-i18n="deleteForever">Удалить аккаунт навсегда</button>
     <div class="msg" id="msg"></div>
-    <a href="/">Вернуться в приложение</a>
+    <a href="/" data-i18n="backToApp">Вернуться в приложение</a>
   </form>
+  <div class="foot"><span class="lang-switch" id="lang-switch"></span></div>
 </main>
 <script>
   const form = document.getElementById("form");
@@ -63,7 +67,7 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!confirm("Точно удалить аккаунт и все данные? Это необратимо.")) return;
+    if (!confirm(I18N.t("confirmDeleteFull"))) return;
     msg.className = "msg"; msg.textContent = "";
     submit.disabled = true;
     try {
@@ -74,8 +78,8 @@
       const ld = await login.json().catch(() => ({}));
       if (!login.ok || !ld.token) {
         msg.textContent = login.status === 429
-          ? "Слишком много попыток. Подождите немного."
-          : "Неверный email или пароль.";
+          ? I18N.t("errRateLimited")
+          : I18N.t("errInvalidCredentials");
         submit.disabled = false; return;
       }
       const del = await fetch("/api/auth/delete", {
@@ -84,17 +88,19 @@
       if (del.ok) {
         try { localStorage.removeItem("auth-token"); localStorage.removeItem("article-progress"); } catch {}
         msg.className = "msg ok";
-        msg.textContent = "Аккаунт удалён.";
+        msg.textContent = I18N.t("accountDeleted");
         form.querySelectorAll("input, button[type=submit]").forEach((n) => (n.disabled = true));
       } else {
-        msg.textContent = "Не удалось удалить аккаунт. Попробуйте позже.";
+        msg.textContent = I18N.t("errDeleteFailedLater");
         submit.disabled = false;
       }
     } catch {
-      msg.textContent = "Ошибка сети";
+      msg.textContent = I18N.t("errNetwork");
       submit.disabled = false;
     }
   });
+
+  I18N.mountSwitcher(document.getElementById("lang-switch"));
 </script>
 </body>
 </html>

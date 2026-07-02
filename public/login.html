@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex">
-<title>Вход — Тренажёр артиклей</title>
+<title data-i18n="docTitleLogin">Вход — Тренажёр артиклей</title>
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<script src="i18n.js"></script>
 <style>
   :root {
     --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
@@ -40,24 +41,28 @@
   .toggle { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; padding: 4px; }
   .toggle:hover { color: var(--ink); text-decoration: underline; }
   .msg { min-height: 20px; font-size: 14px; color: var(--red); }
+  .foot { text-align: center; margin-top: 16px; font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .foot a { color: var(--muted); }
 </style>
 </head>
 <body>
 <main>
   <form class="box" id="form" autocomplete="on">
-    <h1>Тренажёр артиклей</h1>
-    <p class="sub" id="mode-sub">Вход в аккаунт</p>
+    <h1 data-i18n="appTitle">Тренажёр артиклей</h1>
+    <p class="sub" id="mode-sub" data-i18n="loginSub">Вход в аккаунт</p>
     <input id="email" type="email" name="email" autocomplete="email"
            placeholder="Email" aria-label="Email" required autofocus>
     <input id="pw" type="password" name="password" autocomplete="current-password"
-           placeholder="Пароль" aria-label="Пароль" required minlength="8">
-    <button type="submit" class="primary" id="submit">Войти</button>
+           placeholder="Пароль" aria-label="Пароль" required minlength="8"
+           data-i18n-placeholder="passwordPlaceholder" data-i18n-aria="passwordPlaceholder">
+    <button type="submit" class="primary" id="submit" data-i18n="signIn">Войти</button>
     <div class="msg" id="msg"></div>
-    <button type="button" class="toggle" id="toggle">Нет аккаунта? Зарегистрироваться</button>
+    <button type="button" class="toggle" id="toggle" data-i18n="toggleToRegister">Нет аккаунта? Зарегистрироваться</button>
   </form>
-  <p style="text-align:center;margin-top:16px;font-size:13px">
-    <a href="/privacy.html" style="color:var(--muted)">Политика конфиденциальности</a>
-  </p>
+  <div class="foot">
+    <span class="lang-switch" id="lang-switch"></span>
+    <a href="/privacy.html" data-i18n="privacyPolicy">Политика конфиденциальности</a>
+  </div>
 </main>
 <script>
   const LS_TOKEN = "auth-token";
@@ -71,30 +76,30 @@
   const modeSub = document.getElementById("mode-sub");
   let mode = "login"; // login | register
 
-  function setMode(m) {
-    mode = m;
-    if (m === "login") {
-      modeSub.textContent = "Вход в аккаунт";
-      submit.textContent = "Войти";
+  // Тексты, зависящие от режима (их i18n сам не перерисует — здесь двуязычная логика).
+  function renderMode() {
+    if (mode === "login") {
+      modeSub.textContent = I18N.t("loginSub");
+      submit.textContent = I18N.t("signIn");
       pw.autocomplete = "current-password";
-      toggle.textContent = "Нет аккаунта? Зарегистрироваться";
+      toggle.textContent = I18N.t("toggleToRegister");
     } else {
-      modeSub.textContent = "Регистрация";
-      submit.textContent = "Создать аккаунт";
+      modeSub.textContent = I18N.t("registerSub");
+      submit.textContent = I18N.t("createAccount");
       pw.autocomplete = "new-password";
-      toggle.textContent = "Уже есть аккаунт? Войти";
+      toggle.textContent = I18N.t("toggleToLogin");
     }
-    msg.textContent = "";
   }
+  function setMode(m) { mode = m; renderMode(); msg.textContent = ""; }
   toggle.addEventListener("click", () => setMode(mode === "login" ? "register" : "login"));
 
   const ERRORS = {
-    "invalid-email": "Некорректный email",
-    "weak-password": "Пароль должен быть не короче 8 символов",
-    "email-taken": "Такой email уже зарегистрирован",
-    "invalid-credentials": "Неверный email или пароль",
-    "missing-credentials": "Заполните email и пароль",
-    "rate-limited": "Слишком много попыток. Подождите немного и попробуйте снова.",
+    "invalid-email": "errInvalidEmail",
+    "weak-password": "errWeakPassword",
+    "email-taken": "errEmailTaken",
+    "invalid-credentials": "errInvalidCredentials",
+    "missing-credentials": "errMissingCredentials",
+    "rate-limited": "errRateLimited",
   };
 
   form.addEventListener("submit", async (e) => {
@@ -114,13 +119,18 @@
         location.replace("/");
         return;
       }
-      msg.textContent = ERRORS[data.error] || "Ошибка. Попробуйте ещё раз.";
+      msg.textContent = I18N.t(ERRORS[data.error] || "errGeneric");
     } catch {
-      msg.textContent = "Ошибка сети";
+      msg.textContent = I18N.t("errNetwork");
     }
     submit.disabled = false;
     pw.select();
   });
+
+  // Язык: переключатель + перерисовка текстов режима при смене (статику обновляет сам i18n).
+  I18N.mountSwitcher(document.getElementById("lang-switch"));
+  I18N.onChange(renderMode);
+  renderMode();
 </script>
 </body>
 </html>

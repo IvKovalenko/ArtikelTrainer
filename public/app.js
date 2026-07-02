@@ -17,6 +17,9 @@
   let advTimer = null;
   let syncTimer = null;
   let dirty = false;
+  let syncState = "";         // текущее состояние синхронизации (для перерисовки подписи при смене языка)
+  let accountEmail = null;    // email из /api/auth/me (для перерисовки при смене языка)
+  let lastAnswerCorrect = null; // верным ли был последний ответ (для перерисовки подсказки)
 
   // ключ прогресса: гомографы (одно слово, разное значение) учитываются раздельно
   const keyOf = (w) => (w.gloss ? `${w.word} (${w.gloss})` : w.word);
@@ -93,11 +96,10 @@
   }
 
   function setSync(state) {
+    syncState = state || "";
     el.sync.className = "sync" + (state ? " " + state : "");
-    el.sync.title = {
-      ok: "Синхронизировано", pending: "Сохранение…",
-      offline: "Офлайн — сохранено локально, отправлю позже",
-    }[state] || "";
+    const key = { ok: "syncOk", pending: "syncPending", offline: "syncOffline" }[state];
+    el.sync.title = key ? I18N.t(key) : "";
   }
   function scheduleSync() {
     dirty = true;
@@ -174,7 +176,7 @@
 
     if (idx >= LEVELS.length - 1) {            // достигнут максимум — открыты все уровни
       el.progressFill.style.width = "100%";
-      el.progressLabel.textContent = "Все уровни открыты 🎉";
+      el.progressLabel.textContent = I18N.t("allLevelsUnlocked");
       return;
     }
 
@@ -184,13 +186,14 @@
     const pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
 
     el.progressFill.style.width = pct + "%";
-    el.progressLabel.textContent =
-      `До уровня ${LEVELS[idx + 1]}: ${Math.min(mastered, needed)} / ${needed} слов (${pct}%)`;
+    el.progressLabel.textContent = I18N.t("toNextLevel", {
+      level: LEVELS[idx + 1], m: Math.min(mastered, needed), n: needed, pct,
+    });
   }
   function renderWord() {
     el.word.textContent = current.word;
     const unlocked = unlockedLevels();          // достигнутый уровень = самый высокий открытый
-    el.level.textContent = "Уровень: " + unlocked[unlocked.length - 1];
+    el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
     if (el.gloss) el.gloss.textContent = current.gloss ? "(" + current.gloss + ")" : "";
     el.hint.textContent = "";
     el.hint.className = "hint";
@@ -201,9 +204,9 @@
   }
 
   function correctLabel() {
-    if (current.article === "Plural") return `Правильно: Plural — ${current.word}`;
-    const gl = current.gloss ? ` (${current.gloss})` : "";
-    return `Правильно: ${current.article} ${current.word}${gl}`;
+    if (current.article === "Plural") return I18N.t("correctPlural", { word: current.word });
+    const gl = current.gloss ? ` (${current.gloss})` : "";   // значение гомографа — пока по-русски (этап 2)
+    return I18N.t("correctArticle", { article: current.article, word: current.word, gloss: gl });
   }
 
   function answer(choice) {
@@ -213,6 +216,7 @@
     const s = entryFor(current);
     s.seen++;
     const isRight = choice === right;
+    lastAnswerCorrect = isRight;
     if (isRight) s.correct++; else s.wrong++;
 
     for (const b of answerButtons) {
@@ -222,7 +226,7 @@
       else if (a === choice) b.classList.add("wrong");
     }
     if (isRight) {
-      el.hint.textContent = "Верно!";
+      el.hint.textContent = I18N.t("correctExcl");
       el.hint.className = "hint correct";
     } else {
       el.hint.textContent = correctLabel();
@@ -321,8 +325,8 @@
   // окно «Статистика»
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
-    const words = Object.keys(progress).length;
-    el.dataSummary.textContent = `${words} слов в статистике · всего в словаре: ${WORDS.length}`;
+    el.dataSummary.textContent =
+      I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
     el.dialogMsg.textContent = "";
     renderStatsTable();
     el.overlay.hidden = false;
@@ -330,13 +334,16 @@
   function closeData() { el.overlay.hidden = true; }
 
   // окно «Аккаунт»
+  function renderAccountInfo() {
+    el.accountInfo.textContent = accountEmail ? I18N.t("signedInAs", { email: accountEmail }) : "—";
+  }
   function openAccount() {
     el.accountMsg.textContent = "";
     el.accountInfo.textContent = "…";
     fetch("/api/auth/me", { headers: authHeaders(), cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => { el.accountInfo.textContent = d && d.user ? "Вход выполнен: " + d.user.email : "—"; })
-      .catch(() => { el.accountInfo.textContent = "—"; });
+      .then((d) => { accountEmail = d && d.user ? d.user.email : null; renderAccountInfo(); })
+      .catch(() => { accountEmail = null; renderAccountInfo(); });
     el.accountOverlay.hidden = false;
   }
   function closeAccount() { el.accountOverlay.hidden = true; }
@@ -349,29 +356,29 @@
   el.accountOverlay.addEventListener("click", (e) => { if (e.target === el.accountOverlay) closeAccount(); });
 
   $("btn-copy").addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText(el.dataJson.value); flash("Скопировано"); }
-    catch { el.dataJson.select(); flash("Выдели и скопируй вручную"); }
+    try { await navigator.clipboard.writeText(el.dataJson.value); flash(I18N.t("copied")); }
+    catch { el.dataJson.select(); flash(I18N.t("copyManual")); }
   });
 
   $("btn-import").addEventListener("click", () => {
     let obj;
     try { obj = JSON.parse(el.dataJson.value); }
-    catch { flash("Ошибка: невалидный JSON", true); return; }
-    if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash("Ожидается объект", true); return; }
+    catch { flash(I18N.t("errInvalidJson"), true); return; }
+    if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash(I18N.t("errExpectObject"), true); return; }
     progress = obj;
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable();
-    flash("Импортировано");
+    flash(I18N.t("imported"));
   });
 
   $("btn-reset").addEventListener("click", () => {
-    if (!confirm("Сбросить всю статистику? Это действие необратимо.")) return;
+    if (!confirm(I18N.t("confirmReset"))) return;
     progress = {};
     lastKey = null;
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
   });
 
   $("btn-logout").addEventListener("click", async () => {
-    if (!confirm("Выйти? Для входа снова понадобятся email и пароль.")) return;
+    if (!confirm(I18N.t("confirmLogout"))) return;
     try { await pushSync(); } catch {}          // сохраняем несинхронизированное перед выходом
     try { await fetch("/api/auth/logout", { method: "POST", headers: authHeaders() }); } catch {}
     localStorage.removeItem(LS_TOKEN);
@@ -380,12 +387,12 @@
   });
 
   $("btn-delete-account").addEventListener("click", async () => {
-    if (!confirm("Удалить аккаунт и все данные без возможности восстановления?")) return;
-    if (!confirm("Точно удалить? Это действие необратимо.")) return;
+    if (!confirm(I18N.t("confirmDelete1"))) return;
+    if (!confirm(I18N.t("confirmDelete2"))) return;
     try {
       const r = await fetch("/api/auth/delete", { method: "POST", headers: authHeaders() });
-      if (!r.ok && r.status !== 401) { accountFlash("Не удалось удалить аккаунт", true); return; }
-    } catch { accountFlash("Ошибка сети", true); return; }
+      if (!r.ok && r.status !== 401) { accountFlash(I18N.t("errDeleteFailed"), true); return; }
+    } catch { accountFlash(I18N.t("errNetwork"), true); return; }
     localStorage.removeItem(LS_TOKEN);
     localStorage.removeItem(LS_PROGRESS);
     location.replace("/login.html");
@@ -400,19 +407,41 @@
     el.accountMsg.style.color = isError ? "var(--red)" : "var(--green)";
   }
 
+  // ---------- язык ----------
+  // Статические строки перерисовывает сам i18n (data-i18n). Здесь — динамические,
+  // которые i18n не видит: уровень, полоска прогресса, статус синхронизации, открытые диалоги, подсказка.
+  function refreshDynamicText() {
+    if (current) {
+      const u = unlockedLevels();
+      el.level.textContent = I18N.t("level", { level: u[u.length - 1] });
+    }
+    if (WORDS.length) renderProgress();
+    setSync(syncState);
+    if (answered && current) {
+      el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();
+    }
+    if (!el.overlay.hidden) {
+      el.dataSummary.textContent =
+        I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
+    }
+    if (!el.accountOverlay.hidden) renderAccountInfo();
+  }
+  I18N.mountSwitcher($("lang-switch"));
+  I18N.onChange(refreshDynamicText);
+
   // ---------- старт ----------
   async function boot() {
     if (!localStorage.getItem(LS_TOKEN)) { location.replace("/login.html"); return; } // нужен вход
     try {
       WORDS = await fetch("words.json", { cache: "no-store" }).then((r) => r.json());
     } catch {
-      el.word.textContent = "Не удалось загрузить словарь";
-      if (el.gloss) el.gloss.textContent = "проверь, что сервер запущен, и обнови страницу";
+      el.word.textContent = I18N.t("errLoadDict");
+      if (el.gloss) el.gloss.textContent = I18N.t("errLoadDictSub");
       setSync("offline");
       return;
     }
     if (!Array.isArray(WORDS) || !WORDS.length) {
-      el.word.textContent = "Словарь пуст";
+      el.word.textContent = I18N.t("dictEmpty");
       setSync("offline");
       return;
     }
