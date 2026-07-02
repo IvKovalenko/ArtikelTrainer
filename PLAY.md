@@ -5,8 +5,8 @@
 
 ## Обязательные ссылки
 
-- **Политика конфиденциальности:** `https://https://artikel-trainer.pages.dev//privacy.html`
-- **Удаление аккаунта (веб):** `https://https://artikel-trainer.pages.dev//delete-account.html`
+- **Политика конфиденциальности:** `https://artikel-trainer.pages.dev/privacy.html`
+- **Удаление аккаунта (веб):** `https://artikel-trainer.pages.dev/delete-account.html`
 
 ## Data Safety (форма в Play Console)
 
