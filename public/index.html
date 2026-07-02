@@ -58,6 +58,7 @@
       <h2>Статистика</h2>
       <button class="linkbtn" id="btn-close">Закрыть</button>
     </div>
+    <p class="dialog-sub" id="account-info"></p>
     <p class="dialog-sub" id="data-summary"></p>
     <div class="table-wrap">
       <table class="stats-table" id="stats-table">
@@ -79,12 +80,6 @@
         <button class="linkbtn" id="btn-copy">Копировать</button>
         <button class="linkbtn" id="btn-import">Импортировать из поля</button>
       </div>
-    </details>
-    <details class="sync-settings">
-      <summary>Синхронизация</summary>
-      <p class="dialog-sub">Токен нужен, только если на сервере включён <code>SYNC_TOKEN</code>. Оставь пустым, если не включал.</p>
-      <input id="sync-token" type="password" placeholder="Токен синхронизации (необязательно)" autocomplete="off">
-      <button class="linkbtn" id="btn-save-token">Сохранить токен</button>
     </details>
     <span class="dialog-msg" id="dialog-msg"></span>
   </div>

@@ -25,7 +25,7 @@ id = "54b4bdc0259a4e049a8d5fba0d5d815b"
 [[d1_databases]]
 binding = "DB"
 database_name = "artikel"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "fdce321b-ffea-471a-9ccf-bc362873ed7a"
 
 # Секрет для подписи JWT — задать через: npx wrangler pages secret put JWT_SECRET
 # Локально берётся из .dev.vars (JWT_SECRET=...).

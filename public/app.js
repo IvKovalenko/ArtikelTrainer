@@ -1,10 +1,10 @@
-/* Тренажёр артиклей — логика, офлайн-first, синхронизация с Cloudflare KV. */
+/* Тренажёр артиклей — логика, офлайн-first, синхронизация с Cloudflare D1 (аккаунты). */
 (() => {
   "use strict";
 
   const API = "/api/progress";
   const LS_PROGRESS = "article-progress";
-  const LS_TOKEN = "sync-token";
+  const LS_TOKEN = "auth-token";   // JWT текущего пользователя
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
   const MASTER_RATIO = 0.95;   // доля выученных слов уровня, чтобы открыть следующий
 
@@ -28,7 +28,7 @@
     passed: $("stat-passed"), word: $("word"), gloss: $("gloss"),
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
-    dialogMsg: $("dialog-msg"), syncToken: $("sync-token"),
+    dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
     statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
@@ -72,8 +72,8 @@
     const t = localStorage.getItem(LS_TOKEN);
     return t ? { Authorization: "Bearer " + t } : {};
   }
-  // сессия истекла / пароль сменили → уводим на страницу входа
-  function toLogin() { location.replace("/login.html"); }
+  // сессия истекла / токен невалиден → чистим токен и уводим на страницу входа
+  function toLogin() { localStorage.removeItem(LS_TOKEN); location.replace("/login.html"); }
   async function apiGet() {
     const r = await fetch(API, { headers: authHeaders(), cache: "no-store" });
     if (r.status === 401) { toLogin(); throw new Error("GET 401"); }
@@ -321,7 +321,13 @@
     const words = Object.keys(progress).length;
     el.dataSummary.textContent = `${words} слов в статистике · всего в словаре: ${WORDS.length}`;
     el.dialogMsg.textContent = "";
-    el.syncToken.value = localStorage.getItem(LS_TOKEN) || "";
+    if (el.accountInfo) {
+      el.accountInfo.textContent = "";
+      fetch("/api/auth/me", { headers: authHeaders(), cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => { if (d && d.user && el.accountInfo) el.accountInfo.textContent = "Вход выполнен: " + d.user.email; })
+        .catch(() => {});
+    }
     renderStatsTable();
     el.overlay.hidden = false;
   }
@@ -354,17 +360,12 @@
   });
 
   $("btn-logout").addEventListener("click", async () => {
-    if (!confirm("Выйти? Для доступа снова понадобится пароль.")) return;
+    if (!confirm("Выйти? Для входа снова понадобятся email и пароль.")) return;
     try { await pushSync(); } catch {}          // сохраняем несинхронизированное перед выходом
-    try { await fetch("/api/logout", { method: "POST" }); } catch {}
+    try { await fetch("/api/auth/logout", { method: "POST", headers: authHeaders() }); } catch {}
+    localStorage.removeItem(LS_TOKEN);
+    localStorage.removeItem(LS_PROGRESS);       // чтобы прогресс не «перетёк» к другому аккаунту
     location.replace("/login.html");
-  });
-
-  $("btn-save-token").addEventListener("click", () => {
-    const t = el.syncToken.value.trim();
-    if (t) localStorage.setItem(LS_TOKEN, t); else localStorage.removeItem(LS_TOKEN);
-    flash("Токен сохранён");
-    if (dirty) pushSync();
   });
 
   function flash(msg, isError) {
@@ -374,6 +375,7 @@
 
   // ---------- старт ----------
   async function boot() {
+    if (!localStorage.getItem(LS_TOKEN)) { location.replace("/login.html"); return; } // нужен вход
     try {
       WORDS = await fetch("words.json", { cache: "no-store" }).then((r) => r.json());
     } catch {

@@ -22,28 +22,23 @@
     display: flex; align-items: center; justify-content: center;
     padding: 22px calc(22px + env(safe-area-inset-left)) calc(22px + env(safe-area-inset-bottom));
   }
-  .box {
-    width: 100%; max-width: 360px;
-    display: flex; flex-direction: column; gap: 14px;
-    text-align: center;
-  }
+  .box { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
   h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
-  .sub { margin: 0 0 6px; color: var(--muted); font-size: 14px; }
+  .sub { margin: 0 0 4px; color: var(--muted); font-size: 14px; }
   input {
-    width: 100%; padding: 14px 14px; font: inherit; font-size: 17px;
-    color: var(--ink); background: #fff;
-    border: 1px solid var(--line); border-radius: var(--radius);
-    text-align: center;
+    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: var(--ink);
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
   }
   input:focus { outline: none; border-color: var(--line-hover); }
-  button {
-    width: 100%; padding: 14px 14px; font: inherit; font-size: 17px;
-    color: #fff; background: var(--ink); border: none;
-    border-radius: var(--radius); cursor: pointer;
+  button.primary {
+    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: #fff;
+    background: var(--ink); border: none; border-radius: var(--radius); cursor: pointer;
     transition: opacity .12s ease;
   }
-  button:hover { opacity: .88; }
-  button:disabled { opacity: .5; cursor: default; }
+  button.primary:hover { opacity: .88; }
+  button.primary:disabled { opacity: .5; cursor: default; }
+  .toggle { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; padding: 4px; }
+  .toggle:hover { color: var(--ink); text-decoration: underline; }
   .msg { min-height: 20px; font-size: 14px; color: var(--red); }
 </style>
 </head>
@@ -51,31 +46,71 @@
 <main>
   <form class="box" id="form" autocomplete="on">
     <h1>Тренажёр артиклей</h1>
-    <p class="sub">Введите пароль для доступа</p>
+    <p class="sub" id="mode-sub">Вход в аккаунт</p>
+    <input id="email" type="email" name="email" autocomplete="email"
+           placeholder="Email" aria-label="Email" required autofocus>
     <input id="pw" type="password" name="password" autocomplete="current-password"
-           placeholder="Пароль" aria-label="Пароль" autofocus>
-    <button type="submit" id="submit">Войти</button>
+           placeholder="Пароль" aria-label="Пароль" required minlength="8">
+    <button type="submit" class="primary" id="submit">Войти</button>
     <div class="msg" id="msg"></div>
+    <button type="button" class="toggle" id="toggle">Нет аккаунта? Зарегистрироваться</button>
   </form>
 </main>
 <script>
+  const LS_TOKEN = "auth-token";
+  const LS_PROGRESS = "article-progress";
   const form = document.getElementById("form");
+  const email = document.getElementById("email");
   const pw = document.getElementById("pw");
   const msg = document.getElementById("msg");
   const submit = document.getElementById("submit");
+  const toggle = document.getElementById("toggle");
+  const modeSub = document.getElementById("mode-sub");
+  let mode = "login"; // login | register
+
+  function setMode(m) {
+    mode = m;
+    if (m === "login") {
+      modeSub.textContent = "Вход в аккаунт";
+      submit.textContent = "Войти";
+      pw.autocomplete = "current-password";
+      toggle.textContent = "Нет аккаунта? Зарегистрироваться";
+    } else {
+      modeSub.textContent = "Регистрация";
+      submit.textContent = "Создать аккаунт";
+      pw.autocomplete = "new-password";
+      toggle.textContent = "Уже есть аккаунт? Войти";
+    }
+    msg.textContent = "";
+  }
+  toggle.addEventListener("click", () => setMode(mode === "login" ? "register" : "login"));
+
+  const ERRORS = {
+    "invalid-email": "Некорректный email",
+    "weak-password": "Пароль должен быть не короче 8 символов",
+    "email-taken": "Такой email уже зарегистрирован",
+    "invalid-credentials": "Неверный email или пароль",
+    "missing-credentials": "Заполните email и пароль",
+  };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
     submit.disabled = true;
     try {
-      const r = await fetch("/api/login", {
+      const r = await fetch("/api/auth/" + mode, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ password: pw.value }),
+        body: JSON.stringify({ email: email.value.trim(), password: pw.value }),
       });
-      if (r.ok) { location.replace("/"); return; }
-      msg.textContent = r.status === 401 ? "Неверный пароль" : "Ошибка входа";
+      const data = await r.json().catch(() => ({}));
+      if (r.ok && data.token) {
+        localStorage.setItem(LS_TOKEN, data.token);
+        localStorage.removeItem(LS_PROGRESS);   // свежий аккаунт — свой прогресс подтянется с сервера
+        location.replace("/");
+        return;
+      }
+      msg.textContent = ERRORS[data.error] || "Ошибка. Попробуйте ещё раз.";
     } catch {
       msg.textContent = "Ошибка сети";
     }

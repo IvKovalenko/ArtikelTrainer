@@ -1,43 +1,27 @@
 /**
- * Cloudflare Pages Function: /api/progress
- * GET  → вернуть JSON статистики из KV
- * POST → сохранить JSON статистики в KV
+ * Cloudflare Pages Function: /api/progress  (многопользовательская версия)
+ * GET  → прогресс текущего пользователя (JSON-блоб из D1)
+ * POST → сохранить прогресс текущего пользователя
  *
- * Привязка KV: namespace binding с именем PROGRESS (см. wrangler.toml / дашборд).
- * Необязательная защита: если задан env.SYNC_TOKEN, требуется заголовок
- *   Authorization: Bearer <SYNC_TOKEN>
+ * Пользователь определяется по JWT (cookie или Authorization: Bearer).
+ * Хранилище — таблица progress в D1 (binding DB). KV больше не используется.
  */
+import { getAuth, json } from "../_lib/auth.js";
 
-const KEY = "article-progress";
+export async function onRequestGet({ request, env }) {
+  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  const auth = await getAuth(request, env);
+  if (!auth) return json({ error: "unauthorized" }, 401);
 
-function json(body, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
-  });
+  const row = await env.DB.prepare("SELECT data FROM progress WHERE user_id = ?")
+    .bind(auth.sub).first();
+  return json(row ? JSON.parse(row.data) : {});
 }
 
-function authError(env, request) {
-  const token = env.SYNC_TOKEN;
-  if (!token) return null; // защита выключена
-  const header = request.headers.get("Authorization") || "";
-  if (header === "Bearer " + token) return null;
-  return json({ error: "unauthorized" }, 401);
-}
-
-export async function onRequestGet({ env, request }) {
-  const denied = authError(env, request);
-  if (denied) return denied;
-  if (!env.PROGRESS) return json({ error: "KV binding PROGRESS is missing" }, 500);
-
-  const raw = await env.PROGRESS.get(KEY);
-  return json(raw ? JSON.parse(raw) : {});
-}
-
-export async function onRequestPost({ env, request }) {
-  const denied = authError(env, request);
-  if (denied) return denied;
-  if (!env.PROGRESS) return json({ error: "KV binding PROGRESS is missing" }, 500);
+export async function onRequestPost({ request, env }) {
+  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  const auth = await getAuth(request, env);
+  if (!auth) return json({ error: "unauthorized" }, 401);
 
   let body;
   try {
@@ -49,6 +33,10 @@ export async function onRequestPost({ env, request }) {
     return json({ error: "expected an object" }, 400);
   }
 
-  await env.PROGRESS.put(KEY, JSON.stringify(body));
+  await env.DB.prepare(
+    "INSERT INTO progress (user_id, data, updated_at) VALUES (?, ?, ?) " +
+    "ON CONFLICT(user_id) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at"
+  ).bind(auth.sub, JSON.stringify(body), Date.now()).run();
+
   return json({ ok: true, words: Object.keys(body).length });
 }
