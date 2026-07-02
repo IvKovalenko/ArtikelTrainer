@@ -280,6 +280,16 @@ body {
 .danger-zone { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .danger-zone a.linkbtn { text-decoration: none; }
+
+.dialog-foot { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; text-align: right; }
+
+.btn-block {
+  width: 100%; padding: 12px; font: inherit; font-size: 16px; color: var(--ink);
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  cursor: pointer; margin-top: 4px;
+  transition: background .12s ease, border-color .12s ease;
+}
+.btn-block:hover { background: var(--hover); border-color: var(--line-hover); }
 .linkbtn.danger { color: var(--red); }
 .linkbtn.danger:hover { color: var(--red); text-decoration: underline; }
 

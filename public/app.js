@@ -29,6 +29,7 @@
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
+    accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
     statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
@@ -252,11 +253,12 @@
     });
   });
   // после ответа — клик в области карточки листает дальше
+  const dialogOpen = () => !el.overlay.hidden || !el.accountOverlay.hidden;
   document.querySelector(".card").addEventListener("click", () => {
-    if (answered && el.overlay.hidden) next();
+    if (answered && !dialogOpen()) next();
   });
   document.addEventListener("keydown", (e) => {
-    if (!el.overlay.hidden) return; // не мешаем при открытом диалоге
+    if (dialogOpen()) return; // не мешаем при открытом окне
     if (answered && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); next(); return; }
     if (answered) return;
     const map = { "1": "der", "2": "die", "3": "das", "4": "Plural" };
@@ -316,26 +318,35 @@
     });
   }
 
+  // окно «Статистика»
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
     const words = Object.keys(progress).length;
     el.dataSummary.textContent = `${words} слов в статистике · всего в словаре: ${WORDS.length}`;
     el.dialogMsg.textContent = "";
-    if (el.accountInfo) {
-      el.accountInfo.textContent = "";
-      fetch("/api/auth/me", { headers: authHeaders(), cache: "no-store" })
-        .then((r) => (r.ok ? r.json() : null))
-        .then((d) => { if (d && d.user && el.accountInfo) el.accountInfo.textContent = "Вход выполнен: " + d.user.email; })
-        .catch(() => {});
-    }
     renderStatsTable();
     el.overlay.hidden = false;
   }
   function closeData() { el.overlay.hidden = true; }
 
+  // окно «Аккаунт»
+  function openAccount() {
+    el.accountMsg.textContent = "";
+    el.accountInfo.textContent = "…";
+    fetch("/api/auth/me", { headers: authHeaders(), cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { el.accountInfo.textContent = d && d.user ? "Вход выполнен: " + d.user.email : "—"; })
+      .catch(() => { el.accountInfo.textContent = "—"; });
+    el.accountOverlay.hidden = false;
+  }
+  function closeAccount() { el.accountOverlay.hidden = true; }
+
   $("btn-data").addEventListener("click", openData);
   $("btn-close").addEventListener("click", closeData);
   el.overlay.addEventListener("click", (e) => { if (e.target === el.overlay) closeData(); });
+  $("btn-account").addEventListener("click", openAccount);
+  $("btn-account-close").addEventListener("click", closeAccount);
+  el.accountOverlay.addEventListener("click", (e) => { if (e.target === el.accountOverlay) closeAccount(); });
 
   $("btn-copy").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(el.dataJson.value); flash("Скопировано"); }
@@ -356,7 +367,7 @@
     if (!confirm("Сбросить всю статистику? Это действие необратимо.")) return;
     progress = {};
     lastKey = null;
-    saveLocal(); scheduleSync(); updateStats(); next();
+    saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
   });
 
   $("btn-logout").addEventListener("click", async () => {
@@ -373,8 +384,8 @@
     if (!confirm("Точно удалить? Это действие необратимо.")) return;
     try {
       const r = await fetch("/api/auth/delete", { method: "POST", headers: authHeaders() });
-      if (!r.ok && r.status !== 401) { flash("Не удалось удалить аккаунт", true); return; }
-    } catch { flash("Ошибка сети", true); return; }
+      if (!r.ok && r.status !== 401) { accountFlash("Не удалось удалить аккаунт", true); return; }
+    } catch { accountFlash("Ошибка сети", true); return; }
     localStorage.removeItem(LS_TOKEN);
     localStorage.removeItem(LS_PROGRESS);
     location.replace("/login.html");
@@ -383,6 +394,10 @@
   function flash(msg, isError) {
     el.dialogMsg.textContent = msg;
     el.dialogMsg.style.color = isError ? "var(--red)" : "var(--green)";
+  }
+  function accountFlash(msg, isError) {
+    el.accountMsg.textContent = msg;
+    el.accountMsg.style.color = isError ? "var(--red)" : "var(--green)";
   }
 
   // ---------- старт ----------

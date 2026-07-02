@@ -45,20 +45,19 @@
   <footer class="bottom">
     <span class="sync" id="sync" title="Состояние синхронизации"></span>
     <span class="links">
-      <button class="linkbtn" id="btn-data">Показать статистику</button>
-      <button class="linkbtn" id="btn-reset">Сбросить статистику</button>
-      <button class="linkbtn" id="btn-logout">Выйти</button>
+      <button class="linkbtn" id="btn-data">Статистика</button>
+      <button class="linkbtn" id="btn-account">Аккаунт</button>
     </span>
   </footer>
 </main>
 
+<!-- Окно статистики -->
 <div class="overlay" id="overlay" hidden>
   <div class="dialog">
     <div class="dialog-head">
       <h2>Статистика</h2>
       <button class="linkbtn" id="btn-close">Закрыть</button>
     </div>
-    <p class="dialog-sub" id="account-info"></p>
     <p class="dialog-sub" id="data-summary"></p>
     <div class="table-wrap">
       <table class="stats-table" id="stats-table">
@@ -82,6 +81,22 @@
       </div>
     </details>
     <span class="dialog-msg" id="dialog-msg"></span>
+    <div class="dialog-foot">
+      <button class="linkbtn danger" id="btn-reset">Сбросить статистику</button>
+    </div>
+  </div>
+</div>
+
+<!-- Окно аккаунта -->
+<div class="overlay" id="account-overlay" hidden>
+  <div class="dialog">
+    <div class="dialog-head">
+      <h2>Аккаунт</h2>
+      <button class="linkbtn" id="btn-account-close">Закрыть</button>
+    </div>
+    <p class="dialog-sub" id="account-info">…</p>
+    <button class="btn-block" id="btn-logout">Выйти</button>
+    <span class="dialog-msg" id="account-msg"></span>
     <div class="danger-zone">
       <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a>
       <button class="linkbtn danger" id="btn-delete-account">Удалить аккаунт</button>
