@@ -1,7 +1,7 @@
 /* Service worker: сеть-в-приоритете (network-first), кэш — резерв для офлайна.
    API (/api/*) не кэшируется никогда. Такой режим исключает «залипание» на
    старых версиях файлов при частых обновлениях. */
-const CACHE = "artikel-v3";
+const CACHE = "artikel-v4";
 const SHELL = [
   "./",
   "./index.html",

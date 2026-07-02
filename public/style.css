@@ -2,6 +2,7 @@
   --bg: #ffffff;
   --ink: #2b2b2b;
   --muted: #9a9a9a;
+  --muted2: #363636;
   --line: #dcdcdc;
   --line-hover: #bdbdbd;
   --hover: #f5f5f4;
@@ -108,8 +109,10 @@ body {
 
 .gloss {
   margin-top: -18px;
-  font-size: 19px;
-  color: var(--muted);
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 700;            /* как у слова */
+  letter-spacing: -0.5px;      /* как у слова */
+  color: var(--muted2);
   text-align: center;
   min-height: 1em;
 }

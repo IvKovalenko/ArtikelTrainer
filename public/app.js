@@ -9,7 +9,7 @@
   const MASTER_RATIO = 0.95;   // доля выученных слов уровня, чтобы открыть следующий
 
   // --- состояние ---
-  let WORDS = [];             // [{word, article, level, gloss?}]
+  let WORDS = [];             // [{word, article, level, gloss?, ru?}]
   let progress = {};          // { ключ: {correct, wrong, seen} }
   let current = null;         // текущее слово
   let lastKey = null;         // чтобы не повторять то же слово подряд
@@ -225,6 +225,8 @@
       el.hint.textContent = correctLabel();
       el.hint.className = "hint wrong";
     }
+    // перевод показываем только после ответа (у гомографов значение видно и до)
+    if (el.gloss && current.ru) el.gloss.textContent = "(" + current.ru + ")";
 
     lastKey = keyOf(current);
     saveLocal(); scheduleSync(); updateStats();

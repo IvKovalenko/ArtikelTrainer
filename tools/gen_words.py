@@ -13,6 +13,10 @@ import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
+# Русские переводы слов: {немецкое слово: перевод}. Отдельный модуль, чтобы
+# не раздувать этот файл. Слова без перевода просто останутся без поля "ru".
+from translations import TRANSLATIONS
+
 # der = мужской, die = женский, das = средний
 DATA = {
     "A1": {
@@ -560,6 +564,7 @@ def build():
     out = []
     seen = set()          # ключ = (слово, значение) — гомографы не конфликтуют
     dupes = []
+    missing = []          # слова без русского перевода
 
     def add(word, article, level, gloss=None):
         key = (word, gloss or "")
@@ -570,6 +575,12 @@ def build():
         entry = {"word": word, "article": article, "level": level}
         if gloss:
             entry["gloss"] = gloss
+        # перевод: у гомографов — их значение (gloss), у остальных — из словаря
+        ru = gloss if gloss else TRANSLATIONS.get(word)
+        if ru:
+            entry["ru"] = ru
+        else:
+            missing.append(word)
         out.append(entry)
 
     for level in LEVEL_ORDER:
@@ -581,11 +592,11 @@ def build():
     for word in PLURAL_WORDS:
         add(word, "Plural", "A1")
 
-    return out, dupes
+    return out, dupes, missing
 
 
 def main():
-    words, dupes = build()
+    words, dupes, missing = build()
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     dest = os.path.join(root, "public", "words.json")
     os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -596,11 +607,15 @@ def main():
     per_level = {lvl: 0 for lvl in LEVEL_ORDER}
     for w in words:
         per_level[w["level"]] += 1
+    translated = sum(1 for w in words if w.get("ru"))
     print(f"Записано {len(words)} слов в {dest}")
     for lvl in LEVEL_ORDER:
         print(f"  {lvl}: {per_level[lvl]}")
+    print(f"С переводом: {translated} / {len(words)}")
     if dupes:
         print(f"Пропущены дубликаты: {sorted(set(dupes))}")
+    if missing:
+        print(f"Без перевода ({len(missing)}): {sorted(set(missing))}")
 
 
 if __name__ == "__main__":
