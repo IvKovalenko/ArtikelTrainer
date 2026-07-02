@@ -285,7 +285,7 @@
     for (const r of rows) {
       const tr = document.createElement("tr");
       const cells = [
-        [r.word, ""], [r.correct, "num"], [r.wrong, "num"], [r.seen, "num"],
+        [r.word, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
       for (const [val, cls] of cells) {
         const td = document.createElement("td");

@@ -256,6 +256,8 @@ body {
 .stats-table td:first-child { word-break: break-word; }   /* длинные слова переносим */
 .stats-table th.num,
 .stats-table td.num { text-align: right; white-space: nowrap; }
+.stats-table .ok  { color: var(--green); }   /* колонка верных — зелёная, как ✓ на главной */
+.stats-table .bad { color: var(--red); }     /* колонка ошибок — красная, как ✕ на главной */
 .stats-table thead th {
   position: sticky;
   top: 0;
