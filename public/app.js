@@ -368,6 +368,18 @@
     location.replace("/login.html");
   });
 
+  $("btn-delete-account").addEventListener("click", async () => {
+    if (!confirm("Удалить аккаунт и все данные без возможности восстановления?")) return;
+    if (!confirm("Точно удалить? Это действие необратимо.")) return;
+    try {
+      const r = await fetch("/api/auth/delete", { method: "POST", headers: authHeaders() });
+      if (!r.ok && r.status !== 401) { flash("Не удалось удалить аккаунт", true); return; }
+    } catch { flash("Ошибка сети", true); return; }
+    localStorage.removeItem(LS_TOKEN);
+    localStorage.removeItem(LS_PROGRESS);
+    location.replace("/login.html");
+  });
+
   function flash(msg, isError) {
     el.dialogMsg.textContent = msg;
     el.dialogMsg.style.color = isError ? "var(--red)" : "var(--green)";

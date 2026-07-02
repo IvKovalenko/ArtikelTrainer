@@ -2,13 +2,17 @@
  * POST /api/auth/register  { email, password }
  * Создаёт пользователя, заводит пустой прогресс, выдаёт JWT (в теле и в cookie).
  */
-import { hashPassword, signToken, sessionCookie, json, TTL } from "../../_lib/auth.js";
+import { hashPassword, signToken, sessionCookie, json, TTL, rateLimit, clientIp } from "../../_lib/auth.js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
   if (!env.JWT_SECRET) return json({ error: "JWT_SECRET is not set" }, 500);
+
+  // не более 5 регистраций с одного IP за час
+  const rl = await rateLimit(env, "register:" + clientIp(request), 5, 60 * 60 * 1000);
+  if (!rl.ok) return json({ error: "rate-limited", retryAfter: rl.retryAfter }, 429, { "Retry-After": String(rl.retryAfter) });
 
   let body;
   try { body = await request.json(); } catch { return json({ error: "invalid JSON" }, 400); }

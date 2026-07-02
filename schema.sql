@@ -16,3 +16,10 @@ CREATE TABLE IF NOT EXISTS progress (
   data       TEXT NOT NULL DEFAULT '{}',
   updated_at INTEGER NOT NULL
 );
+
+-- Счётчики попыток для rate limiting (ключ = "<scope>:<ip>", напр. "login:1.2.3.4").
+CREATE TABLE IF NOT EXISTS auth_attempts (
+  key      TEXT PRIMARY KEY,
+  count    INTEGER NOT NULL,
+  reset_at INTEGER NOT NULL     -- unix ms, когда окно обнуляется
+);

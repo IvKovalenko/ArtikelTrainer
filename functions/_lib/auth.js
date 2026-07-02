@@ -129,6 +129,33 @@ export function clearCookie(request) {
   return `${COOKIE}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0` + (secure ? "; Secure" : "");
 }
 
+// ---------- rate limiting (фиксированное окно, счётчик в D1) ----------
+// Возвращает { ok } либо { ok:false, retryAfter } (секунды до сброса окна).
+export async function rateLimit(env, key, limit, windowMs) {
+  if (!env.DB) return { ok: true }; // без БД не ограничиваем (локальная подстраховка)
+  const now = Date.now();
+  const row = await env.DB.prepare("SELECT count, reset_at FROM auth_attempts WHERE key = ?").bind(key).first();
+
+  if (!row || now > row.reset_at) {
+    const resetAt = now + windowMs;
+    await env.DB.prepare(
+      "INSERT INTO auth_attempts (key, count, reset_at) VALUES (?, 1, ?) " +
+      "ON CONFLICT(key) DO UPDATE SET count = 1, reset_at = excluded.reset_at"
+    ).bind(key, resetAt).run();
+    return { ok: true };
+  }
+  if (row.count >= limit) {
+    return { ok: false, retryAfter: Math.ceil((row.reset_at - now) / 1000) };
+  }
+  await env.DB.prepare("UPDATE auth_attempts SET count = count + 1 WHERE key = ?").bind(key).run();
+  return { ok: true };
+}
+
+// IP клиента (за прокси Cloudflare)
+export function clientIp(request) {
+  return request.headers.get("CF-Connecting-IP") || "unknown";
+}
+
 // ---------- ответы ----------
 export function json(body, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(body), {

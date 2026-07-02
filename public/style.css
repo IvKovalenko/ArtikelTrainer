@@ -275,6 +275,10 @@ body {
 .json-data { margin-top: 4px; }
 .json-data summary { cursor: pointer; color: var(--ink); font-size: 14px; margin-bottom: 10px; }
 
+.danger-zone { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px; text-align: right; }
+.linkbtn.danger { color: var(--red); }
+.linkbtn.danger:hover { color: var(--red); text-decoration: underline; }
+
 #data-json {
   width: 100%;
   height: 260px;

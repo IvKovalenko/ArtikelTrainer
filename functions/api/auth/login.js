@@ -2,11 +2,15 @@
  * POST /api/auth/login  { email, password }
  * Проверяет пароль, выдаёт JWT (в теле и в cookie).
  */
-import { verifyPassword, signToken, sessionCookie, json, TTL } from "../../_lib/auth.js";
+import { verifyPassword, signToken, sessionCookie, json, TTL, rateLimit, clientIp } from "../../_lib/auth.js";
 
 export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
   if (!env.JWT_SECRET) return json({ error: "JWT_SECRET is not set" }, 500);
+
+  // не более 10 попыток входа с одного IP за 15 минут
+  const rl = await rateLimit(env, "login:" + clientIp(request), 10, 15 * 60 * 1000);
+  if (!rl.ok) return json({ error: "rate-limited", retryAfter: rl.retryAfter }, 429, { "Retry-After": String(rl.retryAfter) });
 
   let body;
   try { body = await request.json(); } catch { return json({ error: "invalid JSON" }, 400); }

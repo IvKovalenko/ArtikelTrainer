@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex">
+<title>Удаление аккаунта — Тренажёр артиклей</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
+    --line: #dcdcdc; --line-hover: #bdbdbd; --green: #2f9e44; --red: #e03131; --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex; align-items: center; justify-content: center;
+    padding: 22px calc(22px + env(safe-area-inset-left)) calc(22px + env(safe-area-inset-bottom));
+  }
+  .box { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
+  h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+  .sub { margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+  input {
+    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: var(--ink);
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  input:focus { outline: none; border-color: var(--line-hover); }
+  button.danger {
+    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: #fff;
+    background: var(--red); border: none; border-radius: var(--radius); cursor: pointer;
+    transition: opacity .12s ease;
+  }
+  button.danger:hover { opacity: .88; }
+  button.danger:disabled { opacity: .5; cursor: default; }
+  .msg { min-height: 20px; font-size: 14px; color: var(--red); }
+  .msg.ok { color: var(--green); }
+  a { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <form class="box" id="form" autocomplete="on">
+    <h1>Удаление аккаунта</h1>
+    <p class="sub">Введите email и пароль, чтобы навсегда удалить аккаунт и всю статистику.
+      Действие необратимо.</p>
+    <input id="email" type="email" name="email" autocomplete="email" placeholder="Email" aria-label="Email" required>
+    <input id="pw" type="password" name="password" autocomplete="current-password" placeholder="Пароль" aria-label="Пароль" required>
+    <button type="submit" class="danger" id="submit">Удалить аккаунт навсегда</button>
+    <div class="msg" id="msg"></div>
+    <a href="/">Вернуться в приложение</a>
+  </form>
+</main>
+<script>
+  const form = document.getElementById("form");
+  const email = document.getElementById("email");
+  const pw = document.getElementById("pw");
+  const msg = document.getElementById("msg");
+  const submit = document.getElementById("submit");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!confirm("Точно удалить аккаунт и все данные? Это необратимо.")) return;
+    msg.className = "msg"; msg.textContent = "";
+    submit.disabled = true;
+    try {
+      const login = await fetch("/api/auth/login", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: email.value.trim(), password: pw.value }),
+      });
+      const ld = await login.json().catch(() => ({}));
+      if (!login.ok || !ld.token) {
+        msg.textContent = login.status === 429
+          ? "Слишком много попыток. Подождите немного."
+          : "Неверный email или пароль.";
+        submit.disabled = false; return;
+      }
+      const del = await fetch("/api/auth/delete", {
+        method: "POST", headers: { "Authorization": "Bearer " + ld.token },
+      });
+      if (del.ok) {
+        try { localStorage.removeItem("auth-token"); localStorage.removeItem("article-progress"); } catch {}
+        msg.className = "msg ok";
+        msg.textContent = "Аккаунт удалён.";
+        form.querySelectorAll("input, button[type=submit]").forEach((n) => (n.disabled = true));
+      } else {
+        msg.textContent = "Не удалось удалить аккаунт. Попробуйте позже.";
+        submit.disabled = false;
+      }
+    } catch {
+      msg.textContent = "Ошибка сети";
+      submit.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
