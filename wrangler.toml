@@ -17,3 +17,15 @@ id = "54b4bdc0259a4e049a8d5fba0d5d815b"
 # здесь — задать через:  npx wrangler pages secret put SITE_PASSWORD
 # Пока секрет не задан, сайт открыт (защита выключена). Для локальной разработки
 # пароль берётся из файла .dev.vars.
+
+# D1 (SQL) для многопользовательской версии: таблицы users/progress (см. schema.sql).
+# 1) Создай базу:        npx wrangler d1 create artikel
+# 2) Вставь выданный database_id ниже.
+# 3) Применить схему:    npx wrangler d1 execute artikel --remote --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "artikel"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# Секрет для подписи JWT — задать через: npx wrangler pages secret put JWT_SECRET
+# Локально берётся из .dev.vars (JWT_SECRET=...).
