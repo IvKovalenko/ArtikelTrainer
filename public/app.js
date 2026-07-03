@@ -23,6 +23,9 @@
 
   // ключ прогресса: гомографы (одно слово, разное значение) учитываются раздельно
   const keyOf = (w) => (w.gloss ? `${w.word} (${w.gloss})` : w.word);
+  // перевод слова по языку интерфейса: русский — только при русском интерфейсе,
+  // иначе (en и de) — английский; у гомографов это и есть их значение
+  const trOf = (w) => (I18N.getLang() === "ru" ? (w.ru || w.en) : (w.en || w.ru)) || "";
 
   // --- DOM ---
   const $ = (id) => document.getElementById(id);
@@ -194,7 +197,7 @@
     el.word.textContent = current.word;
     const unlocked = unlockedLevels();          // достигнутый уровень = самый высокий открытый
     el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
-    if (el.gloss) el.gloss.textContent = current.gloss ? "(" + current.gloss + ")" : "";
+    if (el.gloss) el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : "";
     el.hint.textContent = "";
     el.hint.className = "hint";
     for (const b of answerButtons) {
@@ -205,7 +208,7 @@
 
   function correctLabel() {
     if (current.article === "Plural") return I18N.t("correctPlural", { word: current.word });
-    const gl = current.gloss ? ` (${current.gloss})` : "";   // значение гомографа — пока по-русски (этап 2)
+    const gl = current.gloss ? ` (${trOf(current)})` : "";   // значение гомографа — на языке интерфейса
     return I18N.t("correctArticle", { article: current.article, word: current.word, gloss: gl });
   }
 
@@ -233,7 +236,7 @@
       el.hint.className = "hint wrong";
     }
     // перевод показываем только после ответа (у гомографов значение видно и до)
-    if (el.gloss && current.ru) el.gloss.textContent = "(" + current.ru + ")";
+    if (el.gloss && trOf(current)) el.gloss.textContent = "(" + trOf(current) + ")";
 
     lastKey = keyOf(current);
     saveLocal(); scheduleSync(); updateStats();
@@ -419,6 +422,12 @@
     setSync(syncState);
     if (answered && current) {
       el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();
+    }
+    // перевод текущего слова: после ответа — всегда, до ответа — только у гомографов
+    if (current && el.gloss) {
+      const tr = trOf(current);
+      if (answered && tr) el.gloss.textContent = "(" + tr + ")";
+      else el.gloss.textContent = current.gloss ? "(" + tr + ")" : "";
     }
     if (!el.overlay.hidden) {
       el.dataSummary.textContent =

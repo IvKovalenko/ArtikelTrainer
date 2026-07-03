@@ -13,9 +13,10 @@ import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
-# Русские переводы слов: {немецкое слово: перевод}. Отдельный модуль, чтобы
-# не раздувать этот файл. Слова без перевода просто останутся без поля "ru".
+# Переводы слов: {немецкое слово: перевод}. Отдельные модули, чтобы
+# не раздувать этот файл. Слова без перевода останутся без поля "ru"/"en".
 from translations import TRANSLATIONS
+from translations_en import TRANSLATIONS_EN
 
 # der = мужской, die = женский, das = средний
 DATA = {
@@ -559,31 +560,32 @@ DEUTSCHBLOG_VOCAB_ADD = {
     },
 }
 
-# Гомографы: одно написание — разный род по значению. Показываются со значением
-# по-русски, каждое значение — отдельная карточка. (Уровень A1.)
+# Гомографы: одно написание — разный род по значению, каждое значение — отдельная
+# карточка. gloss — русское значение (и часть ключа прогресса, НЕ менять!),
+# en — то же значение по-английски (для интерфейса en/de). (Уровень A1.)
 HOMOGRAPHS = [
-    {"word": "See", "article": "der", "gloss": "озеро"},
-    {"word": "See", "article": "die", "gloss": "море"},
-    {"word": "Band", "article": "der", "gloss": "том"},
-    {"word": "Band", "article": "die", "gloss": "группа"},
-    {"word": "Band", "article": "das", "gloss": "лента"},
-    {"word": "Teil", "article": "der", "gloss": "часть"},
-    {"word": "Teil", "article": "das", "gloss": "деталь"},
+    {"word": "See", "article": "der", "gloss": "озеро", "en": "lake"},
+    {"word": "See", "article": "die", "gloss": "море", "en": "sea"},
+    {"word": "Band", "article": "der", "gloss": "том", "en": "volume"},
+    {"word": "Band", "article": "die", "gloss": "группа", "en": "band"},
+    {"word": "Band", "article": "das", "gloss": "лента", "en": "ribbon"},
+    {"word": "Teil", "article": "der", "gloss": "часть", "en": "part"},
+    {"word": "Teil", "article": "das", "gloss": "деталь", "en": "component"},
     # субстантивированные прилагательные: род зависит от пола человека
-    {"word": "Erwachsene", "article": "der", "gloss": "муж."},
-    {"word": "Erwachsene", "article": "die", "gloss": "жен."},
-    {"word": "Jugendliche", "article": "der", "gloss": "муж."},
-    {"word": "Jugendliche", "article": "die", "gloss": "жен."},
-    {"word": "Angestellte", "article": "der", "gloss": "муж."},
-    {"word": "Angestellte", "article": "die", "gloss": "жен."},
-    {"word": "Bekannte", "article": "der", "gloss": "муж.", "level": "A2"},
-    {"word": "Bekannte", "article": "die", "gloss": "жен.", "level": "A2"},
+    {"word": "Erwachsene", "article": "der", "gloss": "муж.", "en": "male"},
+    {"word": "Erwachsene", "article": "die", "gloss": "жен.", "en": "female"},
+    {"word": "Jugendliche", "article": "der", "gloss": "муж.", "en": "male"},
+    {"word": "Jugendliche", "article": "die", "gloss": "жен.", "en": "female"},
+    {"word": "Angestellte", "article": "der", "gloss": "муж.", "en": "male"},
+    {"word": "Angestellte", "article": "die", "gloss": "жен.", "en": "female"},
+    {"word": "Bekannte", "article": "der", "gloss": "муж.", "en": "male", "level": "A2"},
+    {"word": "Bekannte", "article": "die", "gloss": "жен.", "en": "female", "level": "A2"},
     # B2 (из B2_Vocabs_All.csv)
-    {"word": "Kiefer", "article": "der", "gloss": "челюсть", "level": "B2"},
-    {"word": "Kiefer", "article": "die", "gloss": "сосна", "level": "B2"},
+    {"word": "Kiefer", "article": "der", "gloss": "челюсть", "en": "jaw", "level": "B2"},
+    {"word": "Kiefer", "article": "die", "gloss": "сосна", "en": "pine", "level": "B2"},
     # Plastik: die Plastik (скульптура) / das Plastik (пластик как материал)
-    {"word": "Plastik", "article": "die", "gloss": "скульптура", "level": "B2"},
-    {"word": "Plastik", "article": "das", "gloss": "пластик", "level": "B1"},
+    {"word": "Plastik", "article": "die", "gloss": "скульптура", "en": "sculpture", "level": "B2"},
+    {"word": "Plastik", "article": "das", "gloss": "пластик", "en": "plastic", "level": "B1"},
 ]
 
 # Существительные только во множественном числе — правильный ответ «Plural».
@@ -620,8 +622,9 @@ def build():
     seen = set()          # ключ = (слово, значение) — гомографы не конфликтуют
     dupes = []
     missing = []          # слова без русского перевода
+    missing_en = []       # слова без английского перевода
 
-    def add(word, article, level, gloss=None):
+    def add(word, article, level, gloss=None, en_gloss=None):
         key = (word, gloss or "")
         if key in seen:
             dupes.append(word if not gloss else f"{word} ({gloss})")
@@ -630,12 +633,17 @@ def build():
         entry = {"word": word, "article": article, "level": level}
         if gloss:
             entry["gloss"] = gloss
-        # перевод: у гомографов — их значение (gloss), у остальных — из словаря
+        # перевод: у гомографов — их значение (gloss / en), у остальных — из словарей
         ru = gloss if gloss else TRANSLATIONS.get(word)
         if ru:
             entry["ru"] = ru
         else:
             missing.append(word)
+        en = en_gloss if gloss else TRANSLATIONS_EN.get(word)
+        if en:
+            entry["en"] = en
+        else:
+            missing_en.append(word)
         out.append(entry)
 
     for level in LEVEL_ORDER:
@@ -643,15 +651,15 @@ def build():
             for word in DATA[level][article]:
                 add(word, article, level)
     for h in HOMOGRAPHS:
-        add(h["word"], h["article"], h.get("level", "A1"), h["gloss"])
+        add(h["word"], h["article"], h.get("level", "A1"), h["gloss"], h.get("en"))
     for word, level in PLURAL_WORDS:
         add(word, "Plural", level)
 
-    return out, dupes, missing
+    return out, dupes, missing, missing_en
 
 
 def main():
-    words, dupes, missing = build()
+    words, dupes, missing, missing_en = build()
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     dest = os.path.join(root, "public", "words.json")
     os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -663,14 +671,18 @@ def main():
     for w in words:
         per_level[w["level"]] += 1
     translated = sum(1 for w in words if w.get("ru"))
+    translated_en = sum(1 for w in words if w.get("en"))
     print(f"Записано {len(words)} слов в {dest}")
     for lvl in LEVEL_ORDER:
         print(f"  {lvl}: {per_level[lvl]}")
-    print(f"С переводом: {translated} / {len(words)}")
+    print(f"С переводом (ru): {translated} / {len(words)}")
+    print(f"С переводом (en): {translated_en} / {len(words)}")
     if dupes:
         print(f"Пропущены дубликаты: {sorted(set(dupes))}")
     if missing:
-        print(f"Без перевода ({len(missing)}): {sorted(set(missing))}")
+        print(f"Без перевода ru ({len(missing)}): {sorted(set(missing))}")
+    if missing_en:
+        print(f"Без перевода en ({len(missing_en)}): {sorted(set(missing_en))}")
 
 
 if __name__ == "__main__":
