@@ -128,7 +128,7 @@ body {
 
 .answer {
   flex: 1 1 130px;
-  padding: 18px 10px;
+  padding: 14px 10px;
   font-size: 17px;
   font-family: inherit;
   color: var(--ink);
@@ -138,6 +138,38 @@ body {
   cursor: pointer;
   transition: background .12s ease, border-color .12s ease, color .12s ease;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ---- подсказки клавиатуры ---- */
+kbd.key,
+.keys-hint kbd {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+  background: var(--hover);
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;          /* «объём» клавиши */
+  border-radius: 5px;
+  padding: 3px 6px 2px;
+}
+
+.keys-hint {
+  margin-top: -22px;                 /* прижать к кнопкам (gap карточки большой) */
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+.keys-hint kbd { margin: 0 2px; }
+
+/* на тачскринах физической клавиатуры нет — подсказки не показываем */
+@media (hover: none), (pointer: coarse) {
+  kbd.key, .keys-hint { display: none; }
+  .answer { padding: 18px 10px; }
 }
 
 .answer:hover:not(:disabled) {
