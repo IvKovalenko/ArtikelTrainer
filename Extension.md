@@ -18,3 +18,6 @@ npm run deploy
 Как разблокировать регистрацию для остальных
 Правильный путь — свой домен (~$10/год, можно купить в Cloudflare → Domain Registration): Resend → Domains → Add Domain → добавить выданные SPF/DKIM-записи в DNS → npx wrangler pages secret put MAIL_FROM со значением Artikeltrainer <noreply@твой-домен.de>. После этого письма пойдут на любые адреса.
 Временный костыль для тестов: удалить секрет (npx wrangler pages secret delete RESEND_API_KEY) — тогда сработает dev-фолбэк, регистрация будет сразу подтверждённой без писем, как раньше. Вернёшь ключ — верификация снова включится.
+
+Если во время тестов снова упрёшься в лимит, сбрасывай счётчик входов сам одной командой:
+npx wrangler d1 execute artikel --remote --command "DELETE FROM auth_attempts;"
