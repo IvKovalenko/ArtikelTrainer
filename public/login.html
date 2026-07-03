@@ -38,9 +38,10 @@
   }
   button.primary:hover { opacity: .88; }
   button.primary:disabled { opacity: .5; cursor: default; }
-  .toggle { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; padding: 4px; }
+  .toggle { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; padding: 4px; text-decoration: none; display: inline-block; }
   .toggle:hover { color: var(--ink); text-decoration: underline; }
   .msg { min-height: 20px; font-size: 14px; color: var(--red); }
+  .msg.ok { color: var(--green); }
   .foot { text-align: center; margin-top: 16px; font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .foot a { color: var(--muted); }
 </style>
@@ -58,6 +59,8 @@
     <button type="submit" class="primary" id="submit" data-i18n="signIn">Войти</button>
     <div class="msg" id="msg"></div>
     <button type="button" class="toggle" id="toggle" data-i18n="toggleToRegister">Нет аккаунта? Зарегистрироваться</button>
+    <button type="button" class="toggle" id="resend" hidden data-i18n="resendVerification">Отправить письмо ещё раз</button>
+    <a class="toggle" id="forgot" href="/reset-password.html" data-i18n="forgotPassword">Забыли пароль?</a>
   </form>
   <div class="foot">
     <span class="lang-switch" id="lang-switch"></span>
@@ -73,8 +76,14 @@
   const msg = document.getElementById("msg");
   const submit = document.getElementById("submit");
   const toggle = document.getElementById("toggle");
+  const resend = document.getElementById("resend");
   const modeSub = document.getElementById("mode-sub");
   let mode = "login"; // login | register
+
+  function setMsg(text, ok) {
+    msg.textContent = text;
+    msg.className = "msg" + (ok ? " ok" : "");
+  }
 
   // Тексты, зависящие от режима (их i18n сам не перерисует — здесь двуязычная логика).
   function renderMode() {
@@ -90,7 +99,7 @@
       toggle.textContent = I18N.t("toggleToLogin");
     }
   }
-  function setMode(m) { mode = m; renderMode(); msg.textContent = ""; }
+  function setMode(m) { mode = m; renderMode(); setMsg(""); resend.hidden = true; }
   toggle.addEventListener("click", () => setMode(mode === "login" ? "register" : "login"));
 
   const ERRORS = {
@@ -100,11 +109,15 @@
     "invalid-credentials": "errInvalidCredentials",
     "missing-credentials": "errMissingCredentials",
     "rate-limited": "errRateLimited",
+    "email-not-verified": "errNotVerified",
+    "mail-failed": "errMailFailed",
+    "mail-not-configured": "errMailFailed",
   };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    msg.textContent = "";
+    setMsg("");
+    resend.hidden = true;
     submit.disabled = true;
     try {
       const r = await fetch("/api/auth/" + mode, {
@@ -119,13 +132,43 @@
         location.replace("/");
         return;
       }
-      msg.textContent = I18N.t(ERRORS[data.error] || "errGeneric");
+      if (r.ok && data.verify) {                // регистрация ок → ждём подтверждения почты
+        setMode("login");
+        setMsg(I18N.t("registerCheckEmail"), true);
+        submit.disabled = false;
+        return;
+      }
+      setMsg(I18N.t(ERRORS[data.error] || "errGeneric"));
+      if (data.error === "email-not-verified") resend.hidden = false;
     } catch {
-      msg.textContent = I18N.t("errNetwork");
+      setMsg(I18N.t("errNetwork"));
     }
     submit.disabled = false;
     pw.select();
   });
+
+  // повторная отправка письма подтверждения (кнопка видна после errNotVerified)
+  resend.addEventListener("click", async () => {
+    resend.disabled = true;
+    try {
+      const r = await fetch("/api/auth/resend", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: email.value.trim() }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (r.ok) { setMsg(I18N.t("verifySent"), true); resend.hidden = true; }
+      else setMsg(I18N.t(ERRORS[data.error] || "errGeneric"));
+    } catch {
+      setMsg(I18N.t("errNetwork"));
+    }
+    resend.disabled = false;
+  });
+
+  // возврат по ссылке из письма: /login.html?verified=1|0
+  const verified = new URLSearchParams(location.search).get("verified");
+  if (verified === "1") setMsg(I18N.t("verifiedOk"), true);
+  else if (verified === "0") setMsg(I18N.t("errVerifyInvalid"));
 
   // Язык: переключатель + перерисовка текстов режима при смене (статику обновляет сам i18n).
   I18N.mountSwitcher(document.getElementById("lang-switch"));

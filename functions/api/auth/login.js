@@ -19,12 +19,15 @@ export async function onRequestPost({ request, env }) {
   const password = String(body?.password || "");
   if (!email || !password) return json({ error: "missing-credentials" }, 400);
 
-  const user = await env.DB.prepare("SELECT id, email, password_hash FROM users WHERE email = ?")
+  const user = await env.DB.prepare("SELECT id, email, password_hash, email_verified FROM users WHERE email = ?")
     .bind(email).first();
 
   // одинаковый ответ для «нет пользователя» и «неверный пароль» — не раскрываем, есть ли email
   const ok = user && (await verifyPassword(password, user.password_hash));
   if (!ok) return json({ error: "invalid-credentials" }, 401);
+
+  // пароль верен, но email не подтверждён → вход закрыт (письмо можно выслать повторно)
+  if (!user.email_verified) return json({ error: "email-not-verified" }, 403);
 
   const token = await signToken({ sub: user.id, email: user.email }, env.JWT_SECRET);
   return json({ ok: true, token, user: { id: user.id, email: user.email } }, 200, {

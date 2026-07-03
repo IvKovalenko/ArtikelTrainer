@@ -23,3 +23,12 @@ CREATE TABLE IF NOT EXISTS auth_attempts (
   count    INTEGER NOT NULL,
   reset_at INTEGER NOT NULL     -- unix ms, когда окно обнуляется
 );
+
+-- Одноразовые email-токены: сброс пароля и подтверждение адреса.
+-- Хранится только SHA-256 от токена (сам токен — в ссылке письма).
+CREATE TABLE IF NOT EXISTS email_tokens (
+  token_hash TEXT PRIMARY KEY,
+  user_id    TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  purpose    TEXT NOT NULL,      -- 'reset' | 'verify'
+  expires_at INTEGER NOT NULL    -- unix ms
+);
