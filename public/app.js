@@ -16,6 +16,7 @@
   let answered = false;       // на текущее слово уже ответили → ждём «дальше»
   let advTimer = null;
   let syncTimer = null;
+  let lastPush = 0;           // время последней отправки на сервер (для троттлинга)
   let dirty = false;
   let syncState = "";         // текущее состояние синхронизации (для перерисовки подписи при смене языка)
   let accountEmail = null;    // email из /api/auth/me (для перерисовки при смене языка)
@@ -104,17 +105,46 @@
     const key = { ok: "syncOk", pending: "syncPending", offline: "syncOffline" }[state];
     el.sync.title = key ? I18N.t(key) : "";
   }
+  // Синхронизация с D1 — троттлинг: источник правды localStorage (пишется
+  // мгновенно), на сервер — не чаще раза в SYNC_INTERVAL, но гарантированно,
+  // пока есть несохранённое. Хвост сессии уходит через flushSync при
+  // сворачивании/закрытии страницы, поэтому длинный интервал безопасен.
+  const SYNC_INTERVAL = 30_000;
   function scheduleSync() {
     dirty = true;
     setSync("pending");
-    clearTimeout(syncTimer);
-    syncTimer = setTimeout(pushSync, 1200);
+    if (syncTimer !== null) return;   // отправка уже запланирована — едем с ней
+    const delay = Math.max(0, SYNC_INTERVAL - (Date.now() - lastPush));
+    syncTimer = setTimeout(pushSync, delay);
   }
   async function pushSync() {
+    clearTimeout(syncTimer);
+    syncTimer = null;
     if (!dirty) return;
+    lastPush = Date.now();
     try { await apiPost(progress); dirty = false; setSync("ok"); }
     catch { setSync("offline"); }
   }
+  // уход со страницы (закрытие вкладки, сворачивание PWA, переключение
+  // приложения) — дослать остаток немедленно; keepalive переживает выгрузку
+  function flushSync() {
+    if (!dirty) return;
+    clearTimeout(syncTimer);
+    syncTimer = null;
+    lastPush = Date.now();
+    dirty = false;
+    fetch(API, {
+      method: "POST",
+      headers: { "content-type": "application/json", ...authHeaders() },
+      body: JSON.stringify(progress),
+      keepalive: true,
+    }).then((r) => { if (!r.ok) throw new Error(); setSync("ok"); })
+      .catch(() => { dirty = true; setSync("offline"); });
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flushSync();
+  });
+  window.addEventListener("pagehide", flushSync);
   window.addEventListener("online", () => { if (dirty) pushSync(); });
 
   // ---------- прогресс по уровням ----------
