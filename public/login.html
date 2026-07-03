@@ -114,6 +114,12 @@
     "mail-failed": "errMailFailed",
     "mail-not-configured": "errMailFailed",
   };
+  // при rate-limit сервер присылает retryAfter (сек) — показываем, сколько ждать
+  function errText(data) {
+    if (data.error === "rate-limited" && data.retryAfter)
+      return I18N.t("errRateLimitedFor", { min: Math.ceil(data.retryAfter / 60) });
+    return I18N.t(ERRORS[data.error] || "errGeneric");
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -139,7 +145,7 @@
         submit.disabled = false;
         return;
       }
-      setMsg(I18N.t(ERRORS[data.error] || "errGeneric"));
+      setMsg(errText(data));
       if (data.error === "email-not-verified") resend.hidden = false;
     } catch {
       setMsg(I18N.t("errNetwork"));
@@ -159,7 +165,7 @@
       });
       const data = await r.json().catch(() => ({}));
       if (r.ok) { setMsg(I18N.t("verifySent"), true); resend.hidden = true; }
-      else setMsg(I18N.t(ERRORS[data.error] || "errGeneric"));
+      else setMsg(errText(data));
     } catch {
       setMsg(I18N.t("errNetwork"));
     }

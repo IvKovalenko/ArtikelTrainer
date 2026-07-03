@@ -87,6 +87,7 @@
       errInvalidCredentials: "Falsche E-Mail oder falsches Passwort",
       errMissingCredentials: "E-Mail und Passwort eingeben",
       errRateLimited: "Zu viele Versuche. Bitte kurz warten und erneut versuchen.",
+      errRateLimitedFor: "Zu viele Versuche. Bitte in {min} Min. erneut versuchen.",
       errGeneric: "Fehler. Bitte erneut versuchen.",
       errNetwork: "Netzwerkfehler",
       // --- подтверждение email ---
@@ -182,6 +183,7 @@
       errInvalidCredentials: "Wrong email or password",
       errMissingCredentials: "Enter email and password",
       errRateLimited: "Too many attempts. Wait a moment and try again.",
+      errRateLimitedFor: "Too many attempts. Try again in {min} min.",
       errGeneric: "Error. Please try again.",
       errNetwork: "Network error",
       errNotVerified: "Please confirm your email first — we sent you a link.",
@@ -274,6 +276,7 @@
       errInvalidCredentials: "Неверный email или пароль",
       errMissingCredentials: "Заполните email и пароль",
       errRateLimited: "Слишком много попыток. Подождите немного и попробуйте снова.",
+      errRateLimitedFor: "Слишком много попыток. Попробуй снова через {min} мин.",
       errGeneric: "Ошибка. Попробуйте ещё раз.",
       errNetwork: "Ошибка сети",
       errNotVerified: "Сначала подтверди email — мы отправили тебе ссылку.",
