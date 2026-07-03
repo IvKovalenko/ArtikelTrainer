@@ -1,12 +1,12 @@
 # Памятка для публикации в Google Play
 
-Замени `<ДОМЕН>` на реальный адрес сайта (например `artikel-trainer.pages.dev`
-или свой домен). Перед публикацией впиши контактный email в `public/privacy.html`.
+Основной домен: **artikeldrill.com** (Cloudflare Pages, старый адрес
+`artikel-trainer.pages.dev` продолжает работать). Почта — Resend с этого же домена.
 
 ## Обязательные ссылки
 
-- **Политика конфиденциальности:** `https://artikel-trainer.pages.dev/privacy.html`
-- **Удаление аккаунта (веб):** `https://artikel-trainer.pages.dev/delete-account.html`
+- **Политика конфиденциальности:** `https://artikeldrill.com/privacy.html`
+- **Удаление аккаунта (веб):** `https://artikeldrill.com/delete-account.html`
 
 ## Data Safety (форма в Play Console)
 
