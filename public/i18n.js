@@ -21,10 +21,10 @@
     de: {
       language: "Sprache",
       // --- заголовки страниц ---
-      docTitle: "Artikeltrainer",
-      docTitleLogin: "Anmelden — Artikeltrainer",
-      docTitleDelete: "Konto löschen — Artikeltrainer",
-      appTitle: "Artikeltrainer",
+      docTitle: "Artikel Drill",
+      docTitleLogin: "Anmelden — Artikel Drill",
+      docTitleDelete: "Konto löschen — Artikel Drill",
+      appTitle: "Artikel Drill",
       // --- главный экран ---
       level: "Niveau: {level}",
       wordsPassed: "Wörter geübt",
@@ -99,7 +99,7 @@
       errVerifyInvalid: "Der Bestätigungslink ist ungültig oder abgelaufen.",
       errMailFailed: "E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.",
       // --- сброс пароля ---
-      docTitleReset: "Passwort zurücksetzen — Artikeltrainer",
+      docTitleReset: "Passwort zurücksetzen — Artikel Drill",
       resetTitle: "Passwort zurücksetzen",
       forgotPassword: "Passwort vergessen?",
       resetRequestSub: "Gib deine E-Mail ein — wir senden dir einen Link zum Zurücksetzen.",
@@ -123,10 +123,10 @@
 
     en: {
       language: "Language",
-      docTitle: "Article Trainer",
-      docTitleLogin: "Sign in — Article Trainer",
-      docTitleDelete: "Delete account — Article Trainer",
-      appTitle: "Article Trainer",
+      docTitle: "Artikel Drill",
+      docTitleLogin: "Sign in — Artikel Drill",
+      docTitleDelete: "Delete account — Artikel Drill",
+      appTitle: "Artikel Drill",
       level: "Level: {level}",
       wordsPassed: "words practiced",
       progressTitle: "Progress to the next level",
@@ -193,7 +193,7 @@
       verifiedOk: "Email confirmed — you can sign in now.",
       errVerifyInvalid: "The confirmation link is invalid or has expired.",
       errMailFailed: "Couldn't send the email. Please try again later.",
-      docTitleReset: "Reset password — Article Trainer",
+      docTitleReset: "Reset password — Artikel Drill",
       resetTitle: "Reset password",
       forgotPassword: "Forgot password?",
       resetRequestSub: "Enter your email and we'll send you a reset link.",
@@ -216,10 +216,10 @@
 
     ru: {
       language: "Язык",
-      docTitle: "Тренажёр артиклей",
-      docTitleLogin: "Вход — Тренажёр артиклей",
-      docTitleDelete: "Удаление аккаунта — Тренажёр артиклей",
-      appTitle: "Тренажёр артиклей",
+      docTitle: "Artikel Drill",
+      docTitleLogin: "Вход — Artikel Drill",
+      docTitleDelete: "Удаление аккаунта — Artikel Drill",
+      appTitle: "Artikel Drill",
       level: "Уровень: {level}",
       wordsPassed: "слов пройдено",
       progressTitle: "Прогресс до следующего уровня",
@@ -286,7 +286,7 @@
       verifiedOk: "Email подтверждён — теперь можно войти.",
       errVerifyInvalid: "Ссылка подтверждения недействительна или устарела.",
       errMailFailed: "Не удалось отправить письмо. Попробуй позже.",
-      docTitleReset: "Сброс пароля — Тренажёр артиклей",
+      docTitleReset: "Сброс пароля — Artikel Drill",
       resetTitle: "Сброс пароля",
       forgotPassword: "Забыли пароль?",
       resetRequestSub: "Введи email — пришлём ссылку для сброса пароля.",

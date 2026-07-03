@@ -1,4 +1,4 @@
-# Тренажёр артиклей (der/die/das)
+# Artikel Drill — тренажёр артиклей (der/die/das)
 
 **https://artikeldrill.com**
 

@@ -2,7 +2,7 @@
  * Письма (Resend) + одноразовые email-токены (таблица email_tokens в D1).
  *
  * env.RESEND_API_KEY — API-ключ Resend (secret).
- * env.MAIL_FROM      — отправитель, напр. "Artikeltrainer <noreply@mydomain.de>".
+ * env.MAIL_FROM      — отправитель, напр. "Artikel Drill <noreply@mydomain.de>".
  *                      Без своего домена остаётся onboarding@resend.dev — Resend
  *                      тогда доставляет письма ТОЛЬКО владельцу аккаунта Resend.
  *
@@ -14,7 +14,7 @@ export function mailConfigured(env) {
 }
 
 export async function sendEmail(env, { to, subject, html }) {
-  const from = env.MAIL_FROM || "Artikeltrainer <onboarding@resend.dev>";
+  const from = env.MAIL_FROM || "Artikel Drill <onboarding@resend.dev>";
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "content-type": "application/json", Authorization: "Bearer " + env.RESEND_API_KEY },
@@ -70,9 +70,9 @@ function layout(title, lines, link, button) {
 
 export function resetEmail(link) {
   return {
-    subject: "Passwort zurücksetzen / Reset password — Artikeltrainer",
+    subject: "Passwort zurücksetzen / Reset password — Artikel Drill",
     html: layout(
-      "Artikeltrainer",
+      "Artikel Drill",
       [
         "Setze dein Passwort über den Button unten zurück. Der Link ist 30 Minuten gültig. Wenn du das nicht angefordert hast, ignoriere diese E-Mail.",
         "Reset your password using the button below. The link is valid for 30 minutes. If you didn't request this, ignore this email.",
@@ -86,9 +86,9 @@ export function resetEmail(link) {
 
 export function verifyEmail(link) {
   return {
-    subject: "E-Mail bestätigen / Confirm your email — Artikeltrainer",
+    subject: "E-Mail bestätigen / Confirm your email — Artikel Drill",
     html: layout(
-      "Artikeltrainer",
+      "Artikel Drill",
       [
         "Bestätige deine E-Mail-Adresse über den Button unten, um dein Konto zu aktivieren. Der Link ist 48 Stunden gültig.",
         "Confirm your email address using the button below to activate your account. The link is valid for 48 hours.",

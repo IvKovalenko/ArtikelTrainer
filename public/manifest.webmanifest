@@ -1,6 +1,6 @@
 {
-  "name": "Тренажёр артиклей",
-  "short_name": "Артикли",
+  "name": "Artikel Drill",
+  "short_name": "Artikel Drill",
   "description": "Тренировка немецких артиклей der/die/das, уровни A1–C2",
   "lang": "ru",
   "start_url": "./",
