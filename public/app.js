@@ -256,6 +256,7 @@
   answerButtons.forEach((b) => {
     b.addEventListener("click", (e) => {
       e.stopPropagation();                 // чтобы клик-ответ не пролистнул слово
+      b.blur();                            // иначе Пробел/Enter «кликнут» кнопку снова
       if (!answered) answer(b.dataset.article);
     });
   });
@@ -266,7 +267,9 @@
   });
   document.addEventListener("keydown", (e) => {
     if (dialogOpen()) return; // не мешаем при открытом окне
-    if (answered && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); next(); return; }
+    // Пробел/Enter листают всегда: после ответа — дальше, до ответа — скип
+    // без записи в статистику (слово ещё выпадет — вес не изменился)
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); next(); return; }
     if (answered) return;
     const map = { "1": "der", "2": "die", "3": "das", "4": "Plural" };
     if (map[e.key]) { e.preventDefault(); answer(map[e.key]); }
