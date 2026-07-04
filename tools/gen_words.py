@@ -465,7 +465,7 @@ B2_VOCAB_ADD = {
         "Erforschung", "Ernennung", "Erpressung", "Ersparnis", "Erstattung",
         "Erwerbsminderung", "Essenausgabe", "Fachrichtung", "Fahne",
         "Fahrradkolonne", "Fehlbildung", "Fehlinformation", "Finanzierung",
-        "Fledermaus", "Flitterwoche", "Forschung", "Gebietsabtretung",
+        "Fledermaus", "Forschung", "Gebietsabtretung",
         "Gebrauchstauglichkeit", "Gebrechlichkeit", "Gehbehinderung", "Geheimhaltung",
         "Gemengelage", "Gerechtigkeit", "Geschwulst", "Gesprächsrunde",
         "Glasfaserleitung", "Gleichstellung", "Gliederung", "Grenzabgabe",
@@ -560,6 +560,55 @@ DEUTSCHBLOG_VOCAB_ADD = {
     },
 }
 
+# Анатомия человека — общеупотребительные слова, которых не хватало (2026-07).
+# Базовые части тела (Kopf, Auge, Bauch, Magen, Herz …) уже есть в списках выше;
+# здесь — дополнение. Уровни: чем употребительнее, тем ниже. Глубокая анатомия
+# (Milz, Zwerchfell, Speiseröhre …) сознательно не включена.
+ANATOMY_VOCAB_ADD = {
+    "A2": {
+        "der": [],
+        "die": ["Zunge", "Brust"],
+        "das": ["Blut"],
+    },
+    "B1": {
+        "der": ["Nacken", "Ellenbogen", "Zeh", "Oberschenkel", "Po", "Bauchnabel"],
+        "die": ["Wange", "Stirn", "Faust", "Handfläche", "Ferse", "Hüfte", "Wade",
+                "Lunge", "Leber", "Rippe"],
+        "das": ["Kinn", "Handgelenk", "Gehirn", "Gelenk"],
+    },
+    "B2": {
+        "der": ["Darm", "Nerv"],
+        "die": ["Niere", "Sehne", "Wirbelsäule", "Pupille", "Schläfe", "Achsel",
+                "Kehle", "Taille"],
+        "das": ["Skelett", "Augenlid", "Organ"],
+    },
+}
+
+# Животные — общеупотребительные виды, которых не хватало (2026-07).
+# Базовые (Hund, Katze, Vogel, Fisch, Pferd, Kuh, Schwein, Bär, Löwe, Elefant,
+# Affe, Giraffe, Krokodil, Biene, Mücke …) уже есть в списках выше; здесь —
+# дополнение. Уровни в духе существующей раскладки: ферма и известные дикие —
+# B1 (как Kuh, Bär), более редкие — B2 (как Fledermaus).
+ANIMALS_VOCAB_ADD = {
+    "B1": {
+        "der": ["Hahn", "Hamster", "Fuchs", "Wolf", "Igel", "Hirsch", "Tiger",
+                "Frosch", "Adler", "Papagei", "Schwan", "Hai", "Wal", "Delfin",
+                "Wurm", "Käfer"],
+        "die": ["Ziege", "Gans", "Ratte", "Schlange", "Taube", "Eule", "Spinne",
+                "Fliege", "Wespe", "Ameise", "Schnecke"],
+        "das": ["Huhn", "Kaninchen", "Eichhörnchen", "Reh", "Wildschwein",
+                "Zebra", "Kamel"],
+    },
+    "B2": {
+        "der": ["Stier", "Truthahn", "Dachs", "Biber", "Maulwurf", "Rabe",
+                "Storch", "Spatz", "Falke", "Pfau", "Krebs", "Marienkäfer"],
+        "die": ["Eidechse", "Kröte", "Krähe", "Möwe", "Robbe", "Qualle",
+                "Hummel", "Libelle", "Raupe", "Zecke"],
+        "das": ["Meerschweinchen", "Kalb", "Lamm", "Känguru", "Nashorn",
+                "Nilpferd"],
+    },
+}
+
 # Гомографы: одно написание — разный род по значению, каждое значение — отдельная
 # карточка. gloss — русское значение (и часть ключа прогресса, НЕ менять!),
 # en — то же значение по-английски (для интерфейса en/de). (Уровень A1.)
@@ -599,6 +648,14 @@ PLURAL_WORDS = [
     ("Ferien", "A1"), ("Leute", "A1"),
     ("Pommes frites", "A2"),
     ("Personalien", "B1"),
+    # pluralia tantum, добавлены 2026-07 (проверены по Duden: Pluralwort)
+    ("Kosten", "B1"), ("Daten", "B1"), ("Schulden", "B1"), ("Nebenkosten", "B1"),
+    ("Finanzen", "B2"), ("Trümmer", "B2"), ("Masern", "B2"), ("Windpocken", "B2"),
+    ("Klamotten", "B2"), ("Gliedmaßen", "B2"),
+    ("Flitterwochen", "B2"),   # перенесено из die Flitterwoche — ед. числа нет
+    ("Einkünfte", "C1"), ("Spesen", "C1"), ("Tropen", "C1"), ("Gezeiten", "C1"),
+    ("Memoiren", "C1"), ("Textilien", "C1"), ("Wehen", "C1"), ("Devisen", "C1"),
+    ("Habseligkeiten", "C2"), ("Machenschaften", "C2"), ("Annalen", "C2"),
 ]
 
 LEVEL_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"]
@@ -615,6 +672,12 @@ def build():
     for article, words in B2_VOCAB_ADD.items():
         DATA["B2"][article].extend(words)
     for level, arts in DEUTSCHBLOG_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in ANATOMY_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in ANIMALS_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
 
