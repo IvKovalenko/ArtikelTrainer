@@ -39,6 +39,7 @@
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
     authOverlay: $("auth-overlay"), authTitle: $("auth-title"),
     btnSignin: $("btn-signin"), btnRegister: $("btn-register"), btnAccount: $("btn-account"),
+    registerNudge: $("register-nudge"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
     statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
@@ -405,6 +406,7 @@
     el.btnRegister.hidden = authed;
     el.btnAccount.hidden = !authed;
     el.sync.hidden = !authed;
+    el.registerNudge.hidden = authed;   // призыв под полоской прогресса — только анониму
   }
   let authForm = null;   // форма создаётся при первом открытии модалки
   const authTitleFor = (m) => I18N.t(m === "register" ? "registerSub" : "loginSub");
@@ -437,6 +439,7 @@
   el.accountOverlay.addEventListener("click", (e) => { if (e.target === el.accountOverlay) closeAccount(); });
   el.btnSignin.addEventListener("click", () => openAuth("login"));
   el.btnRegister.addEventListener("click", () => openAuth("register"));
+  $("btn-nudge-register").addEventListener("click", () => openAuth("register"));
   $("btn-auth-close").addEventListener("click", closeAuth);
   el.authOverlay.addEventListener("click", (e) => { if (e.target === el.authOverlay) closeAuth(); });
 
