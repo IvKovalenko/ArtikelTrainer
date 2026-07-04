@@ -37,6 +37,8 @@
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
+    authOverlay: $("auth-overlay"), authTitle: $("auth-title"),
+    btnSignin: $("btn-signin"), btnRegister: $("btn-register"), btnAccount: $("btn-account"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
     statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
@@ -76,15 +78,22 @@
   }
 
   // ---------- сеть ----------
+  const hasToken = () => !!localStorage.getItem(LS_TOKEN);
   function authHeaders() {
     const t = localStorage.getItem(LS_TOKEN);
     return t ? { Authorization: "Bearer " + t } : {};
   }
-  // сессия истекла / токен невалиден → чистим токен и уводим на страницу входа
-  function toLogin() { localStorage.removeItem(LS_TOKEN); location.replace("/login.html"); }
+  // сессия истекла / токен невалиден → продолжаем анонимно (прогресс — локально)
+  function dropAuth() {
+    localStorage.removeItem(LS_TOKEN);
+    clearTimeout(syncTimer);
+    syncTimer = null;
+    dirty = false;
+    renderAuthUI();
+  }
   async function apiGet() {
     const r = await fetch(API, { headers: authHeaders(), cache: "no-store" });
-    if (r.status === 401) { toLogin(); throw new Error("GET 401"); }
+    if (r.status === 401) { dropAuth(); throw new Error("GET 401"); }
     if (!r.ok) throw new Error("GET " + r.status);
     return r.json();
   }
@@ -94,7 +103,7 @@
       headers: { "content-type": "application/json", ...authHeaders() },
       body: JSON.stringify(data),
     });
-    if (r.status === 401) { toLogin(); throw new Error("POST 401"); }
+    if (r.status === 401) { dropAuth(); throw new Error("POST 401"); }
     if (!r.ok) throw new Error("POST " + r.status);
     return r.json();
   }
@@ -111,6 +120,7 @@
   // сворачивании/закрытии страницы, поэтому длинный интервал безопасен.
   const SYNC_INTERVAL = 30_000;
   function scheduleSync() {
+    if (!hasToken()) return;          // аноним: прогресс живёт только в localStorage
     dirty = true;
     setSync("pending");
     if (syncTimer !== null) return;   // отправка уже запланирована — едем с ней
@@ -120,7 +130,7 @@
   async function pushSync() {
     clearTimeout(syncTimer);
     syncTimer = null;
-    if (!dirty) return;
+    if (!dirty || !hasToken()) return;
     lastPush = Date.now();
     try { await apiPost(progress); dirty = false; setSync("ok"); }
     catch { setSync("offline"); }
@@ -128,7 +138,7 @@
   // уход со страницы (закрытие вкладки, сворачивание PWA, переключение
   // приложения) — дослать остаток немедленно; keepalive переживает выгрузку
   function flushSync() {
-    if (!dirty) return;
+    if (!dirty || !hasToken()) return;
     clearTimeout(syncTimer);
     syncTimer = null;
     lastPush = Date.now();
@@ -291,7 +301,7 @@
     });
   });
   // после ответа — клик в области карточки листает дальше
-  const dialogOpen = () => !el.overlay.hidden || !el.accountOverlay.hidden;
+  const dialogOpen = () => !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden;
   document.querySelector(".card").addEventListener("click", () => {
     if (answered && !dialogOpen()) next();
   });
@@ -377,12 +387,47 @@
     el.accountMsg.textContent = "";
     el.accountInfo.textContent = "…";
     fetch("/api/auth/me", { headers: authHeaders(), cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => {
+        if (r.status === 401) { closeAccount(); dropAuth(); return null; }  // токен протух → анонимный режим
+        return r.ok ? r.json() : null;
+      })
       .then((d) => { accountEmail = d && d.user ? d.user.email : null; renderAccountInfo(); })
       .catch(() => { accountEmail = null; renderAccountInfo(); });
     el.accountOverlay.hidden = false;
   }
   function closeAccount() { el.accountOverlay.hidden = true; }
+
+  // ---------- вход / регистрация ----------
+  // футер: аноним видит «Войти в аккаунт» и «Зарегистрироваться», вошедший — «Аккаунт» и точку синка
+  function renderAuthUI() {
+    const authed = hasToken();
+    el.btnSignin.hidden = authed;
+    el.btnRegister.hidden = authed;
+    el.btnAccount.hidden = !authed;
+    el.sync.hidden = !authed;
+  }
+  let authForm = null;   // форма создаётся при первом открытии модалки
+  const authTitleFor = (m) => I18N.t(m === "register" ? "registerSub" : "loginSub");
+  function openAuth(mode) {
+    // телефон (узкий экран) — отдельная страница, десктоп — модальное окно
+    if (matchMedia("(max-width: 600px)").matches) {
+      location.href = "/login.html" + (mode === "register" ? "?mode=register" : "");
+      return;
+    }
+    if (!authForm) {
+      authForm = AuthForm.mount($("auth-form"), {
+        mode,
+        showSub: false,                        // роль подзаголовка играет заголовок окна
+        onSuccess: () => location.reload(),    // boot() сольёт локальный прогресс с серверным
+        onModeChange: (m) => { el.authTitle.textContent = authTitleFor(m); },
+      });
+    } else {
+      authForm.setMode(mode);                  // заодно чистит сообщение прошлой попытки
+    }
+    el.authOverlay.hidden = false;
+    authForm.focus();
+  }
+  function closeAuth() { el.authOverlay.hidden = true; }
 
   $("btn-data").addEventListener("click", openData);
   $("btn-close").addEventListener("click", closeData);
@@ -390,6 +435,10 @@
   $("btn-account").addEventListener("click", openAccount);
   $("btn-account-close").addEventListener("click", closeAccount);
   el.accountOverlay.addEventListener("click", (e) => { if (e.target === el.accountOverlay) closeAccount(); });
+  el.btnSignin.addEventListener("click", () => openAuth("login"));
+  el.btnRegister.addEventListener("click", () => openAuth("register"));
+  $("btn-auth-close").addEventListener("click", closeAuth);
+  el.authOverlay.addEventListener("click", (e) => { if (e.target === el.authOverlay) closeAuth(); });
 
   $("btn-copy").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(el.dataJson.value); flash(I18N.t("copied")); }
@@ -419,7 +468,7 @@
     try { await fetch("/api/auth/logout", { method: "POST", headers: authHeaders() }); } catch {}
     localStorage.removeItem(LS_TOKEN);
     localStorage.removeItem(LS_PROGRESS);       // чтобы прогресс не «перетёк» к другому аккаунту
-    location.replace("/login.html");
+    location.reload();                          // остаёмся в приложении — анонимный режим с нуля
   });
 
   $("btn-delete-account").addEventListener("click", async () => {
@@ -431,7 +480,7 @@
     } catch { accountFlash(I18N.t("errNetwork"), true); return; }
     localStorage.removeItem(LS_TOKEN);
     localStorage.removeItem(LS_PROGRESS);
-    location.replace("/login.html");
+    location.reload();                          // аккаунта больше нет — продолжаем анонимно
   });
 
   function flash(msg, isError) {
@@ -467,13 +516,14 @@
         I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
+    if (!el.authOverlay.hidden && authForm) el.authTitle.textContent = authTitleFor(authForm.getMode());
   }
   I18N.mountSwitcher($("lang-switch"));
   I18N.onChange(refreshDynamicText);
 
   // ---------- старт ----------
   async function boot() {
-    if (!localStorage.getItem(LS_TOKEN)) { location.replace("/login.html"); return; } // нужен вход
+    renderAuthUI();                 // приложение доступно и без входа — прогресс локально
     try {
       WORDS = await fetch("words.json", { cache: "no-store" }).then((r) => r.json());
     } catch {
@@ -490,6 +540,8 @@
     progress = loadLocal();
     updateStats();
     next();                     // работаем сразу, офлайн-first
+
+    if (!hasToken()) return;    // аноним: без сервера, прогресс только на устройстве
 
     // затем подтягиваем сервер и мержим (не теряя локальные ответы)
     try {
