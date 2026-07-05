@@ -258,7 +258,7 @@ TRANSLATIONS_EN = {
     "Gewalt": "violence/power", "Gewerkschaft": "trade union", "Gewinn": "profit/win",
     "Gewinnspiel": "prize draw", "Gewissen": "conscience", "Gewissheit": "certainty",
     "Gewitter": "thunderstorm", "Gewohnheit": "habit", "Gift": "poison", "Gipfel": "summit",
-    "Giraffe": "giraffe", "Girokonto": "current account", "Gitarre": "guitar", "Glace": "ice cream (Swiss)",
+    "Giraffe": "giraffe", "Girokonto": "current account", "Gitarre": "guitar",
     "Glas": "glass", "Glasfaserleitung": "fibre-optic line",
     "Gleichgewicht": "balance", "Gleichnis": "parable", "Gleichstellung": "equality (of rights)",
     "Gleis": "track/platform", "Gliederung": "outline", "Glück": "luck/happiness",

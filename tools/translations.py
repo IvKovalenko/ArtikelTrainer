@@ -258,7 +258,7 @@ TRANSLATIONS = {
     "Gewalt": "насилие/власть", "Gewerkschaft": "профсоюз", "Gewinn": "прибыль/выигрыш",
     "Gewinnspiel": "розыгрыш", "Gewissen": "совесть", "Gewissheit": "уверенность",
     "Gewitter": "гроза", "Gewohnheit": "привычка", "Gift": "яд", "Gipfel": "вершина",
-    "Giraffe": "жираф", "Girokonto": "расчётный счёт", "Gitarre": "гитара", "Glace": "мороженое",
+    "Giraffe": "жираф", "Girokonto": "расчётный счёт", "Gitarre": "гитара",
     "Glas": "стекло/стакан", "Glasfaserleitung": "оптоволоконная линия", "Gleichgewicht": "равновесие",
     "Gleichnis": "притча", "Gleichstellung": "равноправие", "Gleis": "путь/платформа",
     "Gliederung": "структура", "Glück": "счастье", "Glückwunsch": "поздравление", "Gott": "бог",

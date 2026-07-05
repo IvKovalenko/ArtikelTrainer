@@ -330,7 +330,7 @@ GOETHE_B1_ADD = {
         "Frucht", "Fähre", "Galerie", "Gaststätte", "Gebrauchsanweisung",
         "Geburt", "Gemeinde", "Gemeinschaft", "Generation", "Gesamtschule",
         "Geschwindigkeit", "Beschränkung", "Gewalt", "Gewerkschaft", "Gewohnheit",
-        "Giraffe", "Glace", "Grafik", "Gratulation", "Griechin", "Gymnastik",
+        "Giraffe", "Grafik", "Gratulation", "Griechin", "Gymnastik",
         "Halbpension", "Haut", "Heldin", "Hitze", "Hochschule", "Hoffnung",
         "Hälfte", "Händlerin", "Höhe", "Hörerin", "Hütte", "Infektion",
         "Integration", "Intelligenz", "Jause", "Journalistin", "Kabine", "Kanne",
