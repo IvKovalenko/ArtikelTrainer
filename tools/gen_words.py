@@ -239,7 +239,7 @@ GOETHE_A2_ADD = {
         "Abitur", "Französisch", "Latein", "Sekretariat",
         "Blatt", "Café", "Ding", "Doppelzimmer", "Dorf",
         "E-Book", "Einkaufszentrum", "Einzelzimmer", "Erdgeschoss",
-        "Fest", "Festival", "Fieber",
+        "Festival (Fest)", "Fieber",
         "Gerät", "Gericht", "Geschirr", "Gewitter",
         "Hähnchen", "Hemd", "Interview",
         "Leben", "Licht", "Lied",
