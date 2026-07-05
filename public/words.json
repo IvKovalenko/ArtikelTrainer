@@ -532,7 +532,7 @@
 "en":"cake"
 },
 {
-"word":"Kugelschreiber",
+"word":"Kugelschreiber (Kuli)",
 "article":"der",
 "level":"A1",
 "ru":"шариковая ручка",
@@ -1407,7 +1407,7 @@
 "en":"blouse"
 },
 {
-"word":"Disco",
+"word":"Diskothek (Disco)",
 "article":"die",
 "level":"A1",
 "ru":"дискотека",
@@ -2919,7 +2919,7 @@
 "en":"calendar"
 },
 {
-"word":"Krimi",
+"word":"Kriminalroman (Krimi)",
 "article":"der",
 "level":"A2",
 "ru":"детектив",
@@ -5544,7 +5544,7 @@
 "en":"monkey"
 },
 {
-"word":"Akku",
+"word":"Akkumulator (Akku)",
 "article":"der",
 "level":"B1",
 "ru":"аккумулятор",
@@ -5964,13 +5964,6 @@
 "en":"franc"
 },
 {
-"word":"Friede",
-"article":"der",
-"level":"B1",
-"ru":"мир",
-"en":"peace"
-},
-{
 "word":"Führerausweis",
 "article":"der",
 "level":"B1",
@@ -6300,13 +6293,6 @@
 "en":"circle/district"
 },
 {
-"word":"Kuli",
-"article":"der",
-"level":"B1",
-"ru":"ручка",
-"en":"pen"
-},
-{
 "word":"Kunststoff",
 "article":"der",
 "level":"B1",
@@ -6398,7 +6384,7 @@
 "en":"litre"
 },
 {
-"word":"Lkw",
+"word":"Lastkraftwagen (Lkw)",
 "article":"der",
 "level":"B1",
 "ru":"грузовик",
@@ -6650,7 +6636,7 @@
 "en":"penguin"
 },
 {
-"word":"Pkw",
+"word":"Personenkraftwagen (Pkw)",
 "article":"der",
 "level":"B1",
 "ru":"легковой автомобиль",
@@ -8456,13 +8442,6 @@
 "en":"chip card"
 },
 {
-"word":"City",
-"article":"die",
-"level":"B1",
-"ru":"центр города",
-"en":"city centre"
-},
-{
 "word":"Couch",
 "article":"die",
 "level":"B1",
@@ -8503,13 +8482,6 @@
 "level":"B1",
 "ru":"средняя школа с дипломом",
 "en":"diploma middle school"
-},
-{
-"word":"Diskothek",
-"article":"die",
-"level":"B1",
-"ru":"дискотека",
-"en":"discotheque"
 },
 {
 "word":"Distanz",
@@ -8855,11 +8827,18 @@
 "en":"comprehensive school"
 },
 {
-"word":"Geschwindigkeitsbeschränkung",
+"word":"Geschwindigkeit",
 "article":"die",
 "level":"B1",
-"ru":"ограничение скорости",
-"en":"speed limit"
+"ru":"скорость",
+"en":"speed"
+},
+{
+"word":"Beschränkung",
+"article":"die",
+"level":"B1",
+"ru":"ограничение",
+"en":"limit"
 },
 {
 "word":"Gewalt",
@@ -10584,7 +10563,7 @@
 "en":"area code"
 },
 {
-"word":"WG",
+"word":"Wohngemeinschaft (WG)",
 "article":"die",
 "level":"B1",
 "ru":"совместное жильё",
@@ -11305,14 +11284,7 @@
 "en":"adventure"
 },
 {
-"word":"Abo",
-"article":"das",
-"level":"B1",
-"ru":"абонемент",
-"en":"subscription"
-},
-{
-"word":"Abonnement",
+"word":"Abonnement (Abo)",
 "article":"das",
 "level":"B1",
 "ru":"абонемент",
@@ -11620,18 +11592,18 @@
 "en":"licence plate/mark"
 },
 {
-"word":"Kfz",
+"word":"Kraftfahrzeug (Kfz)",
 "article":"das",
 "level":"B1",
 "ru":"автотранспортное средство",
 "en":"motor vehicle"
 },
 {
-"word":"Kilo",
+"word":"Kilogramm (Kilo)",
 "article":"das",
 "level":"B1",
-"ru":"кило",
-"en":"kilo"
+"ru":"килограмм",
+"en":"kilogram"
 },
 {
 "word":"Knie",
