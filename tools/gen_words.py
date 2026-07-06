@@ -146,7 +146,7 @@ GOETHE_A1_ADD = {
     "der": ["Anruf","Anrufbeantworter","Appetit","Artikel","Automat","Bahnsteig",
             "Basketball","Bleistift","Dank","Durst","Fahrplan","Familienname",
             "Fotoapparat","Fußball","Geburtstag","Glückwunsch","Gruß","Hals",
-            "Herr","Hunger","Junge","Kakao","Kiosk","Kuchen","Kugelschreiber",
+            "Herr","Hunger","Junge","Kakao","Kiosk","Kuchen","Kugelschreiber (Kuli)",
             "Kurs","Mantel","Marktplatz","Ohrring","Park","Pullover","Quatsch",
             "Radiergummi","Ring","Rucksack","Salat","Schmerz","Spaß","Spielplatz",
             "Sport","Strand","Unterricht","Vorname","Computer","Blog","CD-Player",
@@ -159,7 +159,7 @@ GOETHE_A1_ADD = {
             "Freitag","Samstag",
             # в документе перечислены без артикля, но род есть:
             "Cent","Karneval","Comic"],
-    "die": ["Achtung","Ahnung","Angst","Ärztin","Bluse","Disco","Eins",
+    "die": ["Achtung","Ahnung","Angst","Ärztin","Bluse","Diskothek (Disco)","Eins",
             "Entschuldigung","Fahrkarte","Geschichte","Hausaufgabe","Information",
             "Insel","Jacke","Kamera","Klasse","Klassenarbeit","Lust","Marmelade",
             "Ordnung","Pause","Pizza","Postkarte","Sache","Schokolade","Tante",
@@ -192,7 +192,7 @@ GOETHE_A2_ADD = {
         "Bescheid", "Buchstabe",
         "Chef", "Eingang", "Eintritt", "Empfänger",
         "Fan", "Feiertag", "Flohmarkt", "Flug", "Führerschein",
-        "Gast", "Hamburger", "Kalender", "Krimi",
+        "Gast", "Hamburger", "Kalender", "Kriminalroman (Krimi)",
         "Laden","Magen", "Motor", "Motorroller", "Müll", "Ort",
         "Pass", "Plan", "Raum", "Reifen", "Reiseführer", "Rock", "Rundgang",
         "Satz", "Schalter", "Schirm", "Schüler", "Service", "Ski",
@@ -239,7 +239,7 @@ GOETHE_A2_ADD = {
         "Abitur", "Französisch", "Latein", "Sekretariat",
         "Blatt", "Café", "Ding", "Doppelzimmer", "Dorf",
         "E-Book", "Einkaufszentrum", "Einzelzimmer", "Erdgeschoss",
-        "Fest", "Festival", "Fieber",
+        "Festival (Fest)", "Fieber",
         "Gerät", "Gericht", "Geschirr", "Gewitter",
         "Hähnchen", "Hemd", "Interview",
         "Leben", "Licht", "Lied",
@@ -261,7 +261,7 @@ GOETHE_A2_ADD = {
 #     Слова из A1/A2 не дублируются. Артикль — стандартный немецкий.
 GOETHE_B1_ADD = {
     "der": [
-        "Abfalleimer", "Abschied", "Abschnitt", "Absender", "Affe", "Akku",
+        "Abfalleimer", "Abschied", "Abschnitt", "Absender", "Affe", "Akkumulator (Akku)",
         "Alarm", "Alkohol", "Alltag", "Anbieter", "Anwalt", "Arbeiter",
         "Arbeitsplatz", "Atem", "Aufenthalt", "Ausländer", "Auszubildende",
         "Babysitter", "Bancomat", "Bart", "Bau", "Bauer", "Bauernhof", "Beamte",
@@ -272,22 +272,22 @@ GOETHE_B1_ADD = {
         "Einbrecher", "Einbruch", "Einfall", "Elefant", "Ersatz", "Europäer",
         "Experte", "Fachmann", "Faktor", "Familienstand", "Fasching", "Fauteuil",
         "Feierabend", "Fleck", "Fleischhauer", "Flur", "Fotograf", "Franken",
-        "Friede", "Führerausweis", "Gegensatz", "Gegenstand", "Gegner",
+        "Führerausweis", "Gegensatz", "Gegenstand", "Gegner",
         "Gehsteig", "Gott", "Grad", "Grieche", "Grill", "Hafen", "Halt",
         "Hammer", "Handel", "Hase", "Held", "Hersteller", "Hit", "Honig",
         "Humor", "Husten", "Hut", "Händler", "Hörer", "Hügel", "ICE",
         "Intensivkurs", "Jazz", "Journalist", "Kampf", "Kanal", "Kandidat",
         "Kanton", "Kasten", "Katalog", "Ketchup", "Killer", "Kilometer", "Klick",
         "Kloß", "Knochen", "Knopf", "Knödel", "Kommentar", "Kopierer", "Kranke",
-        "Krankenwagen", "Kreis", "Kuli", "Kunststoff", "Kursleiter", "Kuss",
+        "Krankenwagen", "Kreis", "Kunststoff", "Kursleiter", "Kuss",
         "Käufer", "König", "Laster", "Lautsprecher", "Lehrling", "Leiter",
-        "Lerner", "Leser", "Lift", "Liter", "Lkw", "Lohn", "Löwe", "Maler",
+        "Lerner", "Leser", "Lift", "Liter", "Lastkraftwagen (Lkw)", "Lohn", "Löwe", "Maler",
         "Manager", "Meister", "Meter", "Metzger", "Migrant", "Minister",
         "Moderator", "Monitor", "Muskel", "Mut", "Nachwuchs", "Nagel",
         "Nationalrat", "Nebel", "Neffe", "Nichtraucher", "Notausgang", "Notfall",
         "Notruf", "Ober", "Opa", "Ordner", "Ozean", "PC", "Paradeiser",
         "Passagier", "Patient", "Personenstand", "Pfeffer", "Pfleger", "Pilz",
-        "Pinguin", "Pkw", "Praktikant", "Professor", "Profi", "Profisportler",
+        "Pinguin", "Personenkraftwagen (Pkw)", "Praktikant", "Professor", "Profi", "Profisportler",
         "Protest", "Prozess", "Quadratmeter", "Radfahrer", "Rahm", "Rappen",
         "Rasen", "Rat", "Rechner", "Rekord", "Reporter", "Respekt", "Rest",
         "Richter", "Roman", "Saal", "Sack", "Salon", "Schein", "Schinken",
@@ -318,8 +318,8 @@ GOETHE_B1_ADD = {
         "Biene", "Breite", "Brieftasche", "Briefträgerin", "Broschüre",
         "Bundeskanzlerin", "Bundespräsidentin", "Bundesrätin", "Burg", "Büchse",
         "Bühne", "Bürgerin", "Bürgermeisterin", "Bürste", "Castingshow",
-        "Chance", "Chipkarte", "City", "Couch", "Darstellung", "Dauer", "Decke",
-        "Demokratie", "Diplommittelschule", "Diskothek", "Distanz", "Diät",
+        "Chance", "Chipkarte", "Couch", "Darstellung", "Dauer", "Decke",
+        "Demokratie", "Diplommittelschule", "Distanz", "Diät",
         "Dose", "Droge", "Drogerie", "Durchsage", "Einbahnstraße",
         "Einbrecherin", "Einführung", "Einleitung", "Einnahme", "Einrichtung",
         "Einzahlung", "Einzelheit", "Empfehlung", "Ente", "Entfernung",
@@ -329,8 +329,8 @@ GOETHE_B1_ADD = {
         "Fortsetzung", "Fremdsprache", "Freundschaft", "Frist", "Frisur",
         "Frucht", "Fähre", "Galerie", "Gaststätte", "Gebrauchsanweisung",
         "Geburt", "Gemeinde", "Gemeinschaft", "Generation", "Gesamtschule",
-        "Geschwindigkeitsbeschränkung", "Gewalt", "Gewerkschaft", "Gewohnheit",
-        "Giraffe", "Glace", "Grafik", "Gratulation", "Griechin", "Gymnastik",
+        "Geschwindigkeit", "Beschränkung", "Gewalt", "Gewerkschaft", "Gewohnheit",
+        "Giraffe", "Grafik", "Gratulation", "Griechin", "Gymnastik",
         "Halbpension", "Haut", "Heldin", "Hitze", "Hochschule", "Hoffnung",
         "Hälfte", "Händlerin", "Höhe", "Hörerin", "Hütte", "Infektion",
         "Integration", "Intelligenz", "Jause", "Journalistin", "Kabine", "Kanne",
@@ -374,7 +374,7 @@ GOETHE_B1_ADD = {
         "Verbrecherin", "Verliererin", "Vermieterin", "Vermietung", "Vermittlung",
         "Versammlung", "Versichertenkarte", "Vertreterin", "Vertretung",
         "Visitenkarte", "Volkshochschule", "Volksschule", "Vorbereitung",
-        "Vorfahrt", "Vorschrift", "Vorsicht", "Vorwahl", "WG", "Wanderung",
+        "Vorfahrt", "Vorschrift", "Vorsicht", "Vorwahl", "Wohngemeinschaft (WG)", "Wanderung",
         "Ware", "Weiterbildung", "Wettervorhersage", "Wirklichkeit", "Wirtin",
         "Wissenschaft", "Wissenschaftlerin", "Wolle", "Wunde", "Wärme",
         "Zahlung", "Zahnbürste", "Zahncreme", "Zange", "Zeichnung", "Zeile",
@@ -384,14 +384,14 @@ GOETHE_B1_ADD = {
         "Überstunde", "Überweisung", "Fundsache", "Zutat"
     ],
     "das": [
-        "Abenteuer", "Abo", "Abonnement", "Alphabet", "Altenheim", "Altersheim",
+        "Abenteuer", "Abonnement (Abo)", "Alphabet", "Altenheim", "Altersheim",
         "Amt", "Apartment", "Ballett", "Boot", "Buffet", "Bundesland", "Camp",
         "Couvert", "Detail", "Diplom", "E-Bike", "Einschreiben", "Faschierte",
         "Feuerzeug", "Forum", "Frühjahr", "Fundbüro", "Gasthaus", "Gebäck",
         "Gedicht", "Geheimnis", "Gift", "Girokonto", "Gramm", "Gras",
         "Hackfleisch", "Hallenbad", "Haustier", "Heim", "Heimweh", "Hilfsmittel",
         "Holz", "Insekt", "Inserat", "Institut", "Jahrtausend", "Kabel",
-        "Kaffeehaus", "Kapitel", "Kennzeichen", "Kfz", "Kilo", "Knie",
+        "Kaffeehaus", "Kapitel", "Kennzeichen", "Kraftfahrzeug (Kfz)", "Kilogramm (Kilo)", "Knie",
         "Konsulat", "Kostüm", "Kraftfahrzeug", "Kraftwerk", "Krokodil", "Lager",
         "Laufwerk", "Leder", "Lexikon", "Loch", "Lokal", "Magazin", "Material",
         "Meer", "Mehl", "Menü", "Metall", "Modell", "Modul", "Mountainbike",
@@ -465,7 +465,7 @@ B2_VOCAB_ADD = {
         "Erforschung", "Ernennung", "Erpressung", "Ersparnis", "Erstattung",
         "Erwerbsminderung", "Essenausgabe", "Fachrichtung", "Fahne",
         "Fahrradkolonne", "Fehlbildung", "Fehlinformation", "Finanzierung",
-        "Fledermaus", "Flitterwoche", "Forschung", "Gebietsabtretung",
+        "Fledermaus", "Forschung", "Gebietsabtretung",
         "Gebrauchstauglichkeit", "Gebrechlichkeit", "Gehbehinderung", "Geheimhaltung",
         "Gemengelage", "Gerechtigkeit", "Geschwulst", "Gesprächsrunde",
         "Glasfaserleitung", "Gleichstellung", "Gliederung", "Grenzabgabe",
@@ -581,7 +581,7 @@ WIKI_NEWS_ADD = {
             "Gewinner", "Großteil", "Gründer", "Helfer", "Hinblick", "Hintergrund",
             "Hubschrauber", "Höhepunkt", "Inhalt", "Innenminister", "Kader", "Kanzler",
             "Kapitän", "Kauf", "Kindergarten", "Klassenerhalt", "Klassiker", "Klimaschutz",
-            "Klimawandel", "Klub", "Konzern", "Krebs", "Krieg", "Kritiker", "Landkreis",
+            "Klimawandel", "Klub", "Konzern", "Krieg", "Kritiker", "Landkreis",
             "Landrat", "Landtag", "Lauf", "Lenker", "Mieter", "Ministerpräsident",
             "Mitarbeiter", "Mittelpunkt", "Mord", "Motorradfahrer", "Nachfolger",
             "Nationalspieler", "Neuzugang", "Nutzer", "Oberbürgermeister", "Ortsteil",
@@ -611,7 +611,7 @@ WIKI_NEWS_ADD = {
             "Ebene", "Einheit", "Einigung", "Einschätzung", "Energie", "Entlastung", "Erde",
             "Erhöhung", "Erinnerung", "Erklärung", "Erkrankung", "Erweiterung", "Eröffnung",
             "Explosion", "Fahrtrichtung", "Festnahme", "Form", "Fraktion", "Förderung",
-            "Gastronomie", "Gefahr", "Geschwindigkeit", "Größe", "Gründung", "Haft", "Halbzeit",
+            "Gastronomie", "Gefahr", "Größe", "Gründung", "Haft", "Halbzeit",
             "Herkunft", "Herstellung", "Hinsicht", "Identität", "Inflation", "Infrastruktur",
             "Initiative", "Innenstadt", "Invasion", "Jahreszeit", "Jury", "Justiz", "Kampagne",
             "Kategorie", "Kita", "Klage", "Klimakrise", "Koalition", "Kombination",
@@ -634,7 +634,7 @@ WIKI_NEWS_ADD = {
             "Wende", "Zentralbank", "Zerstörung", "Änderung", "Übernahme"
         ],
         "das": [
-            "Album", "Amtsgericht", "Areal", "Blut", "Budget", "Bundesamt", "Chaos", "Comeback",
+            "Album", "Amtsgericht", "Areal", "Budget", "Bundesamt", "Chaos", "Comeback",
             "Derby", "Design", "Duell", "Duo", "Dutzend", "Engagement", "Erdbeben", "Event",
             "Fahrzeug", "Fazit", "Feld", "Finale", "Gas", "Gebiet", "Geschäftsjahr", "Gewicht",
             "Gold", "Halbfinale", "Halbjahr", "Heimspiel", "Highlight", "Jahresende",
@@ -682,7 +682,7 @@ WIKI_NEWS_ADD = {
             "Meistertitel", "Migrationshintergrund", "Mindestlohn", "Missbrauch", "Mitspieler",
             "Mittelfeldspieler", "Modus", "Musikverein", "Mörder", "Nationalpark",
             "Nationalsozialismus", "Naturschutz", "Neustart", "Niederländer", "Niederschlag",
-            "Nordosten", "Nordwesten", "Norweger", "Notarzt", "Oberschenkel", "Parteichef",
+            "Nordosten", "Nordwesten", "Norweger", "Notarzt", "Parteichef",
             "Parteitag", "Pegel", "Pendler", "Personalmangel", "Pfosten", "Pilot", "Pokal",
             "Pole", "Polizeibericht", "Polizeieinsatz", "Pop", "Pressesprecher", "Priester",
             "Radweg", "Rapper", "Rassismus", "Rechtsanwalt", "Regierungsrat", "Reis", "Report",
@@ -724,7 +724,7 @@ WIKI_NEWS_ADD = {
             "Beschleunigung", "Beschreibung", "Besetzung", "Besonderheit", "Bestellung",
             "Bewährung", "Bewältigung", "Bezahlung", "Bezeichnung", "Bezirksliga", "Biografie",
             "Blockade", "Bombe", "Box", "Brandstiftung", "Brandursache", "Brauerei", "Bremse",
-            "Bronze", "Brust", "Bundesebene", "Bundesrepublik", "Bundestagswahl",
+            "Bronze", "Bundesebene", "Bundesrepublik", "Bundestagswahl",
             "Bushaltestelle", "Bürgerinitiative", "Bürgerschaft", "Bürokratie", "Challenge",
             "Cloud", "Coronapandemie", "Crew", "Delegation", "Demenz", "Diagnose", "Dimension",
             "Diskriminierung", "Disziplin", "Dividende", "Doku", "Dokumentation", "Drohne",
@@ -764,7 +764,7 @@ WIKI_NEWS_ADD = {
             "Reduktion", "Reduzierung", "Regie", "Regionalliga", "Regulierung", "Relevanz",
             "Rentenversicherung", "Reserve", "Resolution", "Resonanz", "Revision", "Revolution",
             "Rezession", "Route", "Räumung", "Rückrunde", "Rückseite", "Sachbeschädigung",
-            "Sammlung", "Schaffung", "Schale", "Schau", "Schiene", "Schlange", "Schlussphase",
+            "Sammlung", "Schaffung", "Schale", "Schau", "Schiene", "Schlussphase",
             "Schwäche", "Schätzung", "Schönheit", "Seele", "Senkung", "Sensation", "Session",
             "Sicherung", "Siedlung", "Silvesternacht", "Skepsis", "Sommerpause", "Souveränität",
             "Sparkasse", "Spende", "Sperre", "Sporthalle", "Staatsanwältin",
@@ -794,8 +794,7 @@ WIKI_NEWS_ADD = {
             "Einfamilienhaus", "Element", "Endspiel", "Ensemble", "Entertainment", "Erdgas",
             "Exil", "Experiment", "Familienunternehmen", "Fass", "Feedback", "Festzelt", "Fett",
             "Feuerwerk", "Finanzamt", "Finanzministerium", "Format", "Foul", "Foyer",
-            "Fragezeichen", "Freibad", "Fundament", "Gastspiel", "Gegentor", "Gehirn",
-            "Gehäuse", "Geschlecht", "Geschäftsmodell", "Geständnis", "Gesundheitsministerium",
+            "Fragezeichen", "Freibad", "Fundament", "Gastspiel", "Gegentor", "Gehäuse", "Geschlecht", "Geschäftsmodell", "Geständnis", "Gesundheitsministerium",
             "Gewerbe", "Gewerbegebiet", "Gewässer", "Grab", "Großaufgebot", "Grundgesetz",
             "Handwerk", "Heck", "Heimatland", "Hinspiel", "Hochwasser", "Homeoffice", "Image",
             "Immunsystem", "Innenministerium", "Journal", "Kabinett", "Kanzleramt", "Kapital",
@@ -845,7 +844,7 @@ WIKI_NEWS_ADD = {
             "Gesundheitszustand", "Gläubiger", "Goldpreis", "Großbrand", "Großraum", "Gärtner",
             "Haftrichter", "Hauch", "Hauptdarsteller", "Hauptgrund", "Hausarzt", "Hausbesitzer",
             "Hausmeister", "Heimweg", "Helikopter", "Herausforderer", "Herzinfarkt",
-            "Hingucker", "Hochdruck", "Horror", "Höchststand", "Idealfall", "Igel", "Imbiss",
+            "Hingucker", "Hochdruck", "Horror", "Höchststand", "Idealfall", "Imbiss",
             "Immobilienmarkt", "Impfstoff", "Impuls", "Innenraum", "Intendant",
             "Jahresvergleich", "Japaner", "Joint", "Junior", "Jurist", "Justizminister",
             "Kanadier", "Kapitalismus", "Kardinal", "Kaufpreis", "Kinderwagen", "Kinofilm",
@@ -916,7 +915,7 @@ WIKI_NEWS_ADD = {
             "Gruppierung", "Größenordnung", "Handelskammer", "Handvoll", "Harmonie",
             "Hauptfigur", "Hauptsache", "Hausnummer", "Hauswand", "Helligkeit",
             "Herangehensweise", "Hetze", "Hilfsorganisation", "Historie", "Hitzewelle",
-            "Homosexualität", "Härte", "Höchstgeschwindigkeit", "Hüfte", "Hüpfburg",
+            "Homosexualität", "Härte", "Höchstgeschwindigkeit", "Hüpfburg",
             "Ideologie", "Informatik", "Integrität", "Intensivstation", "Interpretation",
             "Ironie", "Isolation", "Jahreshauptversammlung", "Jahreshälfte", "Jugendarbeit",
             "Jugendfeuerwehr", "Kante", "Kanzlei", "Kaufkraft", "Kaution", "Kehrtwende",
@@ -947,7 +946,7 @@ WIKI_NEWS_ADD = {
             "Skulptur", "Sonde", "Sorte", "Spaltung", "Sparte", "Spielweise", "Sprengung",
             "Spurensicherung", "Staatsangehörigkeit", "Staatskanzlei", "Staatsoper",
             "Staatsregierung", "Stabilisierung", "Stadtbibliothek", "Stadträtin",
-            "Steuererklärung", "Stirn", "Stromerzeugung", "Suchaktion", "Säule",
+            "Steuererklärung", "Stromerzeugung", "Suchaktion", "Säule",
             "Tabellenführung", "Tabellenspitze", "Tagung", "Taufe", "Thematik", "Tournee",
             "Transaktion", "Trauerfeier", "Trendwende", "Trophäe", "Turnhalle", "Uhrzeit",
             "Unfallursache", "Uniklinik", "Unterbrechung", "Unterdrückung", "Unzufriedenheit",
@@ -961,7 +960,7 @@ WIKI_NEWS_ADD = {
             "Wette", "Wetterlage", "Wichtigkeit", "Wiederaufnahme", "Wiedereröffnung",
             "Wiederherstellung", "Wiederholung", "Wiedervereinigung", "Windenergie",
             "Wirksamkeit", "Wirtschaftspolitik", "Witterung", "Währung", "Zubereitung",
-            "Zugabe", "Zunge", "Zurückhaltung", "Zuverlässigkeit", "Überarbeitung",
+            "Zugabe", "Zurückhaltung", "Zuverlässigkeit", "Überarbeitung",
             "Überlegung", "Überzahl"
         ],
         "das": [
@@ -993,6 +992,55 @@ WIKI_NEWS_ADD = {
             "Weihnachtsfest", "Weingut", "Wohngebiet", "Wohngebäude", "Wohnmobil", "Zeitalter",
             "Zitat", "Zusammenleben", "Ökosystem", "Übergewicht"
         ],
+    },
+}
+
+# Анатомия человека — общеупотребительные слова, которых не хватало (2026-07).
+# Базовые части тела (Kopf, Auge, Bauch, Magen, Herz …) уже есть в списках выше;
+# здесь — дополнение. Уровни: чем употребительнее, тем ниже. Глубокая анатомия
+# (Milz, Zwerchfell, Speiseröhre …) сознательно не включена.
+ANATOMY_VOCAB_ADD = {
+    "A2": {
+        "der": [],
+        "die": ["Zunge", "Brust"],
+        "das": ["Blut"],
+    },
+    "B1": {
+        "der": ["Nacken", "Ellenbogen", "Zeh", "Oberschenkel", "Po", "Bauchnabel"],
+        "die": ["Wange", "Stirn", "Faust", "Handfläche", "Ferse", "Hüfte", "Wade",
+                "Lunge", "Leber", "Rippe"],
+        "das": ["Kinn", "Handgelenk", "Gehirn", "Gelenk"],
+    },
+    "B2": {
+        "der": ["Darm", "Nerv"],
+        "die": ["Niere", "Sehne", "Wirbelsäule", "Pupille", "Schläfe", "Achsel",
+                "Kehle", "Taille"],
+        "das": ["Skelett", "Augenlid", "Organ"],
+    },
+}
+
+# Животные — общеупотребительные виды, которых не хватало (2026-07).
+# Базовые (Hund, Katze, Vogel, Fisch, Pferd, Kuh, Schwein, Bär, Löwe, Elefant,
+# Affe, Giraffe, Krokodil, Biene, Mücke …) уже есть в списках выше; здесь —
+# дополнение. Уровни в духе существующей раскладки: ферма и известные дикие —
+# B1 (как Kuh, Bär), более редкие — B2 (как Fledermaus).
+ANIMALS_VOCAB_ADD = {
+    "B1": {
+        "der": ["Hahn", "Hamster", "Fuchs", "Wolf", "Igel", "Hirsch", "Tiger",
+                "Frosch", "Adler", "Papagei", "Schwan", "Hai", "Wal", "Delfin",
+                "Wurm", "Käfer"],
+        "die": ["Ziege", "Gans", "Ratte", "Schlange", "Taube", "Eule", "Spinne",
+                "Fliege", "Wespe", "Ameise", "Schnecke"],
+        "das": ["Huhn", "Kaninchen", "Eichhörnchen", "Reh", "Wildschwein",
+                "Zebra", "Kamel"],
+    },
+    "B2": {
+        "der": ["Stier", "Truthahn", "Dachs", "Biber", "Maulwurf", "Rabe",
+                "Storch", "Spatz", "Falke", "Pfau", "Krebs", "Marienkäfer"],
+        "die": ["Eidechse", "Kröte", "Krähe", "Möwe", "Robbe", "Qualle",
+                "Hummel", "Libelle", "Raupe", "Zecke"],
+        "das": ["Meerschweinchen", "Kalb", "Lamm", "Känguru", "Nashorn",
+                "Nilpferd"],
     },
 }
 
@@ -1035,8 +1083,15 @@ PLURAL_WORDS = [
     ("Ferien", "A1"), ("Leute", "A1"),
     ("Pommes frites", "A2"),
     ("Personalien", "B1"),
-    ("Kosten", "B2"), ("Daten", "B2"), ("Schulden", "B2"),
+    # pluralia tantum, добавлены 2026-07 (проверены по Duden: Pluralwort)
+    ("Kosten", "B1"), ("Daten", "B1"), ("Schulden", "B1"), ("Nebenkosten", "B1"),
+    ("Finanzen", "B2"), ("Trümmer", "B2"), ("Masern", "B2"), ("Windpocken", "B2"),
+    ("Klamotten", "B2"), ("Gliedmaßen", "B2"),
+    ("Flitterwochen", "B2"),   # перенесено из die Flitterwoche — ед. числа нет
+    ("Einkünfte", "C1"), ("Spesen", "C1"), ("Tropen", "C1"), ("Gezeiten", "C1"),
+    ("Memoiren", "C1"), ("Textilien", "C1"), ("Wehen", "C1"), ("Devisen", "C1"),
     ("Fachleute", "C1"),
+    ("Habseligkeiten", "C2"), ("Machenschaften", "C2"), ("Annalen", "C2"),
 ]
 
 LEVEL_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"]
@@ -1053,6 +1108,12 @@ def build():
     for article, words in B2_VOCAB_ADD.items():
         DATA["B2"][article].extend(words)
     for level, arts in DEUTSCHBLOG_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in ANATOMY_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in ANIMALS_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in WIKI_NEWS_ADD.items():

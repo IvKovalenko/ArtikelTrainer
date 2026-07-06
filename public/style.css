@@ -86,6 +86,25 @@ body {
   text-align: center;
 }
 
+/* призыв к регистрации под полоской прогресса — шрифт и цвет как у подписи */
+.register-nudge {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+.register-nudge button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.register-nudge button:hover { color: var(--ink); }
+
 /* ---- card ---- */
 .card {
   flex: 1;
@@ -227,6 +246,7 @@ kbd.key,
   cursor: pointer;
 }
 .linkbtn:hover { color: var(--ink); text-decoration: underline; }
+a.linkbtn { text-decoration: none; }
 
 .sync {
   width: 9px;
@@ -269,6 +289,10 @@ kbd.key,
 }
 .dialog h2 { margin: 0; font-size: 18px; }
 .dialog-sub { color: var(--muted); font-size: 13px; margin: 6px 0 12px; }
+
+/* ---- окно входа/регистрации ---- */
+.auth-dialog { max-width: 400px; }
+.auth-dialog .auth-form { margin-top: 14px; }
 
 /* ---- таблица статистики ---- */
 .table-wrap {
@@ -314,8 +338,7 @@ kbd.key,
 .json-data summary { cursor: pointer; color: var(--ink); font-size: 14px; margin-bottom: 10px; }
 
 .danger-zone { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.danger-zone a.linkbtn { text-decoration: none; }
+  display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
 
 .dialog-foot { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; text-align: right; }
 

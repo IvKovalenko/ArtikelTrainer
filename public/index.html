@@ -31,6 +31,12 @@
     <div class="progress-label" id="progress-label"></div>
   </div>
 
+  <!-- призыв к регистрации — только для анонимных -->
+  <div class="register-nudge" id="register-nudge" hidden>
+    <span data-i18n="registerNudge">Не хочешь потерять прогресс и хочешь продолжить на других устройствах?</span>
+    <button id="btn-nudge-register" data-i18n="registerNudgeCta">Зарегистрируйся!</button>
+  </div>
+
   <section class="card">
     <div class="word" id="word">…</div>
     <div class="gloss" id="gloss"></div>
@@ -46,10 +52,13 @@
 
   <footer class="bottom">
     <span class="lang-switch" id="lang-switch"></span>
-    <span class="sync" id="sync"></span>
+    <span class="sync" id="sync" hidden></span>
     <span class="links">
       <button class="linkbtn" id="btn-data" data-i18n="statistics">Статистика</button>
-      <button class="linkbtn" id="btn-account" data-i18n="account">Аккаунт</button>
+      <button class="linkbtn" id="btn-signin" data-i18n="signInLink" hidden>Войти в аккаунт</button>
+      <button class="linkbtn" id="btn-register" data-i18n="registerLink" hidden>Зарегистрироваться</button>
+      <button class="linkbtn" id="btn-account" data-i18n="account" hidden>Аккаунт</button>
+      <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener" data-i18n="privacyPolicy">Политика конфиденциальности</a>
     </span>
   </footer>
 </main>
@@ -101,12 +110,23 @@
     <button class="btn-block" id="btn-logout" data-i18n="logout">Выйти</button>
     <span class="dialog-msg" id="account-msg"></span>
     <div class="danger-zone">
-      <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener" data-i18n="privacyPolicy">Политика конфиденциальности</a>
       <button class="linkbtn danger" id="btn-delete-account" data-i18n="deleteAccount">Удалить аккаунт</button>
     </div>
   </div>
 </div>
 
+<!-- Окно входа/регистрации (десктоп; на узких экранах — страница login.html) -->
+<div class="overlay" id="auth-overlay" hidden>
+  <div class="dialog auth-dialog">
+    <div class="dialog-head">
+      <h2 id="auth-title"></h2>
+      <button class="linkbtn" id="btn-auth-close" data-i18n="close">Закрыть</button>
+    </div>
+    <div id="auth-form"></div>
+  </div>
+</div>
+
+<script src="auth-form.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

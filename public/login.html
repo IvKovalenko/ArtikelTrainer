@@ -8,6 +8,7 @@
 <title data-i18n="docTitleLogin">Вход — Artikel Drill</title>
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <script src="i18n.js"></script>
+<script src="auth-form.js"></script>
 <style>
   :root {
     --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
@@ -23,164 +24,42 @@
     display: flex; align-items: center; justify-content: center;
     padding: 22px calc(22px + env(safe-area-inset-left)) calc(22px + env(safe-area-inset-bottom));
   }
-  .box { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
-  h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
-  .sub { margin: 0 0 4px; color: var(--muted); font-size: 14px; }
-  input {
-    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: var(--ink);
-    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  }
-  input:focus { outline: none; border-color: var(--line-hover); }
-  button.primary {
-    width: 100%; padding: 14px; font: inherit; font-size: 17px; color: #fff;
-    background: var(--ink); border: none; border-radius: var(--radius); cursor: pointer;
-    transition: opacity .12s ease;
-  }
-  button.primary:hover { opacity: .88; }
-  button.primary:disabled { opacity: .5; cursor: default; }
-  .toggle { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; padding: 4px; text-decoration: none; display: inline-block; }
-  .toggle[hidden] { display: none; }   /* авторский display перебивал атрибут hidden */
-  .toggle:hover { color: var(--ink); text-decoration: underline; }
-  .msg { min-height: 20px; font-size: 14px; color: var(--red); }
-  .msg.ok { color: var(--green); }
+  .box { width: 100%; max-width: 360px; }
+  h1 { margin: 0 0 12px; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; text-align: center; }
   .foot { text-align: center; margin-top: 16px; font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .foot a { color: var(--muted); }
 </style>
 </head>
 <body>
 <main>
-  <form class="box" id="form" autocomplete="on">
+  <div class="box">
     <h1 data-i18n="appTitle">Artikel Drill</h1>
-    <p class="sub" id="mode-sub" data-i18n="loginSub">Вход в аккаунт</p>
-    <input id="email" type="email" name="email" autocomplete="email"
-           placeholder="Email" aria-label="Email" required autofocus>
-    <input id="pw" type="password" name="password" autocomplete="current-password"
-           placeholder="Пароль" aria-label="Пароль" required minlength="8"
-           data-i18n-placeholder="passwordPlaceholder" data-i18n-aria="passwordPlaceholder">
-    <button type="submit" class="primary" id="submit" data-i18n="signIn">Войти</button>
-    <div class="msg" id="msg"></div>
-    <button type="button" class="toggle" id="toggle" data-i18n="toggleToRegister">Нет аккаунта? Зарегистрироваться</button>
-    <button type="button" class="toggle" id="resend" hidden data-i18n="resendVerification">Отправить письмо ещё раз</button>
-    <a class="toggle" id="forgot" href="/reset-password.html" data-i18n="forgotPassword">Забыли пароль?</a>
-  </form>
+    <div id="auth-form"></div>
+  </div>
   <div class="foot">
     <span class="lang-switch" id="lang-switch"></span>
     <a href="/privacy.html" data-i18n="privacyPolicy">Политика конфиденциальности</a>
   </div>
 </main>
 <script>
-  const LS_TOKEN = "auth-token";
-  const LS_PROGRESS = "article-progress";
-  const form = document.getElementById("form");
-  const email = document.getElementById("email");
-  const pw = document.getElementById("pw");
-  const msg = document.getElementById("msg");
-  const submit = document.getElementById("submit");
-  const toggle = document.getElementById("toggle");
-  const resend = document.getElementById("resend");
-  const modeSub = document.getElementById("mode-sub");
-  let mode = "login"; // login | register
+  // уже вошёл — на главную (страница входа не нужна)
+  if (localStorage.getItem("auth-token")) location.replace("/");
 
-  function setMsg(text, ok) {
-    msg.textContent = text;
-    msg.className = "msg" + (ok ? " ok" : "");
-  }
+  const params = new URLSearchParams(location.search);
 
-  // Тексты, зависящие от режима (их i18n сам не перерисует — здесь двуязычная логика).
-  function renderMode() {
-    if (mode === "login") {
-      modeSub.textContent = I18N.t("loginSub");
-      submit.textContent = I18N.t("signIn");
-      pw.autocomplete = "current-password";
-      toggle.textContent = I18N.t("toggleToRegister");
-    } else {
-      modeSub.textContent = I18N.t("registerSub");
-      submit.textContent = I18N.t("createAccount");
-      pw.autocomplete = "new-password";
-      toggle.textContent = I18N.t("toggleToLogin");
-    }
-  }
-  function setMode(m) { mode = m; renderMode(); setMsg(""); resend.hidden = true; }
-  toggle.addEventListener("click", () => setMode(mode === "login" ? "register" : "login"));
-
-  const ERRORS = {
-    "invalid-email": "errInvalidEmail",
-    "weak-password": "errWeakPassword",
-    "email-taken": "errEmailTaken",
-    "invalid-credentials": "errInvalidCredentials",
-    "missing-credentials": "errMissingCredentials",
-    "rate-limited": "errRateLimited",
-    "email-not-verified": "errNotVerified",
-    "mail-failed": "errMailFailed",
-    "mail-not-configured": "errMailFailed",
-  };
-  // при rate-limit сервер присылает retryAfter (сек) — показываем, сколько ждать
-  function errText(data) {
-    if (data.error === "rate-limited" && data.retryAfter)
-      return I18N.t("errRateLimitedFor", { min: Math.ceil(data.retryAfter / 60) });
-    return I18N.t(ERRORS[data.error] || "errGeneric");
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    setMsg("");
-    resend.hidden = true;
-    submit.disabled = true;
-    try {
-      const r = await fetch("/api/auth/" + mode, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: email.value.trim(), password: pw.value }),
-      });
-      const data = await r.json().catch(() => ({}));
-      if (r.ok && data.token) {
-        localStorage.setItem(LS_TOKEN, data.token);
-        localStorage.removeItem(LS_PROGRESS);   // свежий аккаунт — свой прогресс подтянется с сервера
-        location.replace("/");
-        return;
-      }
-      if (r.ok && data.verify) {                // регистрация ок → ждём подтверждения почты
-        setMode("login");
-        setMsg(I18N.t("registerCheckEmail"), true);
-        submit.disabled = false;
-        return;
-      }
-      setMsg(errText(data));
-      if (data.error === "email-not-verified") resend.hidden = false;
-    } catch {
-      setMsg(I18N.t("errNetwork"));
-    }
-    submit.disabled = false;
-    pw.select();
+  const form = AuthForm.mount(document.getElementById("auth-form"), {
+    mode: params.get("mode") === "register" ? "register" : "login",
+    // после входа локальный прогресс сохраняется — на главной он сольётся с серверным
+    onSuccess: () => location.replace("/"),
   });
-
-  // повторная отправка письма подтверждения (кнопка видна после errNotVerified)
-  resend.addEventListener("click", async () => {
-    resend.disabled = true;
-    try {
-      const r = await fetch("/api/auth/resend", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: email.value.trim() }),
-      });
-      const data = await r.json().catch(() => ({}));
-      if (r.ok) { setMsg(I18N.t("verifySent"), true); resend.hidden = true; }
-      else setMsg(errText(data));
-    } catch {
-      setMsg(I18N.t("errNetwork"));
-    }
-    resend.disabled = false;
-  });
+  form.focus();
 
   // возврат по ссылке из письма: /login.html?verified=1|0
-  const verified = new URLSearchParams(location.search).get("verified");
-  if (verified === "1") setMsg(I18N.t("verifiedOk"), true);
-  else if (verified === "0") setMsg(I18N.t("errVerifyInvalid"));
+  const verified = params.get("verified");
+  if (verified === "1") form.setMsg(I18N.t("verifiedOk"), true);
+  else if (verified === "0") form.setMsg(I18N.t("errVerifyInvalid"));
 
-  // Язык: переключатель + перерисовка текстов режима при смене (статику обновляет сам i18n).
   I18N.mountSwitcher(document.getElementById("lang-switch"));
-  I18N.onChange(renderMode);
-  renderMode();
 </script>
 </body>
 </html>
