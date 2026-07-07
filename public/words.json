@@ -5635,13 +5635,6 @@
 "en":"babysitter"
 },
 {
-"word":"Bancomat",
-"article":"der",
-"level":"B1",
-"ru":"банкомат",
-"en":"ATM"
-},
-{
 "word":"Bart",
 "article":"der",
 "level":"B1",
@@ -5796,13 +5789,6 @@
 "en":"club"
 },
 {
-"word":"Coiffeur",
-"article":"der",
-"level":"B1",
-"ru":"парикмахер",
-"en":"hairdresser"
-},
-{
 "word":"Dialekt",
 "article":"der",
 "level":"B1",
@@ -5915,13 +5901,6 @@
 "en":"carnival"
 },
 {
-"word":"Fauteuil",
-"article":"der",
-"level":"B1",
-"ru":"кресло",
-"en":"armchair"
-},
-{
 "word":"Feierabend",
 "article":"der",
 "level":"B1",
@@ -5934,13 +5913,6 @@
 "level":"B1",
 "ru":"пятно",
 "en":"stain"
-},
-{
-"word":"Fleischhauer",
-"article":"der",
-"level":"B1",
-"ru":"мясник",
-"en":"butcher"
 },
 {
 "word":"Flur",
@@ -5964,13 +5936,6 @@
 "en":"franc"
 },
 {
-"word":"Führerausweis",
-"article":"der",
-"level":"B1",
-"ru":"водительское удостоверение",
-"en":"driving licence (Swiss)"
-},
-{
 "word":"Gegensatz",
 "article":"der",
 "level":"B1",
@@ -5990,6 +5955,13 @@
 "level":"B1",
 "ru":"противник",
 "en":"opponent"
+},
+{
+"word":"Geldautomat",
+"article":"der",
+"level":"B1",
+"ru":"банкомат",
+"en":"cash machine"
 },
 {
 "word":"Gehsteig",
@@ -6433,11 +6405,11 @@
 "en":"metre"
 },
 {
-"word":"Metzger",
+"word":"Metzger (Fleischhauer)",
 "article":"der",
 "level":"B1",
 "ru":"мясник",
-"en":"butcher (Metzger)"
+"en":"butcher"
 },
 {
 "word":"Migrant",
@@ -6578,13 +6550,6 @@
 "level":"B1",
 "ru":"компьютер",
 "en":"PC"
-},
-{
-"word":"Paradeiser",
-"article":"der",
-"level":"B1",
-"ru":"помидор",
-"en":"tomato (Austrian)"
 },
 {
 "word":"Passagier",
@@ -7327,13 +7292,6 @@
 "level":"B1",
 "ru":"свидетель",
 "en":"witness"
-},
-{
-"word":"Zivilstand",
-"article":"der",
-"level":"B1",
-"ru":"гражданское состояние",
-"en":"civil status (Swiss)"
 },
 {
 "word":"Zoll",
@@ -8477,13 +8435,6 @@
 "en":"democracy"
 },
 {
-"word":"Diplommittelschule",
-"article":"die",
-"level":"B1",
-"ru":"средняя школа с дипломом",
-"en":"diploma middle school"
-},
-{
 "word":"Distanz",
 "article":"die",
 "level":"B1",
@@ -8638,13 +8589,6 @@
 "en":"roadway"
 },
 {
-"word":"Fasnacht",
-"article":"die",
-"level":"B1",
-"ru":"масленица",
-"en":"carnival (Swiss)"
-},
-{
 "word":"Fernbedienung",
 "article":"die",
 "level":"B1",
@@ -8678,13 +8622,6 @@
 "level":"B1",
 "ru":"фитнес",
 "en":"fitness"
-},
-{
-"word":"Fleischhauerin",
-"article":"die",
-"level":"B1",
-"ru":"мясник (жен.)",
-"en":"butcher (f.)"
 },
 {
 "word":"Flucht",
@@ -8995,13 +8932,6 @@
 "en":"intelligence"
 },
 {
-"word":"Jause",
-"article":"die",
-"level":"B1",
-"ru":"перекус",
-"en":"snack (Austrian)"
-},
-{
 "word":"Journalistin",
 "article":"die",
 "level":"B1",
@@ -9035,6 +8965,13 @@
 "level":"B1",
 "ru":"морковь",
 "en":"carrot"
+},
+{
+"word":"Aprikose",
+"article":"die",
+"level":"B1",
+"ru":"абрикос",
+"en":"apricot"
 },
 {
 "word":"Karriere",
@@ -9359,20 +9296,6 @@
 "en":"margarine"
 },
 {
-"word":"Marille",
-"article":"die",
-"level":"B1",
-"ru":"абрикос",
-"en":"apricot"
-},
-{
-"word":"Matura",
-"article":"die",
-"level":"B1",
-"ru":"аттестат зрелости",
-"en":"school-leaving exam (Austrian)"
-},
-{
 "word":"Mauer",
 "article":"die",
 "level":"B1",
@@ -9604,13 +9527,6 @@
 "en":"operation"
 },
 {
-"word":"Ordination",
-"article":"die",
-"level":"B1",
-"ru":"врачебный кабинет",
-"en":"doctor's office (Austrian)"
-},
-{
 "word":"Orientierungsstufe",
 "article":"die",
 "level":"B1",
@@ -9721,13 +9637,6 @@
 "level":"B1",
 "ru":"пресса",
 "en":"press"
-},
-{
-"word":"Primarschule",
-"article":"die",
-"level":"B1",
-"ru":"начальная школа",
-"en":"primary school (Swiss)"
 },
 {
 "word":"Produktion",
@@ -11354,13 +11263,6 @@
 "en":"camp"
 },
 {
-"word":"Couvert",
-"article":"das",
-"level":"B1",
-"ru":"конверт",
-"en":"envelope"
-},
-{
 "word":"Detail",
 "article":"das",
 "level":"B1",
@@ -11387,13 +11289,6 @@
 "level":"B1",
 "ru":"заказное письмо",
 "en":"registered letter"
-},
-{
-"word":"Faschierte",
-"article":"das",
-"level":"B1",
-"ru":"фарш",
-"en":"minced meat"
 },
 {
 "word":"Feuerzeug",
@@ -11837,13 +11732,6 @@
 "en":"wallet (purse)"
 },
 {
-"word":"Poulet",
-"article":"das",
-"level":"B1",
-"ru":"курица",
-"en":"chicken (Swiss)"
-},
-{
 "word":"Prozent",
 "article":"das",
 "level":"B1",
@@ -11877,13 +11765,6 @@
 "level":"B1",
 "ru":"труба",
 "en":"pipe"
-},
-{
-"word":"Rüebli",
-"article":"das",
-"level":"B1",
-"ru":"морковь",
-"en":"carrot (Swiss)"
 },
 {
 "word":"Sandwich",
@@ -11921,13 +11802,6 @@
 "en":"schnitzel"
 },
 {
-"word":"Schwammerl",
-"article":"das",
-"level":"B1",
-"ru":"гриб",
-"en":"mushroom (Austrian)"
-},
-{
 "word":"Schwein",
 "article":"das",
 "level":"B1",
@@ -11961,13 +11835,6 @@
 "level":"B1",
 "ru":"стейк",
 "en":"steak"
-},
-{
-"word":"Stiegenhaus",
-"article":"das",
-"level":"B1",
-"ru":"лестничная клетка",
-"en":"stairwell (Austrian)"
 },
 {
 "word":"Streichholz",
@@ -12026,13 +11893,6 @@
 "en":"pace"
 },
 {
-"word":"Tram",
-"article":"das",
-"level":"B1",
-"ru":"трамвай",
-"en":"tram (Swiss)"
-},
-{
 "word":"Treppenhaus",
 "article":"das",
 "level":"B1",
@@ -12045,13 +11905,6 @@
 "level":"B1",
 "ru":"чаевые",
 "en":"tip (gratuity)"
-},
-{
-"word":"Trottoir",
-"article":"das",
-"level":"B1",
-"ru":"тротуар",
-"en":"pavement (Swiss)"
 },
 {
 "word":"Untergeschoss",
@@ -26712,6 +26565,76 @@
 "en":"support"
 },
 {
+"word":"Bancomat",
+"article":"der",
+"level":"C2",
+"ru":"банкомат (швейц.)",
+"en":"ATM (Swiss)"
+},
+{
+"word":"Coiffeur",
+"article":"der",
+"level":"C2",
+"ru":"парикмахер (швейц.)",
+"en":"hairdresser (Swiss)"
+},
+{
+"word":"Fauteuil",
+"article":"der",
+"level":"C2",
+"ru":"кресло (австр.)",
+"en":"armchair (Austrian)"
+},
+{
+"word":"Führerausweis",
+"article":"der",
+"level":"C2",
+"ru":"водительские права (швейц.)",
+"en":"driving licence (Swiss)"
+},
+{
+"word":"Paradeiser",
+"article":"der",
+"level":"C2",
+"ru":"помидор (австр.)",
+"en":"tomato (Austrian)"
+},
+{
+"word":"Zivilstand",
+"article":"der",
+"level":"C2",
+"ru":"семейное положение (швейц.)",
+"en":"marital status (Swiss)"
+},
+{
+"word":"Erdapfel",
+"article":"der",
+"level":"C2",
+"ru":"картофель (австр.)",
+"en":"potato (Austrian)"
+},
+{
+"word":"Topfen",
+"article":"der",
+"level":"C2",
+"ru":"творог (австр.)",
+"en":"quark (Austrian)"
+},
+{
+"word":"Kren",
+"article":"der",
+"level":"C2",
+"ru":"хрен (австр.)",
+"en":"horseradish (Austrian)"
+},
+{
+"word":"Jänner",
+"article":"der",
+"level":"C2",
+"ru":"январь (австр.)",
+"en":"January (Austrian)"
+},
+{
 "word":"Abflug",
 "article":"der",
 "level":"C2",
@@ -29552,6 +29475,62 @@
 "level":"C2",
 "ru":"произвольность",
 "en":"arbitrariness"
+},
+{
+"word":"Fasnacht",
+"article":"die",
+"level":"C2",
+"ru":"карнавал (швейц.)",
+"en":"carnival (Swiss)"
+},
+{
+"word":"Glace",
+"article":"die",
+"level":"C2",
+"ru":"мороженое (швейц.)",
+"en":"ice cream (Swiss)"
+},
+{
+"word":"Jause",
+"article":"die",
+"level":"C2",
+"ru":"перекус (австр.)",
+"en":"snack (Austrian)"
+},
+{
+"word":"Marille",
+"article":"die",
+"level":"C2",
+"ru":"абрикос (австр.)",
+"en":"apricot (Austrian)"
+},
+{
+"word":"Matura",
+"article":"die",
+"level":"C2",
+"ru":"аттестат зрелости (австр./швейц.)",
+"en":"school-leaving exam (Austrian/Swiss)"
+},
+{
+"word":"Ordination",
+"article":"die",
+"level":"C2",
+"ru":"врачебный кабинет (австр.)",
+"en":"doctor's office (Austrian)"
+},
+{
+"word":"Primarschule",
+"article":"die",
+"level":"C2",
+"ru":"начальная школа (швейц.)",
+"en":"primary school (Swiss)"
+},
+{
+"word":"Palatschinke",
+"article":"die",
+"level":"C2",
+"ru":"блинчик (австр.)",
+"en":"pancake (Austrian)"
 },
 {
 "word":"Abendkasse",
@@ -32485,6 +32464,97 @@
 "level":"C2",
 "ru":"притязание",
 "en":"demand"
+},
+{
+"word":"Couvert",
+"article":"das",
+"level":"C2",
+"ru":"конверт (швейц.)",
+"en":"envelope (Swiss)"
+},
+{
+"word":"Faschierte",
+"article":"das",
+"level":"C2",
+"ru":"фарш (австр.)",
+"en":"minced meat (Austrian)"
+},
+{
+"word":"Poulet",
+"article":"das",
+"level":"C2",
+"ru":"курица (швейц.)",
+"en":"chicken (Swiss)"
+},
+{
+"word":"Rüebli",
+"article":"das",
+"level":"C2",
+"ru":"морковь (швейц.)",
+"en":"carrot (Swiss)"
+},
+{
+"word":"Schwammerl",
+"article":"das",
+"level":"C2",
+"ru":"гриб (австр.)",
+"en":"mushroom (Austrian)"
+},
+{
+"word":"Stiegenhaus",
+"article":"das",
+"level":"C2",
+"ru":"лестничная клетка (австр.)",
+"en":"stairwell (Austrian)"
+},
+{
+"word":"Tram",
+"article":"das",
+"level":"C2",
+"ru":"трамвай (швейц.)",
+"en":"tram (Swiss)"
+},
+{
+"word":"Trottoir",
+"article":"das",
+"level":"C2",
+"ru":"тротуар (швейц.)",
+"en":"pavement (Swiss)"
+},
+{
+"word":"Velo",
+"article":"das",
+"level":"C2",
+"ru":"велосипед (швейц.)",
+"en":"bicycle (Swiss)"
+},
+{
+"word":"Billett",
+"article":"das",
+"level":"C2",
+"ru":"билет (швейц.)",
+"en":"ticket (Swiss)"
+},
+{
+"word":"Schlagobers",
+"article":"das",
+"level":"C2",
+"ru":"взбитые сливки (австр.)",
+"en":"whipped cream (Austrian)"
+},
+{
+"word":"Sackerl",
+"article":"das",
+"level":"C2",
+"ru":"пакетик (австр.)",
+"en":"small bag (Austrian)"
+},
+{
+"word":"Spital",
+"article":"das",
+"level":"C2",
+"ru":"больница (австр./швейц.)",
+"en":"hospital (Austrian/Swiss)"
 },
 {
 "word":"Abwasser",

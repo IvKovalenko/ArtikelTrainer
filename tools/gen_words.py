@@ -253,15 +253,15 @@ GOETHE_B1_ADD = {
         "Abfalleimer", "Abschied", "Abschnitt", "Absender", "Affe", "Akkumulator (Akku)",
         "Alarm", "Alkohol", "Alltag", "Anbieter", "Anwalt", "Arbeiter",
         "Arbeitsplatz", "Atem", "Aufenthalt", "Ausländer", "Auszubildende",
-        "Babysitter", "Bancomat", "Bart", "Bau", "Bauer", "Bauernhof", "Beamte",
+        "Babysitter", "Bart", "Bau", "Bauer", "Bauernhof", "Beamte",
         "Beleg", "Betreuer", "Bikini", "Bogen", "Braten", "Briefkasten",
         "Briefträger", "Briefumschlag", "Bundeskanzler", "Bundespräsident",
         "Bundesrat", "Bundestag", "Bär", "Bürger", "Bürgermeister", "Chip",
-        "Club", "Coiffeur", "Dialekt", "Dialog", "Dieb", "Dienst", "Donner",
+        "Club", "Dialekt", "Dialog", "Dieb", "Dienst", "Donner",
         "Einbrecher", "Einbruch", "Einfall", "Elefant", "Ersatz", "Europäer",
-        "Experte", "Fachmann", "Faktor", "Familienstand", "Fasching", "Fauteuil",
-        "Feierabend", "Fleck", "Fleischhauer", "Flur", "Fotograf", "Franken",
-        "Führerausweis", "Gegensatz", "Gegenstand", "Gegner",
+        "Experte", "Fachmann", "Faktor", "Familienstand", "Fasching",
+        "Feierabend", "Fleck", "Flur", "Fotograf", "Franken",
+        "Gegensatz", "Gegenstand", "Gegner", "Geldautomat",
         "Gehsteig", "Gott", "Grad", "Grieche", "Grill", "Hafen", "Halt",
         "Hammer", "Handel", "Hase", "Held", "Hersteller", "Hit", "Honig",
         "Humor", "Husten", "Hut", "Händler", "Hörer", "Hügel", "ICE",
@@ -271,10 +271,10 @@ GOETHE_B1_ADD = {
         "Krankenwagen", "Kreis", "Kunststoff", "Kursleiter", "Kuss",
         "Käufer", "König", "Laster", "Lautsprecher", "Lehrling", "Leiter",
         "Lerner", "Leser", "Lift", "Liter", "Lastkraftwagen (Lkw)", "Lohn", "Löwe", "Maler",
-        "Manager", "Meister", "Meter", "Metzger", "Migrant", "Minister",
+        "Manager", "Meister", "Meter", "Metzger (Fleischhauer)", "Migrant", "Minister",
         "Moderator", "Monitor", "Muskel", "Mut", "Nachwuchs", "Nagel",
         "Nationalrat", "Nebel", "Neffe", "Nichtraucher", "Notausgang", "Notfall",
-        "Notruf", "Ober", "Opa", "Ordner", "Ozean", "PC", "Paradeiser",
+        "Notruf", "Ober", "Opa", "Ordner", "Ozean", "PC",
         "Passagier", "Patient", "Personenstand", "Pfeffer", "Pfleger", "Pilz",
         "Pinguin", "Personenkraftwagen (Pkw)", "Praktikant", "Professor", "Profi", "Profisportler",
         "Protest", "Prozess", "Quadratmeter", "Radfahrer", "Rahm", "Rappen",
@@ -292,7 +292,7 @@ GOETHE_B1_ADD = {
         "Ukrainer", "Unternehmer", "User", "Verbrecher", "Verlierer", "Vermieter",
         "Vertreter", "Virus", "Vortrag", "Wert", "Wetterbericht", "Wirt",
         "Wissenschaftler", "Wochentag", "Wohnsitz", "Zeitpunkt", "Zentimeter",
-        "Zeuge", "Zivilstand", "Zoll", "Zugang", "Zuschauer", "Zünder",
+        "Zeuge", "Zoll", "Zugang", "Zuschauer", "Zünder",
         "Österreicher", "Übersetzer", "Senior", "Zins",
     ],
     "die": [
@@ -308,13 +308,13 @@ GOETHE_B1_ADD = {
         "Bundeskanzlerin", "Bundespräsidentin", "Bundesrätin", "Burg", "Büchse",
         "Bühne", "Bürgerin", "Bürgermeisterin", "Bürste", "Castingshow",
         "Chance", "Chipkarte", "Couch", "Darstellung", "Dauer", "Decke",
-        "Demokratie", "Diplommittelschule", "Distanz", "Diät",
+        "Demokratie", "Distanz", "Diät",
         "Dose", "Droge", "Drogerie", "Durchsage", "Einbahnstraße",
         "Einbrecherin", "Einführung", "Einleitung", "Einnahme", "Einrichtung",
         "Einzahlung", "Einzelheit", "Empfehlung", "Ente", "Entfernung",
-        "Entlassung", "Etage", "Europäerin", "Fachfrau", "Fahrbahn", "Fasnacht",
+        "Entlassung", "Etage", "Europäerin", "Fachfrau", "Fahrbahn",
         "Fernbedienung", "Festplatte", "Feuerwehr", "Figur", "Fitness",
-        "Fleischhauerin", "Flucht", "Fläche", "Flöte", "Folie", "Fortbildung",
+        "Flucht", "Fläche", "Flöte", "Folie", "Fortbildung",
         "Fortsetzung", "Fremdsprache", "Freundschaft", "Frist", "Frisur",
         "Frucht", "Fähre", "Galerie", "Gaststätte", "Gebrauchsanweisung",
         "Geburt", "Gemeinde", "Gemeinschaft", "Generation", "Gesamtschule",
@@ -322,8 +322,8 @@ GOETHE_B1_ADD = {
         "Giraffe", "Grafik", "Gratulation", "Griechin", "Gymnastik",
         "Halbpension", "Haut", "Heldin", "Hitze", "Hochschule", "Hoffnung",
         "Hälfte", "Händlerin", "Höhe", "Hörerin", "Hütte", "Infektion",
-        "Integration", "Intelligenz", "Jause", "Journalistin", "Kabine", "Kanne",
-        "Kantine", "Karotte", "Karriere", "Kassette", "Katastrophe", "Killerin",
+        "Integration", "Intelligenz", "Journalistin", "Kabine", "Kanne",
+        "Kantine", "Karotte", "Aprikose", "Karriere", "Kassette", "Katastrophe", "Killerin",
         "Kindertagesstätte", "Klimaanlage", "Klingel", "Klinik", "Kneipe",
         "Kommunikation", "Konferenz", "Konfitüre", "Konkurrenz", "Kontrolle",
         "Kopie", "Kraft", "Kriminalpolizei", "Krippe", "Krise", "Kuh", "Kälte",
@@ -331,17 +331,17 @@ GOETHE_B1_ADD = {
         "Laune", "Lehre", "Lehrstelle", "Leiterin", "Leitung", "Lernerin",
         "Leserin", "Liebe", "Lieferung", "Limonade", "Linie", "Lippe",
         "Literatur", "Mahlzeit", "Mahnung", "Malerin", "Managerin", "Mappe",
-        "Margarine", "Marille", "Matura", "Mauer", "Maus", "Mehrwertsteuer",
+        "Margarine", "Mauer", "Maus", "Mehrwertsteuer",
         "Meldung", "Mensa", "Methode", "Metropole", "Migrantin", "Migration",
         "Milliarde", "Million", "Ministerin", "Mittelschule", "Mobilbox",
         "Mobilität", "Moderatorin", "Muttersprache", "Mücke", "Mühe",
         "Müllabfuhr", "Mülltonne", "Münze", "Nachfrage", "Nachhilfe",
         "Nachspeise", "Nadel", "Neuigkeit", "Nichte", "Nichtraucherin",
-        "Notaufnahme", "Oma", "Oper", "Operation", "Ordination",
+        "Notaufnahme", "Oma", "Oper", "Operation",
         "Orientierungsstufe", "Panne", "Partei", "Passagierin", "Patientin",
         "Pension", "Pfanne", "Pflaume", "Pflegerin", "Pflicht", "Philosophie",
         "Pille", "Planung", "Plattform", "Praktikantin", "Presse",
-        "Primarschule", "Produktion", "Professorin", "Profisportlerin", "Puppe",
+        "Produktion", "Professorin", "Profisportlerin", "Puppe",
         "Qualifikation", "Radfahrerin", "Realschule", "Recherche", "Rede",
         "Reform", "Reihenfolge", "Reklame", "Reportage", "Reporterin",
         "Reservierung", "Richterin", "Richtung", "Rolle", "Rufnummer", "Runde",
@@ -375,7 +375,7 @@ GOETHE_B1_ADD = {
     "das": [
         "Abenteuer", "Abonnement (Abo)", "Alphabet", "Altenheim", "Altersheim",
         "Amt", "Apartment", "Ballett", "Boot", "Buffet", "Bundesland", "Camp",
-        "Couvert", "Detail", "Diplom", "E-Bike", "Einschreiben", "Faschierte",
+        "Detail", "Diplom", "E-Bike", "Einschreiben",
         "Feuerzeug", "Forum", "Frühjahr", "Fundbüro", "Gasthaus", "Gebäck",
         "Gedicht", "Geheimnis", "Gift", "Girokonto", "Gramm", "Gras",
         "Hackfleisch", "Hallenbad", "Haustier", "Heim", "Heimweh", "Hilfsmittel",
@@ -386,12 +386,12 @@ GOETHE_B1_ADD = {
         "Meer", "Mehl", "Menü", "Metall", "Modell", "Modul", "Mountainbike",
         "Märchen", "Müsli", "Nahrungsmittel", "Netz", "Obergeschoss", "Orchester",
         "Original", "Parlament", "Pech", "Personal", "Pflaster", "Picknick",
-        "Portemonnaie", "Poulet", "Prozent", "Puzzle", "Referat",
-        "Risiko", "Rohr", "Rüebli", "Sandwich", "Schaf", "Schaufenster",
-        "Schmerzmittel", "Schnitzel", "Schwammerl", "Schwein", "Semester",
-        "Souvenir", "Stadion", "Steak", "Stiegenhaus", "Streichholz", "Studio",
-        "Suchtmittel", "Symbol", "TV", "Talent", "Taschentuch", "Tempo", "Tram",
-        "Treppenhaus", "Trinkgeld", "Trottoir", "Untergeschoss", "Vergnügen",
+        "Portemonnaie", "Prozent", "Puzzle", "Referat",
+        "Risiko", "Rohr", "Sandwich", "Schaf", "Schaufenster",
+        "Schmerzmittel", "Schnitzel", "Schwein", "Semester",
+        "Souvenir", "Stadion", "Steak", "Streichholz", "Studio",
+        "Suchtmittel", "Symbol", "TV", "Talent", "Taschentuch", "Tempo",
+        "Treppenhaus", "Trinkgeld", "Untergeschoss", "Vergnügen",
         "Verkehrszeichen", "Verständnis", "Video", "Visum", "Vitamin",
         "Vorstellungsgespräch", "WC", "Werk", "Wissen", "Wunder", "Zeichen",
         "Zertifikat", "Zeug", "Zündholz", "Abgas", "Medium",
@@ -1033,6 +1033,24 @@ ANIMALS_VOCAB_ADD = {
     },
 }
 
+# Диалектизмы — гельветизмы (швейц.) и австрицизмы (австр.): региональные слова,
+# которые сами немцы порой не знают. У каждого есть стандартный аналог в основных
+# списках (Paradeiser → Tomate, Trottoir → Gehsteig, Glace → Eis …).
+# Все — уровень C2; в переводах стоит пометка региона. (2026-07)
+DIALECT_VOCAB_ADD = {
+    "C2": {
+        "der": ["Bancomat", "Coiffeur", "Fauteuil", "Führerausweis",
+                "Paradeiser", "Zivilstand",
+                "Erdapfel", "Topfen", "Kren", "Jänner"],
+        "die": ["Fasnacht", "Glace", "Jause", "Marille", "Matura",
+                "Ordination", "Primarschule",
+                "Palatschinke"],
+        "das": ["Couvert", "Faschierte", "Poulet", "Rüebli", "Schwammerl",
+                "Stiegenhaus", "Tram", "Trottoir",
+                "Velo", "Billett", "Schlagobers", "Sackerl", "Spital"],
+    },
+}
+
 # Гомографы: одно написание — разный род по значению, каждое значение — отдельная
 # карточка. gloss — русское значение (и часть ключа прогресса, НЕ менять!),
 # en — то же значение по-английски (для интерфейса en/de). (Уровень A1.)
@@ -1103,6 +1121,9 @@ def build():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in ANIMALS_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in DIALECT_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in WIKI_NEWS_ADD.items():
