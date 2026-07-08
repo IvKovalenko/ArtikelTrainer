@@ -553,7 +553,7 @@ TRANSLATIONS_EN = {
     "Spielgruppe": "playgroup", "Spielplatz": "playground",
     "Spielraum": "leeway", "Spitzenvertreter": "top representative",
     "Sport": "sport", "Sportart": "type of sport", "Sportler": "athlete", "Sportlerin": "athlete (f.)",
-    "Spot": "ad spot", "Sprache": "language", "Sprachenschule": "language school",
+    "Spot": "commercial", "Sprache": "language", "Sprachenschule": "language school",
     "Sprechstunde": "office hours", "Sprengstoff": "explosives", "Spritze": "syringe/injection",
     "Spur": "trace/lane", "Spüle": "kitchen sink", "Staat": "state", "Stadion": "stadium",
     "Stadt": "city", "Stadtplan": "city map", "Standpunkt": "standpoint", "Star": "star (celebrity)",

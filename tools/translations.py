@@ -552,7 +552,7 @@ TRANSLATIONS = {
     "Spielgruppe": "игровая группа", "Spielplatz": "детская площадка",
     "Spielraum": "пространство для манёвра", "Spitzenvertreter": "ведущий представитель",
     "Sport": "спорт", "Sportart": "вид спорта", "Sportler": "спортсмен", "Sportlerin": "спортсменка",
-    "Spot": "ролик", "Sprache": "язык", "Sprachenschule": "языковая школа",
+    "Spot": "ролик рекламный", "Sprache": "язык", "Sprachenschule": "языковая школа",
     "Sprechstunde": "приёмные часы", "Sprengstoff": "взрывчатка", "Spritze": "шприц/укол",
     "Spur": "след/полоса", "Spüle": "мойка", "Staat": "государство", "Stadion": "стадион",
     "Stadt": "город", "Stadtplan": "план города", "Standpunkt": "точка зрения", "Star": "звезда",
