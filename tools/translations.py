@@ -744,7 +744,7 @@ TRANSLATIONS = {
     "Zement": "цемент", "Zweifel": "сомнение", "Ärmel": "рукав",
     "Ader": "вена", "Arroganz": "высокомерие", "Besorgnis": "обеспокоенность",
     "Botschaft": "послание/посольство", "Definition": "определение",
-    "Diskussion": "дискуссия", "Ewigkeit": "вечность", "Feder": "перо",
+    "Diskussion": "дискуссия", "Ewigkeit": "вечность", "Feder": "перо/пружина",
     "Finsternis": "тьма", "Flüssigkeit": "жидкость", "Formel": "формула",
     "Freude": "радость", "Funktion": "функция", "Geisel": "заложник",
     "Grammatik": "грамматика", "Kammer": "камера/палата", "Kompetenz": "компетенция",
