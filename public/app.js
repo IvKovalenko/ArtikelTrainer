@@ -154,9 +154,31 @@
   }
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") flushSync();
+    else refreshWords();
   });
   window.addEventListener("pagehide", flushSync);
   window.addEventListener("online", () => { if (dirty) pushSync(); });
+
+  // ---------- автообновление словаря ----------
+  // Словарь читается один раз при старте, а вкладка/PWA может жить неделями:
+  // после деплоя она продолжала бы работать со старой копией. Поэтому при
+  // возвращении в приложение перечитываем words.json (не чаще раза в 10 минут).
+  const WORDS_REFRESH_INTERVAL = 10 * 60 * 1000;
+  let wordsFetchedAt = Date.now();
+  async function refreshWords() {
+    if (!WORDS.length) return;                       // приложение ещё не запустилось
+    if (Date.now() - wordsFetchedAt < WORDS_REFRESH_INTERVAL) return;
+    let fresh;
+    try {
+      fresh = await fetch("words.json", { cache: "no-store" }).then((r) => r.json());
+    } catch { return; }                              // нет сети — работаем со старой копией
+    if (!Array.isArray(fresh) || !fresh.length) return;
+    wordsFetchedAt = Date.now();
+    WORDS = fresh;                                   // текущая карточка не трогается
+    updateStats();                                   // уровни и прогресс могли сдвинуться
+    const u = unlockedLevels();
+    el.level.textContent = I18N.t("level", { level: u[u.length - 1] });
+  }
 
   // ---------- прогресс по уровням ----------
   function isMastered(w) {
