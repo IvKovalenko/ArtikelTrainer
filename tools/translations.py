@@ -574,7 +574,7 @@ TRANSLATIONS = {
     "Ständerat": "Совет кантонов", "Stück": "кусок/штука", "Stützpunkt": "опорный пункт",
     "Subvention": "субсидия", "Suchmaschine": "поисковик", "Sucht": "зависимость",
     "Suchtmittel": "наркотическое средство", "Summe": "сумма", "Supermarkt": "супермаркет",
-    "Suppe": "суп", "Swimmingpool": "бассейн", "Symbol": "символ", "Szene": "сцена", "Sänger": "певец",
+    "Suppe": "суп", "Symbol": "символ", "Szene": "сцена", "Sänger": "певец",
     "Sängerin": "певица", "Süden": "юг", "Sündenfall": "грехопадение", "Süßigkeiten": "сладости",
     # T
     "T-Shirt": "футболка", "TV": "телевидение", "Tabelle": "таблица", "Tablet": "планшет",

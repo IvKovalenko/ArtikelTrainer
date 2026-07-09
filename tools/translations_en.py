@@ -575,7 +575,7 @@ TRANSLATIONS_EN = {
     "Ständerat": "Council of States", "Stück": "piece", "Stützpunkt": "base (military)",
     "Subvention": "subsidy", "Suchmaschine": "search engine", "Sucht": "addiction",
     "Suchtmittel": "addictive substance", "Summe": "sum", "Supermarkt": "supermarket",
-    "Suppe": "soup", "Swimmingpool": "swimming pool (private)", "Symbol": "symbol", "Szene": "scene", "Sänger": "singer",
+    "Suppe": "soup", "Symbol": "symbol", "Szene": "scene", "Sänger": "singer",
     "Sängerin": "singer (f.)", "Süden": "south", "Sündenfall": "fall from grace", "Süßigkeiten": "sweets",
     # T
     "T-Shirt": "T-shirt", "TV": "TV", "Tabelle": "table (chart)", "Tablet": "tablet (device)",
