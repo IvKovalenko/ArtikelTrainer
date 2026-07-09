@@ -68,10 +68,10 @@
   let accountEmail = null;    // email из /api/auth/me (для перерисовки при смене языка)
   let lastAnswerCorrect = null; // верным ли был последний ответ (для перерисовки подсказки)
 
-  // ключ прогресса: гомографы (одно слово, разное значение) учитываются раздельно
+  // ключ прогресса: омонимы (одно слово, разное значение) учитываются раздельно
   const keyOf = (w) => (w.gloss ? `${w.word} (${w.gloss})` : w.word);
   // перевод слова по языку интерфейса: русский — только при русском интерфейсе,
-  // иначе (en и de) — английский; у гомографов это и есть их значение
+  // иначе (en и de) — английский; у омонимов это и есть их значение
   const trOf = (w) => (I18N.getLang() === "ru" ? (w.ru || w.en) : (w.en || w.ru)) || "";
 
   // --- DOM ---
@@ -354,7 +354,7 @@
 
   function correctLabel() {
     if (current.article === "Plural") return I18N.t("correctPlural", { word: current.word });
-    const gl = current.gloss ? ` (${trOf(current)})` : "";   // значение гомографа — на языке интерфейса
+    const gl = current.gloss ? ` (${trOf(current)})` : "";   // значение омонима — на языке интерфейса
     return I18N.t("correctArticle", { article: current.article, word: current.word, gloss: gl });
   }
 
@@ -382,7 +382,7 @@
       el.hint.textContent = correctLabel();
       el.hint.className = "hint wrong";
     }
-    // перевод показываем только после ответа (у гомографов значение видно и до)
+    // перевод показываем только после ответа (у омонимов значение видно и до)
     if (el.gloss && trOf(current)) el.gloss.textContent = "(" + trOf(current) + ")";
 
     lastKey = keyOf(current);
@@ -453,7 +453,7 @@
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
     if (!el.statsBody) return;
-    // ключ гомографа хранит русское значение («Band (том)») — показываем
+    // ключ омонима хранит русское значение («Band (том)») — показываем
     // подпись на языке интерфейса, сам ключ не трогаем
     const label = new Map();
     for (const w of WORDS) {
@@ -695,7 +695,7 @@
       el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();
     }
     if (awaitingContinue) el.continueHint.textContent = I18N.t("continueCorrectArticle");
-    // перевод текущего слова: после ответа — всегда, до ответа — только у гомографов
+    // перевод текущего слова: после ответа — всегда, до ответа — только у омонимов
     if (current && el.gloss) {
       const tr = trOf(current);
       if (answered && tr) el.gloss.textContent = "(" + tr + ")";
@@ -704,7 +704,7 @@
     if (!el.overlay.hidden) {
       el.dataSummary.textContent =
         I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
-      renderStatsTable();   // подписи гомографов зависят от языка
+      renderStatsTable();   // подписи омонимов зависят от языка
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
     if (!el.settingsOverlay.hidden) {   // единица секунд («с»/«s») зависит от языка

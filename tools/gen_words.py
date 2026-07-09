@@ -46,7 +46,7 @@ DATA = {
         "der": ["Beruf","Urlaub","Termin","Ausflug","Flughafen","Bahnhof","Markt",
                 "Supermarkt","Platz","Weg","Unfall","Fehler","Wunsch","Traum",
                 "Anfang","Schluss","Erfolg","Nachteil","Vorteil","Grund","Rabatt",
-                "Kunde","Verkäufer","Kellner","Kollege","Partner","Körper","Rücken",
+                "Verkäufer","Kellner","Kollege","Partner","Körper","Rücken",
                 "Bauch","Finger","Daumen","Schrank","Sessel","Teppich","Vorhang",
                 "Wecker","Kühlschrank","Herd","Ofen","Balkon","Keller","Aufzug",
                 "Schatten","Nachbar"],
@@ -60,7 +60,7 @@ DATA = {
                 "Aussicht"],
         "das": ["Gepäck","Ticket","Gleis","Ziel","Ergebnis","Beispiel","Problem",
                 "Thema","Interesse","Hobby","Konzert","Instrument","Klavier","Rezept",
-                "Frühstück","Mittagessen","Abendessen","Besteck","Werkzeug","Gehalt",
+                "Frühstück","Mittagessen","Abendessen","Besteck","Werkzeug",
                 "Konto","Bargeld","Angebot","Geschenk","Paket","Formular","Dokument",
                 "Zeugnis","Studium","Praktikum","Ausland","Erlebnis","Gefühl","Sofa",
                 "Regal","Kissen","Handtuch","Waschbecken"],
@@ -73,7 +73,7 @@ DATA = {
                 "Zweck","Ablauf","Vorschlag","Hinweis","Ratschlag",
                 "Streit","Konflikt","Stau","Wald","Fluss","Gipfel","Boden",
                 "Zweig","Ast"],
-        "die": ["Bewerbung","Kündigung","Versicherung","Steuer","Gebühr",
+        "die": ["Bewerbung","Kündigung","Versicherung","Gebühr",
                 "Genehmigung","Verwaltung","Behörde","Regierung",
                 "Gesellschaft","Bevölkerung","Wirtschaft","Industrie","Umwelt",
                 "Verantwortung","Beziehung","Ehe","Scheidung","Erziehung",
@@ -138,7 +138,7 @@ DATA = {
 # --- Существительные из официального словаря Goethe A1 (Fit in Deutsch 1, 2024),
 #     которых не было в основном списке выше. Добавляются на уровень A1.
 #     Однозначные слова (один род) — здесь. Особые случаи — ниже:
-#       * гомографы (разный род по значению) — в HOMOGRAPHS (со значением по-русски);
+#       * омонимы (разный род по значению) — в HOMONYMS (со значением по-русски);
 #       * только множественное число — в PLURAL_WORDS (ответ «Plural»).
 #     Cola/Comic взяты в стандартном роде (die Cola, der Comic); региональные
 #     варианты das Cola / das Comic существуют, но здесь не проверяются.
@@ -146,7 +146,7 @@ GOETHE_A1_ADD = {
     "der": ["Anruf","Anrufbeantworter","Appetit","Artikel","Automat","Bahnsteig",
             "Basketball","Bleistift","Dank","Durst","Fahrplan","Familienname",
             "Fotoapparat","Fußball","Geburtstag","Glückwunsch","Gruß","Hals",
-            "Herr","Hunger","Junge","Kakao","Kiosk","Kuchen","Kugelschreiber (Kuli)",
+            "Herr","Hunger","Kakao","Kiosk","Kuchen","Kugelschreiber (Kuli)",
             "Kurs","Mantel","Marktplatz","Ohrring","Park","Pullover","Quatsch",
             "Radiergummi","Ring","Rucksack","Salat","Schmerz","Spaß","Spielplatz",
             "Sport","Strand","Unterricht","Vorname","Computer","Blog","CD-Player",
@@ -202,7 +202,7 @@ GOETHE_A2_ADD = {
         "Zahnarzt", "Zettel", "Zirkus", "Zoo",
         "Anzug", "Besuch", "Drucker", "Ehemann", "Fernseher",
         "Job", "Koffer", "Kontakt", "Kredit",
-        "Mensch", "Moment", "Prospekt", "Schuh", "Topf", "Wagen",
+        "Mensch", "Prospekt", "Schuh", "Topf", "Wagen",
     ],
     "die": [
         "Bäckerin", "Doktorin", "Fahrerin", "Friseurin", "Handwerkerin",
@@ -240,7 +240,7 @@ GOETHE_A2_ADD = {
         "Produkt", "Programm", "Projekt", "Rind", "Schlafzimmer", "Schloss",
         "Stipendium", "Stockwerk", "Tablet", "Taxi", "Team", "Tennis", "Training",
         "Zelt", "Zentrum", "Lebensmittel", "Möbel",
-        "Datum", "Gegenteil", "Kaufhaus", "Rathaus", "Reisebüro", "Schild", "Verkehrsmittel",
+        "Datum", "Gegenteil", "Kaufhaus", "Rathaus", "Reisebüro", "Verkehrsmittel",
     ],
 }
 
@@ -253,7 +253,7 @@ GOETHE_B1_ADD = {
         "Abfalleimer", "Abschied", "Abschnitt", "Absender", "Affe", "Akkumulator (Akku)",
         "Alarm", "Alkohol", "Alltag", "Anbieter", "Anwalt", "Arbeiter",
         "Arbeitsplatz", "Atem", "Aufenthalt", "Ausländer", "Auszubildende",
-        "Babysitter", "Bart", "Bau", "Bauer", "Bauernhof", "Beamte",
+        "Babysitter", "Bart", "Bau", "Bauernhof", "Beamte",
         "Beleg", "Betreuer", "Bikini", "Bogen", "Braten", "Briefkasten",
         "Briefträger", "Briefumschlag", "Bundeskanzler", "Bundespräsident",
         "Bundesrat", "Bundestag", "Bär", "Bürger", "Bürgermeister", "Chip",
@@ -269,7 +269,7 @@ GOETHE_B1_ADD = {
         "Kanton", "Kasten", "Katalog", "Ketchup", "Killer", "Kilometer", "Klick",
         "Kloß", "Knochen", "Knopf", "Knödel", "Kommentar", "Kopierer", "Kranke",
         "Krankenwagen", "Kreis", "Kunststoff", "Kursleiter", "Kuss",
-        "Käufer", "König", "Laster", "Lautsprecher", "Lehrling", "Leiter",
+        "Käufer", "König", "Lautsprecher", "Lehrling",
         "Lerner", "Leser", "Lift", "Liter", "Lastkraftwagen (Lkw)", "Lohn", "Löwe", "Maler",
         "Manager", "Meister", "Meter", "Metzger (Fleischhauer)", "Migrant", "Minister",
         "Moderator", "Monitor", "Muskel", "Mut", "Nachwuchs", "Nagel",
@@ -507,8 +507,8 @@ B2_VOCAB_ADD = {
 
 # --- Существительные из пользовательского списка (Deutschblog), которых ещё не
 #     было в словаре. Структура: {уровень: {род: [слова]}} — уровень оценён
-#     примерно по частотности/сложности. Гомограф Plastik (die/das) вынесен в
-#     HOMOGRAPHS. Артикль — по исходному списку (Diesel взят как der — стандарт).
+#     примерно по частотности/сложности. Омоним Plastik (die/das) вынесен в
+#     HOMONYMS. Артикль — по исходному списку (Diesel взят как der — стандарт).
 DEUTSCHBLOG_VOCAB_ADD = {
     "A2": {
         "der": ["Becher", "Eimer", "Engel", "Esel", "Gedanke", "Gürtel",
@@ -630,7 +630,7 @@ WIKI_NEWS_ADD = {
             "Jubiläum", "Kilogramm", "Konzept", "Landgericht", "Management", "Match",
             "Ministerium", "Mitglied", "Mittelfeld", "Model", "Motto", "Niveau", "Potenzial",
             "Prinzip", "Promille", "Quartal", "Rennen", "Schicksal", "Signal", "Stadtgebiet",
-            "Statement", "System", "Tierheim", "Tor", "Turnier", "Umfeld", "Unglück",
+            "Statement", "System", "Tierheim", "Turnier", "Umfeld", "Unglück",
             "Unwetter", "Update", "Verbot", "Verteidigungsministerium", "Viertelfinale",
             "Visier", "Volk", "Vorjahr", "Wohnhaus"
         ],
@@ -1051,10 +1051,11 @@ DIALECT_VOCAB_ADD = {
     },
 }
 
-# Гомографы: одно написание — разный род по значению, каждое значение — отдельная
-# карточка. gloss — русское значение (и часть ключа прогресса, НЕ менять!),
-# en — то же значение по-английски (для интерфейса en/de). (Уровень A1.)
-HOMOGRAPHS = [
+# Омонимы (Homonyme, разг. Teekesselchen): пишутся и звучат одинаково, но
+# артикль меняет значение. Каждое значение — отдельная карточка.
+# gloss — русское значение (и часть ключа прогресса, НЕ менять!),
+# en — то же значение по-английски (для интерфейса en/de). (Без level — A1.)
+HOMONYMS = [
     {"word": "See", "article": "der", "gloss": "озеро", "en": "lake"},
     {"word": "See", "article": "die", "gloss": "море", "en": "sea"},
     {"word": "Band", "article": "der", "gloss": "том", "en": "volume"},
@@ -1077,6 +1078,44 @@ HOMOGRAPHS = [
     # Plastik: die Plastik (скульптура) / das Plastik (пластик как материал)
     {"word": "Plastik", "article": "die", "gloss": "скульптура", "en": "sculpture", "level": "B2"},
     {"word": "Plastik", "article": "das", "gloss": "пластик", "en": "plastic", "level": "B1"},
+    # классические Teekesselchen — раньше лежали одной карточкой с одним
+    # артиклем и смешанным переводом («die Steuer — налог/руль»), это неверно
+    {"word": "Steuer", "article": "die", "gloss": "налог", "en": "tax", "level": "B1"},
+    {"word": "Steuer", "article": "das", "gloss": "руль", "en": "steering wheel", "level": "B1"},
+    {"word": "Leiter", "article": "der", "gloss": "руководитель", "en": "manager", "level": "B1"},
+    {"word": "Leiter", "article": "die", "gloss": "приставная лестница", "en": "ladder", "level": "B1"},
+    {"word": "Schild", "article": "das", "gloss": "табличка", "en": "sign", "level": "A2"},
+    {"word": "Schild", "article": "der", "gloss": "щит", "en": "shield", "level": "B2"},
+    {"word": "Verdienst", "article": "der", "gloss": "заработок", "en": "earnings", "level": "B2"},
+    {"word": "Verdienst", "article": "das", "gloss": "заслуга", "en": "merit", "level": "C1"},
+    # пары из списка Википедии «Substantive mit unterschiedlichem Genus» (2026-07);
+    # der Laster раньше лежал одной картой «грузовик/порок» — порок на деле das
+    {"word": "Laster", "article": "der", "gloss": "грузовик", "en": "truck", "level": "B1"},
+    {"word": "Laster", "article": "das", "gloss": "порок", "en": "vice", "level": "C1"},
+    {"word": "Tor", "article": "das", "gloss": "ворота", "en": "gate/goal", "level": "B2"},
+    {"word": "Tor", "article": "der", "gloss": "глупец", "en": "fool", "level": "C2"},
+    {"word": "Bauer", "article": "der", "gloss": "крестьянин", "en": "farmer", "level": "B1"},
+    {"word": "Bauer", "article": "das", "gloss": "птичья клетка", "en": "birdcage", "level": "C2"},
+    {"word": "Otter", "article": "der", "gloss": "выдра", "en": "otter", "level": "C1"},
+    {"word": "Otter", "article": "die", "gloss": "гадюка", "en": "viper", "level": "C1"},
+    {"word": "Tau", "article": "der", "gloss": "роса", "en": "dew", "level": "B2"},
+    {"word": "Tau", "article": "das", "gloss": "канат", "en": "rope", "level": "C1"},
+    {"word": "Heide", "article": "die", "gloss": "пустошь", "en": "heath", "level": "C1"},
+    {"word": "Heide", "article": "der", "gloss": "язычник", "en": "heathen", "level": "C2"},
+    # классические пары род-меняет-значение, добавлены 2026-07:
+    # der Moment (миг) / das Moment (фактор, физ.: das Drehmoment!)
+    {"word": "Moment", "article": "der", "gloss": "момент", "en": "moment", "level": "A2"},
+    {"word": "Moment", "article": "das", "gloss": "фактор", "en": "factor (physics)", "level": "C1"},
+    {"word": "Kunde", "article": "der", "gloss": "клиент", "en": "customer", "level": "A2"},
+    {"word": "Kunde", "article": "die", "gloss": "весть", "en": "tidings", "level": "C2"},
+    {"word": "Gehalt", "article": "das", "gloss": "зарплата", "en": "salary", "level": "A2"},
+    {"word": "Gehalt", "article": "der", "gloss": "содержание", "en": "content", "level": "C1"},
+    {"word": "Junge", "article": "der", "gloss": "мальчик", "en": "boy", "level": "A1"},
+    {"word": "Junge", "article": "das", "gloss": "детёныш", "en": "young animal", "level": "B2"},
+    {"word": "Erbe", "article": "das", "gloss": "наследство", "en": "heritage", "level": "B2"},
+    {"word": "Erbe", "article": "der", "gloss": "наследник", "en": "heir", "level": "C1"},
+    {"word": "Golf", "article": "das", "gloss": "гольф", "en": "golf", "level": "B2"},
+    {"word": "Golf", "article": "der", "gloss": "залив", "en": "gulf", "level": "C1"},
 ]
 
 # Существительные только во множественном числе — правильный ответ «Plural».
@@ -1162,7 +1201,7 @@ def build():
         for article in ("der", "die", "das"):
             for word in DATA[level][article]:
                 add(word, article, level)
-    for h in HOMOGRAPHS:
+    for h in HOMONYMS:
         add(h["word"], h["article"], h.get("level", "A1"), h["gloss"], h.get("en"))
     for word, level in PLURAL_WORDS:
         add(word, "Plural", level)
