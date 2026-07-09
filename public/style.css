@@ -342,6 +342,12 @@ a.linkbtn { text-decoration: none; }
 
 .dialog-foot { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; text-align: right; }
 
+/* ---- настройки ---- */
+.setting { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+.setting-label { font-size: 15px; color: var(--ink); }
+.setting input[type="range"] { width: 100%; accent-color: var(--ink); }
+.setting-value { text-align: center; font-size: 20px; font-weight: 700; }
+
 .btn-block {
   width: 100%; padding: 12px; font: inherit; font-size: 16px; color: var(--ink);
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);

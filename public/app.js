@@ -6,11 +6,27 @@
   const LS_PROGRESS = "article-progress";
   const LS_TOKEN = "auth-token";   // JWT текущего пользователя
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
-  const MASTER_RATIO = 0.95;   // доля выученных слов уровня, чтобы открыть следующий
+  // Доля выученных слов уровня, чтобы открыть следующий, — настройка (80–95%).
+  // Живёт в progress.__meta → синхронизируется с аккаунтом вместе со статистикой.
+  const LS_MASTER = "master-pct";   // старое локальное хранение — только для миграции
+  const MASTER_STEPS = [80, 85, 90, 95];
+  const meta = () => progress.__meta || (progress.__meta = {});
+  function masterPct() {
+    const v = progress.__meta && progress.__meta.masterPct;
+    return MASTER_STEPS.includes(v) ? v : 95;
+  }
+  function setMasterPct(v) {
+    const m = meta();
+    m.masterPct = v;
+    m.masterPctAt = Date.now();   // при слиянии устройств побеждает более поздний выбор
+    saveLocal(); scheduleSync(); updateStats();
+  }
 
   // --- состояние ---
   let WORDS = [];             // [{word, article, level, gloss?, ru?}]
-  let progress = {};          // { ключ: {correct, wrong, seen} }
+  // { ключ: {correct, wrong, seen, m?} } + служебный ключ "__meta"
+  // (m: 1 — слово выучено навсегда; __meta.unlockedIdx — достигнутый уровень)
+  let progress = {};
   let current = null;         // текущее слово
   let lastKey = null;         // чтобы не повторять то же слово подряд
   let answered = false;       // на текущее слово уже ответили → ждём «дальше»
@@ -38,6 +54,8 @@
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
     authOverlay: $("auth-overlay"), authTitle: $("auth-title"),
+    settingsOverlay: $("settings-overlay"), masterSlider: $("master-slider"),
+    masterValue: $("master-value"),
     btnSignin: $("btn-signin"), btnRegister: $("btn-register"), btnAccount: $("btn-account"),
     registerNudge: $("register-nudge"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
@@ -69,13 +87,32 @@
     const out = {};
     for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
       const x = a[key] || {}, y = b[key] || {};
+      if (key === "__meta") {   // служебная запись: достигнутый уровень + настройки
+        const m = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
+        // настройка порога: берём более поздний выбор (по метке времени)
+        const newer = (x.masterPctAt || 0) >= (y.masterPctAt || 0) ? x : y;
+        const src = newer.masterPct ? newer : (newer === x ? y : x);
+        if (src.masterPct) { m.masterPct = src.masterPct; m.masterPctAt = src.masterPctAt || 0; }
+        out[key] = m;
+        continue;
+      }
       out[key] = {
         correct: Math.max(x.correct || 0, y.correct || 0),
         wrong: Math.max(x.wrong || 0, y.wrong || 0),
         seen: Math.max(x.seen || 0, y.seen || 0),
       };
+      if ((x.m || 0) || (y.m || 0)) out[key].m = 1;   // «выучено» не отбирается
     }
     return out;
+  }
+
+  // разово помечаем выученные слова несгораемым флагом m — статус остаётся,
+  // даже если потом отвечать неправильно (вес слова при этом растёт как обычно)
+  function markMastered() {
+    for (const [key, s] of Object.entries(progress)) {
+      if (key.startsWith("__")) continue;
+      if (!s.m && (s.correct || 0) >= 1 && (s.correct || 0) >= (s.wrong || 0)) s.m = 1;
+    }
   }
 
   // ---------- сеть ----------
@@ -181,22 +218,29 @@
   }
 
   // ---------- прогресс по уровням ----------
+  // выучено, если стоит несгораемый флаг m или счёт в пользу верных ответов
   function isMastered(w) {
     const s = progress[keyOf(w)];
-    return !!s && s.correct >= 1 && s.correct >= s.wrong;
+    return !!s && (s.m === 1 || (s.correct >= 1 && s.correct >= s.wrong));
   }
   function levelMastered(level) {
     const lw = WORDS.filter((w) => w.level === level);
     if (!lw.length) return true;
     const m = lw.filter((w) => isMastered(w)).length;
-    return m >= lw.length * MASTER_RATIO;
+    return m >= lw.length * (masterPct() / 100);
   }
   function unlockedLevels() {
     let count = 1; // A1 всегда открыт
     for (let i = 0; i < LEVELS.length - 1; i++) {
       if (levelMastered(LEVELS[i])) count = i + 2; else break;
     }
-    return LEVELS.slice(0, count);
+    // достигнутый уровень не отбирается — ни ошибками, ни пополнением словаря
+    const saved = (progress.__meta && progress.__meta.unlockedIdx) || 1;
+    if (count > saved) {
+      meta().unlockedIdx = count;   // не затирая остальные поля __meta
+      saveLocal(); scheduleSync();
+    }
+    return LEVELS.slice(0, Math.min(Math.max(count, saved), LEVELS.length));
   }
 
   // ---------- выбор слова ----------
@@ -222,7 +266,8 @@
   // ---------- рендер ----------
   function updateStats() {
     let correct = 0, wrong = 0, passed = 0;
-    for (const s of Object.values(progress)) {
+    for (const [key, s] of Object.entries(progress)) {
+      if (key.startsWith("__")) continue;   // служебные записи — не статистика
       correct += s.correct || 0;
       wrong += s.wrong || 0;
       if ((s.seen || 0) > 0) passed++;
@@ -247,7 +292,7 @@
     }
 
     const lw = WORDS.filter((w) => w.level === cur);
-    const needed = Math.ceil(lw.length * MASTER_RATIO);
+    const needed = Math.ceil(lw.length * (masterPct() / 100));
     const mastered = lw.filter((w) => isMastered(w)).length;
     const pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
 
@@ -284,6 +329,7 @@
     const isRight = choice === right;
     lastAnswerCorrect = isRight;
     if (isRight) s.correct++; else s.wrong++;
+    if (s.correct >= 1 && s.correct >= s.wrong) s.m = 1;   // выучено — навсегда
 
     for (const b of answerButtons) {
       b.disabled = true;
@@ -324,7 +370,9 @@
     });
   });
   // после ответа — клик в области карточки листает дальше
-  const dialogOpen = () => !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden;
+  const dialogOpen = () =>
+    !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden ||
+    !el.settingsOverlay.hidden;
   document.querySelector(".card").addEventListener("click", () => {
     if (answered && !dialogOpen()) next();
   });
@@ -339,11 +387,20 @@
   });
 
   // ---------- диалог данных ----------
+  // слов в статистике (без служебных записей вроде __meta)
+  const statsCount = () => Object.keys(progress).filter((k) => !k.startsWith("__")).length;
+
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
     if (!el.statsBody) return;
-    const rows = Object.entries(progress).map(([word, s]) => ({
-      word,
+    // ключ гомографа хранит русское значение («Band (том)») — показываем
+    // подпись на языке интерфейса, сам ключ не трогаем
+    const label = new Map();
+    for (const w of WORDS) {
+      if (w.gloss) label.set(keyOf(w), `${w.word} (${trOf(w)})`);
+    }
+    const rows = Object.entries(progress).filter(([word]) => !word.startsWith("__")).map(([word, s]) => ({
+      word: label.get(word) || word,
       correct: s.correct || 0,
       wrong: s.wrong || 0,
       seen: s.seen || 0,
@@ -395,7 +452,7 @@
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
     el.dataSummary.textContent =
-      I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
+      I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
     el.dialogMsg.textContent = "";
     renderStatsTable();
     el.overlay.hidden = false;
@@ -453,6 +510,27 @@
   }
   function closeAuth() { el.authOverlay.hidden = true; }
 
+  // ---------- настройки ----------
+  function openSettings() {
+    // телефон (узкий экран) — отдельная страница, десктоп — модальное окно
+    if (matchMedia("(max-width: 600px)").matches) {
+      location.href = "/settings.html";
+      return;
+    }
+    el.masterSlider.value = masterPct();
+    el.masterValue.textContent = masterPct() + "%";
+    el.settingsOverlay.hidden = false;
+  }
+  function closeSettings() { el.settingsOverlay.hidden = true; }
+  el.masterSlider.addEventListener("input", () => {
+    const v = parseInt(el.masterSlider.value, 10);
+    setMasterPct(v);   // сохранение + синк с аккаунтом + пересчёт полоски и уровня
+    el.masterValue.textContent = v + "%";
+  });
+  $("btn-settings").addEventListener("click", openSettings);
+  $("btn-settings-close").addEventListener("click", closeSettings);
+  el.settingsOverlay.addEventListener("click", (e) => { if (e.target === el.settingsOverlay) closeSettings(); });
+
   $("btn-data").addEventListener("click", openData);
   $("btn-close").addEventListener("click", closeData);
   el.overlay.addEventListener("click", (e) => { if (e.target === el.overlay) closeData(); });
@@ -476,13 +554,19 @@
     catch { flash(I18N.t("errInvalidJson"), true); return; }
     if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash(I18N.t("errExpectObject"), true); return; }
     progress = obj;
+    markMastered();               // старые бэкапы без флагов m — помечаем
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable();
     flash(I18N.t("imported"));
   });
 
   $("btn-reset").addEventListener("click", () => {
     if (!confirm(I18N.t("confirmReset"))) return;
+    // статистика и уровни обнуляются, настройки (порог) — остаются
+    const old = progress.__meta;
     progress = {};
+    if (old && old.masterPct) {
+      progress.__meta = { masterPct: old.masterPct, masterPctAt: old.masterPctAt || Date.now() };
+    }
     lastKey = null;
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
   });
@@ -538,7 +622,8 @@
     }
     if (!el.overlay.hidden) {
       el.dataSummary.textContent =
-        I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
+        I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+      renderStatsTable();   // подписи гомографов зависят от языка
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
     if (!el.authOverlay.hidden && authForm) el.authTitle.textContent = authTitleFor(authForm.getMode());
@@ -563,6 +648,16 @@
       return;
     }
     progress = loadLocal();
+    markMastered();             // прогресс до этой версии — выученному ставим флаг
+    // миграция: порог из старого локального хранилища переезжает в __meta
+    const lsPct = parseInt(localStorage.getItem(LS_MASTER), 10);
+    if (MASTER_STEPS.includes(lsPct) && !(progress.__meta && progress.__meta.masterPct)) {
+      const m = meta();
+      m.masterPct = lsPct;
+      m.masterPctAt = Date.now();
+      saveLocal();
+    }
+    try { localStorage.removeItem(LS_MASTER); } catch {}
     updateStats();
     next();                     // работаем сразу, офлайн-first
 
@@ -575,6 +670,7 @@
         const merged = mergeMax(progress, server);
         if (JSON.stringify(merged) !== JSON.stringify(progress)) {
           progress = merged;
+          markMastered();       // серверная копия могла быть без флагов m
           saveLocal(); updateStats();
         }
         if (JSON.stringify(merged) !== JSON.stringify(server)) scheduleSync();
