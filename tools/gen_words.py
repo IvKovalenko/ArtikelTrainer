@@ -285,7 +285,7 @@ GOETHE_B1_ADD = {
         "Sitz", "Snack", "Song", "Sozialarbeiter", "Speisewagen", "Spezialist",
         "Spiegel", "Sportler", "Spot", "Staat", "Start", "Staub", "Stein",
         "Stempel", "Steward", "Stil", "Stoff", "Strafzettel", "Streik", "Strom",
-        "Strumpf", "Studierende", "Sturm", "Ständerat", "Swimmingpool",
+        "Strumpf", "Studierende", "Sturm", "Ständerat",
         "Tagesablauf", "Tanz", "Teilnehmer", "Terminal", "Terminkalender",
         "Textaufbau", "Tierpark", "Tod", "Tote", "Tourismus", "Trainer",
         "Transport", "Treffpunkt", "Trend", "Turm", "Typ", "Täter", "Türke",

@@ -6926,8 +6926,8 @@
 "word":"Spot",
 "article":"der",
 "level":"B1",
-"ru":"ролик",
-"en":"ad spot"
+"ru":"ролик рекламный",
+"en":"commercial"
 },
 {
 "word":"Staat",
@@ -7033,13 +7033,6 @@
 "level":"B1",
 "ru":"Совет кантонов",
 "en":"Council of States"
-},
-{
-"word":"Swimmingpool",
-"article":"der",
-"level":"B1",
-"ru":"бассейн",
-"en":"swimming pool (private)"
 },
 {
 "word":"Tagesablauf",
@@ -16119,6 +16112,13 @@
 "level":"B2",
 "ru":"изображение Богоматери",
 "en":"depiction of the Virgin Mary"
+},
+{
+"word":"Maut",
+"article":"die",
+"level":"B2",
+"ru":"такса",
+"en":"toll"
 },
 {
 "word":"Maßnahme",
