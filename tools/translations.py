@@ -381,7 +381,7 @@ TRANSLATIONS = {
     "Mal": "раз", "Maler": "художник/маляр", "Malerin": "художница", "Manager": "менеджер",
     "Managerin": "менеджер (жен.)", "Mangel": "недостаток", "Mangelerscheinung": "симптом недостатка",
     "Mann": "мужчина/муж", "Mannschaft": "команда", "Mantel": "пальто", "Mappe": "папка",
-    "Margarine": "маргарин", "Mariendarstellung": "изображение Богоматери", "Marille": "абрикос (австр.)",
+    "Margarine": "маргарин", "Mariendarstellung": "изображение Богоматери", "Maut": "такса", "Marille": "абрикос (австр.)",
     "Markt": "рынок", "Marktplatz": "рыночная площадь", "Marmelade": "джем", "Maschine": "машина",
     "Maschinenbau": "машиностроение", "Material": "материал", "Mathematik": "математика",
     "Matura": "аттестат зрелости (австр./швейц.)", "Mauer": "стена", "Maus": "мышь", "Maßnahme": "мера",

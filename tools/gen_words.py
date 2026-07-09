@@ -465,7 +465,7 @@ B2_VOCAB_ADD = {
         "Kindersterblichkeit", "Kostenstelle", "Kumpelwirtschaft", "Kundgebung",
         "Kurtaxe", "Kutsche", "Körperschaftsteuer", "Kürzung", "Laborthese",
         "Ladentheke", "Ladesäule", "Lebenseinstellung", "Lücke", "Mangelerscheinung",
-        "Mariendarstellung", "Maßnahme", "Meerenge", "Menschenmenge",
+        "Mariendarstellung", "Maut", "Maßnahme", "Meerenge", "Menschenmenge",
         "Menschenrechtsfrage", "Menschenrechtslage", "Menschenwürde", "Miene",
         "Mitschrift", "Motorhaube", "Narbe", "Niederlassungserlaubnis", "Obergrenze",
         "Ohnmacht", "Persönlichkeit", "Pferdezucht", "Profitgier", "Prominenz",

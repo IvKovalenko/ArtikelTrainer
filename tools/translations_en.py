@@ -382,7 +382,7 @@ TRANSLATIONS_EN = {
     "Mal": "time (occasion)", "Maler": "painter", "Malerin": "painter (f.)", "Manager": "manager",
     "Managerin": "manager (f.)", "Mangel": "shortage/defect", "Mangelerscheinung": "deficiency symptom",
     "Mann": "man/husband", "Mannschaft": "team", "Mantel": "coat", "Mappe": "folder",
-    "Margarine": "margarine", "Mariendarstellung": "depiction of the Virgin Mary", "Marille": "apricot (Austrian)",
+    "Margarine": "margarine", "Mariendarstellung": "depiction of the Virgin Mary", "Maut": "toll", "Marille": "apricot (Austrian)",
     "Markt": "market", "Marktplatz": "market square", "Marmelade": "jam (marmalade)", "Maschine": "machine",
     "Maschinenbau": "mechanical engineering", "Material": "material", "Mathematik": "mathematics",
     "Matura": "school-leaving exam (Austrian/Swiss)", "Mauer": "wall (masonry)", "Maus": "mouse", "Maßnahme": "measure",
