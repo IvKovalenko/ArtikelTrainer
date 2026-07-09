@@ -10,7 +10,9 @@
 
   // --- состояние ---
   let WORDS = [];             // [{word, article, level, gloss?, ru?}]
-  let progress = {};          // { ключ: {correct, wrong, seen} }
+  // { ключ: {correct, wrong, seen, m?} } + служебный ключ "__meta"
+  // (m: 1 — слово выучено навсегда; __meta.unlockedIdx — достигнутый уровень)
+  let progress = {};
   let current = null;         // текущее слово
   let lastKey = null;         // чтобы не повторять то же слово подряд
   let answered = false;       // на текущее слово уже ответили → ждём «дальше»
@@ -69,13 +71,27 @@
     const out = {};
     for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
       const x = a[key] || {}, y = b[key] || {};
+      if (key === "__meta") {   // служебная запись: достигнутый уровень
+        out[key] = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
+        continue;
+      }
       out[key] = {
         correct: Math.max(x.correct || 0, y.correct || 0),
         wrong: Math.max(x.wrong || 0, y.wrong || 0),
         seen: Math.max(x.seen || 0, y.seen || 0),
       };
+      if ((x.m || 0) || (y.m || 0)) out[key].m = 1;   // «выучено» не отбирается
     }
     return out;
+  }
+
+  // разово помечаем выученные слова несгораемым флагом m — статус остаётся,
+  // даже если потом отвечать неправильно (вес слова при этом растёт как обычно)
+  function markMastered() {
+    for (const [key, s] of Object.entries(progress)) {
+      if (key.startsWith("__")) continue;
+      if (!s.m && (s.correct || 0) >= 1 && (s.correct || 0) >= (s.wrong || 0)) s.m = 1;
+    }
   }
 
   // ---------- сеть ----------
@@ -181,9 +197,10 @@
   }
 
   // ---------- прогресс по уровням ----------
+  // выучено, если стоит несгораемый флаг m или счёт в пользу верных ответов
   function isMastered(w) {
     const s = progress[keyOf(w)];
-    return !!s && s.correct >= 1 && s.correct >= s.wrong;
+    return !!s && (s.m === 1 || (s.correct >= 1 && s.correct >= s.wrong));
   }
   function levelMastered(level) {
     const lw = WORDS.filter((w) => w.level === level);
@@ -196,7 +213,13 @@
     for (let i = 0; i < LEVELS.length - 1; i++) {
       if (levelMastered(LEVELS[i])) count = i + 2; else break;
     }
-    return LEVELS.slice(0, count);
+    // достигнутый уровень не отбирается — ни ошибками, ни пополнением словаря
+    const saved = (progress.__meta && progress.__meta.unlockedIdx) || 1;
+    if (count > saved) {
+      progress.__meta = { unlockedIdx: count };
+      saveLocal(); scheduleSync();
+    }
+    return LEVELS.slice(0, Math.min(Math.max(count, saved), LEVELS.length));
   }
 
   // ---------- выбор слова ----------
@@ -222,7 +245,8 @@
   // ---------- рендер ----------
   function updateStats() {
     let correct = 0, wrong = 0, passed = 0;
-    for (const s of Object.values(progress)) {
+    for (const [key, s] of Object.entries(progress)) {
+      if (key.startsWith("__")) continue;   // служебные записи — не статистика
       correct += s.correct || 0;
       wrong += s.wrong || 0;
       if ((s.seen || 0) > 0) passed++;
@@ -284,6 +308,7 @@
     const isRight = choice === right;
     lastAnswerCorrect = isRight;
     if (isRight) s.correct++; else s.wrong++;
+    if (s.correct >= 1 && s.correct >= s.wrong) s.m = 1;   // выучено — навсегда
 
     for (const b of answerButtons) {
       b.disabled = true;
@@ -339,10 +364,13 @@
   });
 
   // ---------- диалог данных ----------
+  // слов в статистике (без служебных записей вроде __meta)
+  const statsCount = () => Object.keys(progress).filter((k) => !k.startsWith("__")).length;
+
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
     if (!el.statsBody) return;
-    const rows = Object.entries(progress).map(([word, s]) => ({
+    const rows = Object.entries(progress).filter(([word]) => !word.startsWith("__")).map(([word, s]) => ({
       word,
       correct: s.correct || 0,
       wrong: s.wrong || 0,
@@ -395,7 +423,7 @@
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
     el.dataSummary.textContent =
-      I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
+      I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
     el.dialogMsg.textContent = "";
     renderStatsTable();
     el.overlay.hidden = false;
@@ -476,6 +504,7 @@
     catch { flash(I18N.t("errInvalidJson"), true); return; }
     if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash(I18N.t("errExpectObject"), true); return; }
     progress = obj;
+    markMastered();               // старые бэкапы без флагов m — помечаем
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable();
     flash(I18N.t("imported"));
   });
@@ -538,7 +567,7 @@
     }
     if (!el.overlay.hidden) {
       el.dataSummary.textContent =
-        I18N.t("dataSummary", { n: Object.keys(progress).length, total: WORDS.length });
+        I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
     if (!el.authOverlay.hidden && authForm) el.authTitle.textContent = authTitleFor(authForm.getMode());
@@ -563,6 +592,7 @@
       return;
     }
     progress = loadLocal();
+    markMastered();             // прогресс до этой версии — выученному ставим флаг
     updateStats();
     next();                     // работаем сразу, офлайн-first
 
@@ -575,6 +605,7 @@
         const merged = mergeMax(progress, server);
         if (JSON.stringify(merged) !== JSON.stringify(progress)) {
           progress = merged;
+          markMastered();       // серверная копия могла быть без флагов m
           saveLocal(); updateStats();
         }
         if (JSON.stringify(merged) !== JSON.stringify(server)) scheduleSync();
