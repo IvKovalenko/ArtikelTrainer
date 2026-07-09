@@ -206,6 +206,7 @@
   async function pushSync() {
     clearTimeout(syncTimer);
     syncTimer = null;
+    if (pendingReplace) { pushReplace(); return; }  // незавершённый сброс — сначала замена
     if (!dirty || !hasToken()) return;
     lastPush = Date.now();
     try { await apiPost(progress); dirty = false; setSync("ok"); }
@@ -214,6 +215,7 @@
   // уход со страницы (закрытие вкладки, сворачивание PWA, переключение
   // приложения) — дослать остаток немедленно; keepalive переживает выгрузку
   function flushSync() {
+    if (pendingReplace) { pushReplace(); return; }  // незавершённый сброс — сначала замена
     if (!dirty || !hasToken()) return;
     clearTimeout(syncTimer);
     syncTimer = null;
@@ -229,10 +231,62 @@
   }
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") flushSync();
-    else refreshWords();
+    else { refreshWords(); refreshProgress(); }
   });
   window.addEventListener("pagehide", flushSync);
-  window.addEventListener("online", () => { if (dirty) pushSync(); });
+  window.addEventListener("online", () => {
+    if (pendingReplace) pushReplace();
+    else if (dirty) pushSync();
+  });
+
+  // ---------- пересинхронизация прогресса ----------
+  // Слияние с сервером происходит при загрузке страницы, но вкладка/PWA может
+  // жить неделями — за это время другие устройства уходят вперёд. При
+  // возвращении в приложение подтягиваем серверную копию и сливаем (mergeMax),
+  // не чаще раза в 10 минут. Сервер теперь тоже сливает при POST, так что
+  // отставшая вкладка в любом случае ничего не затрёт.
+  const PROGRESS_RESYNC_INTERVAL = 10 * 60 * 1000;
+  let progressSyncedAt = Date.now();
+  async function refreshProgress() {
+    if (!hasToken() || !WORDS.length) return;
+    if (Date.now() - progressSyncedAt < PROGRESS_RESYNC_INTERVAL) return;
+    let server;
+    try { server = await apiGet(); } catch { return; }   // офлайн/401 — просто пропускаем
+    progressSyncedAt = Date.now();
+    if (!server || typeof server !== "object" || Array.isArray(server)) return;
+    const merged = mergeMax(progress, server);
+    if (JSON.stringify(merged) !== JSON.stringify(progress)) {
+      progress = merged;
+      markMastered();           // серверная копия могла быть без флагов m
+      saveLocal(); updateStats();
+    }
+    if (JSON.stringify(merged) !== JSON.stringify(server)) scheduleSync();
+  }
+
+  // Сброс статистики — единственный случай, когда серверную копию нужно
+  // заменить (?replace=1), а не слить: обычный POST вернул бы всё обратно.
+  let pendingReplace = false;
+  async function pushReplace() {
+    if (!hasToken()) return;
+    clearTimeout(syncTimer);
+    syncTimer = null;
+    dirty = false;
+    lastPush = Date.now();
+    try {
+      const r = await fetch(API + "?replace=1", {
+        method: "POST",
+        headers: { "content-type": "application/json", ...authHeaders() },
+        body: JSON.stringify(progress),
+      });
+      if (r.status === 401) { pendingReplace = false; dropAuth(); return; }
+      if (!r.ok) throw new Error();
+      pendingReplace = false;
+      setSync("ok");
+    } catch {
+      pendingReplace = true;    // нет сети: повторим замену, когда сеть вернётся
+      setSync("offline");
+    }
+  }
 
   // ---------- автообновление словаря ----------
   // Словарь читается один раз при старте, а вкладка/PWA может жить неделями:
@@ -648,7 +702,8 @@
       if (Object.keys(m).length) progress.__meta = m;
     }
     lastKey = null;
-    saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
+    saveLocal(); updateStats(); renderStatsTable(); next();
+    pushReplace();   // на сервер — заменой, иначе слияние вернёт старую статистику
   });
 
   $("btn-logout").addEventListener("click", async () => {
