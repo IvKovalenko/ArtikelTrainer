@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex">
+<title data-i18n="docTitleSettings">Настройки — Artikel Drill</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<script src="i18n.js"></script>
+<style>
+  :root {
+    --bg: #ffffff; --ink: #2b2b2b; --muted: #9a9a9a;
+    --line: #dcdcdc; --line-hover: #bdbdbd; --hover: #f5f5f4;
+    --green: #2f9e44; --red: #e03131; --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex; align-items: center; justify-content: center;
+    padding: 22px calc(22px + env(safe-area-inset-left)) calc(22px + env(safe-area-inset-bottom));
+  }
+  .box { width: 100%; max-width: 360px; }
+  h1 { margin: 0 0 18px; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; text-align: center; }
+  .setting { display: flex; flex-direction: column; gap: 12px; }
+  .setting-label { font-size: 15px; color: var(--ink); }
+  input[type="range"] { width: 100%; accent-color: var(--ink); }
+  .setting-value { text-align: center; font-size: 20px; font-weight: 700; }
+  .foot { text-align: center; margin-top: 26px; font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .foot a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="box">
+    <h1 data-i18n="settings">Настройки</h1>
+    <div class="setting">
+      <label class="setting-label" for="master-slider" data-i18n="masterPctLabel">Процент слов, необходимый для перехода на следующий уровень</label>
+      <input type="range" id="master-slider" min="80" max="95" step="5" list="master-ticks">
+      <datalist id="master-ticks">
+        <option value="80"></option><option value="85"></option>
+        <option value="90"></option><option value="95"></option>
+      </datalist>
+      <div class="setting-value" id="master-value">95%</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span class="lang-switch" id="lang-switch"></span>
+    <a href="/" data-i18n="backToApp">Вернуться в приложение</a>
+  </div>
+</main>
+<script>
+  // тот же ключ, что читает app.js (masterPct)
+  const LS_MASTER = "master-pct";
+  const STEPS = [80, 85, 90, 95];
+  const slider = document.getElementById("master-slider");
+  const value = document.getElementById("master-value");
+
+  const saved = parseInt(localStorage.getItem(LS_MASTER), 10);
+  slider.value = STEPS.includes(saved) ? saved : 95;
+  value.textContent = slider.value + "%";
+
+  slider.addEventListener("input", () => {
+    try { localStorage.setItem(LS_MASTER, slider.value); } catch {}
+    value.textContent = slider.value + "%";
+  });
+
+  I18N.mountSwitcher(document.getElementById("lang-switch"));
+</script>
+</body>
+</html>

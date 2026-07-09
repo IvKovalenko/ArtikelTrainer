@@ -6,7 +6,13 @@
   const LS_PROGRESS = "article-progress";
   const LS_TOKEN = "auth-token";   // JWT текущего пользователя
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
-  const MASTER_RATIO = 0.95;   // доля выученных слов уровня, чтобы открыть следующий
+  // Доля выученных слов уровня, чтобы открыть следующий, — настройка (80–95%).
+  const LS_MASTER = "master-pct";
+  const MASTER_STEPS = [80, 85, 90, 95];
+  function masterPct() {
+    const v = parseInt(localStorage.getItem(LS_MASTER), 10);
+    return MASTER_STEPS.includes(v) ? v : 95;
+  }
 
   // --- состояние ---
   let WORDS = [];             // [{word, article, level, gloss?, ru?}]
@@ -40,6 +46,8 @@
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
     authOverlay: $("auth-overlay"), authTitle: $("auth-title"),
+    settingsOverlay: $("settings-overlay"), masterSlider: $("master-slider"),
+    masterValue: $("master-value"),
     btnSignin: $("btn-signin"), btnRegister: $("btn-register"), btnAccount: $("btn-account"),
     registerNudge: $("register-nudge"),
     progressFill: $("progress-fill"), progressLabel: $("progress-label"),
@@ -206,7 +214,7 @@
     const lw = WORDS.filter((w) => w.level === level);
     if (!lw.length) return true;
     const m = lw.filter((w) => isMastered(w)).length;
-    return m >= lw.length * MASTER_RATIO;
+    return m >= lw.length * (masterPct() / 100);
   }
   function unlockedLevels() {
     let count = 1; // A1 всегда открыт
@@ -271,7 +279,7 @@
     }
 
     const lw = WORDS.filter((w) => w.level === cur);
-    const needed = Math.ceil(lw.length * MASTER_RATIO);
+    const needed = Math.ceil(lw.length * (masterPct() / 100));
     const mastered = lw.filter((w) => isMastered(w)).length;
     const pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
 
@@ -349,7 +357,9 @@
     });
   });
   // после ответа — клик в области карточки листает дальше
-  const dialogOpen = () => !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden;
+  const dialogOpen = () =>
+    !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden ||
+    !el.settingsOverlay.hidden;
   document.querySelector(".card").addEventListener("click", () => {
     if (answered && !dialogOpen()) next();
   });
@@ -486,6 +496,28 @@
     authForm.focus();
   }
   function closeAuth() { el.authOverlay.hidden = true; }
+
+  // ---------- настройки ----------
+  function openSettings() {
+    // телефон (узкий экран) — отдельная страница, десктоп — модальное окно
+    if (matchMedia("(max-width: 600px)").matches) {
+      location.href = "/settings.html";
+      return;
+    }
+    el.masterSlider.value = masterPct();
+    el.masterValue.textContent = masterPct() + "%";
+    el.settingsOverlay.hidden = false;
+  }
+  function closeSettings() { el.settingsOverlay.hidden = true; }
+  el.masterSlider.addEventListener("input", () => {
+    const v = parseInt(el.masterSlider.value, 10);
+    try { localStorage.setItem(LS_MASTER, String(v)); } catch {}
+    el.masterValue.textContent = v + "%";
+    updateStats();   // порог изменился → полоска и уровень пересчитываются сразу
+  });
+  $("btn-settings").addEventListener("click", openSettings);
+  $("btn-settings-close").addEventListener("click", closeSettings);
+  el.settingsOverlay.addEventListener("click", (e) => { if (e.target === el.settingsOverlay) closeSettings(); });
 
   $("btn-data").addEventListener("click", openData);
   $("btn-close").addEventListener("click", closeData);

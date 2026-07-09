@@ -58,6 +58,7 @@
       <button class="linkbtn" id="btn-signin" data-i18n="signInLink" hidden>Войти в аккаунт</button>
       <button class="linkbtn" id="btn-register" data-i18n="registerLink" hidden>Зарегистрироваться</button>
       <button class="linkbtn" id="btn-account" data-i18n="account" hidden>Аккаунт</button>
+      <button class="linkbtn" id="btn-settings" data-i18n="settings">Настройки</button>
       <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener" data-i18n="privacyPolicy">Политика конфиденциальности</a>
     </span>
   </footer>
@@ -111,6 +112,25 @@
     <span class="dialog-msg" id="account-msg"></span>
     <div class="danger-zone">
       <button class="linkbtn danger" id="btn-delete-account" data-i18n="deleteAccount">Удалить аккаунт</button>
+    </div>
+  </div>
+</div>
+
+<!-- Окно настроек (десктоп; на узких экранах — страница settings.html) -->
+<div class="overlay" id="settings-overlay" hidden>
+  <div class="dialog">
+    <div class="dialog-head">
+      <h2 data-i18n="settings">Настройки</h2>
+      <button class="linkbtn" id="btn-settings-close" data-i18n="close">Закрыть</button>
+    </div>
+    <div class="setting">
+      <label class="setting-label" for="master-slider" data-i18n="masterPctLabel">Процент слов, необходимый для перехода на следующий уровень</label>
+      <input type="range" id="master-slider" min="80" max="95" step="5" list="master-ticks">
+      <datalist id="master-ticks">
+        <option value="80"></option><option value="85"></option>
+        <option value="90"></option><option value="95"></option>
+      </datalist>
+      <div class="setting-value" id="master-value">95%</div>
     </div>
   </div>
 </div>
