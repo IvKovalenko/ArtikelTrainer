@@ -753,7 +753,7 @@ TRANSLATIONS = {
     "Schaukel": "качели", "Solidarität": "солидарность", "Toleranz": "толерантность",
     "Wildnis": "дикая природа", "Wimper": "ресница", "Zauberei": "колдовство",
     "Aussehen": "внешность", "Becken": "таз/бассейн", "Bündnis": "союз",
-    "Deodorant": "дезодорант", "Drittel": "треть", "Ferkel": "поросёнок",
+    "Deodorant (Deo)": "дезодорант", "Drittel": "треть", "Ferkel": "поросёнок",
     "Futter": "корм", "Gedächtnis": "память", "Gemälde": "картина", "Getreide": "зерно",
     "Glossar": "глоссарий", "Honorar": "гонорар", "Häuschen": "домик",
     "Häuslein": "домишко", "Inventar": "инвентарь", "Labor": "лаборатория",

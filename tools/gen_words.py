@@ -514,7 +514,7 @@ DEUTSCHBLOG_VOCAB_ADD = {
         "der": ["Becher", "Eimer", "Engel", "Esel", "Gedanke", "Gürtel",
                 "Kontinent", "Schmetterling"],
         "die": ["Diskussion", "Freude", "Grammatik", "Nationalität"],
-        "das": ["Aussehen", "Deodorant", "Medikament", "Päckchen", "Silber",
+        "das": ["Aussehen", "Deodorant (Deo)", "Medikament", "Päckchen", "Silber",
                 "Tablett", "Viertel", "Zuhause"],
     },
     "B1": {

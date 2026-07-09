@@ -754,7 +754,7 @@ TRANSLATIONS_EN = {
     "Schaukel": "swing (seesaw)", "Solidarität": "solidarity", "Toleranz": "tolerance",
     "Wildnis": "wilderness", "Wimper": "eyelash", "Zauberei": "sorcery",
     "Aussehen": "appearance", "Becken": "basin/pelvis", "Bündnis": "alliance",
-    "Deodorant": "deodorant", "Drittel": "third (fraction)", "Ferkel": "piglet",
+    "Deodorant (Deo)": "deodorant", "Drittel": "third (fraction)", "Ferkel": "piglet",
     "Futter": "fodder", "Gedächtnis": "memory", "Gemälde": "painting (artwork)", "Getreide": "grain",
     "Glossar": "glossary", "Honorar": "honorarium (fee)", "Häuschen": "little house",
     "Häuslein": "tiny house", "Inventar": "inventory", "Labor": "laboratory",
