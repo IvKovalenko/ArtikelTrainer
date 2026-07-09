@@ -326,7 +326,7 @@ TRANSLATIONS = {
     "Kette": "цепь", "Kraftfahrzeug (Kfz)": "автотранспортное средство", "Kiefer": "челюсть/сосна",
     "Killer": "убийца", "Killerin": "убийца (жен.)", "Kilogramm (Kilo)": "килограмм", "Kilometer": "километр",
     "Kind": "ребёнок", "Kinderlähmung": "полиомиелит", "Kindersterblichkeit": "детская смертность",
-    "Kindertagesstätte": "детский сад", "Kindheit": "детство", "Kino": "кино", "Kiosk": "киоск",
+    "Kindertagesstätte (Kita)": "детский сад", "Kindheit": "детство", "Kino": "кино", "Kiosk": "киоск",
     "Kirche": "церковь", "Kissen": "подушка", "Klasse": "класс", "Klassenarbeit": "контрольная работа",
     "Klassenfahrt": "школьная поездка", "Klavier": "пианино", "Kleid": "платье", "Kleidung": "одежда",
     "Klick": "клик", "Klima": "климат", "Klimaanlage": "кондиционер", "Klingel": "звонок",

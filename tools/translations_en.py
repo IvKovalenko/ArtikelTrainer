@@ -327,7 +327,7 @@ TRANSLATIONS_EN = {
     "Kette": "chain", "Kraftfahrzeug (Kfz)": "motor vehicle", "Kiefer": "jaw/pine",
     "Killer": "killer", "Killerin": "killer (f.)", "Kilogramm (Kilo)": "kilogram", "Kilometer": "kilometre",
     "Kind": "child", "Kinderlähmung": "polio", "Kindersterblichkeit": "child mortality",
-    "Kindertagesstätte": "day-care centre", "Kindheit": "childhood", "Kino": "cinema", "Kiosk": "kiosk",
+    "Kindertagesstätte (Kita)": "day-care centre", "Kindheit": "childhood", "Kino": "cinema", "Kiosk": "kiosk",
     "Kirche": "church", "Kissen": "pillow", "Klasse": "class", "Klassenarbeit": "class test",
     "Klassenfahrt": "school trip", "Klavier": "piano", "Kleid": "dress", "Kleidung": "clothing",
     "Klick": "click", "Klima": "climate", "Klimaanlage": "air conditioning", "Klingel": "doorbell",

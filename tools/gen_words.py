@@ -324,7 +324,7 @@ GOETHE_B1_ADD = {
         "Hälfte", "Händlerin", "Höhe", "Hörerin", "Hütte", "Infektion",
         "Integration", "Intelligenz", "Journalistin", "Kabine", "Kanne",
         "Kantine", "Karotte", "Aprikose", "Karriere", "Kassette", "Katastrophe", "Killerin",
-        "Kindertagesstätte", "Klimaanlage", "Klingel", "Klinik", "Kneipe",
+        "Kindertagesstätte (Kita)", "Klimaanlage", "Klingel", "Klinik", "Kneipe",
         "Kommunikation", "Konferenz", "Konfitüre", "Konkurrenz", "Kontrolle",
         "Kopie", "Kraft", "Kriminalpolizei", "Krippe", "Krise", "Kuh", "Kälte",
         "Käuferin", "Küste", "Lage", "Landung", "Landwirtschaft", "Langeweile",
