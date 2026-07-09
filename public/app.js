@@ -7,11 +7,19 @@
   const LS_TOKEN = "auth-token";   // JWT текущего пользователя
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
   // Доля выученных слов уровня, чтобы открыть следующий, — настройка (80–95%).
-  const LS_MASTER = "master-pct";
+  // Живёт в progress.__meta → синхронизируется с аккаунтом вместе со статистикой.
+  const LS_MASTER = "master-pct";   // старое локальное хранение — только для миграции
   const MASTER_STEPS = [80, 85, 90, 95];
+  const meta = () => progress.__meta || (progress.__meta = {});
   function masterPct() {
-    const v = parseInt(localStorage.getItem(LS_MASTER), 10);
+    const v = progress.__meta && progress.__meta.masterPct;
     return MASTER_STEPS.includes(v) ? v : 95;
+  }
+  function setMasterPct(v) {
+    const m = meta();
+    m.masterPct = v;
+    m.masterPctAt = Date.now();   // при слиянии устройств побеждает более поздний выбор
+    saveLocal(); scheduleSync(); updateStats();
   }
 
   // --- состояние ---
@@ -79,8 +87,13 @@
     const out = {};
     for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
       const x = a[key] || {}, y = b[key] || {};
-      if (key === "__meta") {   // служебная запись: достигнутый уровень
-        out[key] = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
+      if (key === "__meta") {   // служебная запись: достигнутый уровень + настройки
+        const m = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
+        // настройка порога: берём более поздний выбор (по метке времени)
+        const newer = (x.masterPctAt || 0) >= (y.masterPctAt || 0) ? x : y;
+        const src = newer.masterPct ? newer : (newer === x ? y : x);
+        if (src.masterPct) { m.masterPct = src.masterPct; m.masterPctAt = src.masterPctAt || 0; }
+        out[key] = m;
         continue;
       }
       out[key] = {
@@ -224,7 +237,7 @@
     // достигнутый уровень не отбирается — ни ошибками, ни пополнением словаря
     const saved = (progress.__meta && progress.__meta.unlockedIdx) || 1;
     if (count > saved) {
-      progress.__meta = { unlockedIdx: count };
+      meta().unlockedIdx = count;   // не затирая остальные поля __meta
       saveLocal(); scheduleSync();
     }
     return LEVELS.slice(0, Math.min(Math.max(count, saved), LEVELS.length));
@@ -511,9 +524,8 @@
   function closeSettings() { el.settingsOverlay.hidden = true; }
   el.masterSlider.addEventListener("input", () => {
     const v = parseInt(el.masterSlider.value, 10);
-    try { localStorage.setItem(LS_MASTER, String(v)); } catch {}
+    setMasterPct(v);   // сохранение + синк с аккаунтом + пересчёт полоски и уровня
     el.masterValue.textContent = v + "%";
-    updateStats();   // порог изменился → полоска и уровень пересчитываются сразу
   });
   $("btn-settings").addEventListener("click", openSettings);
   $("btn-settings-close").addEventListener("click", closeSettings);
@@ -549,7 +561,12 @@
 
   $("btn-reset").addEventListener("click", () => {
     if (!confirm(I18N.t("confirmReset"))) return;
+    // статистика и уровни обнуляются, настройки (порог) — остаются
+    const old = progress.__meta;
     progress = {};
+    if (old && old.masterPct) {
+      progress.__meta = { masterPct: old.masterPct, masterPctAt: old.masterPctAt || Date.now() };
+    }
     lastKey = null;
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
   });
@@ -632,6 +649,15 @@
     }
     progress = loadLocal();
     markMastered();             // прогресс до этой версии — выученному ставим флаг
+    // миграция: порог из старого локального хранилища переезжает в __meta
+    const lsPct = parseInt(localStorage.getItem(LS_MASTER), 10);
+    if (MASTER_STEPS.includes(lsPct) && !(progress.__meta && progress.__meta.masterPct)) {
+      const m = meta();
+      m.masterPct = lsPct;
+      m.masterPctAt = Date.now();
+      saveLocal();
+    }
+    try { localStorage.removeItem(LS_MASTER); } catch {}
     updateStats();
     next();                     // работаем сразу, офлайн-first
 

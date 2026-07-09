@@ -53,18 +53,30 @@
   </div>
 </main>
 <script>
-  // тот же ключ, что читает app.js (masterPct)
-  const LS_MASTER = "master-pct";
+  // Настройка живёт в __meta внутри прогресса (localStorage "article-progress"):
+  // при возвращении в приложение app.js дольёт её на сервер аккаунта.
+  const LS_PROGRESS = "article-progress";
   const STEPS = [80, 85, 90, 95];
   const slider = document.getElementById("master-slider");
   const value = document.getElementById("master-value");
 
-  const saved = parseInt(localStorage.getItem(LS_MASTER), 10);
+  function loadProgress() {
+    try {
+      const o = JSON.parse(localStorage.getItem(LS_PROGRESS) || "{}");
+      return o && typeof o === "object" && !Array.isArray(o) ? o : {};
+    } catch { return {}; }
+  }
+
+  const saved = (loadProgress().__meta || {}).masterPct;
   slider.value = STEPS.includes(saved) ? saved : 95;
   value.textContent = slider.value + "%";
 
   slider.addEventListener("input", () => {
-    try { localStorage.setItem(LS_MASTER, slider.value); } catch {}
+    const p = loadProgress();                 // свежая копия — ничего не затираем
+    const m = p.__meta || (p.__meta = {});
+    m.masterPct = parseInt(slider.value, 10);
+    m.masterPctAt = Date.now();               // при слиянии побеждает поздний выбор
+    try { localStorage.setItem(LS_PROGRESS, JSON.stringify(p)); } catch {}
     value.textContent = slider.value + "%";
   });
 
