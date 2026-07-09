@@ -370,8 +370,14 @@
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
     if (!el.statsBody) return;
+    // ключ гомографа хранит русское значение («Band (том)») — показываем
+    // подпись на языке интерфейса, сам ключ не трогаем
+    const label = new Map();
+    for (const w of WORDS) {
+      if (w.gloss) label.set(keyOf(w), `${w.word} (${trOf(w)})`);
+    }
     const rows = Object.entries(progress).filter(([word]) => !word.startsWith("__")).map(([word, s]) => ({
-      word,
+      word: label.get(word) || word,
       correct: s.correct || 0,
       wrong: s.wrong || 0,
       seen: s.seen || 0,
@@ -568,6 +574,7 @@
     if (!el.overlay.hidden) {
       el.dataSummary.textContent =
         I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+      renderStatsTable();   // подписи гомографов зависят от языка
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
     if (!el.authOverlay.hidden && authForm) el.authTitle.textContent = authTitleFor(authForm.getMode());
