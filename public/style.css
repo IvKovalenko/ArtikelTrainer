@@ -219,6 +219,19 @@ kbd.key,
 .hint.correct { color: var(--green); }
 .hint.wrong { color: var(--red); }
 
+/* режим паузы после ошибки: «как продолжить» — маленькая пульсирующая подпись */
+.continue-hint {
+  margin-top: -14px;                 /* ближе к подсказке с правильным ответом */
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  animation: continue-pulse 1.6s ease-in-out infinite;
+}
+@keyframes continue-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
 /* ---- footer ---- */
 .bottom {
   display: flex;
@@ -344,9 +357,12 @@ a.linkbtn { text-decoration: none; }
 
 /* ---- настройки ---- */
 .setting { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+.setting + .setting { margin-top: 22px; }
 .setting-label { font-size: 15px; color: var(--ink); }
 .setting input[type="range"] { width: 100%; accent-color: var(--ink); }
 .setting-value { text-align: center; font-size: 20px; font-weight: 700; }
+.setting-check { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; cursor: pointer; }
+.setting-check input { width: 18px; height: 18px; margin: 1px 0 0; flex: none; accent-color: var(--ink); }
 
 .btn-block {
   width: 100%; padding: 12px; font: inherit; font-size: 16px; color: var(--ink);

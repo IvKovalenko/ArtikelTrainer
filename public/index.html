@@ -48,6 +48,7 @@
     </div>
     <div class="keys-hint"><kbd data-i18n="keySpace">Пробел</kbd>/<kbd>Enter</kbd> <span data-i18n="keyNext">— дальше</span></div>
     <div class="hint" id="hint"></div>
+    <div class="continue-hint" id="continue-hint" hidden></div>
   </section>
 
   <footer class="bottom">
@@ -131,6 +132,22 @@
         <option value="90"></option><option value="95"></option>
       </datalist>
       <div class="setting-value" id="master-value">95%</div>
+    </div>
+    <div class="setting">
+      <label class="setting-label" for="delay-right" data-i18n="delayRightLabel">Задержка после правильного ответа</label>
+      <input type="range" id="delay-right" min="200" max="2000" step="50">
+      <div class="setting-value" id="delay-right-value">0.85 с</div>
+    </div>
+    <div class="setting">
+      <label class="setting-label" for="delay-wrong" data-i18n="delayWrongLabel">Задержка после неправильного ответа (при автопереходе)</label>
+      <input type="range" id="delay-wrong" min="500" max="4000" step="100">
+      <div class="setting-value" id="delay-wrong-value">1.7 с</div>
+    </div>
+    <div class="setting">
+      <label class="setting-check">
+        <input type="checkbox" id="wrong-pause">
+        <span data-i18n="wrongPauseLabel">После ошибки не переключать слово автоматически, а ждать подтверждения</span>
+      </label>
     </div>
   </div>
 </div>

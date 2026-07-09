@@ -21,6 +21,35 @@
     m.masterPctAt = Date.now();   // при слиянии устройств побеждает более поздний выбор
     saveLocal(); scheduleSync(); updateStats();
   }
+  // Настройка «после ошибки ждать подтверждения» — тоже в __meta (на весь аккаунт).
+  function wrongPause() {
+    return !!(progress.__meta && progress.__meta.wrongPause);
+  }
+  function setWrongPause(on) {
+    const m = meta();
+    m.wrongPause = on ? 1 : 0;
+    m.wrongPauseAt = Date.now();
+    saveLocal(); scheduleSync();
+  }
+  // Задержки автоперехода к следующему слову (мс) — тоже в __meta.
+  const DELAY_RIGHT_DEF = 850, DELAY_WRONG_DEF = 1700;
+  function delayRight() {
+    const v = progress.__meta && progress.__meta.delayRight;
+    return Number.isFinite(v) ? v : DELAY_RIGHT_DEF;
+  }
+  function delayWrong() {
+    const v = progress.__meta && progress.__meta.delayWrong;
+    return Number.isFinite(v) ? v : DELAY_WRONG_DEF;
+  }
+  function setDelay(field, v) {   // field: "delayRight" | "delayWrong"
+    const m = meta();
+    m[field] = v;
+    m[field + "At"] = Date.now();
+    saveLocal(); scheduleSync();
+  }
+  // «0.85 с» — секунды без хвостовых нулей + локализованная единица
+  const fmtSeconds = (ms) =>
+    (ms / 1000).toFixed(2).replace(/\.?0+$/, "") + " " + I18N.t("secondsShort");
 
   // --- состояние ---
   let WORDS = [];             // [{word, article, level, gloss?, ru?}]
@@ -30,6 +59,7 @@
   let current = null;         // текущее слово
   let lastKey = null;         // чтобы не повторять то же слово подряд
   let answered = false;       // на текущее слово уже ответили → ждём «дальше»
+  let awaitingContinue = false; // режим паузы: после ошибки ждём подтверждения пользователя
   let advTimer = null;
   let syncTimer = null;
   let lastPush = 0;           // время последней отправки на сервер (для троттлинга)
@@ -50,6 +80,9 @@
     level: $("level"), correct: $("stat-correct"), wrong: $("stat-wrong"),
     passed: $("stat-passed"), word: $("word"), gloss: $("gloss"),
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
+    continueHint: $("continue-hint"), wrongPauseCheck: $("wrong-pause"),
+    delayRightSlider: $("delay-right"), delayRightValue: $("delay-right-value"),
+    delayWrongSlider: $("delay-wrong"), delayWrongValue: $("delay-wrong-value"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
@@ -89,10 +122,15 @@
       const x = a[key] || {}, y = b[key] || {};
       if (key === "__meta") {   // служебная запись: достигнутый уровень + настройки
         const m = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
-        // настройка порога: берём более поздний выбор (по метке времени)
-        const newer = (x.masterPctAt || 0) >= (y.masterPctAt || 0) ? x : y;
-        const src = newer.masterPct ? newer : (newer === x ? y : x);
-        if (src.masterPct) { m.masterPct = src.masterPct; m.masterPctAt = src.masterPctAt || 0; }
+        // настройки: у каждой своя метка времени — побеждает более поздний выбор;
+        // 0 — валидное значение, поэтому проверяем «поле есть», а не истинность
+        for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong"]) {
+          const at = f + "At";
+          const newer = (x[at] || 0) >= (y[at] || 0) ? x : y;
+          const other = newer === x ? y : x;
+          const src = newer[f] !== undefined ? newer : (other[f] !== undefined ? other : null);
+          if (src) { m[f] = src[f]; m[at] = src[at] || 0; }
+        }
         out[key] = m;
         continue;
       }
@@ -351,12 +389,24 @@
     saveLocal(); scheduleSync(); updateStats();
 
     clearTimeout(advTimer);
-    advTimer = setTimeout(next, isRight ? 850 : 1700);
+    if (!isRight && wrongPause()) {
+      // режим паузы: показываем правильный ответ и ждём, пока пользователь
+      // сам выберет правильный артикль (клик/тап по зелёной кнопке или её
+      // цифровая клавиша) — моторное закрепление; кнопка остаётся единственной активной
+      awaitingContinue = true;
+      for (const b of answerButtons) if (b.dataset.article === right) b.disabled = false;
+      el.continueHint.textContent = I18N.t("continueCorrectArticle");
+      el.continueHint.hidden = false;
+    } else {
+      advTimer = setTimeout(next, isRight ? delayRight() : delayWrong());
+    }
   }
 
   function next() {
     clearTimeout(advTimer);
     answered = false;
+    awaitingContinue = false;
+    el.continueHint.hidden = true;
     current = pickWord();
     renderWord();
   }
@@ -367,17 +417,27 @@
       e.stopPropagation();                 // чтобы клик-ответ не пролистнул слово
       b.blur();                            // иначе Пробел/Enter «кликнут» кнопку снова
       if (!answered) answer(b.dataset.article);
+      // пауза после ошибки: продолжение — нажатием правильного артикля
+      else if (awaitingContinue && b.dataset.article === current.article) next();
     });
   });
-  // после ответа — клик в области карточки листает дальше
+  // после ответа — клик в области карточки листает дальше (кроме режима паузы:
+  // там продолжают только правильный артикль или клавиша)
   const dialogOpen = () =>
     !el.overlay.hidden || !el.accountOverlay.hidden || !el.authOverlay.hidden ||
     !el.settingsOverlay.hidden;
   document.querySelector(".card").addEventListener("click", () => {
-    if (answered && !dialogOpen()) next();
+    if (answered && !awaitingContinue && !dialogOpen()) next();
   });
   document.addEventListener("keydown", (e) => {
     if (dialogOpen()) return; // не мешаем при открытом окне
+    if (awaitingContinue) {
+      // пауза после ошибки: продолжает только правильный артикль —
+      // его цифровая клавиша (или клик по зелёной кнопке)
+      const map = { "1": "der", "2": "die", "3": "das", "4": "Plural" };
+      if (map[e.key] === current.article) { e.preventDefault(); next(); }
+      return;
+    }
     // Пробел/Enter листают всегда: после ответа — дальше, до ответа — скип
     // без записи в статистику (слово ещё выпадет — вес не изменился)
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); next(); return; }
@@ -519,6 +579,11 @@
     }
     el.masterSlider.value = masterPct();
     el.masterValue.textContent = masterPct() + "%";
+    el.wrongPauseCheck.checked = wrongPause();
+    el.delayRightSlider.value = delayRight();
+    el.delayRightValue.textContent = fmtSeconds(delayRight());
+    el.delayWrongSlider.value = delayWrong();
+    el.delayWrongValue.textContent = fmtSeconds(delayWrong());
     el.settingsOverlay.hidden = false;
   }
   function closeSettings() { el.settingsOverlay.hidden = true; }
@@ -526,6 +591,17 @@
     const v = parseInt(el.masterSlider.value, 10);
     setMasterPct(v);   // сохранение + синк с аккаунтом + пересчёт полоски и уровня
     el.masterValue.textContent = v + "%";
+  });
+  el.wrongPauseCheck.addEventListener("change", () => setWrongPause(el.wrongPauseCheck.checked));
+  el.delayRightSlider.addEventListener("input", () => {
+    const v = parseInt(el.delayRightSlider.value, 10);
+    setDelay("delayRight", v);
+    el.delayRightValue.textContent = fmtSeconds(v);
+  });
+  el.delayWrongSlider.addEventListener("input", () => {
+    const v = parseInt(el.delayWrongSlider.value, 10);
+    setDelay("delayWrong", v);
+    el.delayWrongValue.textContent = fmtSeconds(v);
   });
   $("btn-settings").addEventListener("click", openSettings);
   $("btn-settings-close").addEventListener("click", closeSettings);
@@ -561,11 +637,15 @@
 
   $("btn-reset").addEventListener("click", () => {
     if (!confirm(I18N.t("confirmReset"))) return;
-    // статистика и уровни обнуляются, настройки (порог) — остаются
+    // статистика и уровни обнуляются, настройки — остаются
     const old = progress.__meta;
     progress = {};
-    if (old && old.masterPct) {
-      progress.__meta = { masterPct: old.masterPct, masterPctAt: old.masterPctAt || Date.now() };
+    if (old) {
+      const m = {};
+      for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong"]) {
+        if (old[f] !== undefined) { m[f] = old[f]; m[f + "At"] = old[f + "At"] || Date.now(); }
+      }
+      if (Object.keys(m).length) progress.__meta = m;
     }
     lastKey = null;
     saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); next();
@@ -614,6 +694,7 @@
     if (answered && current) {
       el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();
     }
+    if (awaitingContinue) el.continueHint.textContent = I18N.t("continueCorrectArticle");
     // перевод текущего слова: после ответа — всегда, до ответа — только у гомографов
     if (current && el.gloss) {
       const tr = trOf(current);
@@ -626,6 +707,10 @@
       renderStatsTable();   // подписи гомографов зависят от языка
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
+    if (!el.settingsOverlay.hidden) {   // единица секунд («с»/«s») зависит от языка
+      el.delayRightValue.textContent = fmtSeconds(delayRight());
+      el.delayWrongValue.textContent = fmtSeconds(delayWrong());
+    }
     if (!el.authOverlay.hidden && authForm) el.authTitle.textContent = authTitleFor(authForm.getMode());
   }
   I18N.mountSwitcher($("lang-switch"));
