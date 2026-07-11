@@ -1631,20 +1631,6 @@
 "en":"primary school"
 },
 {
-"word":"Hauptschule",
-"article":"die",
-"level":"A1",
-"ru":"основная школа",
-"en":"secondary modern school"
-},
-{
-"word":"Sprachenschule",
-"article":"die",
-"level":"A1",
-"ru":"языковая школа",
-"en":"language school"
-},
-{
 "word":"Architektin",
 "article":"die",
 "level":"A1",
@@ -4851,13 +4837,6 @@
 "en":"shopping centre"
 },
 {
-"word":"Einzelzimmer",
-"article":"das",
-"level":"A2",
-"ru":"одноместный номер",
-"en":"single room"
-},
-{
 "word":"Erdgeschoss",
 "article":"das",
 "level":"A2",
@@ -6839,13 +6818,6 @@
 "en":"social worker"
 },
 {
-"word":"Speisewagen",
-"article":"der",
-"level":"B1",
-"ru":"вагон-ресторан",
-"en":"dining car"
-},
-{
 "word":"Spezialist",
 "article":"der",
 "level":"B1",
@@ -8050,13 +8022,6 @@
 "en":"unemployment"
 },
 {
-"word":"Arbeitsstelle",
-"article":"die",
-"level":"B1",
-"ru":"место работы",
-"en":"job"
-},
-{
 "word":"Art",
 "article":"die",
 "level":"B1",
@@ -8202,13 +8167,6 @@
 "level":"B1",
 "ru":"уход/сопровождение",
 "en":"care/support"
-},
-{
-"word":"Bezirksschule",
-"article":"die",
-"level":"B1",
-"ru":"окружная школа",
-"en":"district school"
 },
 {
 "word":"Biene",
@@ -8687,13 +8645,6 @@
 "en":"generation"
 },
 {
-"word":"Gesamtschule",
-"article":"die",
-"level":"B1",
-"ru":"единая школа",
-"en":"comprehensive school"
-},
-{
 "word":"Geschwindigkeit",
 "article":"die",
 "level":"B1",
@@ -9107,13 +9058,6 @@
 "en":"apprenticeship/teaching"
 },
 {
-"word":"Lehrstelle",
-"article":"die",
-"level":"B1",
-"ru":"место практики",
-"en":"apprenticeship position"
-},
-{
 "word":"Leiterin",
 "article":"die",
 "level":"B1",
@@ -9308,13 +9252,6 @@
 "level":"B1",
 "ru":"министр (жен.)",
 "en":"minister (f.)"
-},
-{
-"word":"Mittelschule",
-"article":"die",
-"level":"B1",
-"ru":"средняя школа",
-"en":"middle school"
 },
 {
 "word":"Mobilbox",
@@ -9611,13 +9548,6 @@
 "en":"cyclist (f.)"
 },
 {
-"word":"Realschule",
-"article":"die",
-"level":"B1",
-"ru":"реальное училище",
-"en":"intermediate secondary school"
-},
-{
 "word":"Recherche",
 "article":"die",
 "level":"B1",
@@ -9793,13 +9723,6 @@
 "en":"writer (f.)"
 },
 {
-"word":"Schularbeit",
-"article":"die",
-"level":"B1",
-"ru":"контрольная работа",
-"en":"class test (Austrian)"
-},
-{
 "word":"Schuld",
 "article":"die",
 "level":"B1",
@@ -9833,13 +9756,6 @@
 "level":"B1",
 "ru":"миска",
 "en":"bowl"
-},
-{
-"word":"Sekundarschule",
-"article":"die",
-"level":"B1",
-"ru":"средняя школа",
-"en":"secondary school (Swiss)"
 },
 {
 "word":"Semmel",
@@ -9882,13 +9798,6 @@
 "level":"B1",
 "ru":"программное обеспечение",
 "en":"software"
-},
-{
-"word":"Sonderschule",
-"article":"die",
-"level":"B1",
-"ru":"спецшкола",
-"en":"special school"
 },
 {
 "word":"Sorge",
@@ -10353,13 +10262,6 @@
 "en":"adult education centre"
 },
 {
-"word":"Volksschule",
-"article":"die",
-"level":"B1",
-"ru":"народная школа",
-"en":"elementary school"
-},
-{
 "word":"Vorbereitung",
 "article":"die",
 "level":"B1",
@@ -10554,13 +10456,6 @@
 "level":"B1",
 "ru":"зрительница",
 "en":"spectator (f.)"
-},
-{
-"word":"Zweitsprache",
-"article":"die",
-"level":"B1",
-"ru":"второй язык",
-"en":"second language"
 },
 {
 "word":"Öffentlichkeit",
@@ -11137,13 +11032,6 @@
 "en":"retirement home"
 },
 {
-"word":"Altersheim",
-"article":"das",
-"level":"B1",
-"ru":"дом престарелых",
-"en":"retirement home"
-},
-{
 "word":"Amt",
 "article":"das",
 "level":"B1",
@@ -11249,13 +11137,6 @@
 "en":"lost and found"
 },
 {
-"word":"Gasthaus",
-"article":"das",
-"level":"B1",
-"ru":"трактир",
-"en":"inn"
-},
-{
 "word":"Gebäck",
 "article":"das",
 "level":"B1",
@@ -11340,13 +11221,6 @@
 "en":"homesickness"
 },
 {
-"word":"Hilfsmittel",
-"article":"das",
-"level":"B1",
-"ru":"вспомогательное средство",
-"en":"aid (tool)"
-},
-{
 "word":"Holz",
 "article":"das",
 "level":"B1",
@@ -11387,13 +11261,6 @@
 "level":"B1",
 "ru":"кабель",
 "en":"cable"
-},
-{
-"word":"Kaffeehaus",
-"article":"das",
-"level":"B1",
-"ru":"кофейня",
-"en":"coffee house"
 },
 {
 "word":"Kapitel",
@@ -11471,13 +11338,6 @@
 "level":"B1",
 "ru":"склад/лагерь",
 "en":"warehouse/camp"
-},
-{
-"word":"Laufwerk",
-"article":"das",
-"level":"B1",
-"ru":"дисковод",
-"en":"disk drive"
 },
 {
 "word":"Leder",
@@ -11583,13 +11443,6 @@
 "level":"B1",
 "ru":"мюсли",
 "en":"muesli"
-},
-{
-"word":"Nahrungsmittel",
-"article":"das",
-"level":"B1",
-"ru":"продукт питания",
-"en":"foodstuff"
 },
 {
 "word":"Netz",
@@ -11779,13 +11632,6 @@
 "level":"B1",
 "ru":"студия",
 "en":"studio"
-},
-{
-"word":"Suchtmittel",
-"article":"das",
-"level":"B1",
-"ru":"наркотическое средство",
-"en":"addictive substance"
 },
 {
 "word":"Symbol",
@@ -12474,13 +12320,6 @@
 "en":"solo effort"
 },
 {
-"word":"Angriffspunkt",
-"article":"der",
-"level":"B2",
-"ru":"точка атаки",
-"en":"point of attack"
-},
-{
 "word":"Anhänger",
 "article":"der",
 "level":"B2",
@@ -12551,13 +12390,6 @@
 "en":"excerpt/neckline"
 },
 {
-"word":"Ballungsraum",
-"article":"der",
-"level":"B2",
-"ru":"агломерация",
-"en":"metropolitan area"
-},
-{
 "word":"Baukasten",
 "article":"der",
 "level":"B2",
@@ -12607,20 +12439,6 @@
 "en":"mineral resource"
 },
 {
-"word":"Brennpunkt",
-"article":"der",
-"level":"B2",
-"ru":"фокус/очаг",
-"en":"hotspot/focus"
-},
-{
-"word":"Brennstoff",
-"article":"der",
-"level":"B2",
-"ru":"топливо",
-"en":"fuel"
-},
-{
 "word":"Bruch",
 "article":"der",
 "level":"B2",
@@ -12656,13 +12474,6 @@
 "en":"perennial favourite"
 },
 {
-"word":"Domplatz",
-"article":"der",
-"level":"B2",
-"ru":"соборная площадь",
-"en":"cathedral square"
-},
-{
 "word":"Durchbruch",
 "article":"der",
 "level":"B2",
@@ -12691,13 +12502,6 @@
 "en":"turning point/cut"
 },
 {
-"word":"Erdkreis",
-"article":"der",
-"level":"B2",
-"ru":"земной круг",
-"en":"the globe"
-},
-{
 "word":"Erkenntnisgewinn",
 "article":"der",
 "level":"B2",
@@ -12710,13 +12514,6 @@
 "level":"B2",
 "ru":"термин",
 "en":"technical term"
-},
-{
-"word":"Fernverkehr",
-"article":"der",
-"level":"B2",
-"ru":"дальнее сообщение",
-"en":"long-distance transport"
 },
 {
 "word":"Föderalismus",
@@ -12768,13 +12565,6 @@
 "en":"sidewalk"
 },
 {
-"word":"Gesichtspunkt",
-"article":"der",
-"level":"B2",
-"ru":"точка зрения",
-"en":"point of view"
-},
-{
 "word":"Gottesdienst",
 "article":"der",
 "level":"B2",
@@ -12810,13 +12600,6 @@
 "en":"backyard"
 },
 {
-"word":"Inhaltsstoff",
-"article":"der",
-"level":"B2",
-"ru":"ингредиент",
-"en":"ingredient"
-},
-{
 "word":"Irrglaube",
 "article":"der",
 "level":"B2",
@@ -12850,13 +12633,6 @@
 "level":"B2",
 "ru":"тяжёлая работа",
 "en":"backbreaking job"
-},
-{
-"word":"Knotenpunkt",
-"article":"der",
-"level":"B2",
-"ru":"узел",
-"en":"hub/junction"
 },
 {
 "word":"Kohlenstoff",
@@ -12978,13 +12754,6 @@
 "en":"parking violation"
 },
 {
-"word":"Rechtsschutz",
-"article":"der",
-"level":"B2",
-"ru":"правовая защита",
-"en":"legal protection"
-},
-{
 "word":"Rechtsstaat",
 "article":"der",
 "level":"B2",
@@ -13025,13 +12794,6 @@
 "level":"B2",
 "ru":"бархат",
 "en":"velvet"
-},
-{
-"word":"Sanierungsfall",
-"article":"der",
-"level":"B2",
-"ru":"объект санации",
-"en":"renovation case"
 },
 {
 "word":"Sanierungsstau",
@@ -13132,13 +12894,6 @@
 "en":"reservoir"
 },
 {
-"word":"Stützpunkt",
-"article":"der",
-"level":"B2",
-"ru":"опорный пункт",
-"en":"base (military)"
-},
-{
 "word":"Sündenfall",
 "article":"der",
 "level":"B2",
@@ -13235,13 +12990,6 @@
 "level":"B2",
 "ru":"перемирие",
 "en":"ceasefire"
-},
-{
-"word":"Wahlkreis",
-"article":"der",
-"level":"B2",
-"ru":"избирательный округ",
-"en":"constituency"
 },
 {
 "word":"Wassermangel",
@@ -13580,13 +13328,6 @@
 "en":"attack"
 },
 {
-"word":"Angriffskrieg",
-"article":"der",
-"level":"B2",
-"ru":"захватническая война",
-"en":"war of aggression"
-},
-{
 "word":"Anleger",
 "article":"der",
 "level":"B2",
@@ -13916,13 +13657,6 @@
 "en":"case/fall"
 },
 {
-"word":"Finanzminister",
-"article":"der",
-"level":"B2",
-"ru":"министр финансов",
-"en":"finance minister"
-},
-{
 "word":"Fokus",
 "article":"der",
 "level":"B2",
@@ -13942,13 +13676,6 @@
 "level":"B2",
 "ru":"исследователь",
 "en":"researcher"
-},
-{
-"word":"Freistaat",
-"article":"der",
-"level":"B2",
-"ru":"свободное государство",
-"en":"free state"
 },
 {
 "word":"Fußgänger",
@@ -14007,13 +13734,6 @@
 "en":"winner"
 },
 {
-"word":"Großteil",
-"article":"der",
-"level":"B2",
-"ru":"большая часть",
-"en":"majority/large part"
-},
-{
 "word":"Gründer",
 "article":"der",
 "level":"B2",
@@ -14061,13 +13781,6 @@
 "level":"B2",
 "ru":"содержание",
 "en":"content"
-},
-{
-"word":"Innenminister",
-"article":"der",
-"level":"B2",
-"ru":"министр внутренних дел",
-"en":"interior minister"
 },
 {
 "word":"Kader",
@@ -14231,13 +13944,6 @@
 "en":"murder"
 },
 {
-"word":"Motorradfahrer",
-"article":"der",
-"level":"B2",
-"ru":"мотоциклист",
-"en":"motorcyclist"
-},
-{
 "word":"Nachfolger",
 "article":"der",
 "level":"B2",
@@ -14271,13 +13977,6 @@
 "level":"B2",
 "ru":"обер-бургомистр (мэр)",
 "en":"lord mayor"
-},
-{
-"word":"Ortsteil",
-"article":"der",
-"level":"B2",
-"ru":"район (населённого пункта)",
-"en":"district"
 },
 {
 "word":"Palästinenser",
@@ -14341,13 +14040,6 @@
 "level":"B2",
 "ru":"премьер",
 "en":"premier"
-},
-{
-"word":"Premierminister",
-"article":"der",
-"level":"B2",
-"ru":"премьер-министр",
-"en":"prime minister"
 },
 {
 "word":"Prinz",
@@ -14560,13 +14252,6 @@
 "en":"status"
 },
 {
-"word":"Strafraum",
-"article":"der",
-"level":"B2",
-"ru":"штрафная площадь",
-"en":"penalty area"
-},
-{
 "word":"Sturz",
 "article":"der",
 "level":"B2",
@@ -14679,13 +14364,6 @@
 "en":"defender"
 },
 {
-"word":"Verteidigungsminister",
-"article":"der",
-"level":"B2",
-"ru":"министр обороны",
-"en":"defense minister"
-},
-{
 "word":"Vordergrund",
 "article":"der",
 "level":"B2",
@@ -14768,13 +14446,6 @@
 "level":"B2",
 "ru":"сопротивление",
 "en":"resistance"
-},
-{
-"word":"Wirtschaftsminister",
-"article":"der",
-"level":"B2",
-"ru":"министр экономики",
-"en":"economy minister"
 },
 {
 "word":"Wohnraum",
@@ -15183,13 +14854,6 @@
 "en":"requirement"
 },
 {
-"word":"Anlaufstelle",
-"article":"die",
-"level":"B2",
-"ru":"пункт обращения",
-"en":"point of contact"
-},
-{
 "word":"Anordnung",
 "article":"die",
 "level":"B2",
@@ -15286,13 +14950,6 @@
 "level":"B2",
 "ru":"расширение",
 "en":"expansion"
-},
-{
-"word":"Bagatellgrenze",
-"article":"die",
-"level":"B2",
-"ru":"порог малозначительности",
-"en":"triviality threshold"
 },
 {
 "word":"Bedrohung",
@@ -15491,13 +15148,6 @@
 "en":"Lyme disease"
 },
 {
-"word":"Brotzeit",
-"article":"die",
-"level":"B2",
-"ru":"перекус",
-"en":"snack (break)"
-},
-{
 "word":"Bundeswehr",
 "article":"die",
 "level":"B2",
@@ -15680,13 +15330,6 @@
 "en":"food distribution"
 },
 {
-"word":"Fachrichtung",
-"article":"die",
-"level":"B2",
-"ru":"специальность",
-"en":"field of study"
-},
-{
 "word":"Fahne",
 "article":"die",
 "level":"B2",
@@ -15764,20 +15407,6 @@
 "en":"walking disability"
 },
 {
-"word":"Geheimhaltung",
-"article":"die",
-"level":"B2",
-"ru":"сохранение тайны",
-"en":"secrecy"
-},
-{
-"word":"Gemengelage",
-"article":"die",
-"level":"B2",
-"ru":"запутанная ситуация",
-"en":"tangled situation"
-},
-{
 "word":"Gerechtigkeit",
 "article":"die",
 "level":"B2",
@@ -15848,25 +15477,11 @@
 "en":"semiconductor technology"
 },
 {
-"word":"Handelsbeziehung",
-"article":"die",
-"level":"B2",
-"ru":"торговые отношения",
-"en":"trade relations"
-},
-{
 "word":"Hauptausrichtung",
 "article":"die",
 "level":"B2",
 "ru":"основная направленность",
 "en":"main orientation"
-},
-{
-"word":"Haushaltsführung",
-"article":"die",
-"level":"B2",
-"ru":"ведение хозяйства",
-"en":"housekeeping"
 },
 {
 "word":"Hebamme",
@@ -15953,13 +15568,6 @@
 "en":"child mortality"
 },
 {
-"word":"Kostenstelle",
-"article":"die",
-"level":"B2",
-"ru":"место возникновения затрат",
-"en":"cost centre"
-},
-{
 "word":"Kumpelwirtschaft",
 "article":"die",
 "level":"B2",
@@ -16014,13 +15622,6 @@
 "level":"B2",
 "ru":"прилавок",
 "en":"shop counter"
-},
-{
-"word":"Ladesäule",
-"article":"die",
-"level":"B2",
-"ru":"зарядная станция",
-"en":"charging station"
 },
 {
 "word":"Lebenseinstellung",
@@ -16674,13 +16275,6 @@
 "en":"laying down of arms"
 },
 {
-"word":"Wasserstraße",
-"article":"die",
-"level":"B2",
-"ru":"водный путь",
-"en":"waterway"
-},
-{
 "word":"Wattwanderung",
 "article":"die",
 "level":"B2",
@@ -17015,13 +16609,6 @@
 "level":"B2",
 "ru":"альянс",
 "en":"alliance"
-},
-{
-"word":"Amtszeit",
-"article":"die",
-"level":"B2",
-"ru":"срок полномочий",
-"en":"term of office"
 },
 {
 "word":"Analyse",
@@ -17486,13 +17073,6 @@
 "en":"custody/imprisonment"
 },
 {
-"word":"Halbzeit",
-"article":"die",
-"level":"B2",
-"ru":"тайм/перерыв",
-"en":"half-time"
-},
-{
 "word":"Herkunft",
 "article":"die",
 "level":"B2",
@@ -17666,13 +17246,6 @@
 "level":"B2",
 "ru":"столица земли",
 "en":"state capital"
-},
-{
-"word":"Landesregierung",
-"article":"die",
-"level":"B2",
-"ru":"правительство земли",
-"en":"state government"
 },
 {
 "word":"Landtagswahl",
@@ -18002,13 +17575,6 @@
 "level":"B2",
 "ru":"заседание",
 "en":"meeting/session"
-},
-{
-"word":"Spielzeit",
-"article":"die",
-"level":"B2",
-"ru":"сезон/игровое время",
-"en":"season/playing time"
 },
 {
 "word":"Spitze",
@@ -18522,13 +18088,6 @@
 "en":"inland vessel"
 },
 {
-"word":"Bundesmittel",
-"article":"das",
-"level":"B2",
-"ru":"федеральные средства",
-"en":"federal funds"
-},
-{
 "word":"Düngemittel",
 "article":"das",
 "level":"B2",
@@ -18613,13 +18172,6 @@
 "en":"healthcare system"
 },
 {
-"word":"Gewinnspiel",
-"article":"das",
-"level":"B2",
-"ru":"розыгрыш",
-"en":"prize draw"
-},
-{
 "word":"Gremium",
 "article":"das",
 "level":"B2",
@@ -18634,13 +18186,6 @@
 "en":"expert report"
 },
 {
-"word":"Haushaltsmittel",
-"article":"das",
-"level":"B2",
-"ru":"бюджетные средства",
-"en":"budget funds"
-},
-{
 "word":"Herzstück",
 "article":"das",
 "level":"B2",
@@ -18653,13 +18198,6 @@
 "level":"B2",
 "ru":"программа стимулирования",
 "en":"stimulus programme"
-},
-{
-"word":"Kopfgeld",
-"article":"das",
-"level":"B2",
-"ru":"награда за голову",
-"en":"bounty"
 },
 {
 "word":"Kopfschütteln",
@@ -18695,13 +18233,6 @@
 "level":"B2",
 "ru":"неудача",
 "en":"mishap"
-},
-{
-"word":"Problemfeld",
-"article":"das",
-"level":"B2",
-"ru":"проблемная область",
-"en":"problem area"
 },
 {
 "word":"Pulverfass",
@@ -19110,13 +18641,6 @@
 "en":"area/territory"
 },
 {
-"word":"Geschäftsjahr",
-"article":"das",
-"level":"B2",
-"ru":"финансовый год",
-"en":"fiscal year"
-},
-{
 "word":"Gewicht",
 "article":"das",
 "level":"B2",
@@ -19185,13 +18709,6 @@
 "level":"B2",
 "ru":"концепция",
 "en":"concept"
-},
-{
-"word":"Landgericht",
-"article":"das",
-"level":"B2",
-"ru":"земельный суд",
-"en":"regional court"
 },
 {
 "word":"Management",
@@ -19374,13 +18891,6 @@
 "level":"B2",
 "ru":"министерство обороны",
 "en":"defense ministry"
-},
-{
-"word":"Viertelfinale",
-"article":"das",
-"level":"B2",
-"ru":"четвертьфинал",
-"en":"quarterfinal"
 },
 {
 "word":"Visier",
@@ -19621,20 +19131,6 @@
 "en":"shooting down"
 },
 {
-"word":"Abstiegskampf",
-"article":"der",
-"level":"C1",
-"ru":"борьба за выживание (в лиге)",
-"en":"relegation battle"
-},
-{
-"word":"Abwehrspieler",
-"article":"der",
-"level":"C1",
-"ru":"защитник",
-"en":"defender"
-},
-{
 "word":"Advent",
 "article":"der",
 "level":"C1",
@@ -19845,25 +19341,11 @@
 "en":"excavator"
 },
 {
-"word":"Bahnverkehr",
-"article":"der",
-"level":"C1",
-"ru":"железнодорожное движение",
-"en":"rail traffic"
-},
-{
 "word":"Ballbesitz",
 "article":"der",
 "level":"C1",
 "ru":"владение мячом",
 "en":"ball possession"
-},
-{
-"word":"Baustein",
-"article":"der",
-"level":"C1",
-"ru":"составной элемент/кирпичик",
-"en":"building block"
 },
 {
 "word":"Begleiter",
@@ -20202,13 +19684,6 @@
 "en":"acquisition"
 },
 {
-"word":"Fahrradfahrer",
-"article":"der",
-"level":"C1",
-"ru":"велосипедист",
-"en":"cyclist"
-},
-{
 "word":"Fahrstreifen",
 "article":"der",
 "level":"C1",
@@ -20314,32 +19789,11 @@
 "en":"footballer"
 },
 {
-"word":"Förderverein",
-"article":"der",
-"level":"C1",
-"ru":"общество поддержки",
-"en":"support association"
-},
-{
 "word":"Gebrauch",
 "article":"der",
 "level":"C1",
 "ru":"использование",
 "en":"use"
-},
-{
-"word":"Gegenspieler",
-"article":"der",
-"level":"C1",
-"ru":"соперник",
-"en":"opponent"
-},
-{
-"word":"Gegenverkehr",
-"article":"der",
-"level":"C1",
-"ru":"встречное движение",
-"en":"oncoming traffic"
 },
 {
 "word":"Geheimdienst",
@@ -20361,13 +19815,6 @@
 "level":"C1",
 "ru":"генерал",
 "en":"general"
-},
-{
-"word":"Generalsekretär",
-"article":"der",
-"level":"C1",
-"ru":"генеральный секретарь",
-"en":"secretary general"
 },
 {
 "word":"Genuss",
@@ -20454,20 +19901,6 @@
 "en":"border crossing"
 },
 {
-"word":"Großeinsatz",
-"article":"der",
-"level":"C1",
-"ru":"крупная операция (служб)",
-"en":"large-scale operation"
-},
-{
-"word":"Grundstein",
-"article":"der",
-"level":"C1",
-"ru":"первый камень/основа",
-"en":"foundation stone"
-},
-{
 "word":"Gutachter",
 "article":"der",
 "level":"C1",
@@ -20529,13 +19962,6 @@
 "level":"C1",
 "ru":"ненависть",
 "en":"hatred"
-},
-{
-"word":"Hauptplatz",
-"article":"der",
-"level":"C1",
-"ru":"главная площадь",
-"en":"main square"
 },
 {
 "word":"Hauptsitz",
@@ -20613,13 +20039,6 @@
 "level":"C1",
 "ru":"внутренний двор",
 "en":"courtyard"
-},
-{
-"word":"Innenverteidiger",
-"article":"der",
-"level":"C1",
-"ru":"центральный защитник",
-"en":"center-back"
 },
 {
 "word":"Insider",
@@ -20748,13 +20167,6 @@
 "en":"bang"
 },
 {
-"word":"Koalitionspartner",
-"article":"der",
-"level":"C1",
-"ru":"партнёр по коалиции",
-"en":"coalition partner"
-},
-{
 "word":"Koalitionsvertrag",
 "article":"der",
 "level":"C1",
@@ -20804,13 +20216,6 @@
 "en":"context"
 },
 {
-"word":"Kopfball",
-"article":"der",
-"level":"C1",
-"ru":"удар головой",
-"en":"header"
-},
-{
 "word":"Kreistag",
 "article":"der",
 "level":"C1",
@@ -20823,13 +20228,6 @@
 "level":"C1",
 "ru":"круговое движение",
 "en":"roundabout"
-},
-{
-"word":"Kriegsbeginn",
-"article":"der",
-"level":"C1",
-"ru":"начало войны",
-"en":"start of war"
 },
 {
 "word":"Kämpfer",
@@ -20930,13 +20328,6 @@
 "en":"market share"
 },
 {
-"word":"Medienbericht",
-"article":"der",
-"level":"C1",
-"ru":"сообщение СМИ",
-"en":"media report"
-},
-{
 "word":"Mediziner",
 "article":"der",
 "level":"C1",
@@ -20993,13 +20384,6 @@
 "en":"teammate"
 },
 {
-"word":"Mittelfeldspieler",
-"article":"der",
-"level":"C1",
-"ru":"полузащитник",
-"en":"midfielder"
-},
-{
 "word":"Modus",
 "article":"der",
 "level":"C1",
@@ -21033,13 +20417,6 @@
 "level":"C1",
 "ru":"национал-социализм",
 "en":"National Socialism"
-},
-{
-"word":"Naturschutz",
-"article":"der",
-"level":"C1",
-"ru":"охрана природы",
-"en":"nature conservation"
 },
 {
 "word":"Neustart",
@@ -21089,13 +20466,6 @@
 "level":"C1",
 "ru":"врач скорой помощи",
 "en":"emergency doctor"
-},
-{
-"word":"Parteichef",
-"article":"der",
-"level":"C1",
-"ru":"лидер партии",
-"en":"party leader"
 },
 {
 "word":"Parteitag",
@@ -21322,13 +20692,6 @@
 "en":"withdrawal/retreat"
 },
 {
-"word":"Saisonstart",
-"article":"der",
-"level":"C1",
-"ru":"старт сезона",
-"en":"season start"
-},
-{
 "word":"Sand",
 "article":"der",
 "level":"C1",
@@ -21350,25 +20713,11 @@
 "en":"shower"
 },
 {
-"word":"Schauplatz",
-"article":"der",
-"level":"C1",
-"ru":"место действия",
-"en":"scene/venue"
-},
-{
 "word":"Schlager",
 "article":"der",
 "level":"C1",
 "ru":"шлягер",
 "en":"hit song"
-},
-{
-"word":"Schneefall",
-"article":"der",
-"level":"C1",
-"ru":"снегопад",
-"en":"snowfall"
 },
 {
 "word":"Schreibtisch",
@@ -21397,13 +20746,6 @@
 "level":"C1",
 "ru":"благословение",
 "en":"blessing"
-},
-{
-"word":"Seitenwechsel",
-"article":"der",
-"level":"C1",
-"ru":"смена сторон",
-"en":"change of ends"
 },
 {
 "word":"Sektor",
@@ -21588,13 +20930,6 @@
 "en":"road traffic"
 },
 {
-"word":"Streamingdienst",
-"article":"der",
-"level":"C1",
-"ru":"стриминговый сервис",
-"en":"streaming service"
-},
-{
 "word":"Streich",
 "article":"der",
 "level":"C1",
@@ -21607,13 +20942,6 @@
 "level":"C1",
 "ru":"полоса",
 "en":"stripe/strip"
-},
-{
-"word":"Streifenwagen",
-"article":"der",
-"level":"C1",
-"ru":"патрульная машина",
-"en":"patrol car"
 },
 {
 "word":"Superstar",
@@ -21635,27 +20963,6 @@
 "level":"C1",
 "ru":"сириец",
 "en":"Syrian"
-},
-{
-"word":"Südosten",
-"article":"der",
-"level":"C1",
-"ru":"юго-восток",
-"en":"southeast"
-},
-{
-"word":"Südwesten",
-"article":"der",
-"level":"C1",
-"ru":"юго-запад",
-"en":"southwest"
-},
-{
-"word":"Tabellenplatz",
-"article":"der",
-"level":"C1",
-"ru":"место в таблице",
-"en":"league position"
 },
 {
 "word":"Teamkollege",
@@ -21798,13 +21105,6 @@
 "en":"switch/transfer"
 },
 {
-"word":"Umweltschutz",
-"article":"der",
-"level":"C1",
-"ru":"охрана окружающей среды",
-"en":"environmental protection"
-},
-{
 "word":"Unfallort",
 "article":"der",
 "level":"C1",
@@ -21854,25 +21154,11 @@
 "en":"whereabouts/staying"
 },
 {
-"word":"Verfassungsschutz",
-"article":"der",
-"level":"C1",
-"ru":"ведомство по защите конституции",
-"en":"constitution protection agency"
-},
-{
 "word":"Verfolger",
 "article":"der",
 "level":"C1",
 "ru":"преследователь",
 "en":"pursuer"
-},
-{
-"word":"Verkehrsminister",
-"article":"der",
-"level":"C1",
-"ru":"министр транспорта",
-"en":"transport minister"
 },
 {
 "word":"Verkehrsteilnehmer",
@@ -21945,25 +21231,11 @@
 "en":"chairmanship"
 },
 {
-"word":"Vorstandschef",
-"article":"der",
-"level":"C1",
-"ru":"председатель правления",
-"en":"CEO"
-},
-{
 "word":"Vorverkauf",
 "article":"der",
 "level":"C1",
 "ru":"предпродажа",
 "en":"advance sale"
-},
-{
-"word":"Wahlgang",
-"article":"der",
-"level":"C1",
-"ru":"тур голосования",
-"en":"round of voting"
 },
 {
 "word":"Wahnsinn",
@@ -22083,13 +21355,6 @@
 "level":"C1",
 "ru":"прирост",
 "en":"growth/increase"
-},
-{
-"word":"Zweikampf",
-"article":"der",
-"level":"C1",
-"ru":"единоборство/дуэль",
-"en":"duel/tackle"
 },
 {
 "word":"Überfall",
@@ -22421,13 +21686,6 @@
 "en":"address/speech"
 },
 {
-"word":"Arbeitsgruppe",
-"article":"die",
-"level":"C1",
-"ru":"рабочая группа",
-"en":"working group"
-},
-{
 "word":"Arbeitswelt",
 "article":"die",
 "level":"C1",
@@ -22503,13 +21761,6 @@
 "level":"C1",
 "ru":"трансляция/харизма",
 "en":"broadcast/charisma"
-},
-{
-"word":"Auszeit",
-"article":"die",
-"level":"C1",
-"ru":"тайм-аут/передышка",
-"en":"timeout/break"
 },
 {
 "word":"Außenpolitik",
@@ -22741,13 +21992,6 @@
 "level":"C1",
 "ru":"обозначение/название",
 "en":"designation/name"
-},
-{
-"word":"Bezirksliga",
-"article":"die",
-"level":"C1",
-"ru":"окружная лига",
-"en":"district league"
 },
 {
 "word":"Biografie",
@@ -22995,13 +22239,6 @@
 "en":"dynamics/momentum"
 },
 {
-"word":"Echtzeit",
-"article":"die",
-"level":"C1",
-"ru":"реальное время",
-"en":"real time"
-},
-{
 "word":"Edition",
 "article":"die",
 "level":"C1",
@@ -23049,13 +22286,6 @@
 "level":"C1",
 "ru":"возмущение",
 "en":"outrage"
-},
-{
-"word":"Energieversorgung",
-"article":"die",
-"level":"C1",
-"ru":"энергоснабжение",
-"en":"energy supply"
 },
 {
 "word":"Entdeckung",
@@ -23177,13 +22407,6 @@
 "en":"creation"
 },
 {
-"word":"Erstversorgung",
-"article":"die",
-"level":"C1",
-"ru":"первая помощь",
-"en":"initial treatment"
-},
-{
 "word":"Eskalation",
 "article":"die",
 "level":"C1",
@@ -23203,13 +22426,6 @@
 "level":"C1",
 "ru":"эйфория",
 "en":"euphoria"
-},
-{
-"word":"Europameisterschaft",
-"article":"die",
-"level":"C1",
-"ru":"чемпионат Европы",
-"en":"European championship"
 },
 {
 "word":"Evakuierung",
@@ -23296,13 +22512,6 @@
 "en":"completion"
 },
 {
-"word":"Feuerpause",
-"article":"die",
-"level":"C1",
-"ru":"прекращение огня",
-"en":"ceasefire"
-},
-{
 "word":"Filiale",
 "article":"die",
 "level":"C1",
@@ -23366,13 +22575,6 @@
 "en":"release/approval"
 },
 {
-"word":"Freiheitsstrafe",
-"article":"die",
-"level":"C1",
-"ru":"лишение свободы",
-"en":"prison sentence"
-},
-{
 "word":"Freilassung",
 "article":"die",
 "level":"C1",
@@ -23422,13 +22624,6 @@
 "en":"present"
 },
 {
-"word":"Geldpolitik",
-"article":"die",
-"level":"C1",
-"ru":"денежная политика",
-"en":"monetary policy"
-},
-{
 "word":"Geldstrafe",
 "article":"die",
 "level":"C1",
@@ -23441,13 +22636,6 @@
 "level":"C1",
 "ru":"генеральная прокуратура",
 "en":"prosecutor general's office"
-},
-{
-"word":"Generalversammlung",
-"article":"die",
-"level":"C1",
-"ru":"генеральная ассамблея",
-"en":"general assembly"
 },
 {
 "word":"Geschäftsführung",
@@ -23485,20 +22673,6 @@
 "en":"property tax"
 },
 {
-"word":"Gruppenphase",
-"article":"die",
-"level":"C1",
-"ru":"групповой этап",
-"en":"group stage"
-},
-{
-"word":"Hafenstadt",
-"article":"die",
-"level":"C1",
-"ru":"портовый город",
-"en":"port city"
-},
-{
 "word":"Halbinsel",
 "article":"die",
 "level":"C1",
@@ -23511,13 +22685,6 @@
 "level":"C1",
 "ru":"действие/сюжет",
 "en":"action/plot"
-},
-{
-"word":"Hansestadt",
-"article":"die",
-"level":"C1",
-"ru":"ганзейский город",
-"en":"Hanseatic city"
 },
 {
 "word":"Hardware",
@@ -23546,20 +22713,6 @@
 "level":"C1",
 "ru":"входная дверь",
 "en":"front door"
-},
-{
-"word":"Heimatstadt",
-"article":"die",
-"level":"C1",
-"ru":"родной город",
-"en":"hometown"
-},
-{
-"word":"Hinrunde",
-"article":"die",
-"level":"C1",
-"ru":"первый круг (сезона)",
-"en":"first half of season"
 },
 {
 "word":"Holding",
@@ -23744,13 +22897,6 @@
 "en":"small town"
 },
 {
-"word":"Klimapolitik",
-"article":"die",
-"level":"C1",
-"ru":"климатическая политика",
-"en":"climate policy"
-},
-{
 "word":"Klärung",
 "article":"die",
 "level":"C1",
@@ -23891,25 +23037,11 @@
 "en":"cargo/charge"
 },
 {
-"word":"Landesliga",
-"article":"die",
-"level":"C1",
-"ru":"земельная лига",
-"en":"state league"
-},
-{
 "word":"Laufbahn",
 "article":"die",
 "level":"C1",
 "ru":"карьера/беговая дорожка",
 "en":"career/track"
-},
-{
-"word":"Laufzeit",
-"article":"die",
-"level":"C1",
-"ru":"срок действия",
-"en":"term/duration"
 },
 {
 "word":"Lebensgefahr",
@@ -24017,13 +23149,6 @@
 "en":"humanity"
 },
 {
-"word":"Mitgliederversammlung",
-"article":"die",
-"level":"C1",
-"ru":"общее собрание членов",
-"en":"general meeting"
-},
-{
 "word":"Mitgliedschaft",
 "article":"die",
 "level":"C1",
@@ -24127,13 +23252,6 @@
 "level":"C1",
 "ru":"поверхность",
 "en":"surface"
-},
-{
-"word":"Oberliga",
-"article":"die",
-"level":"C1",
-"ru":"оберлига",
-"en":"upper league"
 },
 {
 "word":"Orientierung",
@@ -24276,13 +23394,6 @@
 "en":"rocket/missile"
 },
 {
-"word":"Rauchentwicklung",
-"article":"die",
-"level":"C1",
-"ru":"задымление",
-"en":"smoke development"
-},
-{
 "word":"Reduktion",
 "article":"die",
 "level":"C1",
@@ -24388,13 +23499,6 @@
 "en":"clearing/eviction"
 },
 {
-"word":"Rückrunde",
-"article":"die",
-"level":"C1",
-"ru":"второй круг (сезона)",
-"en":"second half of season"
-},
-{
 "word":"Rückseite",
 "article":"die",
 "level":"C1",
@@ -24442,13 +23546,6 @@
 "level":"C1",
 "ru":"рельс/шина",
 "en":"rail/splint"
-},
-{
-"word":"Schlussphase",
-"article":"die",
-"level":"C1",
-"ru":"заключительная фаза",
-"en":"final phase"
 },
 {
 "word":"Schwäche",
@@ -24584,13 +23681,6 @@
 "en":"citizenship"
 },
 {
-"word":"Stadthalle",
-"article":"die",
-"level":"C1",
-"ru":"городской зал",
-"en":"town hall (venue)"
-},
-{
 "word":"Startelf",
 "article":"die",
 "level":"C1",
@@ -24603,13 +23693,6 @@
 "level":"C1",
 "ru":"управление",
 "en":"control"
-},
-{
-"word":"Stichwahl",
-"article":"die",
-"level":"C1",
-"ru":"второй тур выборов",
-"en":"runoff election"
 },
 {
 "word":"Straftat",
@@ -24948,13 +24031,6 @@
 "en":"people's party"
 },
 {
-"word":"Volksrepublik",
-"article":"die",
-"level":"C1",
-"ru":"народная республика",
-"en":"people's republic"
-},
-{
 "word":"Volkswirtschaft",
 "article":"die",
 "level":"C1",
@@ -25004,20 +24080,6 @@
 "en":"waiting time"
 },
 {
-"word":"Wasserversorgung",
-"article":"die",
-"level":"C1",
-"ru":"водоснабжение",
-"en":"water supply"
-},
-{
-"word":"Weihnachtszeit",
-"article":"die",
-"level":"C1",
-"ru":"рождественское время",
-"en":"Christmas season"
-},
-{
 "word":"Weile",
 "article":"die",
 "level":"C1",
@@ -25058,13 +24120,6 @@
 "level":"C1",
 "ru":"энергия ветра",
 "en":"wind power"
-},
-{
-"word":"Winterpause",
-"article":"die",
-"level":"C1",
-"ru":"зимний перерыв",
-"en":"winter break"
 },
 {
 "word":"Wucht",
@@ -25149,13 +24204,6 @@
 "level":"C1",
 "ru":"иммиграция",
 "en":"immigration"
-},
-{
-"word":"Zwischenzeit",
-"article":"die",
-"level":"C1",
-"ru":"промежуток времени",
-"en":"meantime"
 },
 {
 "word":"Ära",
@@ -25352,27 +24400,6 @@
 "level":"C1",
 "ru":"убежище",
 "en":"asylum"
-},
-{
-"word":"Auswärtsspiel",
-"article":"das",
-"level":"C1",
-"ru":"выездной матч",
-"en":"away game"
-},
-{
-"word":"Außenministerium",
-"article":"das",
-"level":"C1",
-"ru":"министерство иностранных дел",
-"en":"foreign ministry"
-},
-{
-"word":"Bauwerk",
-"article":"das",
-"level":"C1",
-"ru":"сооружение",
-"en":"structure/building"
 },
 {
 "word":"Beben",
@@ -25585,13 +24612,6 @@
 "en":"tax office"
 },
 {
-"word":"Finanzministerium",
-"article":"das",
-"level":"C1",
-"ru":"министерство финансов",
-"en":"finance ministry"
-},
-{
 "word":"Format",
 "article":"das",
 "level":"C1",
@@ -25634,13 +24654,6 @@
 "en":"foundation"
 },
 {
-"word":"Gastspiel",
-"article":"das",
-"level":"C1",
-"ru":"гастроли/выездной матч",
-"en":"guest performance/away game"
-},
-{
 "word":"Gegentor",
 "article":"das",
 "level":"C1",
@@ -25674,13 +24687,6 @@
 "level":"C1",
 "ru":"признание",
 "en":"confession"
-},
-{
-"word":"Gesundheitsministerium",
-"article":"das",
-"level":"C1",
-"ru":"министерство здравоохранения",
-"en":"health ministry"
 },
 {
 "word":"Gewerbe",
@@ -25744,13 +24750,6 @@
 "level":"C1",
 "ru":"родина",
 "en":"homeland"
-},
-{
-"word":"Hinspiel",
-"article":"das",
-"level":"C1",
-"ru":"первый матч",
-"en":"first leg"
 },
 {
 "word":"Hochwasser",
@@ -25858,13 +24857,6 @@
 "en":"state office"
 },
 {
-"word":"Landesgericht",
-"article":"das",
-"level":"C1",
-"ru":"земельный суд",
-"en":"regional court"
-},
-{
 "word":"Landeskriminalamt",
 "article":"das",
 "level":"C1",
@@ -25877,13 +24869,6 @@
 "level":"C1",
 "ru":"районная администрация",
 "en":"district office"
-},
-{
-"word":"Lebensjahr",
-"article":"das",
-"level":"C1",
-"ru":"год жизни",
-"en":"year of life"
 },
 {
 "word":"Level",
@@ -25996,13 +24981,6 @@
 "level":"C1",
 "ru":"образец/узор",
 "en":"pattern/sample"
-},
-{
-"word":"Nachbarland",
-"article":"das",
-"level":"C1",
-"ru":"соседняя страна",
-"en":"neighboring country"
 },
 {
 "word":"Oberlandesgericht",
@@ -26166,13 +25144,6 @@
 "en":"result"
 },
 {
-"word":"Rückspiel",
-"article":"das",
-"level":"C1",
-"ru":"ответный матч",
-"en":"return match"
-},
-{
 "word":"Saisonende",
 "article":"das",
 "level":"C1",
@@ -26243,13 +25214,6 @@
 "en":"playing field"
 },
 {
-"word":"Sternzeichen",
-"article":"das",
-"level":"C1",
-"ru":"знак зодиака",
-"en":"zodiac sign"
-},
-{
 "word":"Stichwort",
 "article":"das",
 "level":"C1",
@@ -26276,13 +25240,6 @@
 "level":"C1",
 "ru":"территория",
 "en":"territory"
-},
-{
-"word":"Testspiel",
-"article":"das",
-"level":"C1",
-"ru":"товарищеский матч",
-"en":"friendly match"
 },
 {
 "word":"Todesopfer",
@@ -26374,13 +25331,6 @@
 "level":"C1",
 "ru":"ценная бумага",
 "en":"security"
-},
-{
-"word":"Wirtschaftsministerium",
-"article":"das",
-"level":"C1",
-"ru":"министерство экономики",
-"en":"economics ministry"
 },
 {
 "word":"Dissens",
@@ -26607,27 +25557,6 @@
 "en":"relegated team"
 },
 {
-"word":"Abteilungsleiter",
-"article":"der",
-"level":"C2",
-"ru":"начальник отдела",
-"en":"department head"
-},
-{
-"word":"Abwehrchef",
-"article":"der",
-"level":"C2",
-"ru":"лидер обороны",
-"en":"defensive leader"
-},
-{
-"word":"Abwärtstrend",
-"article":"der",
-"level":"C2",
-"ru":"нисходящий тренд",
-"en":"downward trend"
-},
-{
 "word":"Acker",
 "article":"der",
 "level":"C2",
@@ -26747,13 +25676,6 @@
 "en":"daily work routine"
 },
 {
-"word":"Arbeitsminister",
-"article":"der",
-"level":"C2",
-"ru":"министр труда",
-"en":"labor minister"
-},
-{
 "word":"Argentinier",
 "article":"der",
 "level":"C2",
@@ -26766,13 +25688,6 @@
 "level":"C2",
 "ru":"ассистент",
 "en":"assistant"
-},
-{
-"word":"Atemschutz",
-"article":"der",
-"level":"C2",
-"ru":"защита органов дыхания",
-"en":"respiratory protection"
 },
 {
 "word":"Aufenthaltsort",
@@ -26859,13 +25774,6 @@
 "en":"way out"
 },
 {
-"word":"Auswärtssieg",
-"article":"der",
-"level":"C2",
-"ru":"победа на выезде",
-"en":"away win"
-},
-{
 "word":"Auszug",
 "article":"der",
 "level":"C2",
@@ -26885,20 +25793,6 @@
 "level":"C2",
 "ru":"автоавария",
 "en":"car accident"
-},
-{
-"word":"Autoverkehr",
-"article":"der",
-"level":"C2",
-"ru":"автомобильное движение",
-"en":"car traffic"
-},
-{
-"word":"Außenbereich",
-"article":"der",
-"level":"C2",
-"ru":"внешняя зона",
-"en":"outdoor area"
 },
 {
 "word":"Außenverteidiger",
@@ -26964,25 +25858,11 @@
 "en":"construction worker"
 },
 {
-"word":"Baubeginn",
-"article":"der",
-"level":"C2",
-"ru":"начало строительства",
-"en":"start of construction"
-},
-{
 "word":"Bauhof",
 "article":"der",
 "level":"C2",
 "ru":"хоздвор (коммунальный)",
 "en":"municipal works yard"
-},
-{
-"word":"Bebauungsplan",
-"article":"der",
-"level":"C2",
-"ru":"план застройки",
-"en":"development plan"
 },
 {
 "word":"Behälter",
@@ -27125,13 +26005,6 @@
 "en":"firecracker"
 },
 {
-"word":"Börsengang",
-"article":"der",
-"level":"C2",
-"ru":"выход на биржу",
-"en":"IPO"
-},
-{
 "word":"Bürgerkrieg",
 "article":"der",
 "level":"C2",
@@ -27179,13 +26052,6 @@
 "level":"C2",
 "ru":"затяжной дождь",
 "en":"continuous rain"
-},
-{
-"word":"Denkmalschutz",
-"article":"der",
-"level":"C2",
-"ru":"охрана памятников",
-"en":"monument protection"
 },
 {
 "word":"Diabetes",
@@ -27258,25 +26124,11 @@
 "en":"setback/damper"
 },
 {
-"word":"Eingangsbereich",
-"article":"der",
-"level":"C2",
-"ru":"входная зона",
-"en":"entrance area"
-},
-{
 "word":"Einmarsch",
 "article":"der",
 "level":"C2",
 "ru":"вторжение",
 "en":"invasion"
-},
-{
-"word":"Einsatzleiter",
-"article":"der",
-"level":"C2",
-"ru":"руководитель операции",
-"en":"operation commander"
 },
 {
 "word":"Einsatzort",
@@ -27305,20 +26157,6 @@
 "level":"C2",
 "ru":"энергетический концерн",
 "en":"energy corporation"
-},
-{
-"word":"Energieträger",
-"article":"der",
-"level":"C2",
-"ru":"энергоноситель",
-"en":"energy source"
-},
-{
-"word":"Energieverbrauch",
-"article":"der",
-"level":"C2",
-"ru":"энергопотребление",
-"en":"energy consumption"
 },
 {
 "word":"Energieversorger",
@@ -27398,13 +26236,6 @@
 "en":"European champion"
 },
 {
-"word":"Euroraum",
-"article":"der",
-"level":"C2",
-"ru":"еврозона",
-"en":"eurozone"
-},
-{
 "word":"Fachbereich",
 "article":"der",
 "level":"C2",
@@ -27475,20 +26306,6 @@
 "en":"freighter"
 },
 {
-"word":"Fraktionschef",
-"article":"der",
-"level":"C2",
-"ru":"глава фракции",
-"en":"parliamentary group leader"
-},
-{
-"word":"Frauenfußball",
-"article":"der",
-"level":"C2",
-"ru":"женский футбол",
-"en":"women's football"
-},
-{
 "word":"Freispruch",
 "article":"der",
 "level":"C2",
@@ -27522,13 +26339,6 @@
 "level":"C2",
 "ru":"ресторатор",
 "en":"restaurateur"
-},
-{
-"word":"Gegentreffer",
-"article":"der",
-"level":"C2",
-"ru":"пропущенный гол",
-"en":"conceded goal"
 },
 {
 "word":"Gegenwind",
@@ -27566,13 +26376,6 @@
 "en":"total value"
 },
 {
-"word":"Geschäftsmann",
-"article":"der",
-"level":"C2",
-"ru":"бизнесмен",
-"en":"businessman"
-},
-{
 "word":"Gesellschafter",
 "article":"der",
 "level":"C2",
@@ -27587,13 +26390,6 @@
 "en":"draft law/bill"
 },
 {
-"word":"Gesundheitszustand",
-"article":"der",
-"level":"C2",
-"ru":"состояние здоровья",
-"en":"state of health"
-},
-{
 "word":"Gläubiger",
 "article":"der",
 "level":"C2",
@@ -27601,25 +26397,11 @@
 "en":"creditor"
 },
 {
-"word":"Goldpreis",
-"article":"der",
-"level":"C2",
-"ru":"цена золота",
-"en":"gold price"
-},
-{
 "word":"Großbrand",
 "article":"der",
 "level":"C2",
 "ru":"крупный пожар",
 "en":"major fire"
-},
-{
-"word":"Großraum",
-"article":"der",
-"level":"C2",
-"ru":"агломерация",
-"en":"metropolitan area"
 },
 {
 "word":"Gärtner",
@@ -27748,13 +26530,6 @@
 "en":"snack bar"
 },
 {
-"word":"Immobilienmarkt",
-"article":"der",
-"level":"C2",
-"ru":"рынок недвижимости",
-"en":"real estate market"
-},
-{
 "word":"Impfstoff",
 "article":"der",
 "level":"C2",
@@ -27767,13 +26542,6 @@
 "level":"C2",
 "ru":"импульс",
 "en":"impulse"
-},
-{
-"word":"Innenraum",
-"article":"der",
-"level":"C2",
-"ru":"салон/интерьер",
-"en":"interior"
 },
 {
 "word":"Intendant",
@@ -27818,13 +26586,6 @@
 "en":"lawyer"
 },
 {
-"word":"Justizminister",
-"article":"der",
-"level":"C2",
-"ru":"министр юстиции",
-"en":"minister of justice"
-},
-{
 "word":"Kanadier",
 "article":"der",
 "level":"C2",
@@ -27846,13 +26607,6 @@
 "en":"cardinal"
 },
 {
-"word":"Kaufpreis",
-"article":"der",
-"level":"C2",
-"ru":"цена покупки",
-"en":"purchase price"
-},
-{
 "word":"Kinderwagen",
 "article":"der",
 "level":"C2",
@@ -27872,13 +26626,6 @@
 "level":"C2",
 "ru":"прямой разговор",
 "en":"plain language"
-},
-{
-"word":"Kleinwagen",
-"article":"der",
-"level":"C2",
-"ru":"малолитражка",
-"en":"small car"
 },
 {
 "word":"Knoblauch",
@@ -27986,20 +26733,6 @@
 "en":"city treasurer"
 },
 {
-"word":"Landesverband",
-"article":"der",
-"level":"C2",
-"ru":"земельная ассоциация",
-"en":"regional association"
-},
-{
-"word":"Landsmann",
-"article":"der",
-"level":"C2",
-"ru":"соотечественник",
-"en":"compatriot"
-},
-{
 "word":"Lebensstil",
 "article":"der",
 "level":"C2",
@@ -28019,13 +26752,6 @@
 "level":"C2",
 "ru":"труп",
 "en":"corpse"
-},
-{
-"word":"Leistungsträger",
-"article":"der",
-"level":"C2",
-"ru":"ключевой игрок",
-"en":"key performer"
 },
 {
 "word":"Linienbus",
@@ -28210,13 +26936,6 @@
 "en":"fresh snow"
 },
 {
-"word":"Neuwagen",
-"article":"der",
-"level":"C2",
-"ru":"новый автомобиль",
-"en":"new car"
-},
-{
 "word":"Newsletter",
 "article":"der",
 "level":"C2",
@@ -28385,13 +27104,6 @@
 "en":"prototype"
 },
 {
-"word":"Prozentpunkt",
-"article":"der",
-"level":"C2",
-"ru":"процентный пункт",
-"en":"percentage point"
-},
-{
 "word":"Prozessor",
 "article":"der",
 "level":"C2",
@@ -28504,13 +27216,6 @@
 "en":"racing team"
 },
 {
-"word":"Rückenwind",
-"article":"der",
-"level":"C2",
-"ru":"попутный ветер",
-"en":"tailwind"
-},
-{
 "word":"Saisonbeginn",
 "article":"der",
 "level":"C2",
@@ -28574,13 +27279,6 @@
 "en":"mud"
 },
 {
-"word":"Schlosspark",
-"article":"der",
-"level":"C2",
-"ru":"дворцовый парк",
-"en":"palace park"
-},
-{
 "word":"Schlusspfiff",
 "article":"der",
 "level":"C2",
@@ -28635,13 +27333,6 @@
 "level":"C2",
 "ru":"победный гол",
 "en":"winning goal"
-},
-{
-"word":"Skifahrer",
-"article":"der",
-"level":"C2",
-"ru":"лыжник",
-"en":"skier"
 },
 {
 "word":"Slalom",
@@ -28714,13 +27405,6 @@
 "en":"top candidate"
 },
 {
-"word":"Sportwagen",
-"article":"der",
-"level":"C2",
-"ru":"спорткар",
-"en":"sports car"
-},
-{
 "word":"Spott",
 "article":"der",
 "level":"C2",
@@ -28761,13 +27445,6 @@
 "level":"C2",
 "ru":"игрок основы",
 "en":"regular player"
-},
-{
-"word":"Startplatz",
-"article":"der",
-"level":"C2",
-"ru":"стартовая позиция",
-"en":"starting spot"
 },
 {
 "word":"Strafstoß",
@@ -28847,32 +27524,11 @@
 "en":"tariff/rate"
 },
 {
-"word":"Tarifstreit",
-"article":"der",
-"level":"C2",
-"ru":"спор о зарплате",
-"en":"wage dispute"
-},
-{
-"word":"Tarifvertrag",
-"article":"der",
-"level":"C2",
-"ru":"коллективный договор",
-"en":"collective agreement"
-},
-{
 "word":"Taucher",
 "article":"der",
 "level":"C2",
 "ru":"водолаз/ныряльщик",
 "en":"diver"
-},
-{
-"word":"Taxifahrer",
-"article":"der",
-"level":"C2",
-"ru":"таксист",
-"en":"taxi driver"
 },
 {
 "word":"Teich",
@@ -28894,20 +27550,6 @@
 "level":"C2",
 "ru":"терроризм",
 "en":"terrorism"
-},
-{
-"word":"Tiefpunkt",
-"article":"der",
-"level":"C2",
-"ru":"низшая точка",
-"en":"low point"
-},
-{
-"word":"Tierarzt",
-"article":"der",
-"level":"C2",
-"ru":"ветеринар",
-"en":"veterinarian"
 },
 {
 "word":"Tierschutz",
@@ -29050,13 +27692,6 @@
 "en":"deputy/vice"
 },
 {
-"word":"Vizemeister",
-"article":"der",
-"level":"C2",
-"ru":"вице-чемпион",
-"en":"runner-up"
-},
-{
 "word":"Vollbrand",
 "article":"der",
 "level":"C2",
@@ -29183,20 +27818,6 @@
 "en":"western"
 },
 {
-"word":"Wochenbeginn",
-"article":"der",
-"level":"C2",
-"ru":"начало недели",
-"en":"start of the week"
-},
-{
-"word":"Wochenmarkt",
-"article":"der",
-"level":"C2",
-"ru":"еженедельный рынок",
-"en":"weekly market"
-},
-{
 "word":"Wohnbau",
 "article":"der",
 "level":"C2",
@@ -29230,13 +27851,6 @@
 "level":"C2",
 "ru":"склока",
 "en":"row/quarrel"
-},
-{
-"word":"Zugverkehr",
-"article":"der",
-"level":"C2",
-"ru":"движение поездов",
-"en":"train traffic"
 },
 {
 "word":"Zulauf",
@@ -29827,13 +28441,6 @@
 "en":"harassment"
 },
 {
-"word":"Beratungsstelle",
-"article":"die",
-"level":"C2",
-"ru":"консультационный центр",
-"en":"counseling center"
-},
-{
 "word":"Berufserfahrung",
 "article":"die",
 "level":"C2",
@@ -29874,13 +28481,6 @@
 "level":"C2",
 "ru":"положение/предназначение",
 "en":"provision/purpose"
-},
-{
-"word":"Bestzeit",
-"article":"die",
-"level":"C2",
-"ru":"лучшее время",
-"en":"best time"
 },
 {
 "word":"Betrachtung",
@@ -30056,13 +28656,6 @@
 "level":"C2",
 "ru":"диакония",
 "en":"deaconry"
-},
-{
-"word":"Dienststelle",
-"article":"die",
-"level":"C2",
-"ru":"служебное учреждение",
-"en":"office/department"
 },
 {
 "word":"Differenz",
@@ -30254,13 +28847,6 @@
 "en":"narrative/story"
 },
 {
-"word":"Europawahl",
-"article":"die",
-"level":"C2",
-"ru":"выборы в Европарламент",
-"en":"European election"
-},
-{
 "word":"Eurozone",
 "article":"die",
 "level":"C2",
@@ -30415,13 +29001,6 @@
 "en":"money laundering"
 },
 {
-"word":"Generalprobe",
-"article":"die",
-"level":"C2",
-"ru":"генеральная репетиция",
-"en":"dress rehearsal"
-},
-{
 "word":"Genesung",
 "article":"die",
 "level":"C2",
@@ -30434,20 +29013,6 @@
 "level":"C2",
 "ru":"кооператив",
 "en":"cooperative"
-},
-{
-"word":"Geschäftsleitung",
-"article":"die",
-"level":"C2",
-"ru":"руководство компании",
-"en":"management"
-},
-{
-"word":"Geschäftsstelle",
-"article":"die",
-"level":"C2",
-"ru":"офис/представительство",
-"en":"office/branch"
 },
 {
 "word":"Gesetzgebung",
@@ -30504,13 +29069,6 @@
 "level":"C2",
 "ru":"золотая медаль",
 "en":"gold medal"
-},
-{
-"word":"Großbank",
-"article":"die",
-"level":"C2",
-"ru":"крупный банк",
-"en":"major bank"
 },
 {
 "word":"Grundversorgung",
@@ -30716,13 +29274,6 @@
 "en":"half of the year"
 },
 {
-"word":"Jugendarbeit",
-"article":"die",
-"level":"C2",
-"ru":"работа с молодёжью",
-"en":"youth work"
-},
-{
 "word":"Jugendfeuerwehr",
 "article":"die",
 "level":"C2",
@@ -30756,13 +29307,6 @@
 "level":"C2",
 "ru":"залог",
 "en":"deposit/bail"
-},
-{
-"word":"Kehrtwende",
-"article":"die",
-"level":"C2",
-"ru":"разворот (курса)",
-"en":"U-turn"
 },
 {
 "word":"Kinderarmut",
@@ -30805,20 +29349,6 @@
 "level":"C2",
 "ru":"колонка (в газете)",
 "en":"column"
-},
-{
-"word":"Kommunalpolitik",
-"article":"die",
-"level":"C2",
-"ru":"муниципальная политика",
-"en":"local politics"
-},
-{
-"word":"Kommunalwahl",
-"article":"die",
-"level":"C2",
-"ru":"муниципальные выборы",
-"en":"local election"
 },
 {
 "word":"Komplexität",
@@ -30898,25 +29428,11 @@
 "en":"cooling"
 },
 {
-"word":"Küstenwache",
-"article":"die",
-"level":"C2",
-"ru":"береговая охрана",
-"en":"coast guard"
-},
-{
 "word":"Lady",
 "article":"die",
 "level":"C2",
 "ru":"леди",
 "en":"lady"
-},
-{
-"word":"Lagerhalle",
-"article":"die",
-"level":"C2",
-"ru":"склад",
-"en":"warehouse"
 },
 {
 "word":"Landesebene",
@@ -30987,13 +29503,6 @@
 "level":"C2",
 "ru":"работоспособность",
 "en":"performance capacity"
-},
-{
-"word":"Leitstelle",
-"article":"die",
-"level":"C2",
-"ru":"диспетчерская",
-"en":"control center"
 },
 {
 "word":"Liegenschaft",
@@ -31164,13 +29673,6 @@
 "en":"mosque"
 },
 {
-"word":"Nationalbank",
-"article":"die",
-"level":"C2",
-"ru":"национальный банк",
-"en":"national bank"
-},
-{
 "word":"Nervosität",
 "article":"die",
 "level":"C2",
@@ -31241,13 +29743,6 @@
 "en":"openness"
 },
 {
-"word":"Oppositionspartei",
-"article":"die",
-"level":"C2",
-"ru":"оппозиционная партия",
-"en":"opposition party"
-},
-{
 "word":"Optik",
 "article":"die",
 "level":"C2",
@@ -31274,13 +29769,6 @@
 "level":"C2",
 "ru":"палитра/поддон",
 "en":"palette/pallet"
-},
-{
-"word":"Parlamentswahl",
-"article":"die",
-"level":"C2",
-"ru":"парламентские выборы",
-"en":"parliamentary election"
 },
 {
 "word":"Parteispitze",
@@ -31416,13 +29904,6 @@
 "en":"productivity"
 },
 {
-"word":"Protestaktion",
-"article":"die",
-"level":"C2",
-"ru":"акция протеста",
-"en":"protest action"
-},
-{
 "word":"Provokation",
 "article":"die",
 "level":"C2",
@@ -31477,13 +29958,6 @@
 "level":"C2",
 "ru":"рейтинг",
 "en":"ranking"
-},
-{
-"word":"Raumstation",
-"article":"die",
-"level":"C2",
-"ru":"космическая станция",
-"en":"space station"
 },
 {
 "word":"Realisierung",
@@ -31619,13 +30093,6 @@
 "en":"school administration"
 },
 {
-"word":"Schulzeit",
-"article":"die",
-"level":"C2",
-"ru":"школьные годы",
-"en":"school days"
-},
-{
 "word":"Schusswaffe",
 "article":"die",
 "level":"C2",
@@ -31708,13 +30175,6 @@
 "level":"C2",
 "ru":"отрасль/секция",
 "en":"division/branch"
-},
-{
-"word":"Spielweise",
-"article":"die",
-"level":"C2",
-"ru":"манера игры",
-"en":"playing style"
 },
 {
 "word":"Sprengung",
@@ -31808,20 +30268,6 @@
 "en":"column/pillar"
 },
 {
-"word":"Tabellenführung",
-"article":"die",
-"level":"C2",
-"ru":"лидерство в таблице",
-"en":"league lead"
-},
-{
-"word":"Tabellenspitze",
-"article":"die",
-"level":"C2",
-"ru":"вершина таблицы",
-"en":"top of the table"
-},
-{
 "word":"Tagung",
 "article":"die",
 "level":"C2",
@@ -31883,13 +30329,6 @@
 "level":"C2",
 "ru":"спортзал",
 "en":"gym hall"
-},
-{
-"word":"Uhrzeit",
-"article":"die",
-"level":"C2",
-"ru":"время (на часах)",
-"en":"time of day"
 },
 {
 "word":"Unfallursache",
@@ -32039,20 +30478,6 @@
 "en":"quarter of an hour"
 },
 {
-"word":"Volksbank",
-"article":"die",
-"level":"C2",
-"ru":"народный банк",
-"en":"cooperative bank"
-},
-{
-"word":"Vollzeit",
-"article":"die",
-"level":"C2",
-"ru":"полная занятость",
-"en":"full-time"
-},
-{
 "word":"Vorarbeit",
 "article":"die",
 "level":"C2",
@@ -32177,13 +30602,6 @@
 "level":"C2",
 "ru":"пари",
 "en":"bet"
-},
-{
-"word":"Wetterlage",
-"article":"die",
-"level":"C2",
-"ru":"погодная обстановка",
-"en":"weather situation"
 },
 {
 "word":"Wichtigkeit",
@@ -32557,25 +30975,11 @@
 "en":"construction project"
 },
 {
-"word":"Bergland",
-"article":"das",
-"level":"C2",
-"ru":"горная местность",
-"en":"highlands"
-},
-{
 "word":"Berufsleben",
 "article":"das",
 "level":"C2",
 "ru":"трудовая жизнь",
 "en":"working life"
-},
-{
-"word":"Beweismittel",
-"article":"das",
-"level":"C2",
-"ru":"доказательство",
-"en":"evidence"
 },
 {
 "word":"Bezirksamt",
@@ -32625,13 +31029,6 @@
 "level":"C2",
 "ru":"федеральное министерство",
 "en":"federal ministry"
-},
-{
-"word":"Bürgerhaus",
-"article":"das",
-"level":"C2",
-"ru":"общественный дом",
-"en":"community center"
 },
 {
 "word":"Cockpit",
@@ -32723,13 +31120,6 @@
 "level":"C2",
 "ru":"эхо/отклик",
 "en":"echo/response"
-},
-{
-"word":"Eigenheim",
-"article":"das",
-"level":"C2",
-"ru":"собственный дом",
-"en":"own home"
 },
 {
 "word":"Eigenkapital",
@@ -32893,13 +31283,6 @@
 "en":"hearing"
 },
 {
-"word":"Genehmigungsverfahren",
-"article":"das",
-"level":"C2",
-"ru":"процедура согласования",
-"en":"approval procedure"
-},
-{
 "word":"Genre",
 "article":"das",
 "level":"C2",
@@ -32912,13 +31295,6 @@
 "level":"C2",
 "ru":"чутьё",
 "en":"instinct/feel"
-},
-{
-"word":"Gesundheitssystem",
-"article":"das",
-"level":"C2",
-"ru":"система здравоохранения",
-"en":"healthcare system"
 },
 {
 "word":"Gipfeltreffen",
@@ -32949,13 +31325,6 @@
 "en":"groundwater"
 },
 {
-"word":"Gruppenspiel",
-"article":"das",
-"level":"C2",
-"ru":"матч группового этапа",
-"en":"group-stage match"
-},
-{
 "word":"Heizöl",
 "article":"das",
 "level":"C2",
@@ -32977,13 +31346,6 @@
 "en":"high-rise"
 },
 {
-"word":"Industriegebiet",
-"article":"das",
-"level":"C2",
-"ru":"промышленная зона",
-"en":"industrial area"
-},
-{
 "word":"Inland",
 "article":"das",
 "level":"C2",
@@ -32996,13 +31358,6 @@
 "level":"C2",
 "ru":"центр занятости",
 "en":"job center"
-},
-{
-"word":"Justizministerium",
-"article":"das",
-"level":"C2",
-"ru":"министерство юстиции",
-"en":"ministry of justice"
 },
 {
 "word":"Karriereende",
@@ -33082,25 +31437,11 @@
 "en":"lottery"
 },
 {
-"word":"Länderspiel",
-"article":"das",
-"level":"C2",
-"ru":"международный матч",
-"en":"international match"
-},
-{
 "word":"Marihuana",
 "article":"das",
 "level":"C2",
 "ru":"марихуана",
 "en":"marijuana"
-},
-{
-"word":"Menschenleben",
-"article":"das",
-"level":"C2",
-"ru":"человеческая жизнь",
-"en":"human life"
 },
 {
 "word":"Minimum",
@@ -33138,13 +31479,6 @@
 "en":"national team"
 },
 {
-"word":"Naturschutzgebiet",
-"article":"das",
-"level":"C2",
-"ru":"заповедник",
-"en":"nature reserve"
-},
-{
 "word":"Nest",
 "article":"das",
 "level":"C2",
@@ -33180,25 +31514,11 @@
 "en":"nursing home"
 },
 {
-"word":"Pflichtspiel",
-"article":"das",
-"level":"C2",
-"ru":"официальный матч",
-"en":"competitive match"
-},
-{
 "word":"Polizeirevier",
 "article":"das",
 "level":"C2",
 "ru":"полицейский участок",
 "en":"police station"
-},
-{
-"word":"Preisgeld",
-"article":"das",
-"level":"C2",
-"ru":"призовые деньги",
-"en":"prize money"
 },
 {
 "word":"Präsidium",
@@ -33327,25 +31647,11 @@
 "en":"skiing"
 },
 {
-"word":"Skigebiet",
-"article":"das",
-"level":"C2",
-"ru":"горнолыжный курорт",
-"en":"ski resort"
-},
-{
 "word":"Sommerfest",
 "article":"das",
 "level":"C2",
 "ru":"летний праздник",
 "en":"summer festival"
-},
-{
-"word":"Sommerhaus",
-"article":"das",
-"level":"C2",
-"ru":"дача",
-"en":"summer house"
 },
 {
 "word":"Sondervermögen",
@@ -33416,13 +31722,6 @@
 "level":"C2",
 "ru":"пьеса",
 "en":"play"
-},
-{
-"word":"Trainerteam",
-"article":"das",
-"level":"C2",
-"ru":"тренерский штаб",
-"en":"coaching staff"
 },
 {
 "word":"Trauma",
