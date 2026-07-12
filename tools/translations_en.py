@@ -1682,6 +1682,7 @@ TRANSLATIONS_EN.update({
     "Gewicht": "weight",
     "Gewinner": "winner",
     "Gewässer": "body of water",
+    "Gier": "greed",
     "Gipfeltreffen": "summit meeting",
     "Glanz": "shine/glamour",
     "Glasfaser": "fiber optics",

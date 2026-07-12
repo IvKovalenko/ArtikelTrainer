@@ -563,11 +563,11 @@ WIKI_NEWS_ADD = {
             "Autofahrer", "Autor", "Außenminister", "Bedarf", "Beginn", "Bericht", "Beschluss",
             "Besitzer", "Bestandteil", "Besucher", "Betreiber", "Bezirk", "Blick",
             "Botschafter", "Bund", "Bundestrainer", "Charakter", "Coach", "Deal", "Dollar",
-            "Dortmunder", "Durchgang", "Durchschnitt", "Effekt", "Eigentümer", "Einwohner",
+            "Durchgang", "Durchschnitt", "Effekt", "Eigentümer", "Einwohner",
             "Einzug", "Entwickler", "Entwurf", "Erhalt", "Ermittler", "Fachkräftemangel",
             "Fall", "Fokus", "Fonds", "Forscher", "Fußgänger",
             "Gang", "Gastgeber", "Gegenzug", "Gemeinderat", "Geschmack", "Geschäftsführer",
-            "Gewinner", "Gründer", "Helfer", "Hinblick", "Hintergrund",
+            "Gewinner", "Gier", "Gründer", "Helfer", "Hinblick", "Hintergrund",
             "Hubschrauber", "Höhepunkt", "Inhalt", "Kader", "Kanzler",
             "Kapitän", "Kauf", "Kindergarten", "Klassenerhalt", "Klassiker", "Klimaschutz",
             "Klimawandel", "Klub", "Konzern", "Krieg", "Kritiker", "Landkreis",
@@ -1084,7 +1084,7 @@ RESERVE_COMPOUNDS = {
     "B2": {
         "der": [
             "Angriffskrieg", "Angriffspunkt", "Ballungsraum", "Brennpunkt", "Brennstoff",
-            "Domplatz", "Erdkreis", "Fernverkehr", "Finanzminister", "Freistaat",
+            "Domplatz", "Dortmunder", "Erdkreis", "Fernverkehr", "Finanzminister", "Freistaat",
             "Gesichtspunkt", "Großteil", "Inhaltsstoff", "Innenminister", "Knotenpunkt",
             "Motorradfahrer", "Ortsteil", "Premierminister", "Rechtsschutz", "Sanierungsfall",
             "Strafraum", "Stützpunkt", "Verteidigungsminister", "Wahlkreis",

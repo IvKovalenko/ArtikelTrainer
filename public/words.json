@@ -13566,13 +13566,6 @@
 "en":"dollar"
 },
 {
-"word":"Dortmunder",
-"article":"der",
-"level":"B2",
-"ru":"дортмундец",
-"en":"Dortmund resident"
-},
-{
 "word":"Durchgang",
 "article":"der",
 "level":"B2",
@@ -13732,6 +13725,13 @@
 "level":"B2",
 "ru":"победитель",
 "en":"winner"
+},
+{
+"word":"Gier",
+"article":"der",
+"level":"B2",
+"ru":"жадность",
+"en":"greed"
 },
 {
 "word":"Gründer",

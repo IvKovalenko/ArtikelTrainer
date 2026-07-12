@@ -1681,6 +1681,7 @@ TRANSLATIONS.update({
     "Gewicht": "вес",
     "Gewinner": "победитель",
     "Gewässer": "водоём",
+    "Gier": "жадность",
     "Gipfeltreffen": "встреча на высшем уровне",
     "Glanz": "блеск",
     "Glasfaser": "оптоволокно",
