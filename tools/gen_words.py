@@ -627,7 +627,7 @@ WIKI_NEWS_ADD = {
             "Derby", "Design", "Duell", "Duo", "Dutzend", "Engagement", "Erdbeben", "Event",
             "Fahrzeug", "Fazit", "Feld", "Finale", "Gas", "Gebiet", "Gewicht",
             "Gold", "Halbfinale", "Halbjahr", "Heimspiel", "Highlight", "Jahresende",
-            "Jubiläum", "Kilogramm", "Konzept", "Management", "Match",
+            "Jubiläum", "Konzept", "Management", "Match",
             "Ministerium", "Mitglied", "Mittelfeld", "Model", "Motto", "Niveau", "Potenzial",
             "Prinzip", "Promille", "Quartal", "Rennen", "Schicksal", "Signal", "Stadtgebiet",
             "Statement", "System", "Tierheim", "Turnier", "Umfeld", "Unglück",
