@@ -393,8 +393,22 @@
       level: LEVELS[idx + 1], m: Math.min(mastered, needed), n: needed, pct,
     });
   }
+  // длинное слово не переносится (white-space: nowrap) — вместо этого уменьшаем
+  // кегль, чтобы оно целиком поместилось в строку; ширина текста растёт линейно
+  // с размером шрифта, поэтому хватает одного пересчёта без цикла
+  function fitWord() {
+    const node = el.word;
+    node.style.fontSize = "";                       // база из CSS (clamp)
+    if (node.scrollWidth <= node.clientWidth) return;
+    const base = parseFloat(getComputedStyle(node).fontSize);
+    const fitted = Math.max(18, Math.floor(base * node.clientWidth / node.scrollWidth) - 1);
+    node.style.fontSize = fitted + "px";
+  }
+  window.addEventListener("resize", fitWord);
+
   function renderWord() {
     el.word.textContent = current.word;
+    fitWord();
     const unlocked = unlockedLevels();          // достигнутый уровень = самый высокий открытый
     el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
     if (el.gloss) el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : "";
