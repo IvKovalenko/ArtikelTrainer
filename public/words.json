@@ -17290,6 +17290,13 @@
 "en":"length"
 },
 {
+"word":"Macht",
+"article":"die",
+"level":"B2",
+"ru":"власть/сила",
+"en":"power/might"
+},
+{
 "word":"Mama",
 "article":"die",
 "level":"B2",
@@ -18219,13 +18226,6 @@
 "level":"B2",
 "ru":"вакуум власти",
 "en":"power vacuum"
-},
-{
-"word":"Mindestmaß",
-"article":"das",
-"level":"B2",
-"ru":"минимум",
-"en":"minimum"
 },
 {
 "word":"Missgeschick",
@@ -24953,6 +24953,13 @@
 "level":"C1",
 "ru":"мотив",
 "en":"motive/motif"
+},
+{
+"word":"Mindestmaß",
+"article":"das",
+"level":"C1",
+"ru":"минимальный размер",
+"en":"minimum size"
 },
 {
 "word":"Motorrad",

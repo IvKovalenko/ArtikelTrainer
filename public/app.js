@@ -395,13 +395,18 @@
   }
   // длинное слово не переносится (white-space: nowrap) — вместо этого уменьшаем
   // кегль, чтобы оно целиком поместилось в строку; ширина текста растёт линейно
-  // с размером шрифта, поэтому хватает одного пересчёта без цикла
+  // с размером шрифта, поэтому хватает одного пересчёта без цикла.
+  // Доступную ширину меряем по КАРТОЧКЕ, а не по самому .word: как flex-элемент
+  // он растягивается под контент (min-width: auto), поэтому его собственные
+  // scrollWidth/clientWidth совпадают и переполнение по ним не видно.
   function fitWord() {
     const node = el.word;
     node.style.fontSize = "";                       // база из CSS (clamp)
-    if (node.scrollWidth <= node.clientWidth) return;
+    const avail = node.parentElement.clientWidth;   // .card, с учётом его padding
+    const full = node.scrollWidth;
+    if (full <= avail) return;
     const base = parseFloat(getComputedStyle(node).fontSize);
-    const fitted = Math.max(18, Math.floor(base * node.clientWidth / node.scrollWidth) - 1);
+    const fitted = Math.max(18, Math.floor(base * avail / full) - 1);
     node.style.fontSize = fitted + "px";
   }
   window.addEventListener("resize", fitWord);
