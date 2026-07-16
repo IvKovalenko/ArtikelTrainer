@@ -85,6 +85,7 @@
     delayRightSlider: $("delay-right"), delayRightValue: $("delay-right-value"),
     delayWrongSlider: $("delay-wrong"), delayWrongValue: $("delay-wrong-value"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
+    statsRecord: $("stats-record"),
     dialogMsg: $("dialog-msg"), accountInfo: $("account-info"),
     accountOverlay: $("account-overlay"), accountMsg: $("account-msg"),
     authOverlay: $("auth-overlay"), authTitle: $("auth-title"),
@@ -613,8 +614,13 @@
   }
 
   // окно «Статистика»
+  function renderStatsRecord() {
+    el.statsRecord.textContent =
+      I18N.t("bestStreakLine", { best: (progress.__meta || {}).bestStreak || 0 });
+  }
   function openData() {
     el.dataJson.value = JSON.stringify(progress, null, 2);
+    renderStatsRecord();
     el.dataSummary.textContent =
       I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
     el.dialogMsg.textContent = "";
@@ -735,7 +741,7 @@
     if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash(I18N.t("errExpectObject"), true); return; }
     progress = obj;
     markMastered();               // старые бэкапы без флагов m — помечаем
-    saveLocal(); scheduleSync(); updateStats(); renderStatsTable();
+    saveLocal(); scheduleSync(); updateStats(); renderStatsTable(); renderStatsRecord();
     flash(I18N.t("imported"));
   });
 
@@ -752,7 +758,7 @@
       if (Object.keys(m).length) progress.__meta = m;
     }
     lastKey = null;
-    saveLocal(); updateStats(); renderStatsTable(); next();
+    saveLocal(); updateStats(); renderStatsTable(); renderStatsRecord(); next();
     pushReplace();   // на сервер — заменой, иначе слияние вернёт старую статистику
   });
 
@@ -808,6 +814,7 @@
       else el.gloss.textContent = current.gloss ? "(" + tr + ")" : "";
     }
     if (!el.overlay.hidden) {
+      renderStatsRecord();
       el.dataSummary.textContent =
         I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
       renderStatsTable();   // подписи омонимов зависят от языка
