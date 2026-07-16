@@ -78,6 +78,7 @@
   const $ = (id) => document.getElementById(id);
   const el = {
     level: $("level"), correct: $("stat-correct"), wrong: $("stat-wrong"),
+    wrongPct: $("stat-wrong-pct"), streakLabel: $("streak-label"),
     passed: $("stat-passed"), word: $("word"), gloss: $("gloss"),
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     continueHint: $("continue-hint"), wrongPauseCheck: $("wrong-pause"),
@@ -122,9 +123,14 @@
       const x = a[key] || {}, y = b[key] || {};
       if (key === "__meta") {   // служебная запись: достигнутый уровень + настройки
         const m = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
-        // настройки: у каждой своя метка времени — побеждает более поздний выбор;
-        // 0 — валидное значение, поэтому проверяем «поле есть», а не истинность
-        for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong"]) {
+        // рекорд серии без ошибок — монотонный, объединяем максимумом
+        if ((x.bestStreak || 0) || (y.bestStreak || 0)) {
+          m.bestStreak = Math.max(x.bestStreak || 0, y.bestStreak || 0);
+        }
+        // настройки (и текущая серия): у каждой своя метка времени — побеждает
+        // более поздний выбор; 0 — валидное значение, поэтому проверяем
+        // «поле есть», а не истинность
+        for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong", "streak"]) {
           const at = f + "At";
           const newer = (x[at] || 0) >= (y[at] || 0) ? x : y;
           const other = newer === x ? y : x;
@@ -366,8 +372,14 @@
     }
     el.correct.textContent = correct;
     el.wrong.textContent = wrong;
+    // доля неправильных ответов от всех данных (пока ответов нет — пусто)
+    const total = correct + wrong;
+    if (el.wrongPct) {
+      el.wrongPct.textContent = total ? "(" + Math.round((wrong / total) * 100) + "%)" : "";
+    }
     el.passed.textContent = passed;
     renderProgress();
+    renderStreak();
   }
 
   // полоска прогресса до открытия следующего уровня
@@ -386,12 +398,24 @@
     const lw = WORDS.filter((w) => w.level === cur);
     const needed = Math.ceil(lw.length * (masterPct() / 100));
     const mastered = lw.filter((w) => isMastered(w)).length;
-    const pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
+    let pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
+    // 99,6% округляется до 100 — но 100% показываем, только когда уровень
+    // действительно пройден, иначе «100% и не переходит» сбивает с толку
+    if (pct === 100 && mastered < needed) pct = 99;
 
     el.progressFill.style.width = pct + "%";
     el.progressLabel.textContent = I18N.t("toNextLevel", {
       level: LEVELS[idx + 1], m: Math.min(mastered, needed), n: needed, pct,
     });
+  }
+
+  // серия правильных ответов подряд + рекорд; живут в __meta и синкаются
+  // с аккаунтом вместе с прогрессом (рекорд при слиянии — максимумом)
+  function renderStreak() {
+    if (!el.streakLabel) return;
+    const m = progress.__meta || {};
+    el.streakLabel.textContent =
+      I18N.t("streakLine", { n: m.streak || 0, best: m.bestStreak || 0 });
   }
   // длинное слово не переносится (white-space: nowrap) — вместо этого уменьшаем
   // кегль, чтобы оно целиком поместилось в строку; ширина текста растёт линейно
@@ -441,6 +465,13 @@
     lastAnswerCorrect = isRight;
     if (isRight) s.correct++; else s.wrong++;
     if (s.correct >= 1 && s.correct >= s.wrong) s.m = 1;   // выучено — навсегда
+
+    // серия без ошибок: растёт при верном ответе, ошибка обнуляет;
+    // рекорд несгораемый — на других устройствах победит больший
+    const mt = meta();
+    mt.streak = isRight ? (mt.streak || 0) + 1 : 0;
+    mt.streakAt = Date.now();   // при слиянии устройств актуальна более поздняя серия
+    if (mt.streak > (mt.bestStreak || 0)) mt.bestStreak = mt.streak;
 
     for (const b of answerButtons) {
       b.disabled = true;
@@ -764,6 +795,7 @@
       el.level.textContent = I18N.t("level", { level: u[u.length - 1] });
     }
     if (WORDS.length) renderProgress();
+    renderStreak();
     setSync(syncState);
     if (answered && current) {
       el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();

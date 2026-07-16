@@ -21,7 +21,7 @@
     <div class="level" id="level">Уровень: A1</div>
     <div class="stats">
       <span class="ok"><span class="mark">✓</span> <span id="stat-correct">0</span></span>
-      <span class="bad"><span class="mark">✕</span> <span id="stat-wrong">0</span></span>
+      <span class="bad"><span class="mark">✕</span> <span id="stat-wrong">0</span> <span class="pct" id="stat-wrong-pct" data-i18n-title="wrongPctTitle" title="Доля неправильных ответов"></span></span>
       <span class="passed"><span id="stat-passed">0</span> <span data-i18n="wordsPassed">слов пройдено</span></span>
     </div>
   </header>
@@ -29,6 +29,7 @@
   <div class="progress" id="progress" data-i18n-title="progressTitle" title="Прогресс до следующего уровня">
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="progress-label" id="progress-label"></div>
+    <div class="progress-label" id="streak-label"></div>
   </div>
 
   <!-- призыв к регистрации — только для анонимных -->

@@ -59,6 +59,7 @@ body {
 .stats .mark { font-weight: 700; }
 .stats .ok  { color: var(--green); }
 .stats .bad { color: var(--red); }
+.stats .pct { color: var(--muted); font-weight: 400; }   /* доля ошибок — нейтральным серым */
 .stats .passed { color: var(--muted); }
 
 /* ---- progress до следующего уровня ---- */
