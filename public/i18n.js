@@ -59,6 +59,7 @@
       // --- диалог статистики ---
       close: "Schließen",
       colWord: "Wort",
+      colTranslation: "Übersetzung",
       colCorrectTitle: "Richtige Antworten",
       colWrongTitle: "Falsche Antworten",
       colSeen: "Gezeigt",
@@ -173,6 +174,7 @@
       syncOffline: "Offline — saved locally, will sync later",
       close: "Close",
       colWord: "Word",
+      colTranslation: "Translation",
       colCorrectTitle: "Correct answers",
       colWrongTitle: "Wrong answers",
       colSeen: "Shown",
@@ -281,6 +283,7 @@
       syncOffline: "Офлайн — сохранено локально, отправлю позже",
       close: "Закрыть",
       colWord: "Слово",
+      colTranslation: "Перевод",
       colCorrectTitle: "Правильных ответов",
       colWrongTitle: "Неправильных ответов",
       colSeen: "Показов",

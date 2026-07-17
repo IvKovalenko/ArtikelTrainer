@@ -558,22 +558,29 @@
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
     if (!el.statsBody) return;
-    // ключ омонима хранит русское значение («Band (том)») — показываем
-    // подпись на языке интерфейса, сам ключ не трогаем
-    const label = new Map();
-    for (const w of WORDS) {
-      if (w.gloss) label.set(keyOf(w), `${w.word} (${trOf(w)})`);
-    }
-    const rows = Object.entries(progress).filter(([word]) => !word.startsWith("__")).map(([word, s]) => ({
-      word: label.get(word) || word,
-      correct: s.correct || 0,
-      wrong: s.wrong || 0,
-      seen: s.seen || 0,
-    }));
+    // ключ прогресса («Band (том)») не трогаем — по нему ищем слово в словаре,
+    // чтобы показать артикль и перевод на языке интерфейса
+    const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
+    const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
+      const w = byKey.get(key);   // слова может не быть (удалено из словаря) — показываем ключ как есть
+      return {
+        word: w ? w.word : key,   // сортировка — по слову без артикля
+        display: w
+          ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
+          : key,
+        tr: w ? trOf(w) : "",
+        correct: s.correct || 0,
+        wrong: s.wrong || 0,
+        seen: s.seen || 0,
+      };
+    });
     const { col, dir } = statsSort;
-    const byWord = (a, b) => a.word.localeCompare(b.word, "de");
+    // омонимы («Band» × 2) при равных словах различаем переводом
+    const byWord = (a, b) =>
+      a.word.localeCompare(b.word, "de") || a.tr.localeCompare(b.tr);
     rows.sort((a, b) => {
       if (col === "word") return byWord(a, b) * dir;
+      if (col === "tr") return (a.tr.localeCompare(b.tr) * dir) || byWord(a, b);
       const primary = (a[col] - b[col]) * dir;   // выбранная колонка — главный ключ
       return primary || byWord(a, b);             // при равенстве — по алфавиту (↑)
     });
@@ -582,7 +589,7 @@
     for (const r of rows) {
       const tr = document.createElement("tr");
       const cells = [
-        [r.word, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
+        [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
       for (const [val, cls] of cells) {
         const td = document.createElement("td");
@@ -604,7 +611,7 @@
   }
   function setSort(col) {
     if (statsSort.col === col) statsSort.dir *= -1;       // тот же столбец — меняем направление
-    else statsSort = { col, dir: col === "word" ? 1 : -1 }; // числа — сразу по убыванию (кто чаще — выше)
+    else statsSort = { col, dir: col === "word" || col === "tr" ? 1 : -1 }; // числа — сразу по убыванию (кто чаще — выше)
     renderStatsTable();
   }
   if (el.statsTable) {
