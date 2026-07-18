@@ -343,6 +343,13 @@
 "en":"euro"
 },
 {
+"word":"Platz",
+"article":"der",
+"level":"A1",
+"ru":"место/площадь",
+"en":"place/square"
+},
+{
 "word":"Freund",
 "article":"der",
 "level":"A1",
@@ -2441,13 +2448,6 @@
 "level":"A2",
 "ru":"супермаркет",
 "en":"supermarket"
-},
-{
-"word":"Platz",
-"article":"der",
-"level":"A2",
-"ru":"место/площадь",
-"en":"place/square"
 },
 {
 "word":"Weg",
@@ -18242,6 +18242,13 @@
 "en":"compliment"
 },
 {
+"word":"Fass",
+"article":"das",
+"level":"B2",
+"ru":"бочка",
+"en":"barrel"
+},
+{
 "word":"Machtvakuum",
 "article":"das",
 "level":"B2",
@@ -18254,13 +18261,6 @@
 "level":"B2",
 "ru":"неудача",
 "en":"mishap"
-},
-{
-"word":"Pulverfass",
-"article":"das",
-"level":"B2",
-"ru":"пороховая бочка",
-"en":"powder keg"
 },
 {
 "word":"Randphänomen",
@@ -24570,13 +24570,6 @@
 "en":"family business"
 },
 {
-"word":"Fass",
-"article":"das",
-"level":"C1",
-"ru":"бочка",
-"en":"barrel"
-},
-{
 "word":"Feedback",
 "article":"das",
 "level":"C1",
@@ -25086,6 +25079,13 @@
 "level":"C1",
 "ru":"личная жизнь",
 "en":"private life"
+},
+{
+"word":"Pulverfass",
+"article":"das",
+"level":"C1",
+"ru":"пороховая бочка",
+"en":"powder keg"
 },
 {
 "word":"Profil",
