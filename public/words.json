@@ -77,6 +77,13 @@
 "en":"father"
 },
 {
+"word":"Papa",
+"article":"der",
+"level":"A1",
+"ru":"папа",
+"en":"dad"
+},
+{
 "word":"Sohn",
 "article":"der",
 "level":"A1",
@@ -798,6 +805,13 @@
 "en":"grandfather"
 },
 {
+"word":"Opa",
+"article":"der",
+"level":"A1",
+"ru":"дедушка",
+"en":"grandpa"
+},
+{
 "word":"Norden",
 "article":"der",
 "level":"A1",
@@ -1041,6 +1055,13 @@
 "level":"A1",
 "ru":"мать",
 "en":"mother"
+},
+{
+"word":"Mama",
+"article":"die",
+"level":"A1",
+"ru":"мама",
+"en":"mom"
 },
 {
 "word":"Tochter",
@@ -1694,6 +1715,13 @@
 "en":"grandmother"
 },
 {
+"word":"Oma",
+"article":"die",
+"level":"A1",
+"ru":"бабушка",
+"en":"grandma"
+},
+{
 "word":"Mathematik",
 "article":"die",
 "level":"A1",
@@ -1923,6 +1951,13 @@
 "level":"A1",
 "ru":"телефон",
 "en":"telephone"
+},
+{
+"word":"Mobiltelefon",
+"article":"das",
+"level":"A1",
+"ru":"мобильный телефон",
+"en":"mobile telephone"
 },
 {
 "word":"Radio",
@@ -2637,6 +2672,13 @@
 "level":"A2",
 "ru":"лифт",
 "en":"elevator"
+},
+{
+"word":"Lift",
+"article":"der",
+"level":"A2",
+"ru":"лифт",
+"en":"lift"
 },
 {
 "word":"Schatten",
@@ -4284,7 +4326,7 @@
 "en":"accommodation"
 },
 {
-"word":"Universität",
+"word":"Universität (Uni)",
 "article":"die",
 "level":"A2",
 "ru":"университет",
@@ -4933,13 +4975,6 @@
 "level":"A2",
 "ru":"средство",
 "en":"means"
-},
-{
-"word":"Mobiltelefon",
-"article":"das",
-"level":"A2",
-"ru":"мобильный телефон",
-"en":"mobile telephone"
 },
 {
 "word":"Museum",
@@ -6195,6 +6230,13 @@
 "en":"ambulance"
 },
 {
+"word":"Rettungswagen",
+"article":"der",
+"level":"B1",
+"ru":"машина скорой помощи",
+"en":"ambulance"
+},
+{
 "word":"Kreis",
 "article":"der",
 "level":"B1",
@@ -6263,13 +6305,6 @@
 "level":"B1",
 "ru":"читатель",
 "en":"reader"
-},
-{
-"word":"Lift",
-"article":"der",
-"level":"B1",
-"ru":"лифт",
-"en":"lift"
 },
 {
 "word":"Liter",
@@ -6445,13 +6480,6 @@
 "level":"B1",
 "ru":"официант",
 "en":"waiter (Ober)"
-},
-{
-"word":"Opa",
-"article":"der",
-"level":"B1",
-"ru":"дедушка",
-"en":"grandpa"
 },
 {
 "word":"Ordner",
@@ -8974,6 +9002,13 @@
 "en":"criminal police"
 },
 {
+"word":"Kripo",
+"article":"die",
+"level":"B1",
+"ru":"уголовная полиция",
+"en":"criminal police"
+},
+{
 "word":"Krippe",
 "article":"die",
 "level":"B1",
@@ -9371,13 +9406,6 @@
 "level":"B1",
 "ru":"приёмный покой",
 "en":"emergency room"
-},
-{
-"word":"Oma",
-"article":"die",
-"level":"B1",
-"ru":"бабушка",
-"en":"grandma"
 },
 {
 "word":"Oper",
@@ -14112,13 +14140,6 @@
 "en":"rescue service"
 },
 {
-"word":"Rettungswagen",
-"article":"der",
-"level":"B2",
-"ru":"машина скорой помощи",
-"en":"ambulance"
-},
-{
 "word":"Ruhestand",
 "article":"der",
 "level":"B2",
@@ -17295,13 +17316,6 @@
 "level":"B2",
 "ru":"власть/сила",
 "en":"power/might"
-},
-{
-"word":"Mama",
-"article":"die",
-"level":"B2",
-"ru":"мама",
-"en":"mom"
 },
 {
 "word":"Marke",
@@ -22176,14 +22190,7 @@
 "en":"dividend"
 },
 {
-"word":"Doku",
-"article":"die",
-"level":"C1",
-"ru":"документалка",
-"en":"documentary"
-},
-{
-"word":"Dokumentation",
+"word":"Dokumentation (Doku)",
 "article":"die",
 "level":"C1",
 "ru":"документация/документальный фильм",
@@ -23854,13 +23861,6 @@
 "level":"C1",
 "ru":"независимость",
 "en":"independence"
-},
-{
-"word":"Uni",
-"article":"die",
-"level":"C1",
-"ru":"универ",
-"en":"uni"
 },
 {
 "word":"Unruhe",
@@ -29412,13 +29412,6 @@
 "level":"C2",
 "ru":"районный центр",
 "en":"county town"
-},
-{
-"word":"Kripo",
-"article":"die",
-"level":"C2",
-"ru":"уголовная полиция",
-"en":"criminal police"
 },
 {
 "word":"Kühlung",
