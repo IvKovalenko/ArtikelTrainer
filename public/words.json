@@ -11172,6 +11172,13 @@
 "en":"pastries"
 },
 {
+"word":"Geschlecht",
+"article":"das",
+"level":"B1",
+"ru":"пол/род",
+"en":"gender/sex"
+},
+{
 "word":"Gedicht",
 "article":"das",
 "level":"B1",
@@ -24659,13 +24666,6 @@
 "level":"C1",
 "ru":"корпус",
 "en":"casing/housing"
-},
-{
-"word":"Geschlecht",
-"article":"das",
-"level":"C1",
-"ru":"пол/род",
-"en":"gender/sex"
 },
 {
 "word":"Geschäftsmodell",
