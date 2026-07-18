@@ -701,7 +701,7 @@ TRANSLATIONS = {
     "Zimmer": "комната", "Zinsen": "проценты", "Zirkus": "цирк", "Zitrone": "лимон",
     "Zivilstand": "семейное положение (швейц.)", "Zoll": "таможня/дюйм", "Zone": "зона", "Zoo": "зоопарк",
     "Zorn": "гнев", "Zucker": "сахар", "Zufall": "случайность", "Zufriedenheit": "удовлетворённость",
-    "Zug": "поезд", "Zugang": "доступ", "Zugeständnis": "уступка", "Zukunft": "будущее",
+    "Zug": "поезд/ход (в игре)/сквозняк/глоток/черта", "Zugang": "доступ", "Zugeständnis": "уступка", "Zukunft": "будущее",
     "Zulassung": "допуск/регистрация", "Zumutung": "чрезмерное требование", "Zuneigung": "симпатия",
     "Zusammenarbeit": "сотрудничество", "Zusammenbruch": "крах", "Zusammenhalt": "сплочённость",
     "Zusammenhang": "связь/контекст", "Zusammenspiel": "взаимодействие", "Zuschauer": "зритель",

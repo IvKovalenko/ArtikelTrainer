@@ -702,7 +702,7 @@ TRANSLATIONS_EN = {
     "Zimmer": "room", "Zinsen": "interest (money)", "Zirkus": "circus", "Zitrone": "lemon",
     "Zivilstand": "marital status (Swiss)", "Zoll": "customs/inch", "Zone": "zone", "Zoo": "zoo",
     "Zorn": "wrath", "Zucker": "sugar", "Zufall": "coincidence", "Zufriedenheit": "satisfaction",
-    "Zug": "train", "Zugang": "access", "Zugeständnis": "concession", "Zukunft": "future",
+    "Zug": "train/move (in a game)/draught/gulp/trait", "Zugang": "access", "Zugeständnis": "concession", "Zukunft": "future",
     "Zulassung": "licensing/registration", "Zumutung": "unreasonable demand", "Zuneigung": "affection",
     "Zusammenarbeit": "cooperation", "Zusammenbruch": "collapse", "Zusammenhalt": "cohesion",
     "Zusammenhang": "connection/context", "Zusammenspiel": "interplay", "Zuschauer": "spectator",
