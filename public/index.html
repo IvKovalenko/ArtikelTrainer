@@ -55,10 +55,12 @@
   <footer class="bottom">
     <span class="lang-switch" id="lang-switch"></span>
     <span class="sync" id="sync" hidden></span>
+    <!-- аноним видит вход/регистрацию первыми, вошедший — Статистику (скрытые
+         кнопки схлопываются, поэтому порядок задаётся одной разметкой) -->
     <span class="links">
-      <button class="linkbtn" id="btn-data" data-i18n="statistics">Статистика</button>
       <button class="linkbtn" id="btn-signin" data-i18n="signInLink" hidden>Войти в аккаунт</button>
       <button class="linkbtn" id="btn-register" data-i18n="registerLink" hidden>Зарегистрироваться</button>
+      <button class="linkbtn" id="btn-data" data-i18n="statistics">Статистика</button>
       <button class="linkbtn" id="btn-account" data-i18n="account" hidden>Аккаунт</button>
       <button class="linkbtn" id="btn-settings" data-i18n="settings">Настройки</button>
       <a class="linkbtn" href="/privacy.html" target="_blank" rel="noopener" data-i18n="privacyPolicy">Политика конфиденциальности</a>
