@@ -250,7 +250,14 @@ kbd.key,
 /* переключатель языка — слева, статус синхронизации и ссылки — справа */
 .bottom .lang-switch { margin-right: auto; }
 
-.links { display: flex; gap: 22px; }
+/* ссылки переносятся, когда не помещаются в одну строку (растём вверх, не режемся) */
+.links { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+
+/* узкий экран (телефон): ссылкам — вся ширина строки и центровка;
+   язык и точка синхронизации остаются в строке над ними */
+@media (max-width: 600px) {
+  .links { width: 100%; justify-content: center; gap: 12px 18px; }
+}
 
 .linkbtn {
   background: none;
