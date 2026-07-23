@@ -373,10 +373,18 @@
     }
     el.correct.textContent = correct;
     el.wrong.textContent = wrong;
-    // доля неправильных ответов от всех данных (пока ответов нет — пусто)
+    // доля неправильных ответов от всех данных (пока ответов нет — пусто).
+    // Один знак после запятой: при больших числах целый процент почти не
+    // меняется от одного ответа и выглядит «застрявшим». Разделитель —
+    // по языку интерфейса (ru/de — запятая, en — точка).
     const total = correct + wrong;
     if (el.wrongPct) {
-      el.wrongPct.textContent = total ? "(" + Math.round((wrong / total) * 100) + "%)" : "";
+      const pct = total
+        ? (wrong / total * 100).toLocaleString(I18N.getLang(), {
+            minimumFractionDigits: 1, maximumFractionDigits: 1,
+          })
+        : null;
+      el.wrongPct.textContent = pct !== null ? "(" + pct + "%)" : "";
     }
     el.passed.textContent = passed;
     renderProgress();
