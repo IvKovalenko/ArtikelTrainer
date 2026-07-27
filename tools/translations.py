@@ -1246,7 +1246,7 @@ TRANSLATIONS.update({
     "Champion": "чемпион",
     "Chaos": "хаос",
     "Charakter": "характер",
-    "Charme": "шарм",
+    "Charme": "шарм, обаяние",
     "Chatbot": "чат-бот",
     "Chefredakteur": "главный редактор",
     "Cheftrainer": "главный тренер",

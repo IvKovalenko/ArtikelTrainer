@@ -13762,13 +13762,6 @@
 "en":"winner"
 },
 {
-"word":"Gier",
-"article":"der",
-"level":"B2",
-"ru":"жадность",
-"en":"greed"
-},
-{
 "word":"Gründer",
 "article":"der",
 "level":"B2",
@@ -17080,6 +17073,13 @@
 "en":"danger"
 },
 {
+"word":"Gier",
+"article":"die",
+"level":"B2",
+"ru":"жадность",
+"en":"greed"
+},
+{
 "word":"Größe",
 "article":"die",
 "level":"B2",
@@ -19477,7 +19477,7 @@
 "word":"Charme",
 "article":"der",
 "level":"C1",
-"ru":"шарм",
+"ru":"шарм, обаяние",
 "en":"charm"
 },
 {
