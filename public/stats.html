@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex">
+<title data-i18n="docTitleStats">Статистика — Artikel Drill</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script src="i18n.js"></script>
+<style>
+  /* Отдельная страница статистики для узких экранов (в приложении на десктопе
+     это всплывающее окно). Стили таблицы берём из style.css. */
+  main { max-width: 720px; margin: 0 auto;
+    padding: 20px calc(20px + env(safe-area-inset-left)) calc(30px + env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left)); }
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; }
+  h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; margin: 6px 0 4px; }
+  .back { color: var(--muted); font-size: 14px; text-decoration: none; }
+  .back:hover { color: var(--ink); text-decoration: underline; }
+  /* на полной странице прокручивается сама страница, а не блок таблицы */
+  .table-wrap { max-height: none; overflow: visible; }
+  .foot { margin-top: 26px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="back" href="/" data-i18n="backToApp">Вернуться в приложение</a>
+    <span class="lang-switch" id="lang-switch"></span>
+  </div>
+
+  <h1 data-i18n="statistics">Статистика</h1>
+  <p class="dialog-sub" id="stats-record"></p>
+  <p class="dialog-sub" id="data-summary"></p>
+
+  <div class="table-wrap">
+    <table class="stats-table" id="stats-table">
+      <thead>
+        <tr>
+          <th data-col="word" scope="col" data-i18n="colWord">Слово</th>
+          <th data-col="tr" scope="col" data-i18n="colTranslation">Перевод</th>
+          <th data-col="correct" class="num ok" scope="col" data-i18n-title="colCorrectTitle" title="Правильных ответов">✓</th>
+          <th data-col="wrong" class="num bad" scope="col" data-i18n-title="colWrongTitle" title="Неправильных ответов">✕</th>
+          <th data-col="seen" class="num" scope="col" data-i18n="colSeen" data-i18n-title="colSeenTitle" title="Сколько раз показано">Показов</th>
+        </tr>
+      </thead>
+      <tbody id="stats-body"></tbody>
+    </table>
+  </div>
+
+  <details class="json-data">
+    <summary data-i18n="jsonSummary">Данные (JSON) — экспорт / импорт</summary>
+    <textarea id="data-json" spellcheck="false"></textarea>
+    <div class="dialog-actions">
+      <button class="linkbtn" id="btn-copy" data-i18n="copy">Копировать</button>
+      <button class="linkbtn" id="btn-import" data-i18n="importFromField">Импортировать из поля</button>
+    </div>
+  </details>
+  <span class="dialog-msg" id="dialog-msg"></span>
+
+  <div class="danger-zone">
+    <button class="linkbtn danger" id="btn-reset" data-i18n="resetStats">Сбросить статистику</button>
+  </div>
+
+  <div class="foot">
+    <a class="back" href="/" data-i18n="backToApp">Вернуться в приложение</a>
+  </div>
+</main>
+
+<script>
+  // Прогресс живёт в localStorage; при возвращении в приложение app.js сольёт
+  // его с сервером. Сброс — особый случай: помечаем флагом LS_RESET, чтобы
+  // app.js ЗАМЕНИЛ серверную копию, а не слил её обратно (см. boot() в app.js).
+  const LS_PROGRESS = "article-progress";
+  const LS_TOKEN = "auth-token";
+  const LS_RESET = "article-reset";
+
+  const $ = (id) => document.getElementById(id);
+  let WORDS = [];
+  let statsSort = { col: "word", dir: 1 };
+
+  function loadProgress() {
+    try {
+      const o = JSON.parse(localStorage.getItem(LS_PROGRESS) || "{}");
+      return o && typeof o === "object" && !Array.isArray(o) ? o : {};
+    } catch { return {}; }
+  }
+  function saveProgress() {
+    try { localStorage.setItem(LS_PROGRESS, JSON.stringify(progress)); } catch {}
+  }
+  let progress = loadProgress();
+
+  // ключ прогресса (у омонимов включает значение) и перевод по языку интерфейса —
+  // ровно как в app.js, чтобы подписи совпадали
+  const keyOf = (w) => (w.gloss ? `${w.word} (${w.gloss})` : w.word);
+  const trOf = (w) => (I18N.getLang() === "ru" ? (w.ru || w.en) : (w.en || w.ru)) || "";
+  const statsCount = () => Object.keys(progress).filter((k) => !k.startsWith("__")).length;
+
+  function renderRecord() {
+    $("stats-record").textContent =
+      I18N.t("bestStreakLine", { best: (progress.__meta || {}).bestStreak || 0 });
+  }
+  function renderSummary() {
+    $("data-summary").textContent =
+      I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+  }
+  function renderTable() {
+    const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
+    const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
+      const w = byKey.get(key);   // слова может не быть (удалено из словаря) — покажем ключ
+      return {
+        word: w ? w.word : key,   // сортировка — по слову без артикля
+        display: w
+          ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
+          : key,
+        tr: w ? trOf(w) : "",
+        correct: s.correct || 0, wrong: s.wrong || 0, seen: s.seen || 0,
+      };
+    });
+    const { col, dir } = statsSort;
+    const byWord = (a, b) => a.word.localeCompare(b.word, "de") || a.tr.localeCompare(b.tr);
+    rows.sort((a, b) => {
+      if (col === "word") return byWord(a, b) * dir;
+      if (col === "tr") return (a.tr.localeCompare(b.tr) * dir) || byWord(a, b);
+      const primary = (a[col] - b[col]) * dir;
+      return primary || byWord(a, b);
+    });
+    const frag = document.createDocumentFragment();
+    for (const r of rows) {
+      const tr = document.createElement("tr");
+      const cells = [
+        [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
+      ];
+      for (const [val, cls] of cells) {
+        const td = document.createElement("td");
+        td.textContent = val;
+        if (cls) td.className = cls;
+        tr.appendChild(td);
+      }
+      frag.appendChild(tr);
+    }
+    $("stats-body").replaceChildren(frag);
+    document.querySelectorAll("#stats-table th[data-col]").forEach((th) => {
+      th.setAttribute("aria-sort",
+        th.dataset.col === col ? (dir === 1 ? "ascending" : "descending") : "none");
+    });
+  }
+  function setSort(col) {
+    if (statsSort.col === col) statsSort.dir *= -1;
+    else statsSort = { col, dir: col === "word" || col === "tr" ? 1 : -1 };
+    renderTable();
+  }
+  function renderAll() { renderRecord(); renderSummary(); renderTable(); }
+
+  function flash(msg, isError) {
+    const m = $("dialog-msg");
+    m.textContent = msg;
+    m.style.color = isError ? "var(--red)" : "var(--green)";
+  }
+
+  $("btn-copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText($("data-json").value); flash(I18N.t("copied")); }
+    catch { $("data-json").select(); flash(I18N.t("copyManual")); }
+  });
+  $("btn-import").addEventListener("click", () => {
+    let obj;
+    try { obj = JSON.parse($("data-json").value); }
+    catch { flash(I18N.t("errInvalidJson"), true); return; }
+    if (!obj || typeof obj !== "object" || Array.isArray(obj)) { flash(I18N.t("errExpectObject"), true); return; }
+    progress = obj; saveProgress();
+    $("data-json").value = JSON.stringify(progress, null, 2);
+    renderAll();
+    flash(I18N.t("imported"));
+  });
+
+  // сброс: серверную копию заменяем (?replace=1) прямо сейчас, если онлайн;
+  // иначе флаг LS_RESET заставит app.js сделать замену при следующем запуске
+  async function serverReplace(obj) {
+    const token = localStorage.getItem(LS_TOKEN);
+    if (!token) return true;                       // аноним — заменять нечего
+    try {
+      const r = await fetch("/api/progress?replace=1", {
+        method: "POST",
+        headers: { "content-type": "application/json", "Authorization": "Bearer " + token },
+        body: JSON.stringify(obj),
+      });
+      return r.ok;
+    } catch { return false; }
+  }
+  $("btn-reset").addEventListener("click", async () => {
+    if (!confirm(I18N.t("confirmReset"))) return;
+    // статистика и уровни обнуляются, настройки — остаются (как в приложении)
+    const old = progress.__meta;
+    const np = {};
+    if (old) {
+      const m = {};
+      for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong"]) {
+        if (old[f] !== undefined) { m[f] = old[f]; m[f + "At"] = old[f + "At"] || Date.now(); }
+      }
+      if (Object.keys(m).length) np.__meta = m;
+    }
+    progress = np; saveProgress();
+    try { localStorage.setItem(LS_RESET, "1"); } catch {}
+    $("data-json").value = JSON.stringify(progress, null, 2);
+    renderAll();
+    if (await serverReplace(np)) { try { localStorage.removeItem(LS_RESET); } catch {} }
+  });
+
+  document.querySelectorAll("#stats-table th[data-col]").forEach((th) => {
+    th.addEventListener("click", () => setSort(th.dataset.col));
+  });
+
+  I18N.mountSwitcher($("lang-switch"));
+  I18N.onChange(() => { document.title = I18N.t("docTitleStats"); renderAll(); });
+
+  (async () => {
+    try { WORDS = await fetch("words.json", { cache: "no-store" }).then((r) => r.json()); }
+    catch { WORDS = []; }
+    if (!Array.isArray(WORDS)) WORDS = [];
+    $("data-json").value = JSON.stringify(progress, null, 2);
+    document.title = I18N.t("docTitleStats");
+    renderAll();
+  })();
+</script>
+</body>
+</html>

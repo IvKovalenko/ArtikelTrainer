@@ -5,6 +5,7 @@
   const API = "/api/progress";
   const LS_PROGRESS = "article-progress";
   const LS_TOKEN = "auth-token";   // JWT текущего пользователя
+  const LS_RESET = "article-reset";  // флаг: сброс статистики со страницы /stats.html
   const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
   // Доля выученных слов уровня, чтобы открыть следующий, — настройка (80–95%).
   // Живёт в progress.__meta → синхронизируется с аккаунтом вместе со статистикой.
@@ -634,6 +635,11 @@
       I18N.t("bestStreakLine", { best: (progress.__meta || {}).bestStreak || 0 });
   }
   function openData() {
+    // телефон (узкий экран) — отдельная страница, десктоп — модальное окно
+    if (matchMedia("(max-width: 600px)").matches) {
+      location.href = "/stats.html";
+      return;
+    }
     el.dataJson.value = JSON.stringify(progress, null, 2);
     renderStatsRecord();
     el.dataSummary.textContent =
@@ -874,7 +880,15 @@
     updateStats();
     next();                     // работаем сразу, офлайн-first
 
+    // сброс статистики мог быть выполнен на отдельной странице «Статистика»
+    // (мобильный режим). Тогда серверную копию нужно ЗАМЕНИТЬ сброшенной, а не
+    // слить — иначе mergeMax вернул бы старые счётчики обратно.
+    const wasReset = localStorage.getItem(LS_RESET) === "1";
+    if (wasReset) { try { localStorage.removeItem(LS_RESET); } catch {} }
+
     if (!hasToken()) return;    // аноним: без сервера, прогресс только на устройстве
+
+    if (wasReset) { pendingReplace = true; pushReplace(); return; }
 
     // затем подтягиваем сервер и мержим (не теряя локальные ответы)
     try {
