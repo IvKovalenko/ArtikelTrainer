@@ -368,7 +368,7 @@ TRANSLATIONS = {
     "Lehrling": "ученик", "Lehrstelle": "место практики", "Leistung": "достижение/мощность",
     "Leiterin": "руководительница", "Leitung": "руководство/линия",
     "Leitzins": "ключевая ставка", "Lerner": "учащийся", "Lernerin": "учащаяся", "Leser": "читатель",
-    "Leserin": "читательница", "Leute": "люди", "Lexikon": "энциклопедия", "Licht": "свет",
+    "Leserin": "читательница", "Leute": "люди", "Lexikon": "словарь, лексикон", "Licht": "свет",
     "Liebe": "любовь", "Lied": "песня", "Lieferung": "поставка", "Lift": "лифт", "Limonade": "лимонад",
     "Linie": "линия", "Link": "ссылка", "Lippe": "губа", "Liter": "литр", "Literatur": "литература",
     "Lastkraftwagen (Lkw)": "грузовик", "Loch": "дыра", "Lohn": "зарплата", "Lokal": "заведение",
