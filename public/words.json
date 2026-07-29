@@ -3395,6 +3395,13 @@
 "en":"butterfly"
 },
 {
+"word":"Hausflur",
+"article":"der",
+"level":"A2",
+"ru":"подъезд/коридор",
+"en":"hallway (of a building)"
+},
+{
 "word":"Fahrt",
 "article":"die",
 "level":"A2",
@@ -5234,6 +5241,13 @@
 "level":"A2",
 "ru":"дом (родной)",
 "en":"home"
+},
+{
+"word":"Futur",
+"article":"das",
+"level":"A2",
+"ru":"будущее время (грам.)",
+"en":"future tense (gram.)"
 },
 {
 "word":"Blut",
@@ -11385,7 +11399,7 @@
 "word":"Lexikon",
 "article":"das",
 "level":"B1",
-"ru":"энциклопедия",
+"ru":"словарь, лексикон",
 "en":"encyclopedia"
 },
 {

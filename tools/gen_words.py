@@ -512,10 +512,10 @@ B2_VOCAB_ADD = {
 DEUTSCHBLOG_VOCAB_ADD = {
     "A2": {
         "der": ["Becher", "Eimer", "Engel", "Esel", "Gedanke", "Gürtel",
-                "Kontinent", "Schmetterling"],
+                "Kontinent", "Schmetterling", "Hausflur"],
         "die": ["Diskussion", "Freude", "Grammatik", "Nationalität"],
         "das": ["Aussehen", "Deodorant (Deo)", "Medikament", "Päckchen", "Silber",
-                "Tablett", "Viertel", "Zuhause"],
+                "Tablett", "Viertel", "Zuhause", "Futur"],
     },
     "B1": {
         "der": ["Akzent", "Atlantik", "Besen", "Beutel", "Bewohner",
@@ -600,7 +600,7 @@ WIKI_NEWS_ADD = {
             "Ebene", "Einheit", "Einigung", "Einschätzung", "Energie", "Entlastung", "Erde",
             "Erhöhung", "Erinnerung", "Erklärung", "Erkrankung", "Erweiterung", "Eröffnung",
             "Explosion", "Fahrtrichtung", "Festnahme", "Form", "Fraktion", "Förderung",
-            "Gastronomie", "Gefahr", "Gier", "Größe", "Gründung", "Haft",
+            "Gastronomie", "Gefahr", "Gier", "Größe", "Gründung", "Haft", 
             "Herkunft", "Herstellung", "Hinsicht", "Identität", "Inflation", "Infrastruktur",
             "Initiative", "Innenstadt", "Invasion", "Jahreszeit", "Jury", "Justiz", "Kampagne",
             "Kategorie", "Kita", "Klage", "Klimakrise", "Koalition", "Kombination",
