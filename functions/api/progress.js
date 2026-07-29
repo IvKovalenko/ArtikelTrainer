@@ -14,7 +14,10 @@ import { getAuth, json } from "../_lib/auth.js";
 // перезаписывал блоб, и клиент с устаревшей копией (вкладка, открытая до
 // сессии на другом устройстве) стирал свежий прогресс — «кто последний
 // записал, тот и прав». Теперь отставший клиент ничего разрушить не может.
-const SETTING_FIELDS = ["masterPct", "wrongPause", "delayRight", "delayWrong"];
+// поля __meta с меткой времени (побеждает более поздний выбор). streak —
+// текущая серия без ошибок; настройки — порог/паузы/задержки. Должно совпадать
+// с клиентским mergeMax в public/app.js, иначе поле теряется при синхронизации.
+const STAMPED_FIELDS = ["masterPct", "wrongPause", "delayRight", "delayWrong", "streak"];
 function mergeMax(a, b) {
   const out = {};
   for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
@@ -22,9 +25,13 @@ function mergeMax(a, b) {
     const y = (b[key] && typeof b[key] === "object") ? b[key] : {};
     if (key === "__meta") {   // служебная запись: достигнутый уровень + настройки
       const m = { unlockedIdx: Math.max(x.unlockedIdx || 1, y.unlockedIdx || 1) };
-      // у каждой настройки своя метка времени — побеждает более поздний выбор;
+      // рекорд серии без ошибок — монотонный, объединяем максимумом
+      if ((x.bestStreak || 0) || (y.bestStreak || 0)) {
+        m.bestStreak = Math.max(x.bestStreak || 0, y.bestStreak || 0);
+      }
+      // у каждого поля своя метка времени — побеждает более поздний выбор;
       // 0 — валидное значение, поэтому проверяем «поле есть», а не истинность
-      for (const f of SETTING_FIELDS) {
+      for (const f of STAMPED_FIELDS) {
         const at = f + "At";
         const newer = (x[at] || 0) >= (y[at] || 0) ? x : y;
         const other = newer === x ? y : x;
