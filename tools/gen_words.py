@@ -512,18 +512,17 @@ B2_VOCAB_ADD = {
 DEUTSCHBLOG_VOCAB_ADD = {
     "A2": {
         "der": ["Becher", "Eimer", "Engel", "Esel", "Gedanke", "Gürtel",
-                "Kontinent", "Schmetterling", "Hausflur"],
+                "Kontinent", "Schmetterling"],
         "die": ["Diskussion", "Freude", "Grammatik", "Nationalität"],
         "das": ["Aussehen", "Deodorant (Deo)", "Medikament", "Päckchen", "Silber",
                 "Tablett", "Viertel", "Zuhause", "Futur"],
     },
     "B1": {
-        "der": ["Akzent", "Atlantik", "Besen", "Beutel", "Bewohner",
+        "der": ["Akzent", "Atlantik", "Ärmel", "Besen", "Beutel", "Bewohner",
                 "Bibliothekar", "Deckel", "Diesel", "Felsen", "Flügel",
-                "Frieden", "Glaube", "Haufen", "Käfig", "Knöchel", "Kommissar",
+                "Frieden", "Glaube", "Haufen", "Hausflur", "Käfig", "Knöchel", "Kommissar",
                 "Kontrast", "Liebling", "Palast", "Pinsel", "Speicher", "Spion",
-                "Sprung", "Strich", "Wechsel", "Wille", "Würfel", "Zweifel",
-                "Ärmel"],
+                "Sprung", "Strich", "Wechsel", "Wille", "Würfel", "Zweifel"],
         "die": ["Botschaft", "Definition", "Feder", "Flüssigkeit", "Formel",
                 "Funktion", "Kompetenz", "Kugel", "Last", "Muschel", "Orgel",
                 "Schaufel", "Schaukel"],

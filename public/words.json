@@ -3395,13 +3395,6 @@
 "en":"butterfly"
 },
 {
-"word":"Hausflur",
-"article":"der",
-"level":"A2",
-"ru":"подъезд/коридор",
-"en":"hallway (of a building)"
-},
-{
 "word":"Fahrt",
 "article":"die",
 "level":"A2",
@@ -7315,6 +7308,13 @@
 "en":"the Atlantic"
 },
 {
+"word":"Ärmel",
+"article":"der",
+"level":"B1",
+"ru":"рукав",
+"en":"sleeve"
+},
+{
 "word":"Besen",
 "article":"der",
 "level":"B1",
@@ -7390,6 +7390,13 @@
 "level":"B1",
 "ru":"куча",
 "en":"pile"
+},
+{
+"word":"Hausflur",
+"article":"der",
+"level":"B1",
+"ru":"подъезд/коридор",
+"en":"hallway (of a building)"
 },
 {
 "word":"Käfig",
@@ -7495,13 +7502,6 @@
 "level":"B1",
 "ru":"сомнение",
 "en":"doubt"
-},
-{
-"word":"Ärmel",
-"article":"der",
-"level":"B1",
-"ru":"рукав",
-"en":"sleeve"
 },
 {
 "word":"Nacken",
