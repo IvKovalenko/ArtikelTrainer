@@ -125,10 +125,10 @@ DATA = {
     "C2": {
         "der": ["Dissens","Überdruss","Verdruss","Scharfsinn","Eifer","Ehrgeiz","Neid",
                 "Zorn","Groll","Trost","Reiz","Reichtum","Irrtum","Brauch","Ruhm",
-                "Beistand"],
+                "Hochmut","Übermut","Beistand"],
         "die": ["Voreingenommenheit","Befangenheit","Gesinnung","Vergänglichkeit",
                 "Endlichkeit","Wehmut","Sehnsucht","Zuneigung","Abneigung","Ehrfurcht",
-                "Demut","Anmut","Muße","Bürde","Fülle","Leere","Ferne","Tugend",
+                "Demut","Anmut","Großmut","Sanftmut","Schwermut","Muße","Bürde","Fülle","Leere","Ferne","Tugend",
                 "Sitte","Beliebigkeit"],
         "das": ["Gepräge","Gemenge","Trugbild","Zerrbild","Gedeihen","Verderben",
                 "Wohlwollen","Missfallen","Dasein","Sein","Werden","Ansinnen"],

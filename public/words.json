@@ -25452,6 +25452,20 @@
 "en":"fame"
 },
 {
+"word":"Hochmut",
+"article":"der",
+"level":"C2",
+"ru":"высокомерие",
+"en":"arrogance"
+},
+{
+"word":"Übermut",
+"article":"der",
+"level":"C2",
+"ru":"задор, озорство",
+"en":"high spirits"
+},
+{
 "word":"Beistand",
 "article":"der",
 "level":"C2",
@@ -27933,7 +27947,7 @@
 "word":"Wehmut",
 "article":"die",
 "level":"C2",
-"ru":"грусть",
+"ru":"грусть, тоска",
 "en":"melancholy"
 },
 {
@@ -27975,8 +27989,29 @@
 "word":"Anmut",
 "article":"die",
 "level":"C2",
-"ru":"грация",
+"ru":"грация, изящество",
 "en":"grace"
+},
+{
+"word":"Großmut",
+"article":"die",
+"level":"C2",
+"ru":"великодушие",
+"en":"magnanimity"
+},
+{
+"word":"Sanftmut",
+"article":"die",
+"level":"C2",
+"ru":"кротость",
+"en":"gentleness"
+},
+{
+"word":"Schwermut",
+"article":"die",
+"level":"C2",
+"ru":"меланхолия",
+"en":"melancholy"
 },
 {
 "word":"Muße",
