@@ -985,8 +985,9 @@ WIKI_NEWS_ADD = {
 
 # Анатомия человека — общеупотребительные слова, которых не хватало (2026-07).
 # Базовые части тела (Kopf, Auge, Bauch, Magen, Herz …) уже есть в списках выше;
-# здесь — дополнение. Уровни: чем употребительнее, тем ниже. Глубокая анатомия
-# (Milz, Zwerchfell, Speiseröhre …) сознательно не включена.
+# здесь — дополнение. Уровни: чем употребительнее, тем ниже. C1/C2 — «глубокая»
+# анатомия (внутренние органы, мелкие структуры, кости): только исконно немецкие
+# обиходные термины, без латинских медицинских названий (Aorta, Iris, Prostata …).
 ANATOMY_VOCAB_ADD = {
     "A2": {
         "der": [],
@@ -1004,6 +1005,36 @@ ANATOMY_VOCAB_ADD = {
         "die": ["Niere", "Sehne", "Wirbelsäule", "Pupille", "Schläfe", "Achsel",
                 "Kehle", "Taille"],
         "das": ["Skelett", "Augenlid", "Organ"],
+    },
+    # --- глубокая анатомия: внутренние органы и структуры (обиходные нем. слова) ---
+    "C1": {
+        "der": ["Knorpel", "Gaumen", "Nabel", "Kehlkopf", "Blinddarm"],
+        "die": ["Milz", "Galle", "Speiseröhre", "Luftröhre", "Harnblase",
+                "Schleimhaut", "Faser", "Vene", "Schlagader", "Netzhaut",
+                "Hornhaut", "Mandel", "Gebärmutter", "Schilddrüse", "Warze"],
+        "das": ["Gewebe", "Zwerchfell", "Rückenmark", "Knochenmark", "Zahnfleisch",
+                "Trommelfell", "Lid"],
+    },
+    "C2": {
+        "der": ["Zwölffingerdarm", "Dickdarm", "Dünndarm", "Mastdarm", "Eierstock",
+                "Sehnerv", "Augapfel", "Hoden", "Gehörgang"],
+        "die": ["Bauchspeicheldrüse", "Gallenblase", "Harnröhre", "Nebenniere",
+                "Speicheldrüse", "Bandscheibe", "Herzkammer", "Herzklappe",
+                "Nervenzelle", "Hirnhaut", "Lederhaut", "Nabelschnur",
+                "Tränendrüse", "Ohrmuschel"],
+        "das": ["Bauchfell", "Brustfell", "Zäpfchen", "Nagelbett", "Ohrläppchen"],
+    },
+}
+
+# Кости (обиходные немецкие названия, без латыни) — уровень C2.
+BONES_VOCAB_ADD = {
+    "C2": {
+        "der": ["Oberarmknochen", "Oberschenkelknochen", "Wadenbein",
+                "Schädelknochen", "Backenknochen"],
+        "die": ["Elle", "Speiche", "Kniescheibe", "Handwurzel", "Fußwurzel"],
+        "das": ["Brustbein", "Schlüsselbein", "Schulterblatt", "Kreuzbein",
+                "Steißbein", "Schienbein", "Fersenbein", "Stirnbein",
+                "Jochbein", "Nasenbein", "Beckenknochen"],
     },
 }
 
@@ -1260,6 +1291,9 @@ def build():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in ANATOMY_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in BONES_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in ANIMALS_VOCAB_ADD.items():

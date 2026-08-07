@@ -19110,6 +19110,41 @@
 "en":"ray (fish)"
 },
 {
+"word":"Knorpel",
+"article":"der",
+"level":"C1",
+"ru":"хрящ",
+"en":"cartilage"
+},
+{
+"word":"Gaumen",
+"article":"der",
+"level":"C1",
+"ru":"нёбо",
+"en":"palate"
+},
+{
+"word":"Nabel",
+"article":"der",
+"level":"C1",
+"ru":"пупок",
+"en":"navel"
+},
+{
+"word":"Kehlkopf",
+"article":"der",
+"level":"C1",
+"ru":"гортань",
+"en":"larynx"
+},
+{
+"word":"Blinddarm",
+"article":"der",
+"level":"C1",
+"ru":"аппендикс/слепая кишка",
+"en":"appendix"
+},
+{
 "word":"Abbau",
 "article":"der",
 "level":"C1",
@@ -21544,6 +21579,111 @@
 "level":"C1",
 "ru":"шнур",
 "en":"cord"
+},
+{
+"word":"Milz",
+"article":"die",
+"level":"C1",
+"ru":"селезёнка",
+"en":"spleen"
+},
+{
+"word":"Galle",
+"article":"die",
+"level":"C1",
+"ru":"жёлчь",
+"en":"bile"
+},
+{
+"word":"Speiseröhre",
+"article":"die",
+"level":"C1",
+"ru":"пищевод",
+"en":"oesophagus"
+},
+{
+"word":"Luftröhre",
+"article":"die",
+"level":"C1",
+"ru":"трахея",
+"en":"windpipe"
+},
+{
+"word":"Harnblase",
+"article":"die",
+"level":"C1",
+"ru":"мочевой пузырь",
+"en":"urinary bladder"
+},
+{
+"word":"Schleimhaut",
+"article":"die",
+"level":"C1",
+"ru":"слизистая оболочка",
+"en":"mucous membrane"
+},
+{
+"word":"Faser",
+"article":"die",
+"level":"C1",
+"ru":"волокно",
+"en":"fibre"
+},
+{
+"word":"Vene",
+"article":"die",
+"level":"C1",
+"ru":"вена",
+"en":"vein"
+},
+{
+"word":"Schlagader",
+"article":"die",
+"level":"C1",
+"ru":"артерия",
+"en":"artery"
+},
+{
+"word":"Netzhaut",
+"article":"die",
+"level":"C1",
+"ru":"сетчатка",
+"en":"retina"
+},
+{
+"word":"Hornhaut",
+"article":"die",
+"level":"C1",
+"ru":"роговица",
+"en":"cornea"
+},
+{
+"word":"Mandel",
+"article":"die",
+"level":"C1",
+"ru":"миндалина (гланда)",
+"en":"tonsil"
+},
+{
+"word":"Gebärmutter",
+"article":"die",
+"level":"C1",
+"ru":"матка",
+"en":"womb"
+},
+{
+"word":"Schilddrüse",
+"article":"die",
+"level":"C1",
+"ru":"щитовидная железа",
+"en":"thyroid gland"
+},
+{
+"word":"Warze",
+"article":"die",
+"level":"C1",
+"ru":"бородавка",
+"en":"wart"
 },
 {
 "word":"Abgabe",
@@ -24360,6 +24500,55 @@
 "en":"tiny house"
 },
 {
+"word":"Gewebe",
+"article":"das",
+"level":"C1",
+"ru":"ткань (биол.)",
+"en":"tissue"
+},
+{
+"word":"Zwerchfell",
+"article":"das",
+"level":"C1",
+"ru":"диафрагма",
+"en":"diaphragm"
+},
+{
+"word":"Rückenmark",
+"article":"das",
+"level":"C1",
+"ru":"спинной мозг",
+"en":"spinal cord"
+},
+{
+"word":"Knochenmark",
+"article":"das",
+"level":"C1",
+"ru":"костный мозг",
+"en":"bone marrow"
+},
+{
+"word":"Zahnfleisch",
+"article":"das",
+"level":"C1",
+"ru":"десна",
+"en":"gums"
+},
+{
+"word":"Trommelfell",
+"article":"das",
+"level":"C1",
+"ru":"барабанная перепонка",
+"en":"eardrum"
+},
+{
+"word":"Lid",
+"article":"das",
+"level":"C1",
+"ru":"веко",
+"en":"eyelid"
+},
+{
 "word":"Abgeordnetenhaus",
 "article":"das",
 "level":"C1",
@@ -25471,6 +25660,104 @@
 "level":"C2",
 "ru":"поддержка",
 "en":"support"
+},
+{
+"word":"Zwölffingerdarm",
+"article":"der",
+"level":"C2",
+"ru":"двенадцатиперстная кишка",
+"en":"duodenum"
+},
+{
+"word":"Dickdarm",
+"article":"der",
+"level":"C2",
+"ru":"толстая кишка",
+"en":"large intestine"
+},
+{
+"word":"Dünndarm",
+"article":"der",
+"level":"C2",
+"ru":"тонкая кишка",
+"en":"small intestine"
+},
+{
+"word":"Mastdarm",
+"article":"der",
+"level":"C2",
+"ru":"прямая кишка",
+"en":"rectum"
+},
+{
+"word":"Eierstock",
+"article":"der",
+"level":"C2",
+"ru":"яичник",
+"en":"ovary"
+},
+{
+"word":"Sehnerv",
+"article":"der",
+"level":"C2",
+"ru":"зрительный нерв",
+"en":"optic nerve"
+},
+{
+"word":"Augapfel",
+"article":"der",
+"level":"C2",
+"ru":"глазное яблоко",
+"en":"eyeball"
+},
+{
+"word":"Hoden",
+"article":"der",
+"level":"C2",
+"ru":"яичко",
+"en":"testicle"
+},
+{
+"word":"Gehörgang",
+"article":"der",
+"level":"C2",
+"ru":"слуховой проход",
+"en":"ear canal"
+},
+{
+"word":"Oberarmknochen",
+"article":"der",
+"level":"C2",
+"ru":"плечевая кость",
+"en":"humerus"
+},
+{
+"word":"Oberschenkelknochen",
+"article":"der",
+"level":"C2",
+"ru":"бедренная кость",
+"en":"femur"
+},
+{
+"word":"Wadenbein",
+"article":"der",
+"level":"C2",
+"ru":"малоберцовая кость",
+"en":"fibula"
+},
+{
+"word":"Schädelknochen",
+"article":"der",
+"level":"C2",
+"ru":"кость черепа",
+"en":"skull bone"
+},
+{
+"word":"Backenknochen",
+"article":"der",
+"level":"C2",
+"ru":"скула",
+"en":"cheekbone"
 },
 {
 "word":"Bancomat",
@@ -28068,6 +28355,139 @@
 "level":"C2",
 "ru":"произвольность",
 "en":"arbitrariness"
+},
+{
+"word":"Bauchspeicheldrüse",
+"article":"die",
+"level":"C2",
+"ru":"поджелудочная железа",
+"en":"pancreas"
+},
+{
+"word":"Gallenblase",
+"article":"die",
+"level":"C2",
+"ru":"жёлчный пузырь",
+"en":"gallbladder"
+},
+{
+"word":"Harnröhre",
+"article":"die",
+"level":"C2",
+"ru":"мочеиспускательный канал",
+"en":"urethra"
+},
+{
+"word":"Nebenniere",
+"article":"die",
+"level":"C2",
+"ru":"надпочечник",
+"en":"adrenal gland"
+},
+{
+"word":"Speicheldrüse",
+"article":"die",
+"level":"C2",
+"ru":"слюнная железа",
+"en":"salivary gland"
+},
+{
+"word":"Bandscheibe",
+"article":"die",
+"level":"C2",
+"ru":"межпозвоночный диск",
+"en":"intervertebral disc"
+},
+{
+"word":"Herzkammer",
+"article":"die",
+"level":"C2",
+"ru":"желудочек сердца",
+"en":"heart ventricle"
+},
+{
+"word":"Herzklappe",
+"article":"die",
+"level":"C2",
+"ru":"сердечный клапан",
+"en":"heart valve"
+},
+{
+"word":"Nervenzelle",
+"article":"die",
+"level":"C2",
+"ru":"нервная клетка",
+"en":"nerve cell"
+},
+{
+"word":"Hirnhaut",
+"article":"die",
+"level":"C2",
+"ru":"мозговая оболочка",
+"en":"meninges"
+},
+{
+"word":"Lederhaut",
+"article":"die",
+"level":"C2",
+"ru":"склера",
+"en":"sclera"
+},
+{
+"word":"Nabelschnur",
+"article":"die",
+"level":"C2",
+"ru":"пуповина",
+"en":"umbilical cord"
+},
+{
+"word":"Tränendrüse",
+"article":"die",
+"level":"C2",
+"ru":"слёзная железа",
+"en":"tear gland"
+},
+{
+"word":"Ohrmuschel",
+"article":"die",
+"level":"C2",
+"ru":"ушная раковина",
+"en":"auricle"
+},
+{
+"word":"Elle",
+"article":"die",
+"level":"C2",
+"ru":"локтевая кость",
+"en":"ulna"
+},
+{
+"word":"Speiche",
+"article":"die",
+"level":"C2",
+"ru":"лучевая кость",
+"en":"radius (bone)"
+},
+{
+"word":"Kniescheibe",
+"article":"die",
+"level":"C2",
+"ru":"надколенник",
+"en":"kneecap"
+},
+{
+"word":"Handwurzel",
+"article":"die",
+"level":"C2",
+"ru":"запястье (кости)",
+"en":"carpus"
+},
+{
+"word":"Fußwurzel",
+"article":"die",
+"level":"C2",
+"ru":"предплюсна",
+"en":"tarsus"
 },
 {
 "word":"Fasnacht",
@@ -30854,6 +31274,118 @@
 "level":"C2",
 "ru":"притязание",
 "en":"demand"
+},
+{
+"word":"Bauchfell",
+"article":"das",
+"level":"C2",
+"ru":"брюшина",
+"en":"peritoneum"
+},
+{
+"word":"Brustfell",
+"article":"das",
+"level":"C2",
+"ru":"плевра",
+"en":"pleura"
+},
+{
+"word":"Zäpfchen",
+"article":"das",
+"level":"C2",
+"ru":"нёбный язычок",
+"en":"uvula"
+},
+{
+"word":"Nagelbett",
+"article":"das",
+"level":"C2",
+"ru":"ногтевое ложе",
+"en":"nail bed"
+},
+{
+"word":"Ohrläppchen",
+"article":"das",
+"level":"C2",
+"ru":"мочка уха",
+"en":"earlobe"
+},
+{
+"word":"Brustbein",
+"article":"das",
+"level":"C2",
+"ru":"грудина",
+"en":"breastbone"
+},
+{
+"word":"Schlüsselbein",
+"article":"das",
+"level":"C2",
+"ru":"ключица",
+"en":"collarbone"
+},
+{
+"word":"Schulterblatt",
+"article":"das",
+"level":"C2",
+"ru":"лопатка",
+"en":"shoulder blade"
+},
+{
+"word":"Kreuzbein",
+"article":"das",
+"level":"C2",
+"ru":"крестец",
+"en":"sacrum"
+},
+{
+"word":"Steißbein",
+"article":"das",
+"level":"C2",
+"ru":"копчик",
+"en":"tailbone"
+},
+{
+"word":"Schienbein",
+"article":"das",
+"level":"C2",
+"ru":"большеберцовая кость",
+"en":"shinbone"
+},
+{
+"word":"Fersenbein",
+"article":"das",
+"level":"C2",
+"ru":"пяточная кость",
+"en":"heel bone"
+},
+{
+"word":"Stirnbein",
+"article":"das",
+"level":"C2",
+"ru":"лобная кость",
+"en":"frontal bone"
+},
+{
+"word":"Jochbein",
+"article":"das",
+"level":"C2",
+"ru":"скуловая кость",
+"en":"cheekbone"
+},
+{
+"word":"Nasenbein",
+"article":"das",
+"level":"C2",
+"ru":"носовая кость",
+"en":"nasal bone"
+},
+{
+"word":"Beckenknochen",
+"article":"das",
+"level":"C2",
+"ru":"тазовая кость",
+"en":"pelvic bone"
 },
 {
 "word":"Couvert",
