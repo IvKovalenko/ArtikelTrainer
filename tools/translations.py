@@ -2112,7 +2112,7 @@ TRANSLATIONS.update({
     "Mama": "мама",
     "Papa": "папа",
     "Management": "менеджмент",
-    "Mandant": "клиент (адвоката)",
+    "Mandant": "клиент (адвоката), подзащитный (в суде)",
     "Mandat": "мандат",
     "Mangelware": "дефицитный товар",
     "Manipulation": "манипуляция",
