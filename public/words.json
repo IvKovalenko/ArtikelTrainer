@@ -7161,13 +7161,6 @@
 "en":"representative"
 },
 {
-"word":"Virus",
-"article":"der",
-"level":"B1",
-"ru":"вирус",
-"en":"virus"
-},
-{
 "word":"Vortrag",
 "article":"der",
 "level":"B1",
@@ -11429,6 +11422,13 @@
 "level":"B1",
 "ru":"материал",
 "en":"material"
+},
+{
+"word":"Virus",
+"article":"das",
+"level":"B1",
+"ru":"вирус",
+"en":"virus"
 },
 {
 "word":"Meer",
