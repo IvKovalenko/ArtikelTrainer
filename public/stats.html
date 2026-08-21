@@ -34,6 +34,15 @@
   <p class="dialog-sub" id="stats-record"></p>
   <p class="dialog-sub" id="data-summary"></p>
 
+  <div class="stats-search" id="stats-search">
+    <input type="search" id="stats-search-input" autocomplete="off" autocorrect="off"
+           autocapitalize="off" spellcheck="false" inputmode="search" enterkeyhint="search"
+           role="combobox" aria-autocomplete="list" aria-expanded="false"
+           aria-controls="stats-search-list"
+           data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchAria">
+    <ul class="search-suggest" id="stats-search-list" role="listbox" hidden></ul>
+  </div>
+
   <div class="table-wrap">
     <table class="stats-table" id="stats-table">
       <thead>
@@ -68,6 +77,7 @@
   </div>
 </main>
 
+<script src="stats-search.js"></script>
 <script>
   // Прогресс живёт в localStorage; при возвращении в приложение app.js сольёт
   // его с сервером. Сброс — особый случай: помечаем флагом LS_RESET, чтобы
@@ -79,6 +89,8 @@
   const $ = (id) => document.getElementById(id);
   let WORDS = [];
   let statsSort = { col: "word", dir: 1 };
+  let searchItems = [];   // строки таблицы для поиска (обновляются в renderTable)
+  let searchCtl = null;   // контроллер поля поиска (StatsSearch.mount)
 
   function loadProgress() {
     try {
@@ -110,6 +122,7 @@
     const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
       const w = byKey.get(key);   // слова может не быть (удалено из словаря) — покажем ключ
       return {
+        key,                      // ключ прогресса → data-key строки (прыжок из поиска)
         word: w ? w.word : key,   // сортировка — по слову без артикля
         display: w
           ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
@@ -129,6 +142,7 @@
     const frag = document.createDocumentFragment();
     for (const r of rows) {
       const tr = document.createElement("tr");
+      tr.dataset.key = r.key;                      // поиск прыгает к строке по этому ключу
       const cells = [
         [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
@@ -141,6 +155,8 @@
       frag.appendChild(tr);
     }
     $("stats-body").replaceChildren(frag);
+    // индекс для поиска: те же строки, что в таблице (по ним и прыгаем)
+    searchItems = rows.map((r) => ({ key: r.key, display: r.display, word: r.word, tr: r.tr }));
     document.querySelectorAll("#stats-table th[data-col]").forEach((th) => {
       th.setAttribute("aria-sort",
         th.dataset.col === col ? (dir === 1 ? "ascending" : "descending") : "none");
@@ -211,8 +227,20 @@
     th.addEventListener("click", () => setSort(th.dataset.col));
   });
 
+  // страница прокручивается целиком: приклеенный thead таблицы должен парковаться
+  // под приклеенным полем поиска, а не наезжать на него
+  function syncTheadOffset() {
+    const sb = $("stats-search");
+    document.documentElement.style.setProperty("--thead-top", (sb ? sb.offsetHeight : 0) + "px");
+  }
+
   I18N.mountSwitcher($("lang-switch"));
-  I18N.onChange(() => { document.title = I18N.t("docTitleStats"); renderAll(); });
+  I18N.onChange(() => {
+    document.title = I18N.t("docTitleStats");
+    renderAll();
+    if (searchCtl) searchCtl.refresh();   // переводы в подсказках зависят от языка
+    syncTheadOffset();
+  });
 
   (async () => {
     try { WORDS = await fetch("words.json", { cache: "no-store" }).then((r) => r.json()); }
@@ -221,6 +249,16 @@
     $("data-json").value = JSON.stringify(progress, null, 2);
     document.title = I18N.t("docTitleStats");
     renderAll();
+    if (window.StatsSearch) {
+      searchCtl = StatsSearch.mount({
+        input: $("stats-search-input"),
+        list: $("stats-search-list"),
+        tableBody: $("stats-body"),
+        getItems: () => searchItems,
+      });
+    }
+    syncTheadOffset();
+    window.addEventListener("resize", syncTheadOffset);
   })();
 </script>
 </body>

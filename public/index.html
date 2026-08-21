@@ -77,6 +77,14 @@
     </div>
     <p class="dialog-sub" id="stats-record"></p>
     <p class="dialog-sub" id="data-summary"></p>
+    <div class="stats-search" id="stats-search">
+      <input type="search" id="stats-search-input" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false" inputmode="search" enterkeyhint="search"
+             role="combobox" aria-autocomplete="list" aria-expanded="false"
+             aria-controls="stats-search-list"
+             data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchAria">
+      <ul class="search-suggest" id="stats-search-list" role="listbox" hidden></ul>
+    </div>
     <div class="table-wrap">
       <table class="stats-table" id="stats-table">
         <thead>
@@ -169,6 +177,7 @@
 </div>
 
 <script src="auth-form.js"></script>
+<script src="stats-search.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

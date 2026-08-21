@@ -361,6 +361,70 @@ a.linkbtn { text-decoration: none; }
 /* таблица занимает всё свободное место окна и растёт при растягивании по высоте */
 #overlay .table-wrap { flex: 1 1 auto; max-height: none; min-height: 120px; }
 
+/* ---- поиск по таблице с автодополнением ---- */
+/* поле прилипает к верху при прокрутке (важно для полной страницы stats.html) */
+.stats-search {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #fff;
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+.stats-search input {
+  width: 100%;
+  font: inherit;
+  font-size: 16px;               /* ≥16px — iOS не зумит поле при фокусе */
+  padding: 10px 12px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.stats-search input:focus { outline: none; border-color: var(--line-hover); }
+/* выпадающий список подсказок под полем */
+.search-suggest {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 6px);
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.14);
+  max-height: 320px;
+  overflow: auto;
+  z-index: 40;
+}
+.search-suggest[hidden] { display: none; }
+.search-suggest li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.search-suggest li .s-word { color: var(--ink); white-space: nowrap; }
+.search-suggest li .s-tr { color: var(--muted); text-align: right; }
+.search-suggest li[aria-selected="true"],
+.search-suggest li:hover { background: var(--hover); }
+.search-suggest li.s-empty { color: var(--muted); cursor: default; justify-content: flex-start; }
+.search-suggest li.s-empty:hover { background: none; }
+/* подсветка строки, к которой прыгнул поиск — короткая жёлтая вспышка */
+@keyframes row-hit-fade {
+  0%   { background: #fff3bf; }
+  100% { background: transparent; }
+}
+.stats-table tbody tr.row-hit td { animation: row-hit-fade 2.2s ease-out; }
+
 /* ---- таблица статистики ---- */
 .table-wrap {
   max-height: 50vh;
@@ -388,7 +452,7 @@ a.linkbtn { text-decoration: none; }
 .stats-table .bad { color: var(--red); }     /* колонка ошибок — красная, как ✕ на главной */
 .stats-table thead th {
   position: sticky;
-  top: 0;
+  top: var(--thead-top, 0);   /* на полной странице (stats.html) паркуется под sticky-поиском */
   background: #fff;
   color: var(--ink);
   font-weight: 600;

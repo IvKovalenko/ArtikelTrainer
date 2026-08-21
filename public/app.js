@@ -98,6 +98,8 @@
     statsBody: $("stats-body"), statsTable: $("stats-table"),
   };
   let statsSort = { col: "word", dir: 1 };   // колонка сортировки и направление (1 ↑, -1 ↓)
+  let statsSearchItems = [];                 // строки таблицы для поиска (обновляются в renderStatsTable)
+  let searchCtl = null;                      // контроллер поля поиска (StatsSearch.mount)
   const answerButtons = Array.from(document.querySelectorAll(".answer"));
 
   // ---------- хранилище ----------
@@ -573,6 +575,7 @@
     const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
       const w = byKey.get(key);   // слова может не быть (удалено из словаря) — показываем ключ как есть
       return {
+        key,                      // ключ прогресса → data-key строки (для прыжка из поиска)
         word: w ? w.word : key,   // сортировка — по слову без артикля
         display: w
           ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
@@ -597,6 +600,7 @@
     const frag = document.createDocumentFragment();
     for (const r of rows) {
       const tr = document.createElement("tr");
+      tr.dataset.key = r.key;                      // поиск прыгает к строке по этому ключу
       const cells = [
         [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
@@ -609,6 +613,8 @@
       frag.appendChild(tr);
     }
     el.statsBody.replaceChildren(frag);
+    // индекс для поиска: те же строки, что в таблице (по ним и прыгаем)
+    statsSearchItems = rows.map((r) => ({ key: r.key, display: r.display, word: r.word, tr: r.tr }));
 
     // индикатор направления на активном заголовке
     el.statsTable.querySelectorAll("th[data-col]").forEach((th) => {
@@ -626,6 +632,16 @@
   if (el.statsTable) {
     el.statsTable.querySelectorAll("th[data-col]").forEach((th) => {
       th.addEventListener("click", () => setSort(th.dataset.col));
+    });
+  }
+
+  // поиск по таблице с автодополнением (общий модуль stats-search.js)
+  if (window.StatsSearch && el.statsBody) {
+    searchCtl = StatsSearch.mount({
+      input: $("stats-search-input"),
+      list: $("stats-search-list"),
+      tableBody: el.statsBody,
+      getItems: () => statsSearchItems,
     });
   }
 
@@ -696,6 +712,7 @@
       I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
     el.dialogMsg.textContent = "";
     renderStatsTable();
+    if (searchCtl) searchCtl.reset();   // при открытии — пустое поле, список скрыт
     el.overlay.hidden = false;
     centerStatsDialog();   // при каждом открытии — по центру, размер по умолчанию
   }
@@ -785,21 +802,29 @@
     setDelay("delayWrong", v);
     el.delayWrongValue.textContent = fmtSeconds(v);
   });
+  // закрытие по клику на подложку — только если нажатие НАЧАЛОСЬ на подложке;
+  // иначе выделение текста в поле мышью с выходом за окно закрывало бы диалог
+  function bindBackdropClose(overlay, close) {
+    let downOnBackdrop = false;
+    overlay.addEventListener("pointerdown", (e) => { downOnBackdrop = e.target === overlay; });
+    overlay.addEventListener("click", (e) => { if (e.target === overlay && downOnBackdrop) close(); });
+  }
+
   $("btn-settings").addEventListener("click", openSettings);
   $("btn-settings-close").addEventListener("click", closeSettings);
-  el.settingsOverlay.addEventListener("click", (e) => { if (e.target === el.settingsOverlay) closeSettings(); });
+  bindBackdropClose(el.settingsOverlay, closeSettings);
 
   $("btn-data").addEventListener("click", openData);
   $("btn-close").addEventListener("click", closeData);
-  el.overlay.addEventListener("click", (e) => { if (e.target === el.overlay) closeData(); });
+  bindBackdropClose(el.overlay, closeData);
   $("btn-account").addEventListener("click", openAccount);
   $("btn-account-close").addEventListener("click", closeAccount);
-  el.accountOverlay.addEventListener("click", (e) => { if (e.target === el.accountOverlay) closeAccount(); });
+  bindBackdropClose(el.accountOverlay, closeAccount);
   el.btnSignin.addEventListener("click", () => openAuth("login"));
   el.btnRegister.addEventListener("click", () => openAuth("register"));
   $("btn-nudge-register").addEventListener("click", () => openAuth("register"));
   $("btn-auth-close").addEventListener("click", closeAuth);
-  el.authOverlay.addEventListener("click", (e) => { if (e.target === el.authOverlay) closeAuth(); });
+  bindBackdropClose(el.authOverlay, closeAuth);
 
   $("btn-copy").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(el.dataJson.value); flash(I18N.t("copied")); }
@@ -890,6 +915,7 @@
       el.dataSummary.textContent =
         I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
       renderStatsTable();   // подписи омонимов зависят от языка
+      if (searchCtl) searchCtl.refresh();   // переводы в подсказках тоже обновить
     }
     if (!el.accountOverlay.hidden) renderAccountInfo();
     if (!el.settingsOverlay.hidden) {   // единица секунд («с»/«s») зависит от языка
