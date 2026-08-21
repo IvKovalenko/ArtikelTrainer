@@ -6,7 +6,9 @@
   "scripts": {
     "words": "python tools/gen_words.py",
     "icons": "python tools/gen_icons.py",
+    "stamp-sw": "python tools/stamp_sw.py",
     "dev": "wrangler pages dev",
+    "predeploy": "python tools/stamp_sw.py",
     "deploy": "wrangler pages deploy"
   },
   "devDependencies": {
