@@ -130,13 +130,22 @@ body {
 }
 
 .gloss {
+  /* базовый кегль перевода — единый источник; fitGloss в app.js временно
+     уменьшает его инлайном, поэтому резерв высоты считаем от переменной */
+  --gloss-size: clamp(24px, 6vw, 36px);
   margin-top: -18px;
-  font-size: clamp(24px, 6vw, 36px);
+  font-size: var(--gloss-size);
   font-weight: 700;            /* как у слова */
   letter-spacing: -0.5px;      /* как у слова */
+  line-height: 1.15;
   color: var(--muted2);
   text-align: center;
-  min-height: 1em;
+  /* высота зарезервирована под одну строку базового кегля: перевод/значение
+     не сдвигает слово вверх и кнопки вниз (карточка центрируется) */
+  min-height: calc(var(--gloss-size) * 1.3);
+  /* всегда одна строка: длинный перевод не переносим, а уменьшаем шрифт
+     (fitGloss в app.js), чтобы он поместился в зарезервированное место */
+  white-space: nowrap;
 }
 
 .answers {
@@ -214,10 +223,23 @@ kbd.key,
 }
 
 .hint {
-  min-height: 22px;
-  font-size: 40px;
+  /* базовый кегль подсказки — единый источник (fitHint в app.js его временно
+     уменьшает инлайном, поэтому резерв высоты считаем от переменной, а не от
+     em: иначе при мелком шрифте высота бы сжалась и слово снова прыгнуло) */
+  --hint-size: 40px;
+  /* высота зарезервирована под одну строку базового кегля: появление
+     «Верно!»/подсказки не сдвигает слово и кнопки (карточка центрируется) */
+  min-height: calc(var(--hint-size) * 1.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--hint-size);
+  line-height: 1.15;
   color: var(--muted);
   text-align: center;
+  /* всегда одна строка: длинную подсказку не переносим, а уменьшаем шрифт
+     (fitHint в app.js), чтобы она поместилась в зарезервированное место */
+  white-space: nowrap;
 }
 .hint.correct { color: var(--green); }
 .hint.wrong { color: var(--red); }

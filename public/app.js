@@ -447,12 +447,45 @@
   }
   window.addEventListener("resize", fitWord);
 
+  // подсказка ответа — всегда в одну строку (white-space: nowrap): длинную
+  // строку неправильного ответа ужимаем по кеглю под ширину карточки, чтобы
+  // она поместилась в зарезервированное место и не сдвигала слово/кнопки
+  function fitHint() {
+    const node = el.hint;
+    node.style.fontSize = "";                       // база из CSS (40px)
+    if (!node.textContent) return;                  // пусто — подгонять нечего
+    const avail = node.parentElement.clientWidth;   // ширина карточки
+    const full = node.scrollWidth;                  // ширина текста в одну строку
+    if (full <= avail || !avail) return;
+    const base = parseFloat(getComputedStyle(node).fontSize);
+    const fitted = Math.max(6, Math.floor(base * avail / full) - 1);
+    node.style.fontSize = fitted + "px";
+  }
+  window.addEventListener("resize", fitHint);
+
+  // перевод/значение между словом и кнопками — тоже всегда в одну строку:
+  // длинный перевод ужимаем по кеглю под ширину карточки, чтобы он поместился
+  // в зарезервированное место и не сдвигал слово/кнопки
+  function fitGloss() {
+    const node = el.gloss;
+    if (!node) return;
+    node.style.fontSize = "";                       // база из CSS (var --gloss-size)
+    if (!node.textContent) return;                  // пусто — подгонять нечего
+    const avail = node.parentElement.clientWidth;   // ширина карточки
+    const full = node.scrollWidth;                  // ширина текста в одну строку
+    if (full <= avail || !avail) return;
+    const base = parseFloat(getComputedStyle(node).fontSize);
+    const fitted = Math.max(6, Math.floor(base * avail / full) - 1);
+    node.style.fontSize = fitted + "px";
+  }
+  window.addEventListener("resize", fitGloss);
+
   function renderWord() {
     el.word.textContent = current.word;
     fitWord();
     const unlocked = unlockedLevels();          // достигнутый уровень = самый высокий открытый
     el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
-    if (el.gloss) el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : "";
+    if (el.gloss) { el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : ""; fitGloss(); }
     el.hint.textContent = "";
     el.hint.className = "hint";
     for (const b of answerButtons) {
@@ -498,8 +531,9 @@
       el.hint.textContent = correctLabel();
       el.hint.className = "hint wrong";
     }
+    fitHint();   // длинную строку неправильного ответа ужимаем в одну строку
     // перевод показываем только после ответа (у омонимов значение видно и до)
-    if (el.gloss && trOf(current)) el.gloss.textContent = "(" + trOf(current) + ")";
+    if (el.gloss && trOf(current)) { el.gloss.textContent = "(" + trOf(current) + ")"; fitGloss(); }
 
     lastKey = keyOf(current);
     saveLocal(); scheduleSync(); updateStats();
@@ -902,6 +936,7 @@
     setSync(syncState);
     if (answered && current) {
       el.hint.textContent = lastAnswerCorrect ? I18N.t("correctExcl") : correctLabel();
+      fitHint();   // после смены языка строка может стать длиннее — пересчитать кегль
     }
     if (awaitingContinue) el.continueHint.textContent = I18N.t("continueCorrectArticle");
     // перевод текущего слова: после ответа — всегда, до ответа — только у омонимов
@@ -909,6 +944,7 @@
       const tr = trOf(current);
       if (answered && tr) el.gloss.textContent = "(" + tr + ")";
       else el.gloss.textContent = current.gloss ? "(" + tr + ")" : "";
+      fitGloss();   // перевод после смены языка может стать длиннее — пересчитать кегль
     }
     if (!el.overlay.hidden) {
       renderStatsRecord();
