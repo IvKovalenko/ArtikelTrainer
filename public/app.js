@@ -1026,7 +1026,9 @@
   // регистрация service worker (PWA / офлайн)
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("sw.js").catch(() => {});
+      // updateViaCache: "none" — сам файл sw.js никогда не берётся из HTTP-кэша,
+      // браузер всегда сверяет его с сервером и быстро подхватывает новую версию
+      navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).catch(() => {});
     });
   }
 

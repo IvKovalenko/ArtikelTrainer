@@ -1,7 +1,7 @@
 /* Service worker: сеть-в-приоритете (network-first), кэш — резерв для офлайна.
    API (/api/*) не кэшируется никогда. Такой режим исключает «залипание» на
    старых версиях файлов при частых обновлениях. */
-const CACHE = "artikel-03a0344682";
+const CACHE = "artikel-d05156bef7";
 const SHELL = [
   "./",
   "./index.html",
@@ -19,7 +19,13 @@ const SHELL = [
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache: "reload" — берём shell из сети мимо HTTP-кэша браузера, чтобы в кэш
+  // SW не попали устаревшие копии файлов
+  e.waitUntil(
+    caches.open(CACHE)
+      .then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: "reload" }))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (e) => {
