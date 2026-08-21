@@ -64,8 +64,28 @@ npm run stamp-sw
 npx wrangler pages deploy public --project-name artikel-trainer --branch main --commit-dirty=true
 ```
 
+## Свежесть после деплоя (без ручной очистки кэша)
+
+Чтобы после деплоя не приходилось чистить кэш браузера:
+
+- `public/_headers` отдаёт `Cache-Control: no-cache` (браузер сверяется с
+  сервером перед использованием кэша). Проверка:
+  `curl -sI https://artikel-trainer.pages.dev/i18n.js` → должно быть `no-cache`.
+- `sw.js` кэширует shell с `cache:"reload"`, регистрация — с
+  `updateViaCache:"none"` (см. app.js). Service worker обновляется сам.
+
+**Важно — разовая настройка зоны для домена `artikeldrill.com`:**
+у кастомного домена в Cloudflare была включена **Browser Cache TTL = 4 часа**,
+которая ПЕРЕБИВАЕТ `no-cache` от Pages (на `*.pages.dev` этого нет). Один раз
+в дашборде: зона **artikeldrill.com** → **Caching → Configuration → Browser
+Cache TTL → «Respect Existing Headers»**. Проверка:
+`curl -sI https://artikeldrill.com/i18n.js` → должно стать `no-cache`
+(сейчас, до правки, показывает `max-age=14400`).
+
 ## Коротко
 
 - Деплой = **`npm run deploy`**. Больше ничего.
 - `git push` ≠ деплой.
 - Версию кэша `artikel-vNN` руками не трогаем — она теперь хеш и ставится сама.
+- Свежесть держат `_headers` + SW; на `artikeldrill.com` нужна разовая настройка
+  зоны Browser Cache TTL → «Respect Existing Headers» (см. раздел выше).
