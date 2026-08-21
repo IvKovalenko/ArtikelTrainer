@@ -634,6 +634,56 @@
     el.statsRecord.textContent =
       I18N.t("bestStreakLine", { best: (progress.__meta || {}).bestStreak || 0 });
   }
+
+  // ----- окно статистики как окно ОС (только десктоп) -----
+  // Ставим по центру абсолютно позиционированным, чтобы и перетаскивание за
+  // шапку, и растягивание угловым хватом (CSS resize) считали левый-верхний
+  // угол неподвижным — как у обычного окна.
+  const statsDialog = el.overlay.querySelector(".dialog");
+  const statsHead = statsDialog.querySelector(".dialog-head");
+  function centerStatsDialog() {
+    // сброс к размеру по умолчанию (из CSS), затем замер по центру flex-раскладки
+    statsDialog.style.left = statsDialog.style.top = "";
+    statsDialog.style.width = statsDialog.style.height = "";
+    statsDialog.style.position = "static";
+    const w = statsDialog.offsetWidth, h = statsDialog.offsetHeight;
+    const left = Math.max(8, (window.innerWidth - w) / 2);
+    const top = Math.max(8, (window.innerHeight - h) / 2);
+    statsDialog.style.position = "absolute";
+    statsDialog.style.margin = "0";
+    statsDialog.style.left = left + "px";
+    statsDialog.style.top = top + "px";
+  }
+  let dragging = false, dragDX = 0, dragDY = 0;
+  statsHead.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0 || e.target.closest(".linkbtn")) return;   // «Закрыть» не тащит окно
+    dragging = true;
+    const r = statsDialog.getBoundingClientRect();
+    dragDX = e.clientX - r.left;
+    dragDY = e.clientY - r.top;
+    el.overlay.classList.add("dragging");
+    statsHead.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  statsHead.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const w = statsDialog.offsetWidth;
+    let left = e.clientX - dragDX, top = e.clientY - dragDY;
+    // не даём увести окно за край экрана — всегда оставляем видимую полоску
+    left = Math.min(Math.max(left, 60 - w), window.innerWidth - 60);
+    top = Math.min(Math.max(top, 8), window.innerHeight - 40);
+    statsDialog.style.left = left + "px";
+    statsDialog.style.top = top + "px";
+  });
+  const endDrag = (e) => {
+    if (!dragging) return;
+    dragging = false;
+    el.overlay.classList.remove("dragging");
+    try { statsHead.releasePointerCapture(e.pointerId); } catch {}
+  };
+  statsHead.addEventListener("pointerup", endDrag);
+  statsHead.addEventListener("pointercancel", endDrag);
+
   function openData() {
     // телефон (узкий экран) — отдельная страница, десктоп — модальное окно
     if (matchMedia("(max-width: 600px)").matches) {
@@ -647,6 +697,7 @@
     el.dialogMsg.textContent = "";
     renderStatsTable();
     el.overlay.hidden = false;
+    centerStatsDialog();   // при каждом открытии — по центру, размер по умолчанию
   }
   function closeData() { el.overlay.hidden = true; }
 
