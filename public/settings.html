@@ -65,6 +65,12 @@
         <span data-i18n="wrongPauseLabel">После ошибки не переключать слово автоматически, а ждать подтверждения</span>
       </label>
     </div>
+    <div class="setting">
+      <label class="setting-check">
+        <input type="checkbox" id="swear-words">
+        <span data-i18n="swearLabel">Показывать ругательные и матерные слова</span>
+      </label>
+    </div>
   </div>
   <div class="foot">
     <span class="lang-switch" id="lang-switch"></span>
@@ -111,6 +117,11 @@
   const pauseCheck = document.getElementById("wrong-pause");
   pauseCheck.checked = !!(loadProgress().__meta || {}).wrongPause;
   pauseCheck.addEventListener("change", () => saveMeta("wrongPause", pauseCheck.checked ? 1 : 0));
+
+  // показывать ругательные слова (nsfw) — по умолчанию выключено
+  const swearCheck = document.getElementById("swear-words");
+  swearCheck.checked = !!(loadProgress().__meta || {}).swear;
+  swearCheck.addEventListener("change", () => saveMeta("swear", swearCheck.checked ? 1 : 0));
 
   // задержки автоперехода (мс); «0.85 с» — без хвостовых нулей
   const fmtSeconds = (ms) =>

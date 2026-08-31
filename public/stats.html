@@ -107,7 +107,15 @@
   // ровно как в app.js, чтобы подписи совпадали
   const keyOf = (w) => (w.gloss ? `${w.word} (${w.gloss})` : w.word);
   const trOf = (w) => (I18N.getLang() === "ru" ? (w.ru || w.en) : (w.en || w.ru)) || "";
-  const statsCount = () => Object.keys(progress).filter((k) => !k.startsWith("__")).length;
+  // ругательные (nsfw) скрыты, если показ выключен в настройках (__meta.swear)
+  const swearOn = () => !!(progress.__meta || {}).swear;
+  const nsfwHidden = (w) => !!(w && w.nsfw) && !swearOn();
+  function statsCount() {
+    const keys = Object.keys(progress).filter((k) => !k.startsWith("__"));
+    if (swearOn()) return keys.length;
+    const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
+    return keys.filter((k) => !nsfwHidden(byKey.get(k))).length;
+  }
 
   function renderRecord() {
     $("stats-record").textContent =
@@ -115,11 +123,13 @@
   }
   function renderSummary() {
     $("data-summary").textContent =
-      I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+      I18N.t("dataSummary", { n: statsCount(), total: WORDS.filter((w) => !nsfwHidden(w)).length });
   }
   function renderTable() {
     const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
-    const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
+    const rows = Object.entries(progress)
+      .filter(([key]) => !key.startsWith("__") && !nsfwHidden(byKey.get(key)))
+      .map(([key, s]) => {
       const w = byKey.get(key);   // слова может не быть (удалено из словаря) — покажем ключ
       return {
         key,                      // ключ прогресса → data-key строки (прыжок из поиска)

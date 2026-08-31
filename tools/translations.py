@@ -3257,3 +3257,25 @@ TRANSLATIONS.update({
     "Krabbe": "краб", "Seestern": "морская звезда",
     "Strauß": "букет / страус",
 })
+
+# Ругательные / вульгарные (группа SWEAR_VOCAB_ADD, флаг nsfw). Добавлено 2026-08-31.
+TRANSLATIONS.update({
+    "Idiot": "идиот", "Dummkopf": "дурак/болван", "Depp": "придурок",
+    "Trottel": "олух", "Blödmann": "придурок", "Spinner": "псих/чудик",
+    "Feigling": "трус", "Angsthase": "трусишка", "Schwächling": "слабак",
+    "Angeber": "хвастун", "Lügner": "лжец", "Faulpelz": "лентяй",
+    "Dickkopf": "упрямец",
+    "Vollidiot": "полный идиот", "Hornochse": "болван",
+    "Besserwisser": "всезнайка", "Nervensäge": "зануда", "Miesepeter": "брюзга",
+    "Geizhals": "скряга", "Schmarotzer": "паразит/прихлебатель",
+    "Heuchler": "лицемер", "Grobian": "грубиян", "Sturkopf": "упрямец",
+    "Fiesling": "подлец", "Widerling": "мерзкий тип",
+    "Wichtigtuer": "важничающий тип", "Dummschwätzer": "пустомеля",
+    "Klugscheißer": "умник (груб.)", "Kotzbrocken": "противный тип",
+    "Arsch": "задница", "Arschloch": "козёл/мудак", "Scheiße": "дерьмо",
+    "Sau": "свинья (руг.)", "Mistkerl": "подонок", "Scheißkerl": "сволочь/гад",
+    "Drecksau": "грязная свинья", "Dreckskerl": "подонок", "Bastard": "ублюдок",
+    "Fresse": "морда/пасть", "Vollpfosten": "тупень", "Zicke": "стерва",
+    "Penner": "козёл/бомж", "Wichser": "дрочила", "Fotze": "пизда",
+    "Hurensohn": "сукин сын", "Nutte": "шлюха", "Schlampe": "потаскуха",
+})

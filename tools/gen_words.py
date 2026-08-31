@@ -1092,6 +1092,31 @@ NATURE_VOCAB_ADD = {
     },
 }
 
+# Ругательные / вульгарные слова. Помечаются флагом nsfw в words.json и по
+# умолчанию СКРЫТЫ (настройка «показывать ругательные слова» — opt-in). Слуры
+# против защищённых групп сюда НЕ включаются — только оскорбления/вульгаризмы
+# как лексика. Мягкие оскорбления — на A2/B1, остальное — B2. Добавлено 2026-08-31.
+SWEAR_VOCAB_ADD = {
+    "A2": {
+        "der": ["Idiot", "Dummkopf", "Depp"],
+    },
+    "B1": {
+        "der": ["Trottel", "Blödmann", "Spinner", "Feigling", "Angsthase",
+                "Schwächling", "Angeber", "Lügner", "Faulpelz", "Dickkopf"],
+    },
+    "B2": {
+        "der": ["Vollidiot", "Hornochse", "Besserwisser", "Miesepeter",
+                "Geizhals", "Schmarotzer", "Heuchler", "Grobian", "Sturkopf",
+                "Fiesling", "Widerling", "Wichtigtuer", "Dummschwätzer",
+                "Klugscheißer", "Kotzbrocken",
+                "Arsch", "Mistkerl", "Scheißkerl", "Dreckskerl", "Bastard",
+                "Vollpfosten", "Penner", "Wichser", "Hurensohn"],
+        "die": ["Nervensäge", "Scheiße", "Sau", "Drecksau", "Fresse", "Zicke",
+                "Fotze", "Nutte", "Schlampe"],
+        "das": ["Arschloch"],
+    },
+}
+
 # Диалектизмы — гельветизмы (швейц.) и австрицизмы (австр.): региональные слова,
 # которые сами немцы порой не знают. У каждого есть стандартный аналог в основных
 # списках (Paradeiser → Tomate, Trottoir → Gehsteig, Glace → Eis …).
@@ -1344,7 +1369,7 @@ def build():
     missing = []          # слова без русского перевода
     missing_en = []       # слова без английского перевода
 
-    def add(word, article, level, gloss=None, en_gloss=None):
+    def add(word, article, level, gloss=None, en_gloss=None, nsfw=False):
         key = (word, gloss or "")
         if key in seen:
             dupes.append(word if not gloss else f"{word} ({gloss})")
@@ -1353,6 +1378,8 @@ def build():
         entry = {"word": word, "article": article, "level": level}
         if gloss:
             entry["gloss"] = gloss
+        if nsfw:
+            entry["nsfw"] = 1        # ругательное — скрыто по умолчанию (настройка в приложении)
         # перевод: у гомографов — их значение (gloss / en), у остальных — из словарей
         ru = gloss if gloss else TRANSLATIONS.get(word)
         if ru:
@@ -1370,6 +1397,11 @@ def build():
         for article in ("der", "die", "das"):
             for word in DATA[level][article]:
                 add(word, article, level)
+    # ругательные — отдельно (в DATA не сливаются), с флагом nsfw
+    for level, arts in SWEAR_VOCAB_ADD.items():
+        for article, words in arts.items():
+            for word in words:
+                add(word, article, level, nsfw=True)
     for h in HOMONYMS:
         add(h["word"], h["article"], h.get("level", "A1"), h["gloss"], h.get("en"))
     for word, level in PLURAL_WORDS:

@@ -32,6 +32,23 @@
     m.wrongPauseAt = Date.now();
     saveLocal(); scheduleSync();
   }
+  // Показывать ругательные слова (nsfw) — тоже в __meta; по умолчанию выключено.
+  function swearOn() {
+    return !!(progress.__meta && progress.__meta.swear);
+  }
+  function setSwear(on) {
+    const m = meta();
+    m.swear = on ? 1 : 0;
+    m.swearAt = Date.now();
+    saveLocal(); scheduleSync();
+    // пул слов и подсчёт уровней зависят от настройки — пересчитать;
+    // если текущее слово теперь скрыто, перелистнуть на видимое
+    updateStats();
+    if (!on && current && current.nsfw) next();
+    if (!el.overlay.hidden) { if (searchCtl) searchCtl.reset(); renderStatsTable(); }
+  }
+  // слово скрыто, если оно nsfw, а показ ругательных выключен
+  const nsfwHidden = (w) => !!(w && w.nsfw) && !swearOn();
   // Задержки автоперехода к следующему слову (мс) — тоже в __meta.
   const DELAY_RIGHT_DEF = 850, DELAY_WRONG_DEF = 1700;
   function delayRight() {
@@ -83,6 +100,7 @@
     passed: $("stat-passed"), word: $("word"), gloss: $("gloss"),
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     continueHint: $("continue-hint"), wrongPauseCheck: $("wrong-pause"),
+    swearCheck: $("swear-words"),
     delayRightSlider: $("delay-right"), delayRightValue: $("delay-right-value"),
     delayWrongSlider: $("delay-wrong"), delayWrongValue: $("delay-wrong-value"),
     overlay: $("overlay"), dataJson: $("data-json"), dataSummary: $("data-summary"),
@@ -134,7 +152,7 @@
         // настройки (и текущая серия): у каждой своя метка времени — побеждает
         // более поздний выбор; 0 — валидное значение, поэтому проверяем
         // «поле есть», а не истинность
-        for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong", "streak"]) {
+        for (const f of ["masterPct", "wrongPause", "delayRight", "delayWrong", "streak", "swear"]) {
           const at = f + "At";
           const newer = (x[at] || 0) >= (y[at] || 0) ? x : y;
           const other = newer === x ? y : x;
@@ -326,7 +344,7 @@
     return !!s && (s.m === 1 || (s.correct >= 1 && s.correct >= s.wrong));
   }
   function levelMastered(level) {
-    const lw = WORDS.filter((w) => w.level === level);
+    const lw = WORDS.filter((w) => w.level === level && !nsfwHidden(w));
     if (!lw.length) return true;
     const m = lw.filter((w) => isMastered(w)).length;
     return m >= lw.length * (masterPct() / 100);
@@ -355,7 +373,7 @@
   }
   function pickWord() {
     const unlocked = unlockedLevels();
-    const pool = WORDS.filter((w) => unlocked.includes(w.level));
+    const pool = WORDS.filter((w) => unlocked.includes(w.level) && !nsfwHidden(w));
     const list = pool.length > 1 ? pool.filter((w) => keyOf(w) !== lastKey) : pool;
     const src = list.length ? list : pool;
     let total = 0;
@@ -407,7 +425,7 @@
       return;
     }
 
-    const lw = WORDS.filter((w) => w.level === cur);
+    const lw = WORDS.filter((w) => w.level === cur && !nsfwHidden(w));
     const needed = Math.ceil(lw.length * (masterPct() / 100));
     const mastered = lw.filter((w) => isMastered(w)).length;
     let pct = needed ? Math.min(100, Math.round((mastered / needed) * 100)) : 100;
@@ -597,8 +615,14 @@
   });
 
   // ---------- диалог данных ----------
-  // слов в статистике (без служебных записей вроде __meta)
-  const statsCount = () => Object.keys(progress).filter((k) => !k.startsWith("__")).length;
+  // слов в статистике (без служебных записей вроде __meta); скрытые ругательные
+  // (nsfw при выключенном показе) в счёт не идут — как и в таблице
+  function statsCount() {
+    const keys = Object.keys(progress).filter((k) => !k.startsWith("__"));
+    if (swearOn()) return keys.length;
+    const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
+    return keys.filter((k) => !nsfwHidden(byKey.get(k))).length;
+  }
 
   // таблица статистики с сортировкой по колонкам (алфавит — вторичный ключ)
   function renderStatsTable() {
@@ -606,7 +630,10 @@
     // ключ прогресса («Band (том)») не трогаем — по нему ищем слово в словаре,
     // чтобы показать артикль и перевод на языке интерфейса
     const byKey = new Map(WORDS.map((w) => [keyOf(w), w]));
-    const rows = Object.entries(progress).filter(([key]) => !key.startsWith("__")).map(([key, s]) => {
+    // скрытые ругательные (nsfw при выключенном показе) в таблицу не попадают
+    const rows = Object.entries(progress)
+      .filter(([key]) => !key.startsWith("__") && !nsfwHidden(byKey.get(key)))
+      .map(([key, s]) => {
       const w = byKey.get(key);   // слова может не быть (удалено из словаря) — показываем ключ как есть
       return {
         key,                      // ключ прогресса → data-key строки (для прыжка из поиска)
@@ -743,7 +770,7 @@
     el.dataJson.value = JSON.stringify(progress, null, 2);
     renderStatsRecord();
     el.dataSummary.textContent =
-      I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+      I18N.t("dataSummary", { n: statsCount(), total: WORDS.filter((w) => !nsfwHidden(w)).length });
     el.dialogMsg.textContent = "";
     renderStatsTable();
     if (searchCtl) searchCtl.reset();   // при открытии — пустое поле, список скрыт
@@ -813,6 +840,7 @@
     el.masterSlider.value = masterPct();
     el.masterValue.textContent = masterPct() + "%";
     el.wrongPauseCheck.checked = wrongPause();
+    if (el.swearCheck) el.swearCheck.checked = swearOn();
     el.delayRightSlider.value = delayRight();
     el.delayRightValue.textContent = fmtSeconds(delayRight());
     el.delayWrongSlider.value = delayWrong();
@@ -826,6 +854,7 @@
     el.masterValue.textContent = v + "%";
   });
   el.wrongPauseCheck.addEventListener("change", () => setWrongPause(el.wrongPauseCheck.checked));
+  if (el.swearCheck) el.swearCheck.addEventListener("change", () => setSwear(el.swearCheck.checked));
   el.delayRightSlider.addEventListener("input", () => {
     const v = parseInt(el.delayRightSlider.value, 10);
     setDelay("delayRight", v);
@@ -949,7 +978,7 @@
     if (!el.overlay.hidden) {
       renderStatsRecord();
       el.dataSummary.textContent =
-        I18N.t("dataSummary", { n: statsCount(), total: WORDS.length });
+        I18N.t("dataSummary", { n: statsCount(), total: WORDS.filter((w) => !nsfwHidden(w)).length });
       renderStatsTable();   // подписи омонимов зависят от языка
       if (searchCtl) searchCtl.refresh();   // переводы в подсказках тоже обновить
     }

@@ -3256,3 +3256,25 @@ TRANSLATIONS_EN.update({
     "Tintenfisch": "squid/octopus", "Krabbe": "crab", "Seestern": "starfish",
     "Strauß": "bouquet / ostrich",
 })
+
+# Swear / vulgar words (SWEAR_VOCAB_ADD group, nsfw flag). Added 2026-08-31.
+TRANSLATIONS_EN.update({
+    "Idiot": "idiot", "Dummkopf": "fool", "Depp": "dope",
+    "Trottel": "dolt", "Blödmann": "moron", "Spinner": "nutcase",
+    "Feigling": "coward", "Angsthase": "scaredy-cat", "Schwächling": "weakling",
+    "Angeber": "show-off", "Lügner": "liar", "Faulpelz": "lazybones",
+    "Dickkopf": "stubborn person",
+    "Vollidiot": "complete idiot", "Hornochse": "blockhead",
+    "Besserwisser": "know-it-all", "Nervensäge": "pain in the neck",
+    "Miesepeter": "grouch", "Geizhals": "miser", "Schmarotzer": "freeloader",
+    "Heuchler": "hypocrite", "Grobian": "brute", "Sturkopf": "stubborn person",
+    "Fiesling": "nasty piece of work", "Widerling": "creep",
+    "Wichtigtuer": "pompous person", "Dummschwätzer": "blabbermouth",
+    "Klugscheißer": "smart-ass", "Kotzbrocken": "obnoxious person",
+    "Arsch": "arse", "Arschloch": "asshole", "Scheiße": "shit",
+    "Sau": "filthy pig", "Mistkerl": "swine", "Scheißkerl": "son of a bitch",
+    "Drecksau": "dirty pig", "Dreckskerl": "scumbag", "Bastard": "bastard",
+    "Fresse": "gob", "Vollpfosten": "total idiot", "Zicke": "bitch",
+    "Penner": "bum", "Wichser": "wanker", "Fotze": "cunt",
+    "Hurensohn": "son of a whore", "Nutte": "hooker", "Schlampe": "slut",
+})
