@@ -1102,10 +1102,11 @@ SWEAR_VOCAB_ADD = {
     },
     "B1": {
         "der": ["Trottel", "Blödmann", "Spinner", "Feigling", "Angsthase",
-                "Schwächling", "Angeber", "Lügner", "Faulpelz", "Dickkopf"],
+                "Schwächling", "Angeber", "Lügner", "Faulpelz", "Dickkopf",
+                "Blödsinn", "Mist", "Quatschkopf"],
     },
     "B2": {
-        "der": ["Vollidiot", "Hornochse", "Besserwisser", "Miesepeter",
+        "der": ["Vollidiot", "Hornochse", "Besserwisser", "Miesepeter", "Schwachsinn",
                 "Geizhals", "Schmarotzer", "Heuchler", "Grobian", "Sturkopf",
                 "Fiesling", "Widerling", "Wichtigtuer", "Dummschwätzer",
                 "Klugscheißer", "Kotzbrocken",

@@ -3278,4 +3278,6 @@ TRANSLATIONS.update({
     "Fresse": "морда/пасть", "Vollpfosten": "тупень", "Zicke": "стерва",
     "Penner": "козёл/бомж", "Wichser": "дрочила", "Fotze": "пизда",
     "Hurensohn": "сукин сын", "Nutte": "шлюха", "Schlampe": "потаскуха",
+    "Blödsinn": "чушь/ерунда", "Mist": "дрянь/чёрт", "Schwachsinn": "бред/идиотизм",
+    "Quatschkopf": "балаболка/трепло",
 })

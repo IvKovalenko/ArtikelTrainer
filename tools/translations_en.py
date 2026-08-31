@@ -3277,4 +3277,6 @@ TRANSLATIONS_EN.update({
     "Fresse": "gob", "Vollpfosten": "total idiot", "Zicke": "bitch",
     "Penner": "bum", "Wichser": "wanker", "Fotze": "cunt",
     "Hurensohn": "son of a whore", "Nutte": "hooker", "Schlampe": "slut",
+    "Blödsinn": "nonsense", "Mist": "crap", "Schwachsinn": "bullshit",
+    "Quatschkopf": "chatterbox",
 })
