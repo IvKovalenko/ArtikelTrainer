@@ -3227,3 +3227,33 @@ TRANSLATIONS.update({
     "Nasenbein": "носовая кость",
     "Backenknochen": "скула",
 })
+
+# Природа (группа NATURE_VOCAB_ADD в gen_words.py). Добавлено 2026-08-31.
+TRANSLATIONS.update({
+    "Eiche": "дуб", "Buche": "бук", "Birke": "берёза", "Tanne": "пихта",
+    "Fichte": "ель", "Ahorn": "клён", "Pappel": "тополь", "Kastanie": "каштан",
+    "Ulme": "вяз", "Esche": "ясень", "Holunder": "бузина", "Flieder": "сирень",
+    "Wacholder": "можжевельник", "Strauch": "куст",
+    "Tulpe": "тюльпан", "Nelke": "гвоздика", "Veilchen": "фиалка",
+    "Gänseblümchen": "маргаритка", "Löwenzahn": "одуванчик",
+    "Sonnenblume": "подсолнух", "Margerite": "нивяник",
+    "Vergissmeinnicht": "незабудка", "Mohn": "мак", "Klee": "клевер",
+    "Distel": "чертополох", "Brennnessel": "крапива",
+    "Schneeglöckchen": "подснежник", "Krokus": "крокус", "Narzisse": "нарцисс",
+    "Maiglöckchen": "ландыш", "Lilie": "лилия", "Kaktus": "кактус",
+    "Wurzel": "корень", "Stängel": "стебель", "Rinde": "кора", "Knospe": "бутон",
+    "Beere": "ягода", "Moos": "мох", "Farn": "папоротник", "Schilf": "камыш",
+    "Unkraut": "сорняк", "Fliegenpilz": "мухомор",
+    "Marder": "куница", "Elch": "лось", "Wiesel": "ласка", "Murmeltier": "сурок",
+    "Amsel": "чёрный дрозд", "Meise": "синица", "Specht": "дятел",
+    "Schwalbe": "ласточка", "Elster": "сорока", "Reiher": "цапля",
+    "Kuckuck": "кукушка", "Fink": "зяблик", "Drossel": "дрозд",
+    "Nachtigall": "соловей", "Lerche": "жаворонок", "Kranich": "журавль",
+    "Grille": "сверчок", "Heuschrecke": "кузнечик/саранча", "Floh": "блоха",
+    "Laus": "вошь", "Motte": "моль", "Regenwurm": "дождевой червь",
+    "Molch": "тритон", "Kaulquappe": "головастик",
+    "Forelle": "форель", "Hecht": "щука", "Karpfen": "карп", "Aal": "угорь",
+    "Seehund": "тюлень (морской)", "Tintenfisch": "кальмар/осьминог",
+    "Krabbe": "краб", "Seestern": "морская звезда",
+    "Strauß": "букет / страус",
+})

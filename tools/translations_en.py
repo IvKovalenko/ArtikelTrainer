@@ -3228,3 +3228,31 @@ TRANSLATIONS_EN.update({
     "Nasenbein": "nasal bone",
     "Backenknochen": "cheekbone",
 })
+
+# Nature (NATURE_VOCAB_ADD group in gen_words.py). Added 2026-08-31.
+TRANSLATIONS_EN.update({
+    "Eiche": "oak", "Buche": "beech", "Birke": "birch", "Tanne": "fir",
+    "Fichte": "spruce", "Ahorn": "maple", "Pappel": "poplar",
+    "Kastanie": "chestnut", "Ulme": "elm", "Esche": "ash", "Holunder": "elder",
+    "Flieder": "lilac", "Wacholder": "juniper", "Strauch": "shrub",
+    "Tulpe": "tulip", "Nelke": "carnation", "Veilchen": "violet",
+    "Gänseblümchen": "daisy", "Löwenzahn": "dandelion", "Sonnenblume": "sunflower",
+    "Margerite": "oxeye daisy", "Vergissmeinnicht": "forget-me-not",
+    "Mohn": "poppy", "Klee": "clover", "Distel": "thistle",
+    "Brennnessel": "nettle", "Schneeglöckchen": "snowdrop", "Krokus": "crocus",
+    "Narzisse": "daffodil", "Maiglöckchen": "lily of the valley", "Lilie": "lily",
+    "Kaktus": "cactus", "Wurzel": "root", "Stängel": "stem", "Rinde": "bark",
+    "Knospe": "bud", "Beere": "berry", "Moos": "moss", "Farn": "fern",
+    "Schilf": "reed", "Unkraut": "weed", "Fliegenpilz": "fly agaric",
+    "Marder": "marten", "Elch": "elk", "Wiesel": "weasel", "Murmeltier": "marmot",
+    "Amsel": "blackbird", "Meise": "tit", "Specht": "woodpecker",
+    "Schwalbe": "swallow", "Elster": "magpie", "Reiher": "heron",
+    "Kuckuck": "cuckoo", "Fink": "finch", "Drossel": "thrush",
+    "Nachtigall": "nightingale", "Lerche": "lark", "Kranich": "crane",
+    "Grille": "cricket", "Heuschrecke": "grasshopper", "Floh": "flea",
+    "Laus": "louse", "Motte": "moth", "Regenwurm": "earthworm", "Molch": "newt",
+    "Kaulquappe": "tadpole", "Forelle": "trout", "Hecht": "pike",
+    "Karpfen": "carp", "Aal": "eel", "Seehund": "seal",
+    "Tintenfisch": "squid/octopus", "Krabbe": "crab", "Seestern": "starfish",
+    "Strauß": "bouquet / ostrich",
+})

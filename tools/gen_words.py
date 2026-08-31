@@ -1063,6 +1063,35 @@ ANIMALS_VOCAB_ADD = {
     },
 }
 
+# Природа — деревья, цветы, части растений, дикие животные, птицы, насекомые,
+# рыбы: то, что знает каждый немец (учат в детском саду и школе). Уровень B1.
+# Артикли выверены; переводы ru/en — в translations*.py. Добавлено 2026-08-31.
+NATURE_VOCAB_ADD = {
+    "B1": {
+        "der": ["Ahorn", "Holunder", "Flieder", "Wacholder", "Strauch",
+                "Mohn", "Klee", "Krokus", "Kaktus", "Löwenzahn",
+                "Stängel", "Farn", "Fliegenpilz",
+                "Marder", "Elch",
+                "Specht", "Reiher", "Kuckuck", "Fink", "Kranich",
+                "Floh", "Regenwurm", "Molch",
+                "Hecht", "Karpfen", "Aal", "Seehund", "Tintenfisch", "Seestern",
+                "Strauß"],   # два значения (букет / страус), оба der — в переводе обе
+        "die": ["Eiche", "Buche", "Birke", "Tanne", "Fichte", "Pappel",
+                "Kastanie", "Ulme", "Esche",
+                "Tulpe", "Nelke", "Sonnenblume", "Margerite", "Distel",
+                "Brennnessel", "Narzisse", "Lilie",
+                "Wurzel", "Rinde", "Knospe", "Beere",
+                "Amsel", "Meise", "Schwalbe", "Elster", "Drossel",
+                "Nachtigall", "Lerche",
+                "Grille", "Heuschrecke", "Laus", "Motte", "Kaulquappe",
+                "Forelle", "Krabbe"],
+        "das": ["Veilchen", "Gänseblümchen", "Vergissmeinnicht",
+                "Schneeglöckchen", "Maiglöckchen",
+                "Moos", "Schilf", "Unkraut",
+                "Wiesel", "Murmeltier"],
+    },
+}
+
 # Диалектизмы — гельветизмы (швейц.) и австрицизмы (австр.): региональные слова,
 # которые сами немцы порой не знают. У каждого есть стандартный аналог в основных
 # списках (Paradeiser → Tomate, Trottoir → Gehsteig, Glace → Eis …).
@@ -1297,6 +1326,9 @@ def build():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in ANIMALS_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in NATURE_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in DIALECT_VOCAB_ADD.items():
