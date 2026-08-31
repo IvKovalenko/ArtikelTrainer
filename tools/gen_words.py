@@ -1118,6 +1118,29 @@ SWEAR_VOCAB_ADD = {
     },
 }
 
+# Детский/школьный лексикон: игрушки и площадка, сказки/фэнтези, одежда, еда
+# (фрукты/овощи/сладости), кухня, космос, музыкальные инструменты, инструменты
+# и сад, праздники, ферма + добивки (транспорт-техника, погода, эмоции, тело).
+# То, что знает каждый ребёнок. Артикли выверены (составные — по «голове»).
+# Уровни A2/B1/B2. Переводы ru/en — в translations*.py. Добавлено 2026-08-31.
+KIDS_VOCAB_ADD = {
+    "A2": {
+        "der": ["Teddybär", "Bauklotz", "Sandkasten", "Legostein", "Ritter", "Drache", "Zwerg", "Zauberer", "Schatz", "Handschuh", "Schal", "Turnschuh", "Schlafanzug", "Pfirsich", "Keks", "Kaugummi", "Pudding", "Toaster", "Osterhase", "Stall", "Regenbogen"],
+        "die": ["Rutsche", "Knete", "Königin", "Hexe", "Fee", "Kirsche", "Erdbeere", "Traube", "Melone", "Ananas", "Möhre", "Gurke", "Paprika", "Erbse", "Waffel", "Serviette", "Trommel", "Laterne"],
+        "das": ["Kuscheltier", "Dreirad", "Karussell", "Trampolin", "Einhorn", "Bonbon", "Osterei", "Küken", "Feuerwehrauto", "Polizeiauto"],
+    },
+    "B1": {
+        "der": ["Kreisel", "Drachen", "Riese", "Zauberstab", "Troll", "Gummistiefel", "Reißverschluss", "Schnürsenkel", "Badeanzug", "Kohl", "Mais", "Kürbis", "Spinat", "Brokkoli", "Blumenkohl", "Lutscher", "Wasserkocher", "Mixer", "Astronaut", "Komet", "Satellit", "Mars", "Schraubenzieher", "Bohrer", "Spaten", "Adventskranz", "Lebkuchen", "Christbaum", "Müllwagen", "Wohnwagen", "Stolz", "Ellbogen"],
+        "die": ["Murmel", "Rassel", "Meerjungfrau", "Kapuze", "Latzhose", "Strumpfhose", "Himbeere", "Zuckerwatte", "Mikrowelle", "Kaffeemaschine", "Galaxie", "Sternschnuppe", "Geige", "Blockflöte", "Trompete", "Harfe", "Schraube", "Harke", "Gießkanne", "Schubkarre", "Girlande", "Schneeflocke", "Pfütze", "Trauer", "Zehe", "Locke"],
+        "das": ["Brettspiel", "Schaukelpferd", "Gespenst", "Schwert", "Gummibärchen", "Weltall", "Teleskop", "Sonnensystem", "Schlagzeug", "Cello", "Keyboard", "Heu", "Stroh", "Fohlen", "Segelboot", "Ruderboot"],
+    },
+    "B2": {
+        "der": ["Kobold", "Fäustling", "Saturn", "Meteorit", "Eiszapfen", "Ekel"],
+        "die": ["Umlaufbahn", "Klarinette", "Posaune", "Werkbank", "Vogelscheuche", "Eifersucht", "Scham"],
+        "das": ["Ufo", "Saxophon", "Akkordeon", "Maßband"],
+    },
+}
+
 # Диалектизмы — гельветизмы (швейц.) и австрицизмы (австр.): региональные слова,
 # которые сами немцы порой не знают. У каждого есть стандартный аналог в основных
 # списках (Paradeiser → Tomate, Trottoir → Gehsteig, Glace → Eis …).
@@ -1355,6 +1378,9 @@ def build():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in NATURE_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in KIDS_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in DIALECT_VOCAB_ADD.items():
