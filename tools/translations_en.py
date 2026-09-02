@@ -3328,3 +3328,7 @@ TRANSLATIONS_EN.update({
     "Eifersucht": "jealousy", "Scham": "shame", "Ekel": "disgust", "Ellbogen": "elbow",
     "Zehe": "toe", "Locke": "curl",
 })
+
+TRANSLATIONS_EN.update({
+    "Klumpen": "lump / clot",
+})

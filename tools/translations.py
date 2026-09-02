@@ -3331,3 +3331,7 @@ TRANSLATIONS.update({
     "Eifersucht": "ревность", "Scham": "стыд", "Ekel": "отвращение", "Ellbogen": "локоть",
     "Zehe": "палец ноги", "Locke": "локон",
 })
+
+TRANSLATIONS.update({
+    "Klumpen": "комок / сгусток",
+})

@@ -111,7 +111,7 @@ DATA = {
                 "Eingreifen","Streben","Wesen","Ansehen"],
     },
     "C1": {
-        "der": ["Diskurs","Konsens","Kompromiss","Sachverhalt","Tatbestand",
+        "der": ["Klumpen","Diskurs","Konsens","Kompromiss","Sachverhalt","Tatbestand",
                 "Missstand","Zustand","Aufschub","Vorbehalt","Einwand","Vorstoß",
                 "Rückhalt","Verzug","Verschleiß","Niedergang","Umbruch","Aufbruch",
                 "Zerfall","Zusammenbruch","Andrang"],
