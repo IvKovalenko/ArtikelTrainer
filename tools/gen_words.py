@@ -1141,6 +1141,124 @@ KIDS_VOCAB_ADD = {
     },
 }
 
+# Списки высокочастотной лексики Olesen Institut (A1/A2/B1/B2, olesentuition.co.uk):
+# добавлены только существительные с артиклем, которых ещё не было в словаре.
+# Артикли — из исходного списка, у составных дополнительно сверены по «голове»
+# (Handschuh->Schuh и т.п.), расхождений нет. Добавлено 2026-09-07.
+OLESEN_VOCAB_ADD = {
+    "A1": {
+        "die": ["Universität", "E-Mail"],
+        "das": ["Schulfach", "Lehrbuch", "Badezimmer"],
+    },
+    "A2": {
+        "der": [
+                "Kassenzettel", "Einkaufskorb", "Einkaufswagen", "Sitzplatz", "Computerraum",
+                "Nachtisch", "Schuster", "Schlüsseldienst", "Kundendienst", "Wechselkurs"
+        ],
+        "die": [
+                "Metzgerei", "Eintrittskarte", "Freizeitaktivität", "Krankmeldung", "S-Bahn",
+                "Hausarbeit", "Spülmaschine", "Uhrzeit", "Tageszeit", "Vorspeise",
+                "Hauptspeise", "Beilage", "Soße", "Besprechung", "Mittagspause",
+                "Nachrichtensendung", "Dokumentation", "Kerze", "Wäscherei", "Dienstleistung",
+                "Bankkarte"
+        ],
+        "das": [
+                "Videospiel", "Tagebuch", "Festival", "Wartezimmer", "Thermometer", "WLAN",
+                "Ladegerät", "Fest", "Meeting", "Bewerbungsgespräch", "Familienfest",
+                "Kleingeld", "Sparkonto"
+        ],
+    },
+    "B1": {
+        "der": [
+                "Stadtrand", "Bach", "Umweltschutz", "Treibhauseffekt", "Müllcontainer",
+                "Studiengang", "Karriereweg", "Traumjob", "Vegetarier", "Benutzername",
+                "Staubsauger", "Geschirrspüler", "Mülleimer", "Mitbewohner", "Flüchtling",
+                "Einwanderer", "Asylantrag", "Aufenthaltstitel", "Integrationskurs"
+        ],
+        "die": [
+                "Luft", "Luftverschmutzung", "Einkaufsmöglichkeit", "Arbeitsmöglichkeit",
+                "Freizeitmöglichkeit", "Plastiktüte", "Einwegflasche", "Mehrwegflasche",
+                "Solarenergie", "Umweltorganisation", "Naturkatastrophe", "Vorlesung",
+                "Einschreibung", "Ambition", "Karriereleiter", "Anstrengung", "Kalorie",
+                "Angewohnheit", "Speise", "Spezialität", "Allergie", "Pointe",
+                "Zusammenfassung", "Bildschirmzeit", "Buchung", "Reiseversicherung", "Emotion",
+                "Ungleichheit", "Pressefreiheit", "Umweltpolitik", "Innenpolitik",
+                "Beförderung", "Adventszeit", "Dekoration", "Verkleidung", "Auswanderung",
+                "Abmeldung", "Aufenthaltserlaubnis"
+        ],
+        "das": [
+                "Stadtleben", "Landleben", "Kulturangebot", "Pfand", "Aussterben", "Examen",
+                "Fernstudium", "Dessert", "Gasthaus", "Reiseziel", "Flugticket",
+                "Sozialsystem", "Menschenrecht", "Bügeleisen", "Putztuch", "Arbeitslosengeld",
+                "Weihnachtslied", "Herkunftsland", "Aufnahmeland", "Einwohnermeldeamt"
+        ],
+    },
+    "B2": {
+        "der": [
+                "Hörsaal", "Kommilitone", "Dozent", "Doktorand", "Lehrstuhl",
+                "Studienaufenthalt", "Leistungsnachweis", "Semesterbeitrag",
+                "Austauschstudent", "Schichtplan", "Steuerberater", "Lieferant", "Kundenstamm",
+                "Vertragspartner", "Freiberufler", "Verwaltungsapparat", "Rechtsschutz",
+                "Betreff", "Tonfall", "Selbstzweifel", "Therapeut", "Psychologe", "Burnout",
+                "Untertitel", "Dokumentarfilm", "Zeichentrickfilm", "Posteingang", "Hashtag",
+                "Algorithmus", "Werbepartner", "Staatshaushalt", "Finanzminister", "Import",
+                "Export", "Zinssatz", "Kontoauszug", "Facharzt", "Betrug", "Konsument",
+                "Werbespot", "Preisvergleich", "Kaufrausch", "Online-Handel", "Umtausch",
+                "Konsumzwang", "Werbeslogan", "Anhang", "Arbeitsvertrag", "Diplomat",
+                "Zebrastreifen", "Bürgersteig", "Klimagipfel", "Plastikmüll", "Umweltschaden",
+                "Umweltsünder"
+        ],
+        "die": [
+                "Fakultät", "Promotion", "Dissertation", "Publikation", "Bachelorarbeit",
+                "Masterarbeit", "Immatrikulation", "Studienordnung", "Anwesenheitspflicht",
+                "Studienberatung", "Studienleistung", "Fernuniversität", "Studienwahl",
+                "Bibliothekskarte", "Anwesenheitsliste", "Personalabteilung",
+                "Kündigungsfrist", "Festanstellung", "Einarbeitung", "Schichtarbeit",
+                "Führungskraft", "Gehaltsverhandlung", "Gehaltserhöhung", "Lohnsteuer",
+                "Sozialversicherung", "Buchhaltung", "Arbeitszeitregelung", "Tarifverhandlung",
+                "Hierarchie", "Akquise", "Gewaltenteilung", "Gesetzesänderung",
+                "Zeugenaussage", "Freiheitsstrafe", "Rechtslage", "Rechtsberatung",
+                "Höflichkeitsform", "Umgangssprache", "Verwechslung", "Beziehungsebene",
+                "Etikette", "Reizbarkeit", "Selbstwahrnehmung", "Requisite", "Kunstbewegung",
+                "Moderne", "Sinfonie", "Komposition", "Lyrik", "Originalfassung", "Nebenrolle",
+                "Timeline", "Freundschaftsanfrage", "Direktnachricht", "Datenschutzbestimmung",
+                "Datensicherheit", "Echtheit", "Rezension", "Naturwissenschaft",
+                "Sozialwissenschaft", "Geisteswissenschaft", "Hypothese", "Datenanalyse",
+                "Variable", "Schnittstelle", "Robotik", "Genetik", "Weltraumforschung",
+                "Betriebswirtschaft", "Deflation", "Globalisierung", "Einkommenssteuer",
+                "Kreditwürdigkeit", "Bankverbindung", "Bargeldzahlung", "Kartenzahlung",
+                "Nebenwirkung", "Vorsorgeuntersuchung", "Rehabilitation", "Ansteckung",
+                "Gesundheitspolitik", "Ethik", "Pflichtverletzung", "Zivilcourage",
+                "Obdachlosigkeit", "Umweltethik", "Generationengerechtigkeit", "Tierethik",
+                "Konsumgesellschaft", "Werbekampagne", "Markenbindung", "Preisgestaltung",
+                "Produktbewertung", "Kaufentscheidung", "Ratenzahlung", "Kundenbindung",
+                "Produktverpackung", "Kaufempfehlung", "Politikverdrossenheit",
+                "Mitbestimmung", "Sanktion", "Friedensverhandlung", "Instabilität",
+                "Entwicklungspolitik", "Vorstadt", "Wohngegend", "Mietwohnung",
+                "Eigentumswohnung", "Warmmiete", "Kaltmiete", "Umweltzone",
+                "Straßenbeleuchtung", "Grünfläche", "Abfallentsorgung", "Wasserversorgung",
+                "Stadtplanung", "Verkehrsplanung", "Mietpreisbremse", "Gentrifizierung",
+                "Antithese", "Schlussfolgerung", "Metapher", "Übertreibung",
+                "Gegenüberstellung", "Klimapolitik", "Wasserkraft", "Mülltrennung",
+                "Abfallwirtschaft", "Wasserverschmutzung", "Kreislaufwirtschaft",
+                "Armutsbekämpfung", "Wasserknappheit", "Hungersnot", "Nahrungsknappheit",
+                "Fluchtursache", "Klimabewegung"
+        ],
+        "das": [
+                "Kolloquium", "Pflichtmodul", "Wahlmodul", "Vorlesungsverzeichnis",
+                "Arbeitsverhältnis", "Arbeitszeugnis", "Arbeitsumfeld", "Nettogehalt",
+                "Bruttogehalt", "Parteiprogramm", "Strafgericht", "Zivilgericht",
+                "Rechtssystem", "Grundrecht", "Strafmaß", "Feuilleton", "Login",
+                "Cybermobbing", "Gen", "Haushaltsdefizit", "Handelsabkommen", "Investment",
+                "Online-Banking", "Symptom", "Konsumverhalten", "Werbeplakat",
+                "Markenbewusstsein", "Sonderangebot", "Einkaufsverhalten", "Zahlungsmittel",
+                "Bundeskanzleramt", "Asylrecht", "Bürgerrecht", "Embargo", "Stadtviertel",
+                "Verkehrsnetz", "Straßenschild", "Kanalnetz", "Bürgeramt", "Klimaziel",
+                "Artensterben", "Treibhausgas", "Entwicklungsland", "Industrieland"
+        ],
+    },
+}
+
 # Диалектизмы — гельветизмы (швейц.) и австрицизмы (австр.): региональные слова,
 # которые сами немцы порой не знают. У каждого есть стандартный аналог в основных
 # списках (Paradeiser → Tomate, Trottoir → Gehsteig, Glace → Eis …).
@@ -1381,6 +1499,9 @@ def build():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in KIDS_VOCAB_ADD.items():
+        for article, words in arts.items():
+            DATA[level][article].extend(words)
+    for level, arts in OLESEN_VOCAB_ADD.items():
         for article, words in arts.items():
             DATA[level][article].extend(words)
     for level, arts in DIALECT_VOCAB_ADD.items():

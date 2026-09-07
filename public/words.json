@@ -1792,6 +1792,20 @@
 "en":"jeans"
 },
 {
+"word":"Universität",
+"article":"die",
+"level":"A1",
+"ru":"университет",
+"en":"university"
+},
+{
+"word":"E-Mail",
+"article":"die",
+"level":"A1",
+"ru":"электронное письмо",
+"en":"email"
+},
+{
 "word":"Haus",
 "article":"das",
 "level":"A1",
@@ -2392,6 +2406,27 @@
 "level":"A1",
 "ru":"Рождество",
 "en":"Christmas"
+},
+{
+"word":"Schulfach",
+"article":"das",
+"level":"A1",
+"ru":"школьный предмет",
+"en":"school subject"
+},
+{
+"word":"Lehrbuch",
+"article":"das",
+"level":"A1",
+"ru":"учебник",
+"en":"textbook"
+},
+{
+"word":"Badezimmer",
+"article":"das",
+"level":"A1",
+"ru":"ванная комната",
+"en":"bathroom"
 },
 {
 "word":"Beruf",
@@ -3540,6 +3575,76 @@
 "level":"A2",
 "ru":"радуга",
 "en":"rainbow"
+},
+{
+"word":"Kassenzettel",
+"article":"der",
+"level":"A2",
+"ru":"кассовый чек",
+"en":"receipt slip"
+},
+{
+"word":"Einkaufskorb",
+"article":"der",
+"level":"A2",
+"ru":"корзина для покупок",
+"en":"shopping basket"
+},
+{
+"word":"Einkaufswagen",
+"article":"der",
+"level":"A2",
+"ru":"тележка для покупок",
+"en":"shopping trolley"
+},
+{
+"word":"Sitzplatz",
+"article":"der",
+"level":"A2",
+"ru":"сидячее место",
+"en":"seat"
+},
+{
+"word":"Computerraum",
+"article":"der",
+"level":"A2",
+"ru":"компьютерный класс",
+"en":"computer lab"
+},
+{
+"word":"Nachtisch",
+"article":"der",
+"level":"A2",
+"ru":"десерт",
+"en":"dessert"
+},
+{
+"word":"Schuster",
+"article":"der",
+"level":"A2",
+"ru":"сапожник",
+"en":"cobbler"
+},
+{
+"word":"Schlüsseldienst",
+"article":"der",
+"level":"A2",
+"ru":"служба вскрытия замков",
+"en":"locksmith"
+},
+{
+"word":"Kundendienst",
+"article":"der",
+"level":"A2",
+"ru":"служба поддержки",
+"en":"customer service"
+},
+{
+"word":"Wechselkurs",
+"article":"der",
+"level":"A2",
+"ru":"курс обмена",
+"en":"exchange rate"
 },
 {
 "word":"Fahrt",
@@ -4816,6 +4921,153 @@
 "en":"lantern"
 },
 {
+"word":"Metzgerei",
+"article":"die",
+"level":"A2",
+"ru":"мясная лавка",
+"en":"butcher shop"
+},
+{
+"word":"Eintrittskarte",
+"article":"die",
+"level":"A2",
+"ru":"входной билет",
+"en":"entry ticket"
+},
+{
+"word":"Freizeitaktivität",
+"article":"die",
+"level":"A2",
+"ru":"досуговое занятие",
+"en":"leisure activity"
+},
+{
+"word":"Krankmeldung",
+"article":"die",
+"level":"A2",
+"ru":"больничный лист",
+"en":"sick note"
+},
+{
+"word":"S-Bahn",
+"article":"die",
+"level":"A2",
+"ru":"городская электричка",
+"en":"suburban train"
+},
+{
+"word":"Hausarbeit",
+"article":"die",
+"level":"A2",
+"ru":"работа по дому",
+"en":"housework"
+},
+{
+"word":"Spülmaschine",
+"article":"die",
+"level":"A2",
+"ru":"посудомоечная машина",
+"en":"dishwasher"
+},
+{
+"word":"Uhrzeit",
+"article":"die",
+"level":"A2",
+"ru":"время (на часах)",
+"en":"time of day"
+},
+{
+"word":"Tageszeit",
+"article":"die",
+"level":"A2",
+"ru":"время суток",
+"en":"time of day"
+},
+{
+"word":"Vorspeise",
+"article":"die",
+"level":"A2",
+"ru":"закуска",
+"en":"starter"
+},
+{
+"word":"Hauptspeise",
+"article":"die",
+"level":"A2",
+"ru":"основное блюдо",
+"en":"main course"
+},
+{
+"word":"Beilage",
+"article":"die",
+"level":"A2",
+"ru":"гарнир",
+"en":"side dish"
+},
+{
+"word":"Soße",
+"article":"die",
+"level":"A2",
+"ru":"соус",
+"en":"sauce"
+},
+{
+"word":"Besprechung",
+"article":"die",
+"level":"A2",
+"ru":"совещание",
+"en":"meeting"
+},
+{
+"word":"Mittagspause",
+"article":"die",
+"level":"A2",
+"ru":"обеденный перерыв",
+"en":"lunch break"
+},
+{
+"word":"Nachrichtensendung",
+"article":"die",
+"level":"A2",
+"ru":"выпуск новостей",
+"en":"news broadcast"
+},
+{
+"word":"Dokumentation",
+"article":"die",
+"level":"A2",
+"ru":"документальный фильм",
+"en":"documentary"
+},
+{
+"word":"Kerze",
+"article":"die",
+"level":"A2",
+"ru":"свеча",
+"en":"candle"
+},
+{
+"word":"Wäscherei",
+"article":"die",
+"level":"A2",
+"ru":"прачечная",
+"en":"laundry service"
+},
+{
+"word":"Dienstleistung",
+"article":"die",
+"level":"A2",
+"ru":"услуга",
+"en":"service"
+},
+{
+"word":"Bankkarte",
+"article":"die",
+"level":"A2",
+"ru":"банковская карта",
+"en":"bank card"
+},
+{
 "word":"Gepäck",
 "article":"das",
 "level":"A2",
@@ -5591,6 +5843,97 @@
 "level":"A2",
 "ru":"полицейская машина",
 "en":"police car"
+},
+{
+"word":"Videospiel",
+"article":"das",
+"level":"A2",
+"ru":"видеоигра",
+"en":"video game"
+},
+{
+"word":"Tagebuch",
+"article":"das",
+"level":"A2",
+"ru":"дневник",
+"en":"diary"
+},
+{
+"word":"Festival",
+"article":"das",
+"level":"A2",
+"ru":"фестиваль",
+"en":"festival"
+},
+{
+"word":"Wartezimmer",
+"article":"das",
+"level":"A2",
+"ru":"приёмная (у врача)",
+"en":"waiting room"
+},
+{
+"word":"Thermometer",
+"article":"das",
+"level":"A2",
+"ru":"термометр",
+"en":"thermometer"
+},
+{
+"word":"WLAN",
+"article":"das",
+"level":"A2",
+"ru":"вай-фай",
+"en":"Wi-Fi"
+},
+{
+"word":"Ladegerät",
+"article":"das",
+"level":"A2",
+"ru":"зарядное устройство",
+"en":"charger"
+},
+{
+"word":"Fest",
+"article":"das",
+"level":"A2",
+"ru":"праздник",
+"en":"celebration"
+},
+{
+"word":"Meeting",
+"article":"das",
+"level":"A2",
+"ru":"рабочая встреча",
+"en":"meeting"
+},
+{
+"word":"Bewerbungsgespräch",
+"article":"das",
+"level":"A2",
+"ru":"собеседование",
+"en":"job interview"
+},
+{
+"word":"Familienfest",
+"article":"das",
+"level":"A2",
+"ru":"семейный праздник",
+"en":"family celebration"
+},
+{
+"word":"Kleingeld",
+"article":"das",
+"level":"A2",
+"ru":"мелочь (монеты)",
+"en":"small change"
+},
+{
+"word":"Sparkonto",
+"article":"das",
+"level":"A2",
+"ru":"сберегательный счёт",
+"en":"savings account"
 },
 {
 "word":"Antrag",
@@ -8426,6 +8769,139 @@
 "level":"B1",
 "ru":"локоть",
 "en":"elbow"
+},
+{
+"word":"Stadtrand",
+"article":"der",
+"level":"B1",
+"ru":"окраина города",
+"en":"outskirts"
+},
+{
+"word":"Bach",
+"article":"der",
+"level":"B1",
+"ru":"ручей",
+"en":"stream"
+},
+{
+"word":"Umweltschutz",
+"article":"der",
+"level":"B1",
+"ru":"охрана окружающей среды",
+"en":"environmental protection"
+},
+{
+"word":"Treibhauseffekt",
+"article":"der",
+"level":"B1",
+"ru":"парниковый эффект",
+"en":"greenhouse effect"
+},
+{
+"word":"Müllcontainer",
+"article":"der",
+"level":"B1",
+"ru":"мусорный контейнер",
+"en":"rubbish container"
+},
+{
+"word":"Studiengang",
+"article":"der",
+"level":"B1",
+"ru":"направление обучения",
+"en":"degree programme"
+},
+{
+"word":"Karriereweg",
+"article":"der",
+"level":"B1",
+"ru":"карьерный путь",
+"en":"career path"
+},
+{
+"word":"Traumjob",
+"article":"der",
+"level":"B1",
+"ru":"работа мечты",
+"en":"dream job"
+},
+{
+"word":"Vegetarier",
+"article":"der",
+"level":"B1",
+"ru":"вегетарианец",
+"en":"vegetarian"
+},
+{
+"word":"Benutzername",
+"article":"der",
+"level":"B1",
+"ru":"имя пользователя",
+"en":"username"
+},
+{
+"word":"Staubsauger",
+"article":"der",
+"level":"B1",
+"ru":"пылесос",
+"en":"vacuum cleaner"
+},
+{
+"word":"Geschirrspüler",
+"article":"der",
+"level":"B1",
+"ru":"посудомоечная машина",
+"en":"dishwasher"
+},
+{
+"word":"Mülleimer",
+"article":"der",
+"level":"B1",
+"ru":"мусорное ведро",
+"en":"bin"
+},
+{
+"word":"Mitbewohner",
+"article":"der",
+"level":"B1",
+"ru":"сосед по квартире",
+"en":"housemate"
+},
+{
+"word":"Flüchtling",
+"article":"der",
+"level":"B1",
+"ru":"беженец",
+"en":"refugee"
+},
+{
+"word":"Einwanderer",
+"article":"der",
+"level":"B1",
+"ru":"иммигрант",
+"en":"immigrant"
+},
+{
+"word":"Asylantrag",
+"article":"der",
+"level":"B1",
+"ru":"заявление на убежище",
+"en":"asylum application"
+},
+{
+"word":"Aufenthaltstitel",
+"article":"der",
+"level":"B1",
+"ru":"вид на жительство",
+"en":"residence title"
+},
+{
+"word":"Integrationskurs",
+"article":"der",
+"level":"B1",
+"ru":"интеграционный курс",
+"en":"integration course"
 },
 {
 "word":"Bewerbung",
@@ -12012,6 +12488,272 @@
 "en":"curl"
 },
 {
+"word":"Luft",
+"article":"die",
+"level":"B1",
+"ru":"воздух",
+"en":"air"
+},
+{
+"word":"Luftverschmutzung",
+"article":"die",
+"level":"B1",
+"ru":"загрязнение воздуха",
+"en":"air pollution"
+},
+{
+"word":"Einkaufsmöglichkeit",
+"article":"die",
+"level":"B1",
+"ru":"возможность покупок",
+"en":"shopping option"
+},
+{
+"word":"Arbeitsmöglichkeit",
+"article":"die",
+"level":"B1",
+"ru":"возможность работы",
+"en":"job opportunity"
+},
+{
+"word":"Freizeitmöglichkeit",
+"article":"die",
+"level":"B1",
+"ru":"возможность досуга",
+"en":"leisure option"
+},
+{
+"word":"Plastiktüte",
+"article":"die",
+"level":"B1",
+"ru":"пластиковый пакет",
+"en":"plastic bag"
+},
+{
+"word":"Einwegflasche",
+"article":"die",
+"level":"B1",
+"ru":"одноразовая бутылка",
+"en":"single-use bottle"
+},
+{
+"word":"Mehrwegflasche",
+"article":"die",
+"level":"B1",
+"ru":"многоразовая бутылка",
+"en":"reusable bottle"
+},
+{
+"word":"Solarenergie",
+"article":"die",
+"level":"B1",
+"ru":"солнечная энергия",
+"en":"solar energy"
+},
+{
+"word":"Umweltorganisation",
+"article":"die",
+"level":"B1",
+"ru":"экологическая организация",
+"en":"environmental organisation"
+},
+{
+"word":"Naturkatastrophe",
+"article":"die",
+"level":"B1",
+"ru":"природная катастрофа",
+"en":"natural disaster"
+},
+{
+"word":"Vorlesung",
+"article":"die",
+"level":"B1",
+"ru":"лекция",
+"en":"lecture"
+},
+{
+"word":"Einschreibung",
+"article":"die",
+"level":"B1",
+"ru":"зачисление",
+"en":"enrolment"
+},
+{
+"word":"Ambition",
+"article":"die",
+"level":"B1",
+"ru":"амбиция",
+"en":"ambition"
+},
+{
+"word":"Karriereleiter",
+"article":"die",
+"level":"B1",
+"ru":"карьерная лестница",
+"en":"career ladder"
+},
+{
+"word":"Anstrengung",
+"article":"die",
+"level":"B1",
+"ru":"усилие",
+"en":"effort"
+},
+{
+"word":"Kalorie",
+"article":"die",
+"level":"B1",
+"ru":"калория",
+"en":"calorie"
+},
+{
+"word":"Angewohnheit",
+"article":"die",
+"level":"B1",
+"ru":"дурная привычка",
+"en":"bad habit"
+},
+{
+"word":"Speise",
+"article":"die",
+"level":"B1",
+"ru":"блюдо",
+"en":"dish"
+},
+{
+"word":"Spezialität",
+"article":"die",
+"level":"B1",
+"ru":"фирменное блюдо",
+"en":"speciality"
+},
+{
+"word":"Allergie",
+"article":"die",
+"level":"B1",
+"ru":"аллергия",
+"en":"allergy"
+},
+{
+"word":"Pointe",
+"article":"die",
+"level":"B1",
+"ru":"соль шутки",
+"en":"punchline"
+},
+{
+"word":"Zusammenfassung",
+"article":"die",
+"level":"B1",
+"ru":"краткое изложение",
+"en":"summary"
+},
+{
+"word":"Bildschirmzeit",
+"article":"die",
+"level":"B1",
+"ru":"время у экрана",
+"en":"screen time"
+},
+{
+"word":"Buchung",
+"article":"die",
+"level":"B1",
+"ru":"бронирование",
+"en":"booking"
+},
+{
+"word":"Reiseversicherung",
+"article":"die",
+"level":"B1",
+"ru":"страховка для поездки",
+"en":"travel insurance"
+},
+{
+"word":"Emotion",
+"article":"die",
+"level":"B1",
+"ru":"эмоция",
+"en":"emotion"
+},
+{
+"word":"Ungleichheit",
+"article":"die",
+"level":"B1",
+"ru":"неравенство",
+"en":"inequality"
+},
+{
+"word":"Pressefreiheit",
+"article":"die",
+"level":"B1",
+"ru":"свобода прессы",
+"en":"freedom of the press"
+},
+{
+"word":"Umweltpolitik",
+"article":"die",
+"level":"B1",
+"ru":"экологическая политика",
+"en":"environmental policy"
+},
+{
+"word":"Innenpolitik",
+"article":"die",
+"level":"B1",
+"ru":"внутренняя политика",
+"en":"domestic policy"
+},
+{
+"word":"Beförderung",
+"article":"die",
+"level":"B1",
+"ru":"повышение в должности",
+"en":"promotion"
+},
+{
+"word":"Adventszeit",
+"article":"die",
+"level":"B1",
+"ru":"предрождественское время",
+"en":"Advent season"
+},
+{
+"word":"Dekoration",
+"article":"die",
+"level":"B1",
+"ru":"украшение",
+"en":"decoration"
+},
+{
+"word":"Verkleidung",
+"article":"die",
+"level":"B1",
+"ru":"маскарадный костюм",
+"en":"costume"
+},
+{
+"word":"Auswanderung",
+"article":"die",
+"level":"B1",
+"ru":"эмиграция",
+"en":"emigration"
+},
+{
+"word":"Abmeldung",
+"article":"die",
+"level":"B1",
+"ru":"снятие с регистрации",
+"en":"deregistration"
+},
+{
+"word":"Aufenthaltserlaubnis",
+"article":"die",
+"level":"B1",
+"ru":"разрешение на пребывание",
+"en":"residence permit"
+},
+{
 "word":"Gesetz",
 "article":"das",
 "level":"B1",
@@ -13454,6 +14196,146 @@
 "en":"rowing boat"
 },
 {
+"word":"Stadtleben",
+"article":"das",
+"level":"B1",
+"ru":"городская жизнь",
+"en":"city life"
+},
+{
+"word":"Landleben",
+"article":"das",
+"level":"B1",
+"ru":"деревенская жизнь",
+"en":"country life"
+},
+{
+"word":"Kulturangebot",
+"article":"das",
+"level":"B1",
+"ru":"культурные предложения",
+"en":"cultural offering"
+},
+{
+"word":"Pfand",
+"article":"das",
+"level":"B1",
+"ru":"залог (за тару)",
+"en":"deposit"
+},
+{
+"word":"Aussterben",
+"article":"das",
+"level":"B1",
+"ru":"вымирание",
+"en":"extinction"
+},
+{
+"word":"Examen",
+"article":"das",
+"level":"B1",
+"ru":"выпускной экзамен",
+"en":"final exam"
+},
+{
+"word":"Fernstudium",
+"article":"das",
+"level":"B1",
+"ru":"дистанционное обучение",
+"en":"distance learning"
+},
+{
+"word":"Dessert",
+"article":"das",
+"level":"B1",
+"ru":"десерт",
+"en":"dessert"
+},
+{
+"word":"Gasthaus",
+"article":"das",
+"level":"B1",
+"ru":"трактир",
+"en":"inn"
+},
+{
+"word":"Reiseziel",
+"article":"das",
+"level":"B1",
+"ru":"цель поездки",
+"en":"travel destination"
+},
+{
+"word":"Flugticket",
+"article":"das",
+"level":"B1",
+"ru":"авиабилет",
+"en":"plane ticket"
+},
+{
+"word":"Sozialsystem",
+"article":"das",
+"level":"B1",
+"ru":"социальная система",
+"en":"social system"
+},
+{
+"word":"Menschenrecht",
+"article":"das",
+"level":"B1",
+"ru":"право человека",
+"en":"human right"
+},
+{
+"word":"Bügeleisen",
+"article":"das",
+"level":"B1",
+"ru":"утюг",
+"en":"iron"
+},
+{
+"word":"Putztuch",
+"article":"das",
+"level":"B1",
+"ru":"тряпка для уборки",
+"en":"cleaning cloth"
+},
+{
+"word":"Arbeitslosengeld",
+"article":"das",
+"level":"B1",
+"ru":"пособие по безработице",
+"en":"unemployment benefit"
+},
+{
+"word":"Weihnachtslied",
+"article":"das",
+"level":"B1",
+"ru":"рождественская песня",
+"en":"Christmas carol"
+},
+{
+"word":"Herkunftsland",
+"article":"das",
+"level":"B1",
+"ru":"страна происхождения",
+"en":"country of origin"
+},
+{
+"word":"Aufnahmeland",
+"article":"das",
+"level":"B1",
+"ru":"принимающая страна",
+"en":"host country"
+},
+{
+"word":"Einwohnermeldeamt",
+"article":"das",
+"level":"B1",
+"ru":"паспортный стол",
+"en":"registration office"
+},
+{
 "word":"Anspruch",
 "article":"der",
 "level":"B2",
@@ -14775,6 +15657,391 @@
 "level":"B2",
 "ru":"отвращение",
 "en":"disgust"
+},
+{
+"word":"Hörsaal",
+"article":"der",
+"level":"B2",
+"ru":"лекционный зал",
+"en":"lecture hall"
+},
+{
+"word":"Kommilitone",
+"article":"der",
+"level":"B2",
+"ru":"однокурсник",
+"en":"fellow student"
+},
+{
+"word":"Dozent",
+"article":"der",
+"level":"B2",
+"ru":"преподаватель вуза",
+"en":"lecturer"
+},
+{
+"word":"Doktorand",
+"article":"der",
+"level":"B2",
+"ru":"аспирант",
+"en":"PhD candidate"
+},
+{
+"word":"Lehrstuhl",
+"article":"der",
+"level":"B2",
+"ru":"кафедра",
+"en":"academic chair"
+},
+{
+"word":"Studienaufenthalt",
+"article":"der",
+"level":"B2",
+"ru":"учебная стажировка",
+"en":"study stay abroad"
+},
+{
+"word":"Leistungsnachweis",
+"article":"der",
+"level":"B2",
+"ru":"зачётная ведомость",
+"en":"academic record"
+},
+{
+"word":"Semesterbeitrag",
+"article":"der",
+"level":"B2",
+"ru":"семестровый взнос",
+"en":"semester fee"
+},
+{
+"word":"Austauschstudent",
+"article":"der",
+"level":"B2",
+"ru":"студент по обмену",
+"en":"exchange student"
+},
+{
+"word":"Schichtplan",
+"article":"der",
+"level":"B2",
+"ru":"график смен",
+"en":"shift schedule"
+},
+{
+"word":"Steuerberater",
+"article":"der",
+"level":"B2",
+"ru":"налоговый консультант",
+"en":"tax advisor"
+},
+{
+"word":"Lieferant",
+"article":"der",
+"level":"B2",
+"ru":"поставщик",
+"en":"supplier"
+},
+{
+"word":"Kundenstamm",
+"article":"der",
+"level":"B2",
+"ru":"база клиентов",
+"en":"client base"
+},
+{
+"word":"Vertragspartner",
+"article":"der",
+"level":"B2",
+"ru":"партнёр по договору",
+"en":"contract partner"
+},
+{
+"word":"Freiberufler",
+"article":"der",
+"level":"B2",
+"ru":"фрилансер",
+"en":"freelancer"
+},
+{
+"word":"Verwaltungsapparat",
+"article":"der",
+"level":"B2",
+"ru":"административный аппарат",
+"en":"administrative body"
+},
+{
+"word":"Rechtsschutz",
+"article":"der",
+"level":"B2",
+"ru":"правовая защита",
+"en":"legal protection"
+},
+{
+"word":"Betreff",
+"article":"der",
+"level":"B2",
+"ru":"тема письма",
+"en":"subject line"
+},
+{
+"word":"Tonfall",
+"article":"der",
+"level":"B2",
+"ru":"тон речи",
+"en":"tone of voice"
+},
+{
+"word":"Selbstzweifel",
+"article":"der",
+"level":"B2",
+"ru":"сомнение в себе",
+"en":"self-doubt"
+},
+{
+"word":"Therapeut",
+"article":"der",
+"level":"B2",
+"ru":"терапевт",
+"en":"therapist"
+},
+{
+"word":"Psychologe",
+"article":"der",
+"level":"B2",
+"ru":"психолог",
+"en":"psychologist"
+},
+{
+"word":"Burnout",
+"article":"der",
+"level":"B2",
+"ru":"выгорание",
+"en":"burnout"
+},
+{
+"word":"Untertitel",
+"article":"der",
+"level":"B2",
+"ru":"субтитр",
+"en":"subtitle"
+},
+{
+"word":"Dokumentarfilm",
+"article":"der",
+"level":"B2",
+"ru":"документальный фильм",
+"en":"documentary film"
+},
+{
+"word":"Zeichentrickfilm",
+"article":"der",
+"level":"B2",
+"ru":"мультфильм",
+"en":"animated film"
+},
+{
+"word":"Posteingang",
+"article":"der",
+"level":"B2",
+"ru":"папка «Входящие»",
+"en":"inbox"
+},
+{
+"word":"Hashtag",
+"article":"der",
+"level":"B2",
+"ru":"хештег",
+"en":"hashtag"
+},
+{
+"word":"Algorithmus",
+"article":"der",
+"level":"B2",
+"ru":"алгоритм",
+"en":"algorithm"
+},
+{
+"word":"Werbepartner",
+"article":"der",
+"level":"B2",
+"ru":"рекламный партнёр",
+"en":"advertising partner"
+},
+{
+"word":"Staatshaushalt",
+"article":"der",
+"level":"B2",
+"ru":"государственный бюджет",
+"en":"state budget"
+},
+{
+"word":"Finanzminister",
+"article":"der",
+"level":"B2",
+"ru":"министр финансов",
+"en":"finance minister"
+},
+{
+"word":"Import",
+"article":"der",
+"level":"B2",
+"ru":"импорт",
+"en":"import"
+},
+{
+"word":"Export",
+"article":"der",
+"level":"B2",
+"ru":"экспорт",
+"en":"export"
+},
+{
+"word":"Zinssatz",
+"article":"der",
+"level":"B2",
+"ru":"процентная ставка",
+"en":"interest rate"
+},
+{
+"word":"Kontoauszug",
+"article":"der",
+"level":"B2",
+"ru":"выписка со счёта",
+"en":"bank statement"
+},
+{
+"word":"Facharzt",
+"article":"der",
+"level":"B2",
+"ru":"врач-специалист",
+"en":"specialist doctor"
+},
+{
+"word":"Betrug",
+"article":"der",
+"level":"B2",
+"ru":"мошенничество",
+"en":"fraud"
+},
+{
+"word":"Konsument",
+"article":"der",
+"level":"B2",
+"ru":"потребитель",
+"en":"consumer"
+},
+{
+"word":"Werbespot",
+"article":"der",
+"level":"B2",
+"ru":"рекламный ролик",
+"en":"commercial"
+},
+{
+"word":"Preisvergleich",
+"article":"der",
+"level":"B2",
+"ru":"сравнение цен",
+"en":"price comparison"
+},
+{
+"word":"Kaufrausch",
+"article":"der",
+"level":"B2",
+"ru":"покупательский угар",
+"en":"shopping spree"
+},
+{
+"word":"Online-Handel",
+"article":"der",
+"level":"B2",
+"ru":"интернет-торговля",
+"en":"online retail"
+},
+{
+"word":"Umtausch",
+"article":"der",
+"level":"B2",
+"ru":"обмен товара",
+"en":"exchange of goods"
+},
+{
+"word":"Konsumzwang",
+"article":"der",
+"level":"B2",
+"ru":"принуждение к потреблению",
+"en":"pressure to consume"
+},
+{
+"word":"Werbeslogan",
+"article":"der",
+"level":"B2",
+"ru":"рекламный слоган",
+"en":"advertising slogan"
+},
+{
+"word":"Anhang",
+"article":"der",
+"level":"B2",
+"ru":"вложение к письму",
+"en":"attachment"
+},
+{
+"word":"Arbeitsvertrag",
+"article":"der",
+"level":"B2",
+"ru":"трудовой договор",
+"en":"employment contract"
+},
+{
+"word":"Diplomat",
+"article":"der",
+"level":"B2",
+"ru":"дипломат",
+"en":"diplomat"
+},
+{
+"word":"Zebrastreifen",
+"article":"der",
+"level":"B2",
+"ru":"пешеходный переход",
+"en":"zebra crossing"
+},
+{
+"word":"Bürgersteig",
+"article":"der",
+"level":"B2",
+"ru":"тротуар",
+"en":"pavement"
+},
+{
+"word":"Klimagipfel",
+"article":"der",
+"level":"B2",
+"ru":"климатический саммит",
+"en":"climate summit"
+},
+{
+"word":"Plastikmüll",
+"article":"der",
+"level":"B2",
+"ru":"пластиковый мусор",
+"en":"plastic waste"
+},
+{
+"word":"Umweltschaden",
+"article":"der",
+"level":"B2",
+"ru":"ущерб природе",
+"en":"environmental damage"
+},
+{
+"word":"Umweltsünder",
+"article":"der",
+"level":"B2",
+"ru":"нарушитель экологии",
+"en":"environmental offender"
 },
 {
 "word":"Abstand",
@@ -18081,6 +19348,958 @@
 "en":"shame"
 },
 {
+"word":"Fakultät",
+"article":"die",
+"level":"B2",
+"ru":"факультет",
+"en":"faculty"
+},
+{
+"word":"Promotion",
+"article":"die",
+"level":"B2",
+"ru":"защита диссертации",
+"en":"doctorate"
+},
+{
+"word":"Dissertation",
+"article":"die",
+"level":"B2",
+"ru":"диссертация",
+"en":"dissertation"
+},
+{
+"word":"Publikation",
+"article":"die",
+"level":"B2",
+"ru":"публикация",
+"en":"publication"
+},
+{
+"word":"Bachelorarbeit",
+"article":"die",
+"level":"B2",
+"ru":"бакалаврская работа",
+"en":"bachelor thesis"
+},
+{
+"word":"Masterarbeit",
+"article":"die",
+"level":"B2",
+"ru":"магистерская работа",
+"en":"master thesis"
+},
+{
+"word":"Immatrikulation",
+"article":"die",
+"level":"B2",
+"ru":"зачисление в вуз",
+"en":"matriculation"
+},
+{
+"word":"Studienordnung",
+"article":"die",
+"level":"B2",
+"ru":"учебный регламент",
+"en":"study regulations"
+},
+{
+"word":"Anwesenheitspflicht",
+"article":"die",
+"level":"B2",
+"ru":"обязательное посещение",
+"en":"compulsory attendance"
+},
+{
+"word":"Studienberatung",
+"article":"die",
+"level":"B2",
+"ru":"учебная консультация",
+"en":"student advisory service"
+},
+{
+"word":"Studienleistung",
+"article":"die",
+"level":"B2",
+"ru":"учебное достижение",
+"en":"academic achievement"
+},
+{
+"word":"Fernuniversität",
+"article":"die",
+"level":"B2",
+"ru":"дистанционный университет",
+"en":"distance university"
+},
+{
+"word":"Studienwahl",
+"article":"die",
+"level":"B2",
+"ru":"выбор специальности",
+"en":"degree choice"
+},
+{
+"word":"Bibliothekskarte",
+"article":"die",
+"level":"B2",
+"ru":"читательский билет",
+"en":"library card"
+},
+{
+"word":"Anwesenheitsliste",
+"article":"die",
+"level":"B2",
+"ru":"список присутствующих",
+"en":"attendance list"
+},
+{
+"word":"Personalabteilung",
+"article":"die",
+"level":"B2",
+"ru":"отдел кадров",
+"en":"HR department"
+},
+{
+"word":"Kündigungsfrist",
+"article":"die",
+"level":"B2",
+"ru":"срок предупреждения об увольнении",
+"en":"notice period"
+},
+{
+"word":"Festanstellung",
+"article":"die",
+"level":"B2",
+"ru":"постоянная работа",
+"en":"permanent position"
+},
+{
+"word":"Einarbeitung",
+"article":"die",
+"level":"B2",
+"ru":"введение в должность",
+"en":"onboarding"
+},
+{
+"word":"Schichtarbeit",
+"article":"die",
+"level":"B2",
+"ru":"сменная работа",
+"en":"shift work"
+},
+{
+"word":"Führungskraft",
+"article":"die",
+"level":"B2",
+"ru":"руководитель",
+"en":"executive"
+},
+{
+"word":"Gehaltsverhandlung",
+"article":"die",
+"level":"B2",
+"ru":"переговоры о зарплате",
+"en":"salary negotiation"
+},
+{
+"word":"Gehaltserhöhung",
+"article":"die",
+"level":"B2",
+"ru":"повышение зарплаты",
+"en":"pay rise"
+},
+{
+"word":"Lohnsteuer",
+"article":"die",
+"level":"B2",
+"ru":"налог на зарплату",
+"en":"income tax"
+},
+{
+"word":"Sozialversicherung",
+"article":"die",
+"level":"B2",
+"ru":"социальное страхование",
+"en":"social security"
+},
+{
+"word":"Buchhaltung",
+"article":"die",
+"level":"B2",
+"ru":"бухгалтерия",
+"en":"accounting"
+},
+{
+"word":"Arbeitszeitregelung",
+"article":"die",
+"level":"B2",
+"ru":"регулирование рабочего времени",
+"en":"working time arrangement"
+},
+{
+"word":"Tarifverhandlung",
+"article":"die",
+"level":"B2",
+"ru":"переговоры по тарифам",
+"en":"collective bargaining"
+},
+{
+"word":"Hierarchie",
+"article":"die",
+"level":"B2",
+"ru":"иерархия",
+"en":"hierarchy"
+},
+{
+"word":"Akquise",
+"article":"die",
+"level":"B2",
+"ru":"привлечение клиентов",
+"en":"client acquisition"
+},
+{
+"word":"Gewaltenteilung",
+"article":"die",
+"level":"B2",
+"ru":"разделение властей",
+"en":"separation of powers"
+},
+{
+"word":"Gesetzesänderung",
+"article":"die",
+"level":"B2",
+"ru":"поправка к закону",
+"en":"legislative amendment"
+},
+{
+"word":"Zeugenaussage",
+"article":"die",
+"level":"B2",
+"ru":"свидетельские показания",
+"en":"testimony"
+},
+{
+"word":"Freiheitsstrafe",
+"article":"die",
+"level":"B2",
+"ru":"лишение свободы",
+"en":"prison sentence"
+},
+{
+"word":"Rechtslage",
+"article":"die",
+"level":"B2",
+"ru":"правовая ситуация",
+"en":"legal situation"
+},
+{
+"word":"Rechtsberatung",
+"article":"die",
+"level":"B2",
+"ru":"юридическая консультация",
+"en":"legal advice"
+},
+{
+"word":"Höflichkeitsform",
+"article":"die",
+"level":"B2",
+"ru":"вежливая форма",
+"en":"polite form"
+},
+{
+"word":"Umgangssprache",
+"article":"die",
+"level":"B2",
+"ru":"разговорный язык",
+"en":"colloquial language"
+},
+{
+"word":"Verwechslung",
+"article":"die",
+"level":"B2",
+"ru":"путаница",
+"en":"mix-up"
+},
+{
+"word":"Beziehungsebene",
+"article":"die",
+"level":"B2",
+"ru":"уровень отношений",
+"en":"relationship level"
+},
+{
+"word":"Etikette",
+"article":"die",
+"level":"B2",
+"ru":"этикет",
+"en":"etiquette"
+},
+{
+"word":"Reizbarkeit",
+"article":"die",
+"level":"B2",
+"ru":"раздражительность",
+"en":"irritability"
+},
+{
+"word":"Selbstwahrnehmung",
+"article":"die",
+"level":"B2",
+"ru":"самовосприятие",
+"en":"self-perception"
+},
+{
+"word":"Requisite",
+"article":"die",
+"level":"B2",
+"ru":"реквизит",
+"en":"prop"
+},
+{
+"word":"Kunstbewegung",
+"article":"die",
+"level":"B2",
+"ru":"художественное направление",
+"en":"art movement"
+},
+{
+"word":"Moderne",
+"article":"die",
+"level":"B2",
+"ru":"модернизм",
+"en":"modernism"
+},
+{
+"word":"Sinfonie",
+"article":"die",
+"level":"B2",
+"ru":"симфония",
+"en":"symphony"
+},
+{
+"word":"Komposition",
+"article":"die",
+"level":"B2",
+"ru":"композиция",
+"en":"composition"
+},
+{
+"word":"Lyrik",
+"article":"die",
+"level":"B2",
+"ru":"лирика",
+"en":"poetry"
+},
+{
+"word":"Originalfassung",
+"article":"die",
+"level":"B2",
+"ru":"оригинальная версия",
+"en":"original version"
+},
+{
+"word":"Nebenrolle",
+"article":"die",
+"level":"B2",
+"ru":"второстепенная роль",
+"en":"supporting role"
+},
+{
+"word":"Timeline",
+"article":"die",
+"level":"B2",
+"ru":"лента в соцсети",
+"en":"timeline"
+},
+{
+"word":"Freundschaftsanfrage",
+"article":"die",
+"level":"B2",
+"ru":"заявка в друзья",
+"en":"friend request"
+},
+{
+"word":"Direktnachricht",
+"article":"die",
+"level":"B2",
+"ru":"личное сообщение",
+"en":"direct message"
+},
+{
+"word":"Datenschutzbestimmung",
+"article":"die",
+"level":"B2",
+"ru":"положение о защите данных",
+"en":"data protection rule"
+},
+{
+"word":"Datensicherheit",
+"article":"die",
+"level":"B2",
+"ru":"безопасность данных",
+"en":"data security"
+},
+{
+"word":"Echtheit",
+"article":"die",
+"level":"B2",
+"ru":"подлинность",
+"en":"authenticity"
+},
+{
+"word":"Rezension",
+"article":"die",
+"level":"B2",
+"ru":"рецензия",
+"en":"detailed review"
+},
+{
+"word":"Naturwissenschaft",
+"article":"die",
+"level":"B2",
+"ru":"естественная наука",
+"en":"natural science"
+},
+{
+"word":"Sozialwissenschaft",
+"article":"die",
+"level":"B2",
+"ru":"социальная наука",
+"en":"social science"
+},
+{
+"word":"Geisteswissenschaft",
+"article":"die",
+"level":"B2",
+"ru":"гуманитарная наука",
+"en":"humanities"
+},
+{
+"word":"Hypothese",
+"article":"die",
+"level":"B2",
+"ru":"гипотеза",
+"en":"hypothesis"
+},
+{
+"word":"Datenanalyse",
+"article":"die",
+"level":"B2",
+"ru":"анализ данных",
+"en":"data analysis"
+},
+{
+"word":"Variable",
+"article":"die",
+"level":"B2",
+"ru":"переменная",
+"en":"variable"
+},
+{
+"word":"Schnittstelle",
+"article":"die",
+"level":"B2",
+"ru":"интерфейс",
+"en":"interface"
+},
+{
+"word":"Robotik",
+"article":"die",
+"level":"B2",
+"ru":"робототехника",
+"en":"robotics"
+},
+{
+"word":"Genetik",
+"article":"die",
+"level":"B2",
+"ru":"генетика",
+"en":"genetics"
+},
+{
+"word":"Weltraumforschung",
+"article":"die",
+"level":"B2",
+"ru":"исследование космоса",
+"en":"space research"
+},
+{
+"word":"Betriebswirtschaft",
+"article":"die",
+"level":"B2",
+"ru":"экономика предприятия",
+"en":"business administration"
+},
+{
+"word":"Deflation",
+"article":"die",
+"level":"B2",
+"ru":"дефляция",
+"en":"deflation"
+},
+{
+"word":"Globalisierung",
+"article":"die",
+"level":"B2",
+"ru":"глобализация",
+"en":"globalisation"
+},
+{
+"word":"Einkommenssteuer",
+"article":"die",
+"level":"B2",
+"ru":"налог на доходы",
+"en":"income tax"
+},
+{
+"word":"Kreditwürdigkeit",
+"article":"die",
+"level":"B2",
+"ru":"кредитоспособность",
+"en":"credit rating"
+},
+{
+"word":"Bankverbindung",
+"article":"die",
+"level":"B2",
+"ru":"банковские реквизиты",
+"en":"bank details"
+},
+{
+"word":"Bargeldzahlung",
+"article":"die",
+"level":"B2",
+"ru":"оплата наличными",
+"en":"cash payment"
+},
+{
+"word":"Kartenzahlung",
+"article":"die",
+"level":"B2",
+"ru":"оплата картой",
+"en":"card payment"
+},
+{
+"word":"Nebenwirkung",
+"article":"die",
+"level":"B2",
+"ru":"побочный эффект",
+"en":"side effect"
+},
+{
+"word":"Vorsorgeuntersuchung",
+"article":"die",
+"level":"B2",
+"ru":"профилактический осмотр",
+"en":"preventive check-up"
+},
+{
+"word":"Rehabilitation",
+"article":"die",
+"level":"B2",
+"ru":"реабилитация",
+"en":"rehabilitation"
+},
+{
+"word":"Ansteckung",
+"article":"die",
+"level":"B2",
+"ru":"заражение",
+"en":"infection"
+},
+{
+"word":"Gesundheitspolitik",
+"article":"die",
+"level":"B2",
+"ru":"политика здравоохранения",
+"en":"health policy"
+},
+{
+"word":"Ethik",
+"article":"die",
+"level":"B2",
+"ru":"этика",
+"en":"ethics"
+},
+{
+"word":"Pflichtverletzung",
+"article":"die",
+"level":"B2",
+"ru":"нарушение обязанностей",
+"en":"breach of duty"
+},
+{
+"word":"Zivilcourage",
+"article":"die",
+"level":"B2",
+"ru":"гражданское мужество",
+"en":"moral courage"
+},
+{
+"word":"Obdachlosigkeit",
+"article":"die",
+"level":"B2",
+"ru":"бездомность",
+"en":"homelessness"
+},
+{
+"word":"Umweltethik",
+"article":"die",
+"level":"B2",
+"ru":"экологическая этика",
+"en":"environmental ethics"
+},
+{
+"word":"Generationengerechtigkeit",
+"article":"die",
+"level":"B2",
+"ru":"справедливость между поколениями",
+"en":"intergenerational justice"
+},
+{
+"word":"Tierethik",
+"article":"die",
+"level":"B2",
+"ru":"этика отношения к животным",
+"en":"animal ethics"
+},
+{
+"word":"Konsumgesellschaft",
+"article":"die",
+"level":"B2",
+"ru":"общество потребления",
+"en":"consumer society"
+},
+{
+"word":"Werbekampagne",
+"article":"die",
+"level":"B2",
+"ru":"рекламная кампания",
+"en":"advertising campaign"
+},
+{
+"word":"Markenbindung",
+"article":"die",
+"level":"B2",
+"ru":"приверженность бренду",
+"en":"brand loyalty"
+},
+{
+"word":"Preisgestaltung",
+"article":"die",
+"level":"B2",
+"ru":"формирование цены",
+"en":"pricing strategy"
+},
+{
+"word":"Produktbewertung",
+"article":"die",
+"level":"B2",
+"ru":"отзыв о товаре",
+"en":"product review"
+},
+{
+"word":"Kaufentscheidung",
+"article":"die",
+"level":"B2",
+"ru":"решение о покупке",
+"en":"purchasing decision"
+},
+{
+"word":"Ratenzahlung",
+"article":"die",
+"level":"B2",
+"ru":"оплата в рассрочку",
+"en":"instalment payment"
+},
+{
+"word":"Kundenbindung",
+"article":"die",
+"level":"B2",
+"ru":"удержание клиентов",
+"en":"customer loyalty"
+},
+{
+"word":"Produktverpackung",
+"article":"die",
+"level":"B2",
+"ru":"упаковка товара",
+"en":"product packaging"
+},
+{
+"word":"Kaufempfehlung",
+"article":"die",
+"level":"B2",
+"ru":"рекомендация к покупке",
+"en":"product recommendation"
+},
+{
+"word":"Politikverdrossenheit",
+"article":"die",
+"level":"B2",
+"ru":"политическая апатия",
+"en":"political apathy"
+},
+{
+"word":"Mitbestimmung",
+"article":"die",
+"level":"B2",
+"ru":"соучастие в решениях",
+"en":"co-determination"
+},
+{
+"word":"Sanktion",
+"article":"die",
+"level":"B2",
+"ru":"санкция",
+"en":"sanction"
+},
+{
+"word":"Friedensverhandlung",
+"article":"die",
+"level":"B2",
+"ru":"мирные переговоры",
+"en":"peace negotiation"
+},
+{
+"word":"Instabilität",
+"article":"die",
+"level":"B2",
+"ru":"нестабильность",
+"en":"instability"
+},
+{
+"word":"Entwicklungspolitik",
+"article":"die",
+"level":"B2",
+"ru":"политика развития",
+"en":"development policy"
+},
+{
+"word":"Vorstadt",
+"article":"die",
+"level":"B2",
+"ru":"пригород",
+"en":"suburb"
+},
+{
+"word":"Wohngegend",
+"article":"die",
+"level":"B2",
+"ru":"жилой район",
+"en":"residential area"
+},
+{
+"word":"Mietwohnung",
+"article":"die",
+"level":"B2",
+"ru":"съёмная квартира",
+"en":"rental flat"
+},
+{
+"word":"Eigentumswohnung",
+"article":"die",
+"level":"B2",
+"ru":"собственная квартира",
+"en":"owner-occupied flat"
+},
+{
+"word":"Warmmiete",
+"article":"die",
+"level":"B2",
+"ru":"аренда с коммунальными",
+"en":"rent including utilities"
+},
+{
+"word":"Kaltmiete",
+"article":"die",
+"level":"B2",
+"ru":"аренда без коммунальных",
+"en":"rent excluding utilities"
+},
+{
+"word":"Umweltzone",
+"article":"die",
+"level":"B2",
+"ru":"экологическая зона",
+"en":"low-emission zone"
+},
+{
+"word":"Straßenbeleuchtung",
+"article":"die",
+"level":"B2",
+"ru":"уличное освещение",
+"en":"street lighting"
+},
+{
+"word":"Grünfläche",
+"article":"die",
+"level":"B2",
+"ru":"зелёная зона",
+"en":"green space"
+},
+{
+"word":"Abfallentsorgung",
+"article":"die",
+"level":"B2",
+"ru":"утилизация отходов",
+"en":"waste disposal"
+},
+{
+"word":"Wasserversorgung",
+"article":"die",
+"level":"B2",
+"ru":"водоснабжение",
+"en":"water supply"
+},
+{
+"word":"Stadtplanung",
+"article":"die",
+"level":"B2",
+"ru":"градостроительство",
+"en":"urban planning"
+},
+{
+"word":"Verkehrsplanung",
+"article":"die",
+"level":"B2",
+"ru":"планирование транспорта",
+"en":"transport planning"
+},
+{
+"word":"Mietpreisbremse",
+"article":"die",
+"level":"B2",
+"ru":"ограничение роста аренды",
+"en":"rent cap"
+},
+{
+"word":"Gentrifizierung",
+"article":"die",
+"level":"B2",
+"ru":"джентрификация",
+"en":"gentrification"
+},
+{
+"word":"Antithese",
+"article":"die",
+"level":"B2",
+"ru":"антитеза",
+"en":"antithesis"
+},
+{
+"word":"Schlussfolgerung",
+"article":"die",
+"level":"B2",
+"ru":"вывод",
+"en":"conclusion"
+},
+{
+"word":"Metapher",
+"article":"die",
+"level":"B2",
+"ru":"метафора",
+"en":"metaphor"
+},
+{
+"word":"Übertreibung",
+"article":"die",
+"level":"B2",
+"ru":"преувеличение",
+"en":"exaggeration"
+},
+{
+"word":"Gegenüberstellung",
+"article":"die",
+"level":"B2",
+"ru":"противопоставление",
+"en":"contrast"
+},
+{
+"word":"Klimapolitik",
+"article":"die",
+"level":"B2",
+"ru":"климатическая политика",
+"en":"climate policy"
+},
+{
+"word":"Wasserkraft",
+"article":"die",
+"level":"B2",
+"ru":"гидроэнергия",
+"en":"hydropower"
+},
+{
+"word":"Mülltrennung",
+"article":"die",
+"level":"B2",
+"ru":"сортировка мусора",
+"en":"waste separation"
+},
+{
+"word":"Abfallwirtschaft",
+"article":"die",
+"level":"B2",
+"ru":"обращение с отходами",
+"en":"waste management"
+},
+{
+"word":"Wasserverschmutzung",
+"article":"die",
+"level":"B2",
+"ru":"загрязнение воды",
+"en":"water pollution"
+},
+{
+"word":"Kreislaufwirtschaft",
+"article":"die",
+"level":"B2",
+"ru":"циклическая экономика",
+"en":"circular economy"
+},
+{
+"word":"Armutsbekämpfung",
+"article":"die",
+"level":"B2",
+"ru":"борьба с бедностью",
+"en":"fight against poverty"
+},
+{
+"word":"Wasserknappheit",
+"article":"die",
+"level":"B2",
+"ru":"нехватка воды",
+"en":"water scarcity"
+},
+{
+"word":"Hungersnot",
+"article":"die",
+"level":"B2",
+"ru":"массовый голод",
+"en":"famine"
+},
+{
+"word":"Nahrungsknappheit",
+"article":"die",
+"level":"B2",
+"ru":"нехватка продовольствия",
+"en":"food shortage"
+},
+{
+"word":"Fluchtursache",
+"article":"die",
+"level":"B2",
+"ru":"причина бегства",
+"en":"cause of flight"
+},
+{
+"word":"Klimabewegung",
+"article":"die",
+"level":"B2",
+"ru":"климатическое движение",
+"en":"climate movement"
+},
+{
 "word":"Absage",
 "article":"die",
 "level":"B2",
@@ -20032,6 +22251,314 @@
 "level":"B2",
 "ru":"рулетка (измерительная)",
 "en":"tape measure"
+},
+{
+"word":"Kolloquium",
+"article":"das",
+"level":"B2",
+"ru":"коллоквиум",
+"en":"colloquium"
+},
+{
+"word":"Pflichtmodul",
+"article":"das",
+"level":"B2",
+"ru":"обязательный модуль",
+"en":"required module"
+},
+{
+"word":"Wahlmodul",
+"article":"das",
+"level":"B2",
+"ru":"модуль по выбору",
+"en":"elective module"
+},
+{
+"word":"Vorlesungsverzeichnis",
+"article":"das",
+"level":"B2",
+"ru":"каталог курсов",
+"en":"course catalogue"
+},
+{
+"word":"Arbeitsverhältnis",
+"article":"das",
+"level":"B2",
+"ru":"трудовые отношения",
+"en":"employment relationship"
+},
+{
+"word":"Arbeitszeugnis",
+"article":"das",
+"level":"B2",
+"ru":"трудовая характеристика",
+"en":"employment reference"
+},
+{
+"word":"Arbeitsumfeld",
+"article":"das",
+"level":"B2",
+"ru":"рабочая среда",
+"en":"work environment"
+},
+{
+"word":"Nettogehalt",
+"article":"das",
+"level":"B2",
+"ru":"зарплата на руки",
+"en":"net salary"
+},
+{
+"word":"Bruttogehalt",
+"article":"das",
+"level":"B2",
+"ru":"зарплата до вычетов",
+"en":"gross salary"
+},
+{
+"word":"Parteiprogramm",
+"article":"das",
+"level":"B2",
+"ru":"партийная программа",
+"en":"party platform"
+},
+{
+"word":"Strafgericht",
+"article":"das",
+"level":"B2",
+"ru":"уголовный суд",
+"en":"criminal court"
+},
+{
+"word":"Zivilgericht",
+"article":"das",
+"level":"B2",
+"ru":"гражданский суд",
+"en":"civil court"
+},
+{
+"word":"Rechtssystem",
+"article":"das",
+"level":"B2",
+"ru":"правовая система",
+"en":"legal system"
+},
+{
+"word":"Grundrecht",
+"article":"das",
+"level":"B2",
+"ru":"основное право",
+"en":"fundamental right"
+},
+{
+"word":"Strafmaß",
+"article":"das",
+"level":"B2",
+"ru":"мера наказания",
+"en":"sentence severity"
+},
+{
+"word":"Feuilleton",
+"article":"das",
+"level":"B2",
+"ru":"раздел культуры в газете",
+"en":"arts section"
+},
+{
+"word":"Login",
+"article":"das",
+"level":"B2",
+"ru":"вход в систему",
+"en":"login"
+},
+{
+"word":"Cybermobbing",
+"article":"das",
+"level":"B2",
+"ru":"кибертравля",
+"en":"cyberbullying"
+},
+{
+"word":"Gen",
+"article":"das",
+"level":"B2",
+"ru":"ген",
+"en":"gene"
+},
+{
+"word":"Haushaltsdefizit",
+"article":"das",
+"level":"B2",
+"ru":"дефицит бюджета",
+"en":"budget deficit"
+},
+{
+"word":"Handelsabkommen",
+"article":"das",
+"level":"B2",
+"ru":"торговое соглашение",
+"en":"trade agreement"
+},
+{
+"word":"Investment",
+"article":"das",
+"level":"B2",
+"ru":"инвестиция",
+"en":"investment"
+},
+{
+"word":"Online-Banking",
+"article":"das",
+"level":"B2",
+"ru":"онлайн-банкинг",
+"en":"online banking"
+},
+{
+"word":"Symptom",
+"article":"das",
+"level":"B2",
+"ru":"симптом",
+"en":"symptom"
+},
+{
+"word":"Konsumverhalten",
+"article":"das",
+"level":"B2",
+"ru":"потребительское поведение",
+"en":"consumer behaviour"
+},
+{
+"word":"Werbeplakat",
+"article":"das",
+"level":"B2",
+"ru":"рекламный плакат",
+"en":"billboard"
+},
+{
+"word":"Markenbewusstsein",
+"article":"das",
+"level":"B2",
+"ru":"узнаваемость бренда",
+"en":"brand awareness"
+},
+{
+"word":"Sonderangebot",
+"article":"das",
+"level":"B2",
+"ru":"специальное предложение",
+"en":"special offer"
+},
+{
+"word":"Einkaufsverhalten",
+"article":"das",
+"level":"B2",
+"ru":"покупательское поведение",
+"en":"buying behaviour"
+},
+{
+"word":"Zahlungsmittel",
+"article":"das",
+"level":"B2",
+"ru":"платёжное средство",
+"en":"means of payment"
+},
+{
+"word":"Bundeskanzleramt",
+"article":"das",
+"level":"B2",
+"ru":"ведомство федерального канцлера",
+"en":"chancellery"
+},
+{
+"word":"Asylrecht",
+"article":"das",
+"level":"B2",
+"ru":"право на убежище",
+"en":"right to asylum"
+},
+{
+"word":"Bürgerrecht",
+"article":"das",
+"level":"B2",
+"ru":"гражданское право",
+"en":"civil right"
+},
+{
+"word":"Embargo",
+"article":"das",
+"level":"B2",
+"ru":"эмбарго",
+"en":"embargo"
+},
+{
+"word":"Stadtviertel",
+"article":"das",
+"level":"B2",
+"ru":"городской квартал",
+"en":"city district"
+},
+{
+"word":"Verkehrsnetz",
+"article":"das",
+"level":"B2",
+"ru":"транспортная сеть",
+"en":"transport network"
+},
+{
+"word":"Straßenschild",
+"article":"das",
+"level":"B2",
+"ru":"уличный знак",
+"en":"street sign"
+},
+{
+"word":"Kanalnetz",
+"article":"das",
+"level":"B2",
+"ru":"канализационная сеть",
+"en":"sewer network"
+},
+{
+"word":"Bürgeramt",
+"article":"das",
+"level":"B2",
+"ru":"бюро по делам граждан",
+"en":"citizens office"
+},
+{
+"word":"Klimaziel",
+"article":"das",
+"level":"B2",
+"ru":"климатическая цель",
+"en":"climate goal"
+},
+{
+"word":"Artensterben",
+"article":"das",
+"level":"B2",
+"ru":"вымирание видов",
+"en":"species extinction"
+},
+{
+"word":"Treibhausgas",
+"article":"das",
+"level":"B2",
+"ru":"парниковый газ",
+"en":"greenhouse gas"
+},
+{
+"word":"Entwicklungsland",
+"article":"das",
+"level":"B2",
+"ru":"развивающаяся страна",
+"en":"developing country"
+},
+{
+"word":"Industrieland",
+"article":"das",
+"level":"B2",
+"ru":"промышленная страна",
+"en":"industrialised nation"
 },
 {
 "word":"Album",
