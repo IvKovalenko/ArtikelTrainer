@@ -48,6 +48,7 @@
       <thead>
         <tr>
           <th data-col="word" scope="col" data-i18n="colWord">Слово</th>
+          <th data-col="pl" scope="col" data-i18n="colPlural">Мн. число</th>
           <th data-col="tr" scope="col" data-i18n="colTranslation">Перевод</th>
           <th data-col="correct" class="num ok" scope="col" data-i18n-title="colCorrectTitle" title="Правильных ответов">✓</th>
           <th data-col="wrong" class="num bad" scope="col" data-i18n-title="colWrongTitle" title="Неправильных ответов">✕</th>
@@ -137,6 +138,8 @@
         display: w
           ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
           : key,
+        // сырая форма для сортировки; в ячейке показываем «die …» либо «—»
+        pl: (w && w.article !== "Plural" && w.pl) ? w.pl : "",
         tr: w ? trOf(w) : "",
         correct: s.correct || 0, wrong: s.wrong || 0, seen: s.seen || 0,
       };
@@ -145,6 +148,7 @@
     const byWord = (a, b) => a.word.localeCompare(b.word, "de") || a.tr.localeCompare(b.tr);
     rows.sort((a, b) => {
       if (col === "word") return byWord(a, b) * dir;
+      if (col === "pl") return (a.pl.localeCompare(b.pl, "de") * dir) || byWord(a, b);
       if (col === "tr") return (a.tr.localeCompare(b.tr) * dir) || byWord(a, b);
       const primary = (a[col] - b[col]) * dir;
       return primary || byWord(a, b);
@@ -154,7 +158,8 @@
       const tr = document.createElement("tr");
       tr.dataset.key = r.key;                      // поиск прыгает к строке по этому ключу
       const cells = [
-        [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
+        [r.display, ""], [r.pl ? "die " + r.pl : "—", "pl"], [r.tr, ""],
+        [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
       for (const [val, cls] of cells) {
         const td = document.createElement("td");
@@ -174,7 +179,7 @@
   }
   function setSort(col) {
     if (statsSort.col === col) statsSort.dir *= -1;
-    else statsSort = { col, dir: col === "word" || col === "tr" ? 1 : -1 };
+    else statsSort = { col, dir: col === "word" || col === "tr" || col === "pl" ? 1 : -1 };
     renderTable();
   }
   function renderAll() { renderRecord(); renderSummary(); renderTable(); }

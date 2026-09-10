@@ -98,6 +98,7 @@
     level: $("level"), correct: $("stat-correct"), wrong: $("stat-wrong"),
     wrongPct: $("stat-wrong-pct"), streakLabel: $("streak-label"),
     passed: $("stat-passed"), word: $("word"), gloss: $("gloss"),
+    plural: $("plural"),
     answers: $("answers"), hint: $("hint"), sync: $("sync"),
     continueHint: $("continue-hint"), wrongPauseCheck: $("wrong-pause"),
     swearCheck: $("swear-words"),
@@ -498,12 +499,43 @@
   }
   window.addEventListener("resize", fitGloss);
 
+  // форма множественного числа — тоже всегда в одну строку
+  function fitPlural() {
+    const node = el.plural;
+    if (!node) return;
+    node.style.fontSize = "";                       // база из CSS (var --plural-size)
+    if (!node.textContent) return;
+    const avail = node.parentElement.clientWidth;
+    const full = node.scrollWidth;
+    if (full <= avail || !avail) return;
+    const base = parseFloat(getComputedStyle(node).fontSize);
+    node.style.fontSize = Math.max(6, Math.floor(base * avail / full) - 1) + "px";
+  }
+  window.addEventListener("resize", fitPlural);
+
+  // Множественное показываем только ПОСЛЕ ответа: форма выдаёт род (окончание
+  // -en почти всегда женский, умлаут+-er — мужской/средний), иначе задачу можно
+  // решить, не зная артикля. У pluralia tantum (ответ «Plural») строки нет —
+  // слово само множественное.
+  function renderPlural() {
+    if (!el.plural) return;
+    let text = "", none = false;
+    if (answered && current && current.article !== "Plural") {
+      if (current.pl) text = "die " + current.pl;
+      else { text = I18N.t("noPlural"); none = true; }
+    }
+    el.plural.textContent = text;
+    el.plural.classList.toggle("none", none);
+    fitPlural();
+  }
+
   function renderWord() {
     el.word.textContent = current.word;
     fitWord();
     const unlocked = unlockedLevels();          // достигнутый уровень = самый высокий открытый
     el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
     if (el.gloss) { el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : ""; fitGloss(); }
+    renderPlural();                             // до ответа — пусто
     el.hint.textContent = "";
     el.hint.className = "hint";
     for (const b of answerButtons) {
@@ -552,6 +584,7 @@
     fitHint();   // длинную строку неправильного ответа ужимаем в одну строку
     // перевод показываем только после ответа (у омонимов значение видно и до)
     if (el.gloss && trOf(current)) { el.gloss.textContent = "(" + trOf(current) + ")"; fitGloss(); }
+    renderPlural();   // вместе с переводом: и на верный, и на неверный ответ
 
     lastKey = keyOf(current);
     saveLocal(); scheduleSync(); updateStats();
@@ -641,6 +674,8 @@
         display: w
           ? (w.article === "Plural" ? `die ${w.word} (Pl.)` : `${w.article} ${w.word}`)
           : key,
+        // сырая форма для сортировки; в ячейке показываем «die …» либо «—»
+        pl: (w && w.article !== "Plural" && w.pl) ? w.pl : "",
         tr: w ? trOf(w) : "",
         correct: s.correct || 0,
         wrong: s.wrong || 0,
@@ -653,6 +688,7 @@
       a.word.localeCompare(b.word, "de") || a.tr.localeCompare(b.tr);
     rows.sort((a, b) => {
       if (col === "word") return byWord(a, b) * dir;
+      if (col === "pl") return (a.pl.localeCompare(b.pl, "de") * dir) || byWord(a, b);
       if (col === "tr") return (a.tr.localeCompare(b.tr) * dir) || byWord(a, b);
       const primary = (a[col] - b[col]) * dir;   // выбранная колонка — главный ключ
       return primary || byWord(a, b);             // при равенстве — по алфавиту (↑)
@@ -663,7 +699,8 @@
       const tr = document.createElement("tr");
       tr.dataset.key = r.key;                      // поиск прыгает к строке по этому ключу
       const cells = [
-        [r.display, ""], [r.tr, ""], [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
+        [r.display, ""], [r.pl ? "die " + r.pl : "—", "pl"], [r.tr, ""],
+        [r.correct, "num ok"], [r.wrong, "num bad"], [r.seen, "num"],
       ];
       for (const [val, cls] of cells) {
         const td = document.createElement("td");
@@ -687,7 +724,7 @@
   }
   function setSort(col) {
     if (statsSort.col === col) statsSort.dir *= -1;       // тот же столбец — меняем направление
-    else statsSort = { col, dir: col === "word" || col === "tr" ? 1 : -1 }; // числа — сразу по убыванию (кто чаще — выше)
+    else statsSort = { col, dir: col === "word" || col === "tr" || col === "pl" ? 1 : -1 }; // числа — сразу по убыванию (кто чаще — выше)
     renderStatsTable();
   }
   if (el.statsTable) {
@@ -975,6 +1012,7 @@
       else el.gloss.textContent = current.gloss ? "(" + tr + ")" : "";
       fitGloss();   // перевод после смены языка может стать длиннее — пересчитать кегль
     }
+    renderPlural();   // пометка «нет мн. числа» зависит от языка
     if (!el.overlay.hidden) {
       renderStatsRecord();
       el.dataSummary.textContent =

@@ -17,6 +17,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 # не раздувать этот файл. Слова без перевода останутся без поля "ru"/"en".
 from translations import TRANSLATIONS
 from translations_en import TRANSLATIONS_EN
+from plurals import PLURALS
 
 # der = мужской, die = женский, das = средний
 DATA = {
@@ -1528,6 +1529,12 @@ def build():
             entry["gloss"] = gloss
         if nsfw:
             entry["nsfw"] = 1        # ругательное — скрыто по умолчанию (настройка в приложении)
+        # форма множественного числа; у омонимов зависит от значения, поэтому
+        # ключ такой же, как keyOf в app.js. Нет ключа — нет и формы
+        # (Singularetantum), приложение покажет пометку «нет мн. числа»
+        pl = PLURALS.get(f"{word} ({gloss})" if gloss else word)
+        if pl:
+            entry["pl"] = pl
         # перевод: у гомографов — их значение (gloss / en), у остальных — из словарей
         ru = gloss if gloss else TRANSLATIONS.get(word)
         if ru:
@@ -1570,12 +1577,14 @@ def main():
     per_level = {lvl: 0 for lvl in LEVEL_ORDER}
     for w in words:
         per_level[w["level"]] += 1
+    with_plural = sum(1 for w in words if w.get("pl"))
     translated = sum(1 for w in words if w.get("ru"))
     translated_en = sum(1 for w in words if w.get("en"))
     print(f"Записано {len(words)} слов в {dest}")
     for lvl in LEVEL_ORDER:
         print(f"  {lvl}: {per_level[lvl]}")
     print(f"С переводом (ru): {translated} / {len(words)}")
+    print(f"С формой мн. числа: {with_plural} / {len(words)}")
     print(f"С переводом (en): {translated_en} / {len(words)}")
     if dupes:
         print(f"Пропущены дубликаты: {sorted(set(dupes))}")
