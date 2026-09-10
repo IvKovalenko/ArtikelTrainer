@@ -472,7 +472,7 @@ B2_VOCAB_ADD = {
         "Protestwelle", "Rankhilfe", "Raststätte", "Rautetaste", "Razzia",
         "Rechnungsprüfung", "Rechtsstaatlichkeit", "Regelung", "Reisestrapaze",
         "Rendite", "Rückendeckung", "Rückforderung", "Rückgabe", "Rückgewinnung",
-        "Schadstoffbelästigung", "Scheinsicherheit", "Schienenmaut", "Schieflage",
+        "Schadstoffbelastung", "Scheinsicherheit", "Schienenmaut", "Schieflage",
         "Schlagzeile", "Schlammschlacht", "Schwachstelle", "Schwelle",
         "Selbstbestimmung", "Siegermacht", "Sondersitzung", "Spannung", "Sperrung",
         "Spüle", "Stoßstange", "Stornierung", "Strafanzeige", "Strafbemessung",
@@ -582,7 +582,7 @@ WIKI_NEWS_ADD = {
             "Standort", "Status", "Sturz", "Stürmer", "Tabellenführer", "Tatort",
             "Ton", "Torhüter", "Torwart", "Treffer", "Umbau", "Umfang", "Veranstalter",
             "Verband", "Verkauf", "Verkehrsunfall", "Versuch", "Verteidiger",
-            "Vordergrund", "Vorfall", "Vorsitzender", "Vorsprung",
+            "Vordergrund", "Vorfall", "Vorsitzende", "Vorsprung",
             "Vorstand", "Vortag", "Wahlkampf", "Wasserstoff", "Weihnachtsmarkt", "Weltkrieg",
             "Weltmeister", "Widerstand", "Wohnraum", "Wähler", "Zugriff",
             "Zusammenstoß", "Zähler", "Ärger"
@@ -804,7 +804,7 @@ WIKI_NEWS_ADD = {
     },
     "C2": {
         "der": [
-            "Abflug", "Abgeordneter", "Abgrund", "Ableger", "Abnehmer", "Absteiger",
+            "Abflug", "Abgeordnete", "Abgrund", "Ableger", "Abnehmer", "Absteiger",
             "Acker", "Adventskalender",
             "Akteur", "Aktivist", "Albtraum", "Altar", "Amtsinhaber", "Anfänger", "Anker",
             "Anklang", "Anrainer", "Anreiz", "Anrufer", "Anschein", "Ansturm", "Apotheker",
@@ -1029,12 +1029,12 @@ ANATOMY_VOCAB_ADD = {
 # Кости (обиходные немецкие названия, без латыни) — уровень C2.
 BONES_VOCAB_ADD = {
     "C2": {
-        "der": ["Oberarmknochen", "Oberschenkelknochen", "Wadenbein",
+        "der": ["Oberarmknochen", "Oberschenkelknochen", "Beckenknochen",
                 "Schädelknochen", "Backenknochen"],
         "die": ["Elle", "Speiche", "Kniescheibe", "Handwurzel", "Fußwurzel"],
         "das": ["Brustbein", "Schlüsselbein", "Schulterblatt", "Kreuzbein",
                 "Steißbein", "Schienbein", "Fersenbein", "Stirnbein",
-                "Jochbein", "Nasenbein", "Beckenknochen"],
+                "Jochbein", "Nasenbein", "Wadenbein"],
     },
 }
 

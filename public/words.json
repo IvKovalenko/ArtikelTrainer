@@ -17108,11 +17108,11 @@
 "en":"incident"
 },
 {
-"word":"Vorsitzender",
+"word":"Vorsitzende",
 "article":"der",
 "level":"B2",
 "ru":"председатель",
-"en":"chairman"
+"en":"chairperson"
 },
 {
 "word":"Vorsprung",
@@ -18606,11 +18606,11 @@
 "en":"recovery (reclaiming)"
 },
 {
-"word":"Schadstoffbelästigung",
+"word":"Schadstoffbelastung",
 "article":"die",
 "level":"B2",
 "ru":"загрязнение вредными веществами",
-"en":"pollutant nuisance"
+"en":"pollutant load"
 },
 {
 "word":"Scheinsicherheit",
@@ -29778,11 +29778,11 @@
 "en":"femur"
 },
 {
-"word":"Wadenbein",
+"word":"Beckenknochen",
 "article":"der",
 "level":"C2",
-"ru":"малоберцовая кость",
-"en":"fibula"
+"ru":"тазовая кость",
+"en":"pelvic bone"
 },
 {
 "word":"Schädelknochen",
@@ -29876,7 +29876,7 @@
 "en":"departure (flight)"
 },
 {
-"word":"Abgeordneter",
+"word":"Abgeordnete",
 "article":"der",
 "level":"C2",
 "ru":"депутат",
@@ -35420,11 +35420,11 @@
 "en":"nasal bone"
 },
 {
-"word":"Beckenknochen",
+"word":"Wadenbein",
 "article":"das",
 "level":"C2",
-"ru":"тазовая кость",
-"en":"pelvic bone"
+"ru":"малоберцовая кость",
+"en":"fibula"
 },
 {
 "word":"Couvert",
