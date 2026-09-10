@@ -19,7 +19,11 @@
   .back { color: var(--muted); font-size: 14px; text-decoration: none; }
   .back:hover { color: var(--ink); text-decoration: underline; }
   /* на полной странице прокручивается сама страница, а не блок таблицы */
-  .table-wrap { max-height: none; overflow: visible; }
+  /* Таблица получает свой бокс по высоте экрана и прокручивается внутри него.
+     Так нижняя кромка бокса всегда на виду — а значит виден и ползунок
+     столбцов; заодно шапка снова прилипает (к верху бокса). Страница при этом
+     остаётся на месте, пока листаешь таблицу. */
+  .table-wrap { max-height: 70vh; overflow: auto; }
   .foot { margin-top: 26px; text-align: center; }
 </style>
 </head>
@@ -242,19 +246,11 @@
     th.addEventListener("click", () => setSort(th.dataset.col));
   });
 
-  // страница прокручивается целиком: приклеенный thead таблицы должен парковаться
-  // под приклеенным полем поиска, а не наезжать на него
-  function syncTheadOffset() {
-    const sb = $("stats-search");
-    document.documentElement.style.setProperty("--thead-top", (sb ? sb.offsetHeight : 0) + "px");
-  }
-
   I18N.mountSwitcher($("lang-switch"));
   I18N.onChange(() => {
     document.title = I18N.t("docTitleStats");
     renderAll();
     if (searchCtl) searchCtl.refresh();   // переводы в подсказках зависят от языка
-    syncTheadOffset();
   });
 
   (async () => {
@@ -272,8 +268,6 @@
         getItems: () => searchItems,
       });
     }
-    syncTheadOffset();
-    window.addEventListener("resize", syncTheadOffset);
   })();
 </script>
 </body>

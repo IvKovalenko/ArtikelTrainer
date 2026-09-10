@@ -108,13 +108,32 @@ body {
 
 /* ---- card ---- */
 .card {
+  /* Зазоры — переменными, чтобы их можно было ужать на коротком экране, не
+     трогая кегли. Внутри карточки есть «тесная группа» (слово + мн. число +
+     перевод): её отступы задаются явно через --gap-* и не зависят от общего
+     --card-gap, поэтому уменьшение зазора не склеивает строки. */
+  --card-gap: 34px;      /* между блоками карточки */
+  --card-pad: 40px;      /* воздух сверху и снизу */
+  --gap-tight: 12px;     /* слово ↔ мн. число */
+  --gap-group: 24px;     /* мн. число ↔ перевод */
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 34px;
-  padding: 40px 0;
+  gap: var(--card-gap);
+  padding: var(--card-pad) 0;
+}
+
+/* Мало высоты (телефон или короткое окно): убираем воздух, а не шрифты.
+   Экономит ~120px по вертикали при том же кегле. */
+@media (max-width: 600px), (max-height: 760px) {
+  .card {
+    --card-gap: 14px;
+    --card-pad: 6px;
+    --gap-tight: 6px;
+    --gap-group: 12px;
+  }
 }
 
 .word {
@@ -135,7 +154,7 @@ body {
    появление строки ничего не сдвигает. Всегда одна строка. */
 .plural {
   --plural-size: clamp(36px, 5vw, 30px);
-  margin-top: -22px;            /* прижать к слову: слово + мн.ч. = один блок */
+  margin-top: calc(var(--gap-tight) - var(--card-gap));   /* слово + мн.ч. = один блок */
   font-size: var(--plural-size);
   font-weight: 500;
   letter-spacing: -0.3px;
@@ -152,7 +171,7 @@ body {
   /* базовый кегль перевода — единый источник; fitGloss в app.js временно
      уменьшает его инлайном, поэтому резерв высоты считаем от переменной */
   --gloss-size: clamp(24px, 6vw, 36px);
-  margin-top: -10px;
+  margin-top: calc(var(--gap-group) - var(--card-gap));
   font-size: var(--gloss-size);
   font-weight: 700;            /* как у слова */
   letter-spacing: -0.5px;      /* как у слова */
@@ -209,7 +228,7 @@ kbd.key,
 }
 
 .keys-hint {
-  margin-top: -22px;                 /* прижать к кнопкам (gap карточки большой) */
+  margin-top: calc(var(--gap-tight) - var(--card-gap));   /* прижать к кнопкам */
   font-size: 13px;
   color: var(--muted);
   text-align: center;
@@ -265,7 +284,7 @@ kbd.key,
 
 /* режим паузы после ошибки: «как продолжить» — маленькая пульсирующая подпись */
 .continue-hint {
-  margin-top: -14px;                 /* ближе к подсказке с правильным ответом */
+  margin-top: calc(20px - var(--card-gap));   /* ближе к подсказке с ответом */
   font-size: 13px;
   color: var(--muted);
   text-align: center;
@@ -473,9 +492,28 @@ a.linkbtn { text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: 8px;
   margin-bottom: 14px;
+  /* Дорожка под ползунок столбцов зарезервирована ВСЕГДА (padding-bottom),
+     поэтому его появление и исчезновение ничего не сдвигает. Сам ползунок
+     браузер показывает только когда столбцы не влезают в ширину. */
+  padding-bottom: 10px;
+  scrollbar-width: thin;                                  /* Firefox */
+  scrollbar-color: var(--line-hover) var(--hover);
 }
+.table-wrap::-webkit-scrollbar { height: 10px; }
+.table-wrap::-webkit-scrollbar-track {
+  background: var(--hover);
+  border-radius: 999px;
+}
+.table-wrap::-webkit-scrollbar-thumb {
+  background: var(--line-hover);
+  border-radius: 999px;
+  border: 2px solid var(--hover);                         /* зазор от дорожки */
+}
+.table-wrap::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 .stats-table {
   width: 100%;
+  /* ниже этой ширины колонки не сжимаем — включается прокрутка столбцов */
+  min-width: 580px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -495,7 +533,7 @@ a.linkbtn { text-decoration: none; }
 .stats-table .bad { color: var(--red); }     /* колонка ошибок — красная, как ✕ на главной */
 .stats-table thead th {
   position: sticky;
-  top: var(--thead-top, 0);   /* на полной странице (stats.html) паркуется под sticky-поиском */
+  top: 0;                     /* прилипает к верху своего контейнера прокрутки */
   background: #fff;
   color: var(--ink);
   font-weight: 600;
