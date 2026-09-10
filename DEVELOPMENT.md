@@ -37,6 +37,8 @@ wrangler.toml           конфиг Cloudflare (папка сборки + пр�
 прогресс (JSON на пользователя), счётчики rate-limit. Аутентификация — свой JWT
 (HS256, Web Crypto), токен в `localStorage` + HttpOnly-cookie.
 
+Идеи дальнейшего развития и их цена — в [TODO.md](TODO.md).
+
 ## Запуск локально
 
 ```bash
