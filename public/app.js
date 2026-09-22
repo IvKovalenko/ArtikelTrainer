@@ -31,6 +31,7 @@
     m.wrongPause = on ? 1 : 0;
     m.wrongPauseAt = Date.now();
     saveLocal(); scheduleSync();
+    el.continueHint.hidden = !on;   // слот появляется/исчезает сразу
   }
   // Показывать ругательные слова (nsfw) — тоже в __meta; по умолчанию выключено.
   function swearOn() {
@@ -536,6 +537,8 @@
     el.level.textContent = I18N.t("level", { level: unlocked[unlocked.length - 1] });
     if (el.gloss) { el.gloss.textContent = current.gloss ? "(" + trOf(current) + ")" : ""; fitGloss(); }
     renderPlural();                             // до ответа — пусто
+    // место под подсказку паузы держим, только если режим включён
+    el.continueHint.hidden = !wrongPause();
     el.hint.textContent = "";
     el.hint.className = "hint";
     for (const b of answerButtons) {
@@ -597,7 +600,6 @@
       awaitingContinue = true;
       for (const b of answerButtons) if (b.dataset.article === right) b.disabled = false;
       el.continueHint.textContent = I18N.t("continueCorrectArticle");
-      el.continueHint.hidden = false;
     } else {
       advTimer = setTimeout(next, isRight ? delayRight() : delayWrong());
     }
@@ -607,7 +609,7 @@
     clearTimeout(advTimer);
     answered = false;
     awaitingContinue = false;
-    el.continueHint.hidden = true;
+    el.continueHint.textContent = "";   // слот остаётся: карточка не дёргается
     current = pickWord();
     renderWord();
   }

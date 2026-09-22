@@ -284,8 +284,16 @@ kbd.key,
 
 /* режим паузы после ошибки: «как продолжить» — маленькая пульсирующая подпись */
 .continue-hint {
-  margin-top: calc(20px - var(--card-gap));   /* ближе к подсказке с ответом */
-  font-size: 13px;
+  /* Стоит под переводом, прямо над кнопками — она про них и говорит. Место
+     зарезервировано (min-height), поэтому появление текста ничего не двигает.
+     Отступы тесные с обеих сторон: слот добавляет к высоте карточки ~7px, а не
+     целый зазор. Когда режим паузы выключен, слот целиком убирается атрибутом
+     hidden (app.js) и не стоит вообще ничего. */
+  --continue-size: 13px;
+  min-height: calc(var(--continue-size) * 1.4);
+  margin-top: calc(var(--gap-tight) - var(--card-gap));
+  margin-bottom: calc(var(--gap-tight) - var(--card-gap));
+  font-size: var(--continue-size);
   color: var(--muted);
   text-align: center;
   animation: continue-pulse 1.6s ease-in-out infinite;
